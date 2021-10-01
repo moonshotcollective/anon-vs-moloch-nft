@@ -1,4 +1,4 @@
-# 🏗 scaffold-eth - 🤖 🚀 🌔 Moonshot Bots on curve for good!
+# 🏗 scaffold-eth - 🤖 Moloch and Eth Bots on curve for good!
 
 
 ---
@@ -9,11 +9,11 @@ required: [Node](https://nodejs.org/dist/latest-v12.x/) plus [Yarn](https://clas
 
 
 ```bash
-git clone https://github.com/austintgriffith/scaffold-eth.git moonshot-bots-with-curve
+git clone https://github.com/moonshotcollective/anon-vs-moloch-nft.git app
 
-cd moonshot-bots-with-curve
+cd app
 
-git checkout moonshot-bots-with-curve
+git checkout app
 ```
 
 ```bash
@@ -31,7 +31,7 @@ yarn start
 > in a second terminal window:
 
 ```bash
-cd moonshot-bots-with-curve
+cd app
 yarn chain
 
 ```
@@ -44,7 +44,7 @@ yarn chain
 
 
 ```bash
-cd moonshot-bots-with-curve
+cd app
 
 yarn upload
 
