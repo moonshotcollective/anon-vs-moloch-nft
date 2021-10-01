@@ -1,4 +1,4 @@
-pragma solidity >=0.6.0 <0.7.0;
+pragma solidity 0.7.6;
 //SPDX-License-Identifier: MIT
 
 // 🤖 🚀 🌔  MoonshotBots for public goods funding!
