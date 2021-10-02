@@ -15,6 +15,9 @@ contract EthBot is ERC721 {
 
     uint256 public constant limit = 300;
     uint256 public price = 0.0033 ether;
+    uint256 public constant threshold_level_1 = 80;
+    uint256 public constant threshold_level_2 = 160;
+    // uint256 public constant threshold_level_3 = 260;
 
     constructor() public ERC721("EthBots", "ETHB") 
     {
