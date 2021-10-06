@@ -1,7 +1,6 @@
 //SPDX-License-Identifier: MIT
 pragma solidity 0.8.4;
 
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
@@ -9,7 +8,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 /// @author jaxcoder, ghostffcode
 /// @notice
 /// @dev
-contract GreatestLARP is Ownable, ERC721URIStorage {
+contract GreatestLARP is Ownable {
     address payable gitcoin;
 
     enum levels {
@@ -27,7 +26,7 @@ contract GreatestLARP is Ownable, ERC721URIStorage {
 
     mapping(uint256 => art) larp;
 
-    constructor() ERC721("GreatestLARP", "GLARP") {
+    constructor() {
         gitcoin = payable(address(0xde21F729137C5Af1b01d73aF1dC21eFfa2B8a0d6));
         // first LARP stage
         larp[1] = art({
@@ -48,11 +47,7 @@ contract GreatestLARP is Ownable, ERC721URIStorage {
         });
     }
 
-    function _baseURI() internal pure override returns (string memory) {
-        return
-            "https://gateway.pinata.cloud/ipfs/QmdRmZ1UPSALNVuXY2mYPb3T5exn9in1AL3tsema4rY2QF/json/";
-    }
-
+    
     function requestMint(uint256 level) public payable returns (uint256) {
         require(level > 0, "Invalid level selected");
         require(level < 3, "Invalid level selected");
@@ -89,10 +84,10 @@ contract GreatestLARP is Ownable, ERC721URIStorage {
         uint256 id = larp[level].tokenId;
 
         // mint token
-        _mint(msg.sender, id);
+        // _mint(msg.sender, id);
 
         // set tokenURI
-        _setTokenURI(id, tokenURI);
+        // _setTokenURI(id, tokenURI);
 
         return id;
     }
