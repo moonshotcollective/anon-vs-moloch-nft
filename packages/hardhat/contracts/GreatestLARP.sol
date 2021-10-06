@@ -3,6 +3,10 @@ pragma solidity 0.8.4;
 
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "./EthBot.sol";
+import "./MolochBot.sol";
+import "./EthStatue.sol";
+import "./MolochStatue.sol";
 
 /// @title GreatestLARP Factory Contract
 /// @author jaxcoder, ghostffcode
@@ -10,6 +14,11 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 /// @dev
 contract GreatestLARP is Ownable {
     address payable gitcoin;
+
+    EthBot public ethBot;
+    MolochBot public molochBot;
+    EthStatue public ethStatue;
+    MolochStatue public molochStatue;
 
     enum levels {
         first,
@@ -26,8 +35,20 @@ contract GreatestLARP is Ownable {
 
     mapping(uint256 => art) larp;
 
-    constructor() {
+    constructor
+    (
+        address _ethBot,
+        address _molochBot,
+        address _ethStatue,
+        address _molochStatue 
+    ) {
         gitcoin = payable(address(0xde21F729137C5Af1b01d73aF1dC21eFfa2B8a0d6));
+
+        ethBot = EthBot(_ethBot);
+        molochBot = MolochBot(_molochBot);
+        ethStatue = EthStatue(_ethStatue);
+        molochStatue = MolochStatue(_molochStatue);
+
         // first LARP stage
         larp[1] = art({
             limit: 300,

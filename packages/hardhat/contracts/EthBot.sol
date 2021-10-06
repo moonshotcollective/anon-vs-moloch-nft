@@ -3,15 +3,24 @@ pragma solidity 0.8.4;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 
 /// @title GreatestLARP Factory Contract
 /// @author jaxcoder, ghostffcode
 /// @notice
 /// @dev
 contract EthBot is ERC721URIStorage {
+    using SafeMath for uint;
+    using Counters for Counters.Counter;
 
-    constructor() ERC721("EthBot", "ETHBOT") {}
+    Counters.Counter private _tokenIds;
+
+    // this lets you look up a token by the uri (assuming there is only one of each uri for now)
+    mapping (bytes32 => uint256) public uriToTokenId;
+
+    constructor() ERC721("EthBot", "ETHBOT") {
+        
+    }
 
     function _baseURI() internal pure override returns (string memory) {
         return
