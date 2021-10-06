@@ -20,6 +20,13 @@ contract GreatestLARP is Ownable {
     EthStatue public ethStatue;
     MolochStatue public molochStatue;
 
+    enum NFT_TYPE {
+        ETHBOT,
+        MOLOCHBOT,
+        ETHSTATUE,
+        MOLOCHSTATUE
+    }
+
     enum levels {
         first,
         second
@@ -69,7 +76,7 @@ contract GreatestLARP is Ownable {
     }
 
     
-    function requestMint(uint256 level) public payable returns (uint256) {
+    function requestMint(uint256 level, NFT_TYPE nftType) public payable returns (uint256) {
         require(level > 0, "Invalid level selected");
         require(level < 3, "Invalid level selected");
 
