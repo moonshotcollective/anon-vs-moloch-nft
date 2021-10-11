@@ -1,21 +1,20 @@
 import WalletConnectProvider from "@walletconnect/web3-provider";
 //import Torus from "@toruslabs/torus-embed"
 import WalletLink from "walletlink";
-import { Alert, Button, Col, Row, Image, PageHeader, Space } from "antd";
+import { Alert, Button, Image, PageHeader, Space } from "antd";
 import "antd/dist/antd.css";
 import React, { useCallback, useEffect, useState } from "react";
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+// import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Web3Modal from "web3modal";
 import "./App.css";
-import Media from "react-media";
-import { Account, GasGauge, Ramp, Footer, Faq, EthbotLearn, EthbotProgress, ReadComic, MultipleUserJourney } from "./components";
+import { Account, Footer, Faq, EthbotLearn, EthbotProgress, ReadComic, MultipleUserJourney } from "./components";
 import { INFURA_ID, NETWORK, NETWORKS } from "./constants";
 import { Transactor } from "./helpers";
 import { useContractReader } from "eth-hooks";
 import { useEventListener } from "eth-hooks/events/useEventListener";
 import { useExchangeEthPrice } from "eth-hooks/dapps/dex";
 // import Hints from "./Hints";
-import { Home } from "./views";
+// import { Home } from "./views";
 
 import {
   useContractConfig,
@@ -30,8 +29,6 @@ import Portis from "@portis/web3";
 import Fortmatic from "fortmatic";
 import Authereum from "authereum";
 
-import burgerMenuIcon from "./assets/burgerMenuIcon.svg";
-import group339272x from "./assets/group-33927@2x.svg";
 import navbarheadlogo from "./assets/navbarheadlogo.svg";
 
 const { ethers } = require("ethers");
