@@ -1,13 +1,13 @@
 import WalletConnectProvider from "@walletconnect/web3-provider";
 //import Torus from "@toruslabs/torus-embed"
 import WalletLink from "walletlink";
-import { Alert, Button, Image, PageHeader, Space } from "antd";
+import { Alert, Button, Image, PageHeader, Space, Row, Col } from "antd";
 import "antd/dist/antd.css";
 import React, { useCallback, useEffect, useState } from "react";
 // import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Web3Modal from "web3modal";
 import "./App.css";
-import { Account, Footer, Faq, EthbotLearn, EthbotProgress, ReadComic, MultipleUserJourney } from "./components";
+import { Account, Footer, Faq, EthbotLearn, EthbotProgress, ReadComic, MultipleUserJourney, Ramp, GasGauge } from "./components";
 import { INFURA_ID, NETWORK, NETWORKS } from "./constants";
 import { Transactor } from "./helpers";
 import { useContractReader } from "eth-hooks";
@@ -507,7 +507,7 @@ function App(props) {
       <Footer />
 
       {/* 🗺 Extra UI like gas price, eth price, faucet, and support: */}
-      {/* <div style={{ position: "fixed", textAlign: "left", left: 0, bottom: 20, padding: 10 }}>
+      <div style={{ position: "fixed", textAlign: "left", left: 0, bottom: 20, padding: 10 }}>
         <Row align="middle" gutter={[4, 4]}>
           <Col span={12}>
             <Ramp price={price} address={address} networks={NETWORKS} />
@@ -517,7 +517,7 @@ function App(props) {
             <GasGauge gasPrice={gasPrice} />
           </Col>
         </Row>
-      </div> */}
+      </div>
     </div>
   );
 }
