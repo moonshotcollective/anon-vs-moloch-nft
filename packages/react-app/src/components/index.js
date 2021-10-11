@@ -20,3 +20,4 @@ export { default as Faq } from "./Faq";
 export { default as EthbotLearn } from "./EthbotLearn";
 export { default as EthbotProgress } from "./EthbotProgress";
 export { default as ReadComic } from "./ReadComic";
+export { default as MultipleUserJourney } from "./MultipleUserJourney";

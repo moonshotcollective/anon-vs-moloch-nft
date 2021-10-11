@@ -8,7 +8,7 @@ import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Web3Modal from "web3modal";
 import "./App.css";
 import Media from "react-media";
-import { Account, GasGauge, Ramp, Footer, Faq, EthbotLearn, EthbotProgress, ReadComic } from "./components";
+import { Account, GasGauge, Ramp, Footer, Faq, EthbotLearn, EthbotProgress, ReadComic, MultipleUserJourney } from "./components";
 import { INFURA_ID, NETWORK, NETWORKS } from "./constants";
 import { Transactor } from "./helpers";
 import { useContractReader } from "eth-hooks";
@@ -504,12 +504,13 @@ function App(props) {
       <EthbotProgress />
       <ReadComic />
       <EthbotLearn />
+      <MultipleUserJourney />
 
       <Faq />
       <Footer />
 
       {/* 🗺 Extra UI like gas price, eth price, faucet, and support: */}
-      <div style={{ position: "fixed", textAlign: "left", left: 0, bottom: 20, padding: 10 }}>
+      {/* <div style={{ position: "fixed", textAlign: "left", left: 0, bottom: 20, padding: 10 }}>
         <Row align="middle" gutter={[4, 4]}>
           <Col span={12}>
             <Ramp price={price} address={address} networks={NETWORKS} />
@@ -519,7 +520,7 @@ function App(props) {
             <GasGauge gasPrice={gasPrice} />
           </Col>
         </Row>
-      </div>
+      </div> */}
     </div>
   );
 }
