@@ -22,7 +22,7 @@ const fundingProgress = [ fundingprogress1, fundingprogress2, fundingprogress3, 
 const index = ({ progress }) => {
 
   const currentFundingBot = fundingBot[progress] || fundingbot1;
-  const currentFundingProgress = fundingProgress[progress] || fundingprogress5;
+  const currentFundingProgress = fundingProgress[progress] || fundingprogress1;
 
 	return (
   <section class="text-gray-600 body-font bg-green-light-green h-52">
