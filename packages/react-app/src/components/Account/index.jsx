@@ -1,8 +1,8 @@
-import { Button, Menu, Dropdown } from "antd";
+import { DownOutlined, LogoutOutlined } from "@ant-design/icons";
+import { Button, Dropdown, Menu } from "antd";
 import React from "react";
 import Address from "../Address";
 import Balance from "../Balance";
-import { DownOutlined, LogoutOutlined } from "@ant-design/icons";
 import "./Account.css";
 // import Wallet from "./Wallet";
 
@@ -54,7 +54,6 @@ export default function Account({
   width,
   extra,
 }) {
-
   function isValidAddress(address) {
     return address && address !== "0x0000000000000000000000000000000000000000";
   }
@@ -79,15 +78,17 @@ export default function Account({
       modalButtons.push(
         <div key="first">
           {isValidAddress(address) ? (
-            <Dropdown.Button block ghost overlay={menu} icon={<DownOutlined />} trigger="click" size={"large"}>
-              <Address
-                address={address}
-                ensProvider={mainnetProvider}
-                blockExplorer={blockExplorer}
-                blockieSize={10}
-                extra={extra}
-              />
-            </Dropdown.Button>
+            <>
+              <Dropdown.Button block ghost overlay={menu} icon={<DownOutlined />} trigger="click" size={"large"}>
+                <Address
+                  address={address}
+                  ensProvider={mainnetProvider}
+                  blockExplorer={blockExplorer}
+                  blockieSize={10}
+                  extra={extra}
+                />
+              </Dropdown.Button>
+            </>
           ) : (
             ""
           )}
