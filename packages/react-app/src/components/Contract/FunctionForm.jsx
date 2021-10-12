@@ -1,13 +1,15 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/accessible-emoji */
+import { Button, Col, Divider, Input, Row, Tooltip } from "antd";
 import React, { useState } from "react";
-import { BigNumber } from "@ethersproject/bignumber";
-import { Row, Col, Input, Divider, Tooltip, Button } from "antd";
+import Blockies from "react-blockies";
 import { Transactor } from "../../helpers";
 import tryToDisplay from "./utils";
-import Blockies from "react-blockies";
-const { utils } = require("ethers");
+
+const { utils, BigNumber } = require("ethers");
+
+const getFunctionInputKey = (functionInfo, input, inputIndex) => {
+  const name = input?.name ? input.name : "input_" + inputIndex + "_";
+  return functionInfo.name + "_" + name + "_" + input.type;
+};
 
 export default function FunctionForm({ contractFunction, functionInfo, provider, gasPrice, triggerRefresh }) {
   const [form, setForm] = useState({});
@@ -16,14 +18,13 @@ export default function FunctionForm({ contractFunction, functionInfo, provider,
 
   const tx = Transactor(provider, gasPrice);
 
-  let inputIndex = 0;
-  const inputs = functionInfo.inputs.map(input => {
-    const key = functionInfo.name + "_" + input.name + "_" + input.type + "_" + inputIndex++;
+  const inputs = functionInfo.inputs.map((input, inputIndex) => {
+    const key = getFunctionInputKey(functionInfo, input, inputIndex);
 
     let buttons = "";
     if (input.type === "bytes32") {
       buttons = (
-        <Tooltip placement="right" title={"to bytes32"}>
+        <Tooltip placement="right" title="to bytes32">
           <div
             type="dashed"
             style={{ cursor: "pointer" }}
@@ -45,7 +46,7 @@ export default function FunctionForm({ contractFunction, functionInfo, provider,
       );
     } else if (input.type === "bytes") {
       buttons = (
-        <Tooltip placement="right" title={"to hex"}>
+        <Tooltip placement="right" title="to hex">
           <div
             type="dashed"
             style={{ cursor: "pointer" }}
@@ -67,7 +68,7 @@ export default function FunctionForm({ contractFunction, functionInfo, provider,
       );
     } else if (input.type === "uint256") {
       buttons = (
-        <Tooltip placement="right" title={"* 10 ** 18"}>
+        <Tooltip placement="right" title="* 10 ** 18">
           <div
             type="dashed"
             style={{ cursor: "pointer" }}
@@ -85,7 +86,7 @@ export default function FunctionForm({ contractFunction, functionInfo, provider,
       const possibleAddress = form[key] && form[key].toLowerCase && form[key].toLowerCase().trim();
       if (possibleAddress && possibleAddress.length === 42) {
         buttons = (
-          <Tooltip placement="right" title={"blockie"}>
+          <Tooltip placement="right" title="blockie">
             <Blockies seed={possibleAddress} scale={3} />
           </Tooltip>
         );
@@ -112,7 +113,7 @@ export default function FunctionForm({ contractFunction, functionInfo, provider,
   });
 
   const txValueInput = (
-    <div style={{ margin: 2 }} key={"txValueInput"}>
+    <div style={{ margin: 2 }} key="txValueInput">
       <Input
         placeholder="transaction value"
         onChange={e => setTxValue(e.target.value)}
@@ -121,12 +122,12 @@ export default function FunctionForm({ contractFunction, functionInfo, provider,
           <div>
             <Row>
               <Col span={16}>
-                <Tooltip placement="right" title={" * 10^18 "}>
+                <Tooltip placement="right" title=" * 10^18 ">
                   <div
                     type="dashed"
                     style={{ cursor: "pointer" }}
                     onClick={async () => {
-                      let floatValue = parseFloat(txValue);
+                      const floatValue = parseFloat(txValue);
                       if (floatValue) setTxValue("" + floatValue * 10 ** 18);
                     }}
                   >
@@ -135,7 +136,7 @@ export default function FunctionForm({ contractFunction, functionInfo, provider,
                 </Tooltip>
               </Col>
               <Col span={16}>
-                <Tooltip placement="right" title={"number to hex"}>
+                <Tooltip placement="right" title="number to hex">
                   <div
                     type="dashed"
                     style={{ cursor: "pointer" }}
@@ -165,21 +166,20 @@ export default function FunctionForm({ contractFunction, functionInfo, provider,
       <Button style={{ marginLeft: -32 }}>Send💸</Button>
     );
   inputs.push(
-    <div style={{ cursor: "pointer", margin: 2 }} key={"goButton"}>
+    <div style={{ cursor: "pointer", margin: 2 }} key="goButton">
       <Input
         onChange={e => setReturnValue(e.target.value)}
         defaultValue=""
         bordered={false}
-        disabled={true}
+        disabled
         value={returnValue}
         suffix={
           <div
             style={{ width: 50, height: 30, margin: 0 }}
             type="default"
             onClick={async () => {
-              let innerIndex = 0;
-              const args = functionInfo.inputs.map(input => {
-                const key = functionInfo.name + "_" + input.name + "_" + input.type + "_" + innerIndex++;
+              const args = functionInfo.inputs.map((input, inputIndex) => {
+                const key = getFunctionInputKey(functionInfo, input, inputIndex);
                 let value = form[key];
                 if (input.baseType === "array") {
                   value = JSON.parse(value);
@@ -195,12 +195,19 @@ export default function FunctionForm({ contractFunction, functionInfo, provider,
 
               let result;
               if (functionInfo.stateMutability === "view" || functionInfo.stateMutability === "pure") {
-                const returned = await contractFunction(...args);
-                result = tryToDisplay(returned);
+                try {
+                  const returned = await contractFunction(...args);
+                  result = tryToDisplay(returned);
+                } catch (err) {
+                  console.error(err);
+                }
               } else {
                 const overrides = {};
                 if (txValue) {
                   overrides.value = txValue; // ethers.utils.parseEther()
+                }
+                if (gasPrice) {
+                  overrides.gasPrice = gasPrice;
                 }
                 // Uncomment this if you want to skip the gas estimation for each transaction
                 // overrides.gasLimit = hexlify(1200000);

@@ -1,8 +1,8 @@
-import { Skeleton, Typography, Card } from "antd";
+import { Skeleton, Typography } from "antd";
 import React from "react";
 import Blockies from "react-blockies";
-import { useLookupAddress } from "../hooks";
-const { Meta } = Card;
+import { useThemeSwitcher } from "react-css-theme-switcher";
+import { useLookupAddress } from "eth-hooks/dapps/ens";
 
 // changed value={address} to address={address}
 
@@ -39,6 +39,8 @@ export default function Address(props) {
 
   const ens = useLookupAddress(props.ensProvider, address);
 
+  const { currentTheme } = useThemeSwitcher();
+
   if (!address) {
     return (
       <span>
@@ -65,6 +67,7 @@ export default function Address(props) {
     return (
       <span style={{ verticalAlign: "middle" }}>
         <a
+          style={{ color: currentTheme === "light" ? "#222222" : "#ddd" }}
           target="_blank"
           href={etherscanLink}
           rel="noopener noreferrer"
@@ -80,6 +83,7 @@ export default function Address(props) {
     text = (
       <Text editable={{ onChange: props.onChange }} copyable={{ text: address }}>
         <a
+          style={{ color: currentTheme === "light" ? "#222222" : "#ddd" }}
           target="_blank"
           href={etherscanLink}
           rel="noopener noreferrer"
@@ -92,6 +96,7 @@ export default function Address(props) {
     text = (
       <Text copyable={{ text: address }}>
         <a
+          style={{ color: currentTheme === "light" ? "#222222" : "#ddd" }}
           target="_blank"
           href={etherscanLink}
           rel="noopener noreferrer"
@@ -103,19 +108,13 @@ export default function Address(props) {
   }
 
   return (
-    <div style={{ padding: 10 }}>
-      <Meta
-        avatar={
-          <Blockies
-            seed={address.toLowerCase()}
-            size={props.blockieSize || 6}
-            scale={props.fontSize ? props.fontSize / 7 : 4}
-          />
-        }
-        title={text}
-        description={props.extra}
-        key="meta"
-      />
-    </div>
+    <span>
+      <span style={{ verticalAlign: "middle" }}>
+        <Blockies seed={address.toLowerCase()} size={8} scale={props.fontSize ? props.fontSize / 7 : 4} />
+      </span>
+      <span style={{ verticalAlign: "middle", paddingLeft: 5, fontSize: props.fontSize ? props.fontSize : 28 }}>
+        {text}
+      </span>
+    </span>
   );
 }
