@@ -20,7 +20,6 @@ import {
 } from "eth-hooks";
 import { useEventListener } from "eth-hooks/events/useEventListener";
 import { useExchangeEthPrice } from "eth-hooks/dapps/dex";
-// import Hints from "./Hints";
 import { Home } from "./views";
 
 import { useContractConfig } from "./hooks";
@@ -29,24 +28,6 @@ import Fortmatic from "fortmatic";
 import Authereum from "authereum";
 
 const { ethers } = require("ethers");
-/*
-    Welcome to 🏗 scaffold-eth !
-
-    Code:
-    https://github.com/scaffold-eth/scaffold-eth
-
-    Support:
-    https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA
-    or DM @austingriffith on twitter or telegram
-
-    You should get your own Infura.io ID and put it in `constants.js`
-    (this is your connection to the main Ethereum network for ENS etc.)
-
-
-    🌏 EXTERNAL CONTRACTS:
-    You can also bring in contract artifacts in `constants.js`
-    (and then use the `useExternalContractLoader()` hook!)
-*/
 
 /// 📡 What chain are your contracts deployed to?
 const targetNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
@@ -130,19 +111,6 @@ const web3Modal = new Web3Modal({
         key: "pk_live_5A7C91B2FC585A17", // required
       },
     },
-    // torus: {
-    //   package: Torus,
-    //   options: {
-    //     networkParams: {
-    //       host: "https://localhost:8545", // optional
-    //       chainId: 1337, // optional
-    //       networkId: 1337 // optional
-    //     },
-    //     config: {
-    //       buildEnv: "development" // optional
-    //     },
-    //   },
-    // },
     "custom-walletlink": {
       display: {
         logo:
