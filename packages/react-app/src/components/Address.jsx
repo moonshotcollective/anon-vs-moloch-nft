@@ -1,8 +1,7 @@
-import { Skeleton, Typography, Card } from "antd";
 import React from "react";
 import Blockies from "react-blockies";
+import { Typography, Skeleton } from "antd";
 import { useLookupAddress } from "../hooks";
-const { Meta } = Card;
 
 // changed value={address} to address={address}
 
@@ -31,10 +30,10 @@ const { Meta } = Card;
 
 const { Text } = Typography;
 
-const blockExplorerLink = (address, blockExplorer) =>
-  `${blockExplorer || "https://etherscan.io/"}${"address/"}${address}`;
+const blockExplorerLink = (address, blockExplorer) => `${blockExplorer || "https://etherscan.io/"}${"address/"}${address}`;
 
 export default function Address(props) {
+
   const address = props.value || props.address;
 
   const ens = useLookupAddress(props.ensProvider, address);
@@ -49,10 +48,7 @@ export default function Address(props) {
 
   let displayAddress = address.substr(0, 6);
 
-  const ensSplit = ens && ens.split(".");
-  const validEnsCheck = ensSplit && ensSplit[ensSplit.length - 1] === "eth";
-
-  if (validEnsCheck) {
+  if (ens && ens.indexOf("0x")<0) {
     displayAddress = ens;
   } else if (props.size === "short") {
     displayAddress += "..." + address.substr(-4);
@@ -64,11 +60,7 @@ export default function Address(props) {
   if (props.minimized) {
     return (
       <span style={{ verticalAlign: "middle" }}>
-        <a
-          target="_blank"
-          href={etherscanLink}
-          rel="noopener noreferrer"
-        >
+        <a /*style={{ color: "#222222" }}*/ target={"_blank"} href={etherscanLink} rel="noopener noreferrer">
           <Blockies seed={address.toLowerCase()} size={8} scale={2} />
         </a>
       </span>
@@ -79,11 +71,7 @@ export default function Address(props) {
   if (props.onChange) {
     text = (
       <Text editable={{ onChange: props.onChange }} copyable={{ text: address }}>
-        <a
-          target="_blank"
-          href={etherscanLink}
-          rel="noopener noreferrer"
-        >
+        <a /*style={{ color: "#222222" }}*/ target={"_blank"} href={etherscanLink} rel="noopener noreferrer">
           {displayAddress}
         </a>
       </Text>
@@ -91,11 +79,7 @@ export default function Address(props) {
   } else {
     text = (
       <Text copyable={{ text: address }}>
-        <a
-          target="_blank"
-          href={etherscanLink}
-          rel="noopener noreferrer"
-        >
+        <a /*style={{ color: "#222222" }}*/ target={"_blank"} href={etherscanLink} rel="noopener noreferrer">
           {displayAddress}
         </a>
       </Text>
@@ -103,19 +87,11 @@ export default function Address(props) {
   }
 
   return (
-    <div style={{ padding: 10 }}>
-      <Meta
-        avatar={
-          <Blockies
-            seed={address.toLowerCase()}
-            size={props.blockieSize || 6}
-            scale={props.fontSize ? props.fontSize / 7 : 4}
-          />
-        }
-        title={text}
-        description={props.extra}
-        key="meta"
-      />
-    </div>
+    <span>
+      <span style={{ verticalAlign: "middle" }}>
+        <Blockies seed={address.toLowerCase()} size={8} scale={props.fontSize?props.fontSize/7:4} />
+      </span>
+      <span style={{ verticalAlign: "middle", paddingLeft: 5, fontSize: props.fontSize?props.fontSize:28 }}>{text}</span>
+    </span>
   );
 }

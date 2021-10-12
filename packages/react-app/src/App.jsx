@@ -1,35 +1,32 @@
 import WalletConnectProvider from "@walletconnect/web3-provider";
 //import Torus from "@toruslabs/torus-embed"
 import WalletLink from "walletlink";
-import { Alert, Button, Image, PageHeader, Space, Row, Col } from "antd";
+import { Alert, Button, Col, Menu, Row } from "antd";
 import "antd/dist/antd.css";
 import React, { useCallback, useEffect, useState } from "react";
-// import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Web3Modal from "web3modal";
 import "./App.css";
-import { Account, Footer, Faq, EthbotLearn, EthbotProgress, ReadComic, MultipleUserJourney, Ramp, GasGauge } from "./components";
+import { Account, Contract, Faucet, GasGauge, Header, Ramp, ThemeSwitch } from "./components";
 import { INFURA_ID, NETWORK, NETWORKS } from "./constants";
 import { Transactor } from "./helpers";
-import { useContractReader } from "eth-hooks";
+import {
+  useBalance,
+  useContractLoader,
+  useContractReader,
+  useGasPrice,
+  useOnBlock,
+  useUserProviderAndSigner,
+} from "eth-hooks";
 import { useEventListener } from "eth-hooks/events/useEventListener";
 import { useExchangeEthPrice } from "eth-hooks/dapps/dex";
 // import Hints from "./Hints";
-// import { Home } from "./views";
+import { Home } from "./views";
 
-import {
-  useContractConfig,
-  useGasPrice,
-  useOnBlock,
-  useContractLoader,
-  useUserProvider,
-  useUserSigner,
-  useBalance,
-} from "./hooks";
+import { useContractConfig } from "./hooks";
 import Portis from "@portis/web3";
 import Fortmatic from "fortmatic";
 import Authereum from "authereum";
-
-import navbarheadlogo from "./assets/navbarheadlogo.svg";
 
 const { ethers } = require("ethers");
 /*
@@ -52,7 +49,7 @@ const { ethers } = require("ethers");
 */
 
 /// 📡 What chain are your contracts deployed to?
-const targetNetwork = process.env.REACT_APP_NETWORK ? NETWORKS[process.env.REACT_APP_NETWORK] : NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const targetNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // 😬 Sorry for all the console logging
 const DEBUG = true;
@@ -192,8 +189,8 @@ function App(props) {
   /* 🔥 This hook will get the price of Gas from ⛽️ EtherGasStation */
   const gasPrice = useGasPrice(targetNetwork, "fast");
   // Use your injected provider from 🦊 Metamask or if you don't have it then instantly generate a 🔥 burner wallet.
-  const userProvider = useUserProvider(injectedProvider, localProvider);
-  const userSigner = useUserSigner(injectedProvider, localProvider);
+  const userProviderAndSigner = useUserProviderAndSigner(injectedProvider, localProvider);
+  const userSigner = userProviderAndSigner.signer;
 
   useEffect(() => {
     async function getAddress() {
@@ -445,76 +442,109 @@ function App(props) {
 
   return (
     <div className="App">
-        <PageHeader
-          title={
-            <a href="/" target="_blank" rel="noopener noreferrer" style={{ float: "left" }} className="navbar-title">
-              <Image preview={false} className="h-24 float-left" src={navbarheadlogo} />
-            </a>
-          }
-          className="bg-white"
-          extra={[
-            <Space>
-              <h3>
-                Explore Editions
-              </h3>
-              <h3>
-                How it Works?
-              </h3>
-              <h3>
-                Community
-              </h3>
-              <h3>
-                About
-              </h3>
-            </Space>,
-            <Space>
-              <span>{faucetHint}</span>
-              <Account
-                address={address}
-                localProvider={localProvider}
-                userSigner={userSigner}
-                mainnetProvider={mainnetProvider}
-                price={price}
-                web3Modal={web3Modal}
-                loadWeb3Modal={loadWeb3Modal}
-                logoutOfWeb3Modal={logoutOfWeb3Modal}
-                blockExplorer={blockExplorer}
-                extra={networkDisplay}
-              />
-            </Space>,
-          ]}
+      {/* ✏️ Edit the header and change the title to your project name */}
+      <Header />
+      {networkDisplay}
+      <BrowserRouter>
+        <Menu style={{ textAlign: "center" }} selectedKeys={[route]} mode="horizontal">
+          <Menu.Item key="/">
+            <Link
+              onClick={() => {
+                setRoute("/");
+              }}
+              to="/"
+            >
+              App
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="/debug">
+            <Link
+              onClick={() => {
+                setRoute("/debug");
+              }}
+              to="/debug"
+            >
+              Debug
+            </Link>
+          </Menu.Item>
+        </Menu>
+
+        <Switch>
+          <Route exact path="/">
+            {/*
+                🎛 this scaffolding is full of commonly used components
+                this <Contract/> component will automatically parse your ABI
+                and give you a form to interact with it locally
+            */}
+            <Home userSigner={userSigner} web3Modal={web3Modal} />
+          </Route>
+          <Route path="/debug">
+            <Contract
+              name="YourContract"
+              signer={userSigner}
+              provider={localProvider}
+              address={address}
+              blockExplorer={blockExplorer}
+              contractConfig={contractConfig}
+            />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+
+      <ThemeSwitch />
+
+      {/* 👨‍💼 Your account is in the top right with a wallet at connect options */}
+      <div style={{ position: "fixed", textAlign: "right", right: 0, top: 0, padding: 10 }}>
+        <Account
+          address={address}
+          localProvider={localProvider}
+          userSigner={userSigner}
+          mainnetProvider={mainnetProvider}
+          price={price}
+          web3Modal={web3Modal}
+          loadWeb3Modal={loadWeb3Modal}
+          logoutOfWeb3Modal={logoutOfWeb3Modal}
+          blockExplorer={blockExplorer}
         />
-
-      <div className="min-w-full intro-background bg-green-dark-green">
-          <div className="space-y-6 infront m-8 pb-8">
-            <h1 className="infront justify-center text-center text-5xl relative mt-10 text-green-teal font-spacemono">
-              The Greatest Larp has begun.
-            </h1>
-            <div className="relative justify-center mx-2 text-center intro-info absolute text-2xl text-white">
-              Lorem Ipsum
-            </div>
-            <Button className="bannertop-twitterfollowbutton">
-							<div className="bannertop-joinus">Join us in the fight</div>
-						</Button>
-          </div>
+        {faucetHint}
       </div>
-      <EthbotProgress />
-      <ReadComic />
-      <EthbotLearn />
-      <MultipleUserJourney />
-
-      <Faq />
-      <Footer />
 
       {/* 🗺 Extra UI like gas price, eth price, faucet, and support: */}
       <div style={{ position: "fixed", textAlign: "left", left: 0, bottom: 20, padding: 10 }}>
         <Row align="middle" gutter={[4, 4]}>
-          <Col span={12}>
+          <Col span={8}>
             <Ramp price={price} address={address} networks={NETWORKS} />
           </Col>
 
-          <Col span={12} style={{ textAlign: "center", opacity: 0.8 }}>
+          <Col span={8} style={{ textAlign: "center", opacity: 0.8 }}>
             <GasGauge gasPrice={gasPrice} />
+          </Col>
+          <Col span={8} style={{ textAlign: "center", opacity: 1 }}>
+            <Button
+              onClick={() => {
+                window.open("https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA");
+              }}
+              size="large"
+              shape="round"
+            >
+              <span style={{ marginRight: 8 }} role="img" aria-label="support">
+                💬
+              </span>
+              Support
+            </Button>
+          </Col>
+        </Row>
+
+        <Row align="middle" gutter={[4, 4]}>
+          <Col span={24}>
+            {
+              /*  if the local provider has a signer, let's show the faucet:  */
+              faucetAvailable ? (
+                <Faucet localProvider={localProvider} price={price} ensProvider={mainnetProvider} />
+              ) : (
+                ""
+              )
+            }
           </Col>
         </Row>
       </div>
