@@ -15,7 +15,6 @@ function Home({
   loadWeb3Modal,
   logoutOfWeb3Modal,
   blockExplorer,
-  networkDisplay,
   gasPrice,
   ...props
 }) {
@@ -47,7 +46,6 @@ function Home({
               loadWeb3Modal={loadWeb3Modal}
               logoutOfWeb3Modal={logoutOfWeb3Modal}
               blockExplorer={blockExplorer}
-              extra={networkDisplay}
             />
           </Space>,
         ]}
