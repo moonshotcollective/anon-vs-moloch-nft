@@ -1,116 +1,77 @@
 //SPDX-License-Identifier: MIT
 pragma solidity 0.8.4;
 
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-
-// import "./EthStatue.sol";
-// import "./MolochStatue.sol";
-
-interface BotToken {
-    function lastMintedToken() external view returns (uint256);
-
-    function mint(address user) external returns (uint256);
-}
 
 /// @title GreatestLARP Factory Contract
 /// @author jaxcoder, ghostffcode
 /// @notice
 /// @dev
-contract GreatestLARP is Ownable {
+contract GreatestLARP is Ownable, ERC721URIStorage {
     address payable gitcoin;
 
-    struct Token {
-        address tokenAddress;
-        uint256 threshold;
+    enum levels {
+        first,
+        second
+    }
+
+    struct art {
+        uint256 limit;
         uint256 price;
-        uint256 totalSupply;
+        uint256 threshold;
+        uint256 tokenId;
+        string uri;
     }
 
-    mapping(uint256 => Token) tokenMap;
+    mapping(uint256 => art) larp;
 
-    uint256 public totalTokens;
-
-    modifier isValidLevel(uint256 level) {
-        // level is between 1 and totalTokens Count
-        require(level > 0, "Invalid level selected");
-        require(level <= totalTokens, "Invalid level selected");
-        _;
-    }
-
-    constructor(
-        BotToken[] memory tokens,
-        uint256[] memory threshold,
-        uint256 startPrice
-    ) {
+    constructor() ERC721("GreatestLARP", "GLARP") {
         gitcoin = payable(address(0xde21F729137C5Af1b01d73aF1dC21eFfa2B8a0d6));
+        // first LARP stage
+        larp[1] = art({
+            limit: 300,
+            price: 0.0033 ether,
+            threshold: 80,
+            tokenId: 0,
+            uri: "stage1.json"
+        });
 
-        require(
-            tokens.length == threshold.length,
-            "Mismatch length of tokens and threshold"
-        );
-
-        for (uint256 i = 0; i < tokens.length; i++) {
-            // increment tokens count
-            totalTokens += 1;
-
-            // add token to tokenMap
-            tokenMap[totalTokens] = Token({
-                tokenAddress: address(tokens[i]),
-                threshold: threshold[i],
-                price: startPrice,
-                totalSupply: 300
-            });
-        }
+        // second LARP stage
+        larp[2] = art({
+            limit: 300,
+            price: 0.0033 ether,
+            threshold: 160,
+            tokenId: 1000,
+            uri: "stage2.json"
+        });
     }
 
-    function getDetailsForLevel(uint256 level)
-        public
-        view
-        returns (
-            uint256 price,
-            uint256 threshold,
-            uint256 totalSupply,
-            address tokenAddress
-        )
-    {
-        price = tokenMap[level].price;
-        threshold = tokenMap[level].threshold;
-        totalSupply = tokenMap[level].totalSupply;
-        tokenAddress = tokenMap[level].tokenAddress;
+    function _baseURI() internal pure override returns (string memory) {
+        return
+            "https://gateway.pinata.cloud/ipfs/QmdRmZ1UPSALNVuXY2mYPb3T5exn9in1AL3tsema4rY2QF/json/";
     }
 
-    function changeLevelPrice(uint256 level, uint256 newPrice)
-        public
-        isValidLevel(level)
-        onlyOwner
-    {
-        tokenMap[level].price = newPrice;
-    }
+    function requestMint(uint256 level) public payable returns (uint256) {
+        require(level > 0, "Invalid level selected");
+        require(level < 3, "Invalid level selected");
 
-    function requestMint(uint256 level)
-        public
-        payable
-        isValidLevel(level)
-        returns (uint256)
-    {
-        BotToken levelToken = BotToken(tokenMap[level].tokenAddress);
-
-        // check if threshold for previous token has been reached
-        if (level > 1) {
-            uint256 previousLevel = level - 1;
+        if (level == 2) {
             require(
-                BotToken(tokenMap[previousLevel].tokenAddress)
-                    .lastMintedToken() >= tokenMap[previousLevel].threshold,
-                "You can't continue until the previous level threshold is reached"
+                larp[1].threshold > larp[1].tokenId,
+                "You can't continue until level 1 threshold is reached"
             );
         }
 
-        // compare value and price
-        require(msg.value >= tokenMap[level].price, "NOT ENOUGH");
+        // get URI for selected level
+        string memory tokenURI = larp[level].uri;
 
-        // update the price of the token
-        tokenMap[level].price = (tokenMap[level].price * 1047) / 1000;
+        // compare value and price
+        require(msg.value >= larp[level].price, "NOT ENOUGH");
+
+        // update the price of the level
+        larp[level].price = (larp[level].price * 1047) / 1000;
 
         // send ETH to gitcoin multisig
         (bool success, ) = gitcoin.call{value: msg.value}("");
@@ -118,12 +79,20 @@ contract GreatestLARP is Ownable {
 
         // make sure there are available tokens for this level
         require(
-            levelToken.lastMintedToken() <= tokenMap[level].totalSupply,
+            larp[level].tokenId < larp[level].limit,
             "Minting completed for this level"
         );
 
+        // increment this token count
+        larp[level].tokenId += 1;
+
+        uint256 id = larp[level].tokenId;
+
         // mint token
-        uint256 id = levelToken.mint(msg.sender);
+        _mint(msg.sender, id);
+
+        // set tokenURI
+        _setTokenURI(id, tokenURI);
 
         return id;
     }
