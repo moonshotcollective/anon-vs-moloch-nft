@@ -63,7 +63,9 @@ function Home({
           </Button>
         </div>
       </div>
+      {/* A progress attribute can be passed to show different stages of funding */}
       <EthbotProgress />
+
       <ReadComic />
       <EthbotLearn />
       <MultipleUserJourney />
