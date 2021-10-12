@@ -1,37 +1,40 @@
 import WalletConnectProvider from "@walletconnect/web3-provider";
 //import Torus from "@toruslabs/torus-embed"
 import WalletLink from "walletlink";
-import { Alert, Button, Image, PageHeader, Space, Row, Col } from "antd";
+import { Alert, Button, Row, Col } from "antd";
 import "antd/dist/antd.css";
+import { Ramp, GasGauge, Faucet } from "./components";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React, { useCallback, useEffect, useState } from "react";
 // import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Web3Modal from "web3modal";
 import "./App.css";
-import { Account, Footer, Faq, EthbotLearn, EthbotProgress, ReadComic, MultipleUserJourney, Ramp, GasGauge } from "./components";
 import { INFURA_ID, NETWORK, NETWORKS } from "./constants";
 import { Transactor } from "./helpers";
-import { useContractReader } from "eth-hooks";
-import { useEventListener } from "eth-hooks/events/useEventListener";
-import { useExchangeEthPrice } from "eth-hooks/dapps/dex";
-// import Hints from "./Hints";
-// import { Home } from "./views";
-
 import {
-  useContractConfig,
+  useBalance,
+  useContractLoader,
+  useContractReader,
   useGasPrice,
   useOnBlock,
-  useContractLoader,
-  useUserProvider,
-  useUserSigner,
-  useBalance,
-} from "./hooks";
+  useUserProviderAndSigner,
+} from "eth-hooks";
+import { useEventListener } from "eth-hooks/events/useEventListener";
+import { useExchangeEthPrice } from "eth-hooks/dapps/dex";
+
+// views
+import { Home, Mint } from "./views";
+
 import Portis from "@portis/web3";
 import Fortmatic from "fortmatic";
 import Authereum from "authereum";
 
-import navbarheadlogo from "./assets/navbarheadlogo.svg";
+// contracts
+import deployedContracts from "./contracts/hardhat_contracts.json";
+import externalContracts from "./contracts/external_contracts";
 
 const { ethers } = require("ethers");
+
 /*
     Welcome to 🏗 scaffold-eth !
 
@@ -148,8 +151,7 @@ const web3Modal = new Web3Modal({
     // },
     "custom-walletlink": {
       display: {
-        logo:
-          "https://play-lh.googleusercontent.com/PjoJoG27miSglVBXoXrxBSLveV6e3EeBPpNY55aiUUBM9Q1RCETKCOqdOkX2ZydqVf0",
+        logo: "https://play-lh.googleusercontent.com/PjoJoG27miSglVBXoXrxBSLveV6e3EeBPpNY55aiUUBM9Q1RCETKCOqdOkX2ZydqVf0",
         name: "Coinbase",
         description: "Connect to Coinbase Wallet (not Coinbase App)",
       },
@@ -192,8 +194,8 @@ function App(props) {
   /* 🔥 This hook will get the price of Gas from ⛽️ EtherGasStation */
   const gasPrice = useGasPrice(targetNetwork, "fast");
   // Use your injected provider from 🦊 Metamask or if you don't have it then instantly generate a 🔥 burner wallet.
-  const userProvider = useUserProvider(injectedProvider, localProvider);
-  const userSigner = useUserSigner(injectedProvider, localProvider);
+  const userProviderAndSigner = useUserProviderAndSigner(injectedProvider, localProvider);
+  const userSigner = userProviderAndSigner.signer;
 
   useEffect(() => {
     async function getAddress() {
@@ -224,7 +226,7 @@ function App(props) {
   // Just plug in different 🛰 providers to get your balance on different chains:
   const yourMainnetBalance = useBalance(mainnetProvider, address);
 
-  const contractConfig = useContractConfig();
+  const contractConfig = { deployedContracts: deployedContracts || {}, externalContracts: externalContracts || {} };
 
   // Load in your local 📝 contract and read a value from it:
   const readContracts = useContractLoader(localProvider, contractConfig);
@@ -242,16 +244,19 @@ function App(props) {
     console.log(`⛓ A new mainnet block is here: ${mainnetProvider._lastBlockNumber}`);
   });
 
-  // Then read your DAI balance like:
-  const myMainnetDAIBalance = useContractReader(mainnetContracts, "DAI", "balanceOf", [
-    "0x34aA3F359A9D614239015126635CE7732c18fDF3",
-  ]);
+  const ethBotTransferEvents = useEventListener(readContracts, "EthBot", "Transfer", injectedProvider, 1);
+  const molochBotBotTransferEvents = useEventListener(readContracts, "MolochBot", "Transfer", injectedProvider, 1);
 
-  // keep track of a variable from the contract in the local React state:
-  const purpose = useContractReader(readContracts, "YourContract", "purpose");
+  // last minted variables
+  const lastMintedEthBot = useContractReader(readContracts, "EthBot", "lastMinted") || ethers.BigNumber.from(0);
+  const lastMintedMolochBot = useContractReader(readContracts, "MolochBot", "lastMinted") || ethers.BigNumber.from(0);
 
-  // 📟 Listen for broadcast events
-  const setPurposeEvents = useEventListener(readContracts, "YourContract", "SetPurpose", localProvider, 1);
+  console.log({
+    "Last Minted": { lastMintedEthBot, lastMintedMolochBot },
+    events: { ethBotTransferEvents, molochBotBotTransferEvents },
+    readContracts,
+    writeContracts,
+  });
 
   /*
   const addressFromENS = useResolveName(mainnetProvider, "austingriffith.eth");
@@ -282,7 +287,6 @@ function App(props) {
       console.log("💵 yourMainnetBalance", yourMainnetBalance ? ethers.utils.formatEther(yourMainnetBalance) : "...");
       console.log("📝 readContracts", readContracts);
       console.log("🌍 DAI contract on mainnet:", mainnetContracts);
-      console.log("💵 yourMainnetDAIBalance", myMainnetDAIBalance);
       console.log("🔐 writeContracts", writeContracts);
     }
   }, [
@@ -290,6 +294,7 @@ function App(props) {
     address,
     selectedChainId,
     yourLocalBalance,
+    localChainId,
     yourMainnetBalance,
     readContracts,
     writeContracts,
@@ -444,67 +449,36 @@ function App(props) {
   }
 
   return (
-    <div className="App">
-        <PageHeader
-          title={
-            <a href="/" target="_blank" rel="noopener noreferrer" style={{ float: "left" }} className="navbar-title">
-              <Image preview={false} className="h-24 float-left" src={navbarheadlogo} />
-            </a>
-          }
-          className="bg-white"
-          extra={[
-            <Space>
-              <h3>
-                Explore Editions
-              </h3>
-              <h3>
-                How it Works?
-              </h3>
-              <h3>
-                Community
-              </h3>
-              <h3>
-                About
-              </h3>
-            </Space>,
-            <Space>
-              <span>{faucetHint}</span>
-              <Account
-                address={address}
-                localProvider={localProvider}
-                userSigner={userSigner}
-                mainnetProvider={mainnetProvider}
-                price={price}
-                web3Modal={web3Modal}
-                loadWeb3Modal={loadWeb3Modal}
-                logoutOfWeb3Modal={logoutOfWeb3Modal}
-                blockExplorer={blockExplorer}
-                extra={networkDisplay}
-              />
-            </Space>,
-          ]}
-        />
-
-      <div className="min-w-full intro-background bg-green-dark-green">
-          <div className="space-y-6 infront m-8 pb-8">
-            <h1 className="infront justify-center text-center text-5xl relative mt-10 text-green-teal font-spacemono">
-              The Greatest Larp has begun.
-            </h1>
-            <div className="relative justify-center mx-2 text-center intro-info absolute text-2xl text-white">
-              Lorem Ipsum
-            </div>
-            <Button className="bannertop-twitterfollowbutton">
-							<div className="bannertop-joinus">Join us in the fight</div>
-						</Button>
-          </div>
-      </div>
-      <EthbotProgress />
-      <ReadComic />
-      <EthbotLearn />
-      <MultipleUserJourney />
-
-      <Faq />
-      <Footer />
+    <>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Home
+              faucetHint={faucetHint}
+              address={address}
+              localProvider={localProvider}
+              userSigner={userSigner}
+              mainnetProvider={mainnetProvider}
+              price={price}
+              web3Modal={web3Modal}
+              loadWeb3Modal={loadWeb3Modal}
+              logoutOfWeb3Modal={logoutOfWeb3Modal}
+              blockExplorer={blockExplorer}
+              extra={networkDisplay}
+              gasPrice={gasPrice}
+            />
+          </Route>
+          <Route path="/mint">
+            <Mint
+              tx={tx}
+              writeContracts={writeContracts}
+              readContracts={readContracts}
+              lastMinted={{ lastMintedEthBot, lastMintedMolochBot }}
+              events={{ ethBotTransferEvents, molochBotBotTransferEvents }}
+            />
+          </Route>
+        </Switch>
+      </Router>
 
       {/* 🗺 Extra UI like gas price, eth price, faucet, and support: */}
       <div style={{ position: "fixed", textAlign: "left", left: 0, bottom: 20, padding: 10 }}>
@@ -517,8 +491,21 @@ function App(props) {
             <GasGauge gasPrice={gasPrice} />
           </Col>
         </Row>
+
+        <Row align="middle" gutter={[4, 4]}>
+          <Col span={24}>
+            {
+              /*  if the local provider has a signer, let's show the faucet:  */
+              faucetAvailable ? (
+                <Faucet localProvider={localProvider} price={price} ensProvider={mainnetProvider} />
+              ) : (
+                ""
+              )
+            }
+          </Col>
+        </Row>
       </div>
-    </div>
+    </>
   );
 }
 
