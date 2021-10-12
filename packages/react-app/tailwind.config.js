@@ -15,7 +15,8 @@ module.exports = {
         green: {
           050: '#6dc5a040',
           'dark-green': '#337062',
-          'teal': '#2CAE92'
+          'teal': '#2CAE92',
+          'light-green': '#E2F3EC',
         },
         brown: {
           'dark-brown': '#262626',

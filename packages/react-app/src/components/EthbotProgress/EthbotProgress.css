@@ -1,0 +1,33 @@
+.progress-subtext {
+	width: 275px;
+	height: 70px;
+	font-family: 'Libre Franklin';
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: #0E0333;
+}
+
+.progress-title {
+	font-family: 'Space Mono';
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 150%;
+
+	color: #11BC92;
+}
+
+.progress-joinnow {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 16px 40px;
+
+	width: 170px;
+	height: 55px;
+
+	background: #6DC5A0;
+	border-radius: 4px;
+}
