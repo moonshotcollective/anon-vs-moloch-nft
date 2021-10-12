@@ -1,0 +1,39 @@
+.ant-btn-default
+{
+   height: 75px !important;
+}
+
+#navbutton {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   padding: 15px 50px;
+
+   top: calc(50% - 40px/2 - 1925px);
+
+   border: 3px solid #2CAE92;
+   border-radius: 4px;
+}
+
+.bannertop-joinus {
+
+   font-family: 'Space Mono';
+   font-style: normal;
+   font-weight: bold;
+   font-size: 21px;
+   line-height: 150%;
+   
+   display: flex;
+   align-items: center;
+   
+   color: #FFFFFF;
+  }
+
+  .bannertop-twitterfollowbutton {
+   width: 344px;
+   height: 57px;
+   
+   background: #2CAE92;
+   border-radius: 8px;
+  }
