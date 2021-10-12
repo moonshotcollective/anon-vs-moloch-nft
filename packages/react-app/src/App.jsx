@@ -148,8 +148,7 @@ const web3Modal = new Web3Modal({
     // },
     "custom-walletlink": {
       display: {
-        logo:
-          "https://play-lh.googleusercontent.com/PjoJoG27miSglVBXoXrxBSLveV6e3EeBPpNY55aiUUBM9Q1RCETKCOqdOkX2ZydqVf0",
+        logo: "https://play-lh.googleusercontent.com/PjoJoG27miSglVBXoXrxBSLveV6e3EeBPpNY55aiUUBM9Q1RCETKCOqdOkX2ZydqVf0",
         name: "Coinbase",
         description: "Connect to Coinbase Wallet (not Coinbase App)",
       },
@@ -451,6 +450,7 @@ function App(props) {
 
   return (
     <>
+      {networkDisplay}
       <Router>
         <Switch>
           <Route exact path="/">
@@ -465,9 +465,7 @@ function App(props) {
               loadWeb3Modal={loadWeb3Modal}
               logoutOfWeb3Modal={logoutOfWeb3Modal}
               blockExplorer={blockExplorer}
-              extra={networkDisplay}
               gasPrice={gasPrice}
-              networkDisplay={networkDisplay}
             />
           </Route>
           <Route path="/mint">
