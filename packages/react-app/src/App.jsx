@@ -1,16 +1,8 @@
+import Portis from "@portis/web3";
 import WalletConnectProvider from "@walletconnect/web3-provider";
-//import Torus from "@toruslabs/torus-embed"
-import WalletLink from "walletlink";
-import { Alert, Button, Row, Col } from "antd";
+import { Alert, Button, Col, Row } from "antd";
 import "antd/dist/antd.css";
-import { Ramp, GasGauge, Faucet } from "./components";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import React, { useCallback, useEffect, useState } from "react";
-// import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
-import Web3Modal from "web3modal";
-import "./App.css";
-import { INFURA_ID, NETWORK, NETWORKS } from "./constants";
-import { Transactor } from "./helpers";
+import Authereum from "authereum";
 import {
   useBalance,
   useContractLoader,
@@ -19,19 +11,24 @@ import {
   useOnBlock,
   useUserProviderAndSigner,
 } from "eth-hooks";
-import { useEventListener } from "eth-hooks/events/useEventListener";
 import { useExchangeEthPrice } from "eth-hooks/dapps/dex";
-
-// views
-import { Home, Mint } from "./views";
-
-import Portis from "@portis/web3";
+import { useEventListener } from "eth-hooks/events/useEventListener";
 import Fortmatic from "fortmatic";
-import Authereum from "authereum";
-
+import React, { useCallback, useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+//import Torus from "@toruslabs/torus-embed"
+import WalletLink from "walletlink";
+// import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import Web3Modal from "web3modal";
+import "./App.css";
+import { Faucet, GasGauge, Ramp } from "./components";
+import { INFURA_ID, NETWORK, NETWORKS } from "./constants";
+import externalContracts from "./contracts/external_contracts";
 // contracts
 import deployedContracts from "./contracts/hardhat_contracts.json";
-import externalContracts from "./contracts/external_contracts";
+import { Transactor } from "./helpers";
+// views
+import { Home, Mint } from "./views";
 
 const { ethers } = require("ethers");
 
@@ -301,10 +298,13 @@ function App(props) {
     mainnetContracts,
   ]);
 
+  console.log("selected chain id ", selectedChainId);
   let networkDisplay = "";
   if (NETWORKCHECK && localChainId && selectedChainId && localChainId !== selectedChainId) {
     const networkSelected = NETWORK(selectedChainId);
     const networkLocal = NETWORK(localChainId);
+    console.log("network selected ", networkSelected);
+    console.log("network local ", networkLocal);
     if (selectedChainId === 1337 && localChainId === 31337) {
       networkDisplay = (
         <div style={{ zIndex: 2, position: "absolute", right: 0, top: 60, padding: 16 }}>
@@ -450,6 +450,7 @@ function App(props) {
 
   return (
     <>
+      {networkDisplay}
       <Router>
         <Switch>
           <Route exact path="/">
@@ -464,7 +465,6 @@ function App(props) {
               loadWeb3Modal={loadWeb3Modal}
               logoutOfWeb3Modal={logoutOfWeb3Modal}
               blockExplorer={blockExplorer}
-              extra={networkDisplay}
               gasPrice={gasPrice}
             />
           </Route>
