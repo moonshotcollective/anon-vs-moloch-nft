@@ -14,7 +14,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const factory = await deploy('GreatestLARP', {
     // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
     from: deployer,
-    args: [[eBot.address, mBot.address], [100, 100], ethers.utils.parseUnits('0.0033')],
+    args: [[eBot.address, mBot.address], [3, 3], ethers.utils.parseUnits('0.0033')],
     log: true,
   })
 
