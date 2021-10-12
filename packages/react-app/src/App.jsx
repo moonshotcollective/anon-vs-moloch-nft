@@ -299,10 +299,13 @@ function App(props) {
     mainnetContracts,
   ]);
 
+  console.log("selected chain id ", selectedChainId);
   let networkDisplay = "";
   if (NETWORKCHECK && localChainId && selectedChainId && localChainId !== selectedChainId) {
     const networkSelected = NETWORK(selectedChainId);
     const networkLocal = NETWORK(localChainId);
+    console.log("network selected ", networkSelected);
+    console.log("network local ", networkLocal);
     if (selectedChainId === 1337 && localChainId === 31337) {
       networkDisplay = (
         <div style={{ zIndex: 2, position: "absolute", right: 0, top: 60, padding: 16 }}>
