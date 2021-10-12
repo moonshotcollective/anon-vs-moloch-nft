@@ -1,8 +1,7 @@
-import React from "react";
 import { Button, Image, PageHeader, Space } from "antd";
-import { Account, Footer, Faq, EthbotLearn, EthbotProgress, ReadComic, MultipleUserJourney } from "../components";
-
+import React from "react";
 import navbarheadlogo from "../assets/navbarheadlogo.svg";
+import { Account, EthbotLearn, EthbotProgress, Faq, Footer, MultipleUserJourney, ReadComic } from "../components";
 
 function Home({
   faucetHint,
@@ -16,7 +15,6 @@ function Home({
   loadWeb3Modal,
   logoutOfWeb3Modal,
   blockExplorer,
-  networkDisplay,
   gasPrice,
   ...props
 }) {
@@ -48,12 +46,10 @@ function Home({
               loadWeb3Modal={loadWeb3Modal}
               logoutOfWeb3Modal={logoutOfWeb3Modal}
               blockExplorer={blockExplorer}
-              extra={networkDisplay}
             />
           </Space>,
         ]}
       />
-
       <div className="min-w-full intro-background bg-green-dark-green">
         <div className="space-y-6 infront m-8 pb-8">
           <h1 className="infront justify-center text-center text-5xl relative mt-10 text-green-teal font-spacemono">

@@ -4,8 +4,7 @@ pragma solidity 0.8.4;
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-// import "./EthStatue.sol";
-// import "./MolochStatue.sol";
+import "./TokenRecover.sol";
 
 interface BotToken {
     function lastMintedToken() external view returns (uint256);
