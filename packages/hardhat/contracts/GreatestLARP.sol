@@ -31,6 +31,13 @@ contract GreatestLARP is Ownable {
 
     uint256 public totalTokens;
 
+    modifier isValidLevel(uint256 level) {
+        // level is between 1 and totalTokens Count
+        require(level > 0, "Invalid level selected");
+        require(level <= totalTokens, "Invalid level selected");
+        _;
+    }
+
     constructor(
         BotToken[] memory tokens,
         uint256[] memory threshold,
@@ -57,11 +64,36 @@ contract GreatestLARP is Ownable {
         }
     }
 
-    function requestMint(uint256 level) public payable returns (uint256) {
-        // level is between 1 and totalTokens Count
-        require(level > 0, "Invalid level selected");
-        require(level <= totalTokens, "Invalid level selected");
+    function getDetailsForLevel(uint256 level)
+        public
+        view
+        returns (
+            uint256 price,
+            uint256 threshold,
+            uint256 totalSupply,
+            address tokenAddress
+        )
+    {
+        price = tokenMap[level].price;
+        threshold = tokenMap[level].threshold;
+        totalSupply = tokenMap[level].totalSupply;
+        tokenAddress = tokenMap[level].tokenAddress;
+    }
 
+    function changeLevelPrice(uint256 level, uint256 newPrice)
+        public
+        isValidLevel(level)
+        onlyOwner
+    {
+        tokenMap[level].price = newPrice;
+    }
+
+    function requestMint(uint256 level)
+        public
+        payable
+        isValidLevel(level)
+        returns (uint256)
+    {
         BotToken levelToken = BotToken(tokenMap[level].tokenAddress);
 
         // check if threshold for previous token has been reached
@@ -69,7 +101,7 @@ contract GreatestLARP is Ownable {
             uint256 previousLevel = level - 1;
             require(
                 BotToken(tokenMap[previousLevel].tokenAddress)
-                    .lastMintedToken() > tokenMap[previousLevel].threshold,
+                    .lastMintedToken() >= tokenMap[previousLevel].threshold,
                 "You can't continue until the previous level threshold is reached"
             );
         }
