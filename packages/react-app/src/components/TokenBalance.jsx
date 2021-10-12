@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { formatEther } from "@ethersproject/units";
-import { useTokenBalance } from "eth-hooks/erc/erc-20/useTokenBalance";
+import { useTokenBalance } from "eth-hooks";
 
 export default function TokenBalance(props) {
   const [dollarMode, setDollarMode] = useState(true);

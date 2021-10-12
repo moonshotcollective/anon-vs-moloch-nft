@@ -5,7 +5,7 @@ import { SendOutlined } from "@ant-design/icons";
 import { parseEther } from "@ethersproject/units";
 import { Transactor } from "../helpers";
 import Wallet from "./Wallet";
-import { useLookupAddress } from "../hooks";
+import { useLookupAddress } from "eth-hooks";
 
 // improved a bit by converting address to ens if it exists
 // added option to directly input ens name
@@ -63,7 +63,7 @@ export default function Faucet(props) {
         setAddress(address);
       }
     },
-    [props.ensProvider],
+    [props.ensProvider, props.onChange],
   );
 
   const tx = Transactor(props.localProvider);

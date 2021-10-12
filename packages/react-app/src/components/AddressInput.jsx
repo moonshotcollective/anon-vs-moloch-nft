@@ -2,7 +2,7 @@ import React, { useState, useCallback } from "react";
 import QrReader from "react-qr-reader";
 import { CameraOutlined, QrcodeOutlined } from "@ant-design/icons";
 import { Input, Badge } from "antd";
-import { useLookupAddress } from "../hooks";
+import { useLookupAddress } from "eth-hooks";
 import Blockie from "./Blockie";
 
 // probably we need to change value={toAddress} to address={toAddress}
