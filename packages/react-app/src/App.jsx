@@ -380,7 +380,7 @@ function App(props) {
     }
   } else {
     networkDisplay = (
-      <div style={{ zIndex: -1, position: "absolute", right: 154, top: 28, padding: 16, color: targetNetwork.color }}>
+      <div style={{ padding: 2, color: targetNetwork.color }}>
         {targetNetwork.name}
       </div>
     );
@@ -450,7 +450,6 @@ function App(props) {
 
   return (
     <>
-      {networkDisplay}
       <Router>
         <Switch>
           <Route exact path="/">
@@ -466,6 +465,7 @@ function App(props) {
               logoutOfWeb3Modal={logoutOfWeb3Modal}
               blockExplorer={blockExplorer}
               gasPrice={gasPrice}
+              networkDisplay={networkDisplay}
             />
           </Route>
           <Route path="/mint">
@@ -491,7 +491,6 @@ function App(props) {
             <GasGauge gasPrice={gasPrice} />
           </Col>
         </Row>
-
         <Row align="middle" gutter={[4, 4]}>
           <Col span={24}>
             {
