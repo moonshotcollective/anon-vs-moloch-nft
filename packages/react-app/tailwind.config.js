@@ -6,9 +6,13 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "intro-background": "url('/src/assets/intro-background.png')",
-        "nft-background": "url('/src/assets/nft-background.svg')",
-        "nft3-background": "url('/src/assets/nft3-background.png')",
+        bot1: "url('/src/assets/EthbotLearn/bot1.png')",
+        bot2: "url('/src/assets/EthbotLearn/bot2.png')",
+        bot3: "url('/src/assets/EthbotLearn/bot3.png')",
+        bot4: "url('/src/assets/EthbotLearn/bot4.png')",
+        bot5: "url('/src/assets/EthbotLearn/bot5.png')",
+        bot6: "url('/src/assets/EthbotLearn/bot6.png')",
+        bot7: "url('/src/assets/EthbotLearn/bot7.png')",
       },
       colors: {
         orange: colors.orange,
@@ -49,6 +53,7 @@ module.exports = {
       full: "100%",
       intro: "890px",
       "intro-mobile": "450px",
+      ethbotlearn: "1005px",
     },
   },
   variants: {
