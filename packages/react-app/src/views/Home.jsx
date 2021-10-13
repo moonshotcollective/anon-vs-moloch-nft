@@ -58,10 +58,10 @@ function Home({
             The Greatest Larp has begun.
           </h1>
           <div className="relative justify-center mx-2 text-center intro-info absolute text-2xl text-white">
-            Lorem Ipsum
+            Are You Ready?
           </div>
           <Button className="bannertop-twitterfollowbutton">
-            <div className="bannertop-joinus">Join us in the fight</div>
+            <div className="bannertop-joinus float-right">Join us in the fight</div>
           </Button>
         </div>
       </div>
