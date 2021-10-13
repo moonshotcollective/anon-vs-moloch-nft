@@ -61,7 +61,7 @@ function Home({
             Are You Ready?
           </div>
           <Button className="bannertop-twitterfollowbutton">
-            <div className="bannertop-joinus float-right">Join us in the fight</div>
+            <div className="bannertop-joinus">Join us in the fight</div>
           </Button>
         </div>
       </div>
