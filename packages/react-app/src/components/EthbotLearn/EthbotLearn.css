@@ -1,0 +1,31 @@
+.ethbotlearn-botName {
+	width: 204px;
+	height: 29.81px;
+
+	font-family: 'Space Mono';
+	font-style: normal;
+	font-weight: normal;
+	font-size: 19.8701px;
+	line-height: 150%;
+	text-align: center;
+	color: #8C65F7;
+}
+
+.ethbotlearn-botDescription {
+	width: 196.05px;
+	height: 46.36px;
+
+	font-family: 'Libre Franklin';
+	font-style: normal;
+	font-weight: normal;
+	font-size: 13.2468px;
+	line-height: 175%;
+	text-align: center;
+	color: #000000;
+}
+
+.ethbotlearn-buttons {
+	position: absolute;
+	left: 1100px;
+	top: 1900px;
+}
