@@ -1,7 +1,8 @@
-import { Skeleton, Typography } from "antd";
+import { Skeleton, Typography, Card } from "antd";
 import React from "react";
 import Blockies from "react-blockies";
 import { useLookupAddress } from "eth-hooks/dapps/ens";
+const { Meta } = Card;
 
 // changed value={address} to address={address}
 
@@ -107,13 +108,19 @@ export default function Address(props) {
   }
 
   return (
-    <span>
-      <span style={{ verticalAlign: "middle" }}>
-        <Blockies seed={address.toLowerCase()} size={8} scale={props.fontSize ? props.fontSize / 7 : 4} />
-      </span>
-      <span style={{ verticalAlign: "middle", paddingLeft: 5, fontSize: props.fontSize ? props.fontSize : 28 }}>
-        {text}
-      </span>
-    </span>
+      <div style={{ padding: 10 }}>
+      <Meta
+        avatar={
+          <Blockies
+            seed={address.toLowerCase()}
+            size={props.blockieSize || 6}
+            scale={props.fontSize ? props.fontSize / 7 : 4}
+          />
+        }
+        title={text}
+        description={props.extra}
+        key="meta"
+      />
+    </div>
   );
 }
