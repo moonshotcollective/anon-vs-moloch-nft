@@ -1,8 +1,8 @@
-import React, { useState, useCallback } from "react";
-import QrReader from "react-qr-reader";
 import { CameraOutlined, QrcodeOutlined } from "@ant-design/icons";
-import { Input, Badge } from "antd";
-import { useLookupAddress } from "../hooks";
+import { Badge, Input } from "antd";
+import { useLookupAddress } from "eth-hooks/dapps/ens";
+import React, { useCallback, useState } from "react";
+import QrReader from "react-qr-reader";
 import Blockie from "./Blockie";
 
 // probably we need to change value={toAddress} to address={toAddress}
@@ -53,7 +53,7 @@ export default function AddressInput(props) {
     </div>
   );
 
-  const {ensProvider, onChange} = props;
+  const { ensProvider, onChange } = props;
   const updateAddress = useCallback(
     async newValue => {
       if (typeof newValue !== "undefined") {
@@ -119,15 +119,14 @@ export default function AddressInput(props) {
     <div>
       {scanner}
       <Input
-        id={"0xAddress"}//name it something other than address for auto fill doxxing
-        name={"0xAddress"}//name it something other than address for auto fill doxxing
+        id="0xAddress" // name it something other than address for auto fill doxxing
+        name="0xAddress" // name it something other than address for auto fill doxxing
         autoComplete="off"
         autoFocus={props.autoFocus}
         placeholder={props.placeholder ? props.placeholder : "address"}
         prefix={<Blockie address={currentValue} size={8} scale={3} />}
         value={ens || currentValue}
         addonAfter={scannerButton}
-        style={{border: "1px solid rgb(218, 88, 146)"}}
         onChange={e => {
           updateAddress(e.target.value);
         }}
