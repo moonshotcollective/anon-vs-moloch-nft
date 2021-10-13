@@ -16,7 +16,7 @@ const ReadComic = () => {
     </div>
 	<div class="w-1/2">
 		<div className="flex flex-grow py-2 justify-center">
-			<img className="w-1/3 z-50" src={anonvsmolochissue2} alt="Comic Book"/>
+			<img className="w-1/3" src={anonvsmolochissue2} alt="Comic Book"/>
 		</div>
     </div>
   </div>
