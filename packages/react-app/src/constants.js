@@ -5,9 +5,13 @@ export const INFURA_ID = "c954231486fa42ccb6d132b406483d14";
 export const ETHERSCAN_KEY = "PSW8C433Q667DVEX5BCRMGNAH9FSGFZ7Q8";
 
 //BLOCKNATIVE ID FOR Notify.js:
-export const BLOCKNATIVE_DAPPID = "0b58206a-f3c0-4701-a62f-73c7243e8c77";
+export const BLOCKNATIVE_DAPPID = "f03c8937-1fa4-484d-adbb-86a6e210ebfd";
 
 // EXTERNAL CONTRACTS
+export const MORALIS_KEY = "";
+
+export const ALCHEMY_KEY_RINKEBY = "NqFAgbINsUZbbIIPg-Qt8ZTXGWQcZkpl";
+export const ALCHEMY_KEY_MAINNET = "p06r4Cth8Yahf88wBLh03VC3BfL2nTyv";
 
 export const DAI_ADDRESS = "0x6B175474E89094C44Da98b954EedeAC495271d0F";
 
@@ -308,7 +312,7 @@ export const NETWORKS = {
     name: "mainnet",
     color: "#ff8b9e",
     chainId: 1,
-    rpcUrl: `https://mainnet.infura.io/v3/${INFURA_ID}`,
+    rpcUrl: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_KEY_MAINNET}`,
     blockExplorer: "https://etherscan.io/",
   },
   kovan: {
@@ -323,25 +327,9 @@ export const NETWORKS = {
     name: "rinkeby",
     color: "#e0d068",
     chainId: 4,
-    rpcUrl: `https://rinkeby.infura.io/v3/${INFURA_ID}`,
+    rpcUrl: `https://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_KEY_RINKEBY}`,
     faucet: "https://faucet.rinkeby.io/",
     blockExplorer: "https://rinkeby.etherscan.io/",
-  },
-  ropsten: {
-    name: "ropsten",
-    color: "#F60D09",
-    chainId: 3,
-    faucet: "https://faucet.ropsten.be/",
-    blockExplorer: "https://ropsten.etherscan.io/",
-    rpcUrl: `https://ropsten.infura.io/v3/${INFURA_ID}`,
-  },
-  goerli: {
-    name: "goerli",
-    color: "#0975F6",
-    chainId: 5,
-    faucet: "https://goerli-faucet.slock.it/",
-    blockExplorer: "https://goerli.etherscan.io/",
-    rpcUrl: `https://goerli.infura.io/v3/${INFURA_ID}`,
   },
   xdai: {
     name: "xdai",
