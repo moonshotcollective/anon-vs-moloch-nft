@@ -17,6 +17,6 @@ export { default as BytesStringInput } from "./BytesStringInput";
 export { default as ThemeSwitch } from "./ThemeSwitch";
 export { default as Footer } from "./Footer";
 export { default as Faq } from "./Faq";
-export { default as EthbotLearn } from "./EthbotLearn";
+export { default as EthbotLearn } from "./EthbotLearn/EthbotLearn";
 export { default as EthbotProgress } from "./EthbotProgress";
 export { default as ReadComic } from "./ReadComic";
