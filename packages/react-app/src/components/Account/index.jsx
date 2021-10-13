@@ -6,6 +6,8 @@ import Balance from "../Balance";
 import "./Account.css";
 // import Wallet from "./Wallet";
 
+import connectWallet from "../../assets/connect-wallet.svg";
+
 /*
   ~ What it does? ~
 
@@ -98,14 +100,14 @@ export default function Account({
       modalButtons.push(
         <Button
           key="loginbutton"
-          style={{ verticalAlign: "top", marginLeft: 8, marginTop: 4, width: width }}
           id="navbutton"
-          size="medium"
+          size="small"
           onClick={loadWeb3Modal}
           key="second"
           shape="round"
+          className="float-right"
         >
-          Connect Wallet
+          <img src={connectWallet} alt="Wallet Icon" />
         </Button>,
       );
     }

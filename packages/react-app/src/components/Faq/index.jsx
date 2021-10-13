@@ -3,7 +3,8 @@ import { Collapse } from "antd";
 
 import "./Faq.css";
 
-import ArrowButton from "./ArrowButton";
+import panelArrowUp from "../../assets/panel-arrow-up.png";
+import panelArrowDown from "../../assets/panel-arrow-down.svg";
 
 const { Panel } = Collapse;
 
@@ -12,26 +13,27 @@ const getTitle = (title, index) => {
   return `#${num} ${title}  `;
 };
 
-const Faq = ({ sectionTitle }) => {
+const Faq = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const changePanel = () => {
+    console.log('checkout ', isOpen);
     setIsOpen(!isOpen);
   };
 
   return (
     <div className="min-w-full">
       <div className="faq-group-overlay grid grid-flow-row auto-rows-max md:auto-rows-min">
-        <h1 className="faq-title p-6 ml-6">{sectionTitle}</h1>
-        <div className="w-full my-4">
+        <h1 className="faq-title p-6 ml-12">faq:</h1>
+        <div className="w-full">
           <Collapse>
                 <Panel
                   header={getTitle("What is the greatest LARP", 1)}
                   key={getTitle("What is the greatest LARP", 1)}
                   className="faq-panel mx-20"
-                  onClick={changePanel}
+                  onChange={changePanel}
                   showArrow={false}
-                  extra={<ArrowButton />}
+                  extra={<img alt="panel arrown up" src={panelArrowUp} className={"w-6"} />}
                 >
                   <p className="w-3/4">{"Youll see on October 2021"}</p>
                 </Panel>
@@ -42,7 +44,7 @@ const Faq = ({ sectionTitle }) => {
                   className="faq-panel mx-20"
                   onClick={changePanel}
                   showArrow={false}
-                  extra={<ArrowButton />}
+                  extra={<img alt="panel arrown up" src={panelArrowUp} className={"w-6"} />}
                 >
                   <p className="w-3/4">
                     <a href="https://gitcoin.co/quadraticlands/mission/ql-lore">Go here</a> 
@@ -55,7 +57,7 @@ const Faq = ({ sectionTitle }) => {
                   className="faq-panel mx-20"
                   onClick={changePanel}
                   showArrow={false}
-                  extra={<ArrowButton />}
+                  extra={<img alt="panel arrown up" src={panelArrowUp} className={"w-6"} />}
                 >
                   <p className="w-3/4">
                     <a href="https://slatestarcodex.com/2014/07/30/meditations-on-moloch/">

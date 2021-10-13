@@ -21,50 +21,43 @@ function Home({
 }) {
   return (
     <div className="Home">
-      <PageHeader
-        title={
-          <a href="/" target="_blank" rel="noopener noreferrer" style={{ float: "left" }} className="navbar-title">
-            <Image preview={false} className="h-24 float-left" src={navbarheadlogo} />
-          </a>
-        }
-        className="bg-white"
-        extra={[
-          <Space>
-            <h3>Explore Editions</h3>
-            <h3>How it Works?</h3>
-            <h3>Community</h3>
-            <h3>About</h3>
-          </Space>,
-          <Space>
-            <span>{faucetHint}</span>
-            <Account
-              address={address}
-              localProvider={localProvider}
-              userSigner={userSigner}
-              mainnetProvider={mainnetProvider}
-              price={price}
-              web3Modal={web3Modal}
-              loadWeb3Modal={loadWeb3Modal}
-              logoutOfWeb3Modal={logoutOfWeb3Modal}
-              blockExplorer={blockExplorer}
-              extra={networkDisplay}
-            />
-          </Space>,
-        ]}
-      />
-      <div className="min-w-full intro-background bg-green-dark-green">
-        <div className="space-y-6 infront m-8 pb-8">
-          <h1 className="infront justify-center text-center text-5xl relative mt-10 text-green-teal font-spacemono">
-            The Greatest Larp has begun.
-          </h1>
-          <div className="relative justify-center mx-2 text-center intro-info absolute text-2xl text-white">
-            Are You Ready?
-          </div>
-          <Button className="bannertop-twitterfollowbutton">
-            <div className="bannertop-joinus">Join us in the fight</div>
-          </Button>
-        </div>
+      <div class="flex flex-row p-5 w-full">
+        <a href="/" target="_blank" rel="noopener noreferrer" className="float-left">
+          <Image preview={false} className="h-24" src={navbarheadlogo} />
+        </a>
+        <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+          <a href="/" class="mr-10 hover:text-gray-900 text-green-dark-green">Explore Editions</a>
+          <a href="/" class="mr-10 hover:text-gray-900 text-green-dark-green">How it Works?</a>
+          <a href="/" class="mr-10 hover:text-gray-900 text-green-dark-green">Community</a>
+          <a href="/" class="mr-10 hover:text-gray-900 text-green-dark-green">About</a>
+        </nav>
+        <Space>
+          <span>{faucetHint}</span>
+          <Account
+            address={address}
+            localProvider={localProvider}
+            userSigner={userSigner}
+            mainnetProvider={mainnetProvider}
+            price={price}
+            web3Modal={web3Modal}
+            loadWeb3Modal={loadWeb3Modal}
+            logoutOfWeb3Modal={logoutOfWeb3Modal}
+            blockExplorer={blockExplorer}
+            extra={networkDisplay}
+          />
+        </Space>
       </div>
+      <section>
+        <div className="container mx-auto flex py-24 items-center justify-center flex-col bg-green-dark-green min-w-full">
+          <div className="text-center lg:w-2/3 w-full">
+            <h1 className="title-font sm:text-6xl text-5xl mb-4 text-green-teal font-spacemono">The Greatest Larp has begun.</h1>
+            <p className="mb-8 leading-relaxed font-librefranklin text-white">Are You Ready?</p>
+            <div className="flex justify-center">
+              <button className="inline-flex text-white bg-green-teal border-0 py-2 px-6 rounded text-lg font-spacemono">Join us on this fight</button>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* A progress attribute can be passed to show different stages of funding */}
       <EthbotProgress />
 
