@@ -1,7 +1,7 @@
 import { Button, Image, PageHeader, Space } from "antd";
 import React from "react";
 import navbarheadlogo from "../assets/navbarheadlogo.svg";
-import { Account, EthbotLearn, EthbotProgress, Faq, Footer, MultipleUserJourney, ReadComic } from "../components";
+import { Account, EthbotLearn, EthbotProgress, Faq, Footer, ReadComic } from "../components";
 
 function Home({
   faucetHint,
@@ -68,7 +68,6 @@ function Home({
       <EthbotProgress />
       <ReadComic />
       <EthbotLearn />
-      <MultipleUserJourney />
 
       <Faq />
       <Footer />
