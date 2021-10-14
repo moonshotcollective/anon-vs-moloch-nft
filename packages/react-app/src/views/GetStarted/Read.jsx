@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../../themed-components";
 import PosterCover from "../../assets/mint/poster-cover.png";
 
-function Read(props) {
+function Read({ goToNextStep, ...props }) {
   return (
     <>
       <div className="flex flex-1 flex-col  justify-center">
@@ -16,7 +16,9 @@ function Read(props) {
 
         <div>
           <Button>Read</Button>
-          <Button className="ml-4">Continue Mission</Button>
+          <Button className="ml-4" onClick={goToNextStep}>
+            Continue Mission
+          </Button>
         </div>
       </div>
       <div className="flex flex-1 justify-center items-center">

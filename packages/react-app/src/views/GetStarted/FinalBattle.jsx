@@ -2,14 +2,12 @@ import React from "react";
 import { Button } from "../../themed-components";
 import FinalBattle from "../../assets/mint/finalBattle.png";
 
-function AuctionOne(props) {
+function AuctionOne({ goToNextStep }) {
   return (
     <>
       <div className="flex flex-1 flex-col justify-center">
         <div className="max-w-md">
-          <h1 className="text-4xl mb-8 font-normal text-green-header font-librefranklin">
-            Open bids for PUBLIC GOODS>>
-          </h1>
+          <h1 className="text-4xl mb-8 font-normal text-green-header font-spacemono">Open bids for PUBLIC GOODS>></h1>
 
           <div className="text-lg mb-6">
             Lorem Ipsum is simply dummy text of the printing and typesetting .Lorem Ipsum is simply dummy text.
@@ -24,6 +22,7 @@ function AuctionOne(props) {
               transparent
               className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
               padding={10}
+              onClick={goToNextStep}
             >
               0.01 ETH
             </Button>

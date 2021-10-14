@@ -3,7 +3,9 @@ import { Button } from "../../themed-components";
 import PhysicalMoloch from "../../assets/mint/physicalMoloch.png";
 import DigitalMoloch from "../../assets/mint/digitalMoloch.png";
 
-function AuctionOne(props) {
+function AuctionOne({ goToNextStep, mintingToken, mintToken, tokenPrices, tokenLeftover, ...props }) {
+  const level = 2;
+
   return (
     <>
       <div className="flex flex-1 justify-center items-center">
@@ -14,9 +16,7 @@ function AuctionOne(props) {
             <img src={PhysicalMoloch} alt="Physical Moloch" className="mb-4" />
 
             {/* Image Title */}
-            <h3 className="font-spacemono text-purple-imgText font-semibold text-lg font-librefranklin">
-              Physical Molochs
-            </h3>
+            <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">Physical Molochs</h3>
 
             {/* Button */}
             <Button
@@ -40,25 +40,27 @@ function AuctionOne(props) {
             {/* Button */}
             <Button
               transparent
+              loading={mintingToken}
+              onClick={() => mintToken(level)}
               className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
               padding={10}
             >
-              0.01 ETH
+              {tokenPrices[level - 1]} ETH
             </Button>
-            <span className="text-red-500">(Only 300 available)</span>
+            <span className="text-red-500">(Only {tokenLeftover[level - 1]} available)</span>
           </div>
         </div>
       </div>
       <div className="flex flex-1 flex-col pl-16">
         <div className="max-w-md">
-          <h1 className="text-4xl mb-8 font-normal text-green-header">NFT Auction 2</h1>
+          <h1 className="text-4xl mb-8 font-normal text-green-header font-spacemono">NFT Auction 2</h1>
 
           <div className="text-lg mb-6">
             Lorem Ipsum is simply dummy text of the printing and typesetting .Lorem Ipsum is simply dummy text.
           </div>
 
           <div>
-            <Button>Continue</Button>
+            <Button onClick={goToNextStep}>Continue</Button>
           </div>
         </div>
       </div>
