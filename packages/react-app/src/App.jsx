@@ -3,14 +3,7 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import { Alert, Button, Col, Row } from "antd";
 import "antd/dist/antd.css";
 import Authereum from "authereum";
-import {
-  useBalance,
-  useContractLoader,
-  useContractReader,
-  useGasPrice,
-  useOnBlock,
-  useUserProviderAndSigner,
-} from "eth-hooks";
+import { useBalance, useContractLoader, useContractReader, useGasPrice, useOnBlock } from "eth-hooks";
 import { useUserSigner } from "./hooks";
 import { useExchangeEthPrice } from "eth-hooks/dapps/dex";
 import { useEventListener } from "eth-hooks/events/useEventListener";
@@ -29,7 +22,7 @@ import externalContracts from "./contracts/external_contracts";
 import deployedContracts from "./contracts/hardhat_contracts.json";
 import { Transactor } from "./helpers";
 // views
-import { Home, Mint } from "./views";
+import { GetStarted, Home, Mint } from "./views";
 
 const { ethers } = require("ethers");
 
@@ -75,7 +68,7 @@ const poktMainnetProvider = navigator.onLine
     )
   : null;
 const mainnetInfura = navigator.onLine
-  ? new ethers.providers.StaticJsonRpcProvider("https://mainnet.infura.io/v3/" + INFURA_ID)
+  ? new ethers.providers.StaticJsonRpcProvider("https://eth-mainnet.alchemyapi.io/v2/qCdzfF9UqXcJYIle-Ff-BN0MII8LjLQs")
   : null;
 // ( ⚠️ Getting "failed to meet quorum" errors? Check your INFURA_ID
 // 🏠 Your local provider is usually pointed at your local blockchain
@@ -94,7 +87,10 @@ const walletLink = new WalletLink({
 });
 
 // WalletLink provider
-const walletLinkProvider = walletLink.makeWeb3Provider(`https://mainnet.infura.io/v3/${INFURA_ID}`, 1);
+const walletLinkProvider = walletLink.makeWeb3Provider(
+  "https://eth-mainnet.alchemyapi.io/v2/qCdzfF9UqXcJYIle-Ff-BN0MII8LjLQs",
+  1,
+);
 
 // Portis ID: 6255fb2b-58c8-433b-a2c9-62098c05ddc9
 /*
@@ -109,9 +105,8 @@ const web3Modal = new Web3Modal({
       package: WalletConnectProvider, // required
       options: {
         bridge: "https://polygon.bridge.walletconnect.org",
-        infuraId: INFURA_ID,
         rpc: {
-          1: `https://mainnet.infura.io/v3/${INFURA_ID}`, // mainnet // For more WalletConnect providers: https://docs.walletconnect.org/quick-start/dapps/web3-provider#required
+          1: `https://eth-mainnet.alchemyapi.io/v2/qCdzfF9UqXcJYIle-Ff-BN0MII8LjLQs`, // mainnet // For more WalletConnect providers: https://docs.walletconnect.org/quick-start/dapps/web3-provider#required
           42: `https://kovan.infura.io/v3/${INFURA_ID}`,
           100: "https://dai.poa.network", // xDai
         },
@@ -250,12 +245,12 @@ function App(props) {
   const lastMintedEthBot = useContractReader(readContracts, "EthBot", "lastMinted") || ethers.BigNumber.from(0);
   const lastMintedMolochBot = useContractReader(readContracts, "MolochBot", "lastMinted") || ethers.BigNumber.from(0);
 
-  console.log({
-    "Last Minted": { lastMintedEthBot, lastMintedMolochBot },
-    events: { ethBotTransferEvents, molochBotBotTransferEvents },
-    readContracts,
-    writeContracts,
-  });
+  // console.log({
+  //   "Last Minted": { lastMintedEthBot, lastMintedMolochBot },
+  //   events: { ethBotTransferEvents, molochBotBotTransferEvents },
+  //   readContracts,
+  //   writeContracts,
+  // });
 
   /*
   const addressFromENS = useResolveName(mainnetProvider, "austingriffith.eth");
@@ -300,13 +295,13 @@ function App(props) {
     mainnetContracts,
   ]);
 
-  console.log("selected chain id ", selectedChainId);
+  // console.log("selected chain id ", selectedChainId);
   let networkDisplay = "";
   if (NETWORKCHECK && localChainId && selectedChainId && localChainId !== selectedChainId) {
     const networkSelected = NETWORK(selectedChainId);
     const networkLocal = NETWORK(localChainId);
-    console.log("network selected ", networkSelected);
-    console.log("network local ", networkLocal);
+    // console.log("network selected ", networkSelected);
+    // console.log("network local ", networkLocal);
     if (selectedChainId === 1337 && localChainId === 31337) {
       networkDisplay = (
         <div style={{ zIndex: 2, position: "absolute", right: 0, top: 60, padding: 16 }}>
@@ -381,11 +376,7 @@ function App(props) {
       );
     }
   } else {
-    networkDisplay = (
-      <div style={{ padding: 2, color: targetNetwork.color }}>
-        {targetNetwork.name}
-      </div>
-    );
+    networkDisplay = <div style={{ padding: 2, color: targetNetwork.color }}>{targetNetwork.name}</div>;
   }
 
   const loadWeb3Modal = useCallback(async () => {
@@ -470,12 +461,21 @@ function App(props) {
               networkDisplay={networkDisplay}
             />
           </Route>
+          <Route path="/get-started">
+            <GetStarted
+              tx={tx}
+              writeContracts={writeContracts}
+              readContracts={readContracts}
+              lastMinted={[lastMintedEthBot, lastMintedMolochBot]}
+              events={{ ethBotTransferEvents, molochBotBotTransferEvents }}
+            />
+          </Route>
           <Route path="/mint">
             <Mint
               tx={tx}
               writeContracts={writeContracts}
               readContracts={readContracts}
-              lastMinted={{ lastMintedEthBot, lastMintedMolochBot }}
+              lastMinted={[lastMintedEthBot, lastMintedMolochBot]}
               events={{ ethBotTransferEvents, molochBotBotTransferEvents }}
             />
           </Route>
