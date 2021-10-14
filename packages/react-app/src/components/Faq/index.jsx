@@ -4,7 +4,6 @@ import { Collapse } from "antd";
 import "./Faq.css";
 
 import panelArrowUp from "../../assets/panel-arrow-up.png";
-import panelArrowDown from "../../assets/panel-arrow-down.svg";
 
 const { Panel } = Collapse;
 
