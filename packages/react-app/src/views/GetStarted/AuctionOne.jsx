@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "../../themed-components";
 import EthBot from "../../assets/mint/frontEthBot.png";
 import MolochStatue from "../../assets/mint/molochStatue.png";
+import { Button } from "../../themed-components";
 
 function AuctionOne({ goToNextStep, mintingToken, mintToken, tokenPrices, tokenLeftover, ...props }) {
   const level = 1;
@@ -10,7 +10,9 @@ function AuctionOne({ goToNextStep, mintingToken, mintToken, tokenPrices, tokenL
     <>
       <div className="flex flex-1 flex-col">
         <div className="max-w-md">
-          <h1 className="text-4xl mb-8 font-normal text-green-header font-spacemono">Let's NFT Auction Begin >></h1>
+          <h1 className="text-4xl mb-8 font-normal text-green-header font-spacemono">
+            Let The NFT Auction Begin {">>"}
+          </h1>
 
           <div className="text-lg mb-6">
             We need to coordinate. Onoce all of these ETHBots have been minted, you can proceed to the next level.
