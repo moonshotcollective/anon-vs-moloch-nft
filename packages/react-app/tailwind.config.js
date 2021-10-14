@@ -6,13 +6,13 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        bot1: "url('/src/assets/EthbotLearn/bot1.png')",
-        bot2: "url('/src/assets/EthbotLearn/bot2.png')",
-        bot3: "url('/src/assets/EthbotLearn/bot3.png')",
-        bot4: "url('/src/assets/EthbotLearn/bot4.png')",
-        bot5: "url('/src/assets/EthbotLearn/bot5.png')",
-        bot6: "url('/src/assets/EthbotLearn/bot6.png')",
-        bot7: "url('/src/assets/EthbotLearn/bot7.png')",
+        'bot1': "url('/src/assets/EthbotLearn/bot1.png')",
+        'bot2': "url('/src/assets/EthbotLearn/bot2.png')",
+        'bot3': "url('/src/assets/EthbotLearn/bot3.png')",
+        'bot4': "url('/src/assets/EthbotLearn/bot4.png')",
+        'bot5': "url('/src/assets/EthbotLearn/bot5.png')",
+        'bot6': "url('/src/assets/EthbotLearn/bot6.png')",
+        'bot7': "url('/src/assets/EthbotLearn/bot7.png')",
       },
       colors: {
         orange: colors.orange,
@@ -46,15 +46,15 @@ module.exports = {
       librefranklin: ["Libre Franklin"],
     },
     minHeight: {
-      0: "0",
-      "1/4": "25%",
-      "1/2": "50%",
-      "3/4": "75%",
-      full: "100%",
-      intro: "890px",
-      "intro-mobile": "450px",
-      ethbotlearn: "1005px",
-    },
+      '0': '0',
+      '1/4': '25%',
+      '1/2': '50%',
+      '3/4': '75%',
+      'full': '100%',
+      'intro': '890px',
+      'intro-mobile': '450px',
+      'ethbotlearn': '1005px',
+     }
   },
   variants: {
     extend: {},
