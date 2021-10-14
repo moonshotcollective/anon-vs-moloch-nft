@@ -2,7 +2,7 @@ import { Button } from "antd";
 import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 
-function Mint({ readContracts, tx, writeContracts, events, lastMinted, ...props }) {
+function Mint({ readContracts, tx, writeContracts, events, lastMinted = [], ...props }) {
   const [level, setLevel] = useState(1);
   const [minting, setMinting] = useState(0);
   const [levelInfo, setLevelInfo] = useState({});
@@ -12,6 +12,8 @@ function Mint({ readContracts, tx, writeContracts, events, lastMinted, ...props 
     const { price, threshold, tokenAddress, totalSupply } = await readContracts.GreatestLARP.getDetailsForLevel(
       l || level,
     );
+
+    console.log({ price, level, threshold, tokenAddress, totalSupply });
 
     setLevelInfo({ price, threshold, tokenAddress, totalSupply });
   };
@@ -34,9 +36,9 @@ function Mint({ readContracts, tx, writeContracts, events, lastMinted, ...props 
     setMinting(level);
     const result = tx(writeContracts.GreatestLARP.requestMint(level, { value: levelInfo.price }), async update => {
       console.log("📡 Transaction Update:", update);
+      // reset minting
+      setMinting(0);
       if (update && (update.status === "confirmed" || update.status === 1)) {
-        // reset minting
-        setMinting(0);
         await refreshLevel();
         console.log(" 🍾 Transaction " + update.hash + " finished!");
         console.log(

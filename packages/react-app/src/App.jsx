@@ -22,7 +22,7 @@ import deployedContracts from "./contracts/hardhat_contracts.json";
 import { Transactor } from "./helpers";
 import { useUserSigner } from "./hooks";
 // views
-import { Home, Mint } from "./views";
+import { GetStarted, Home, Mint } from "./views";
 
 const { ethers } = require("ethers");
 
@@ -77,7 +77,6 @@ const web3Modal = new Web3Modal({
       package: WalletConnectProvider, // required
       options: {
         bridge: "https://polygon.bridge.walletconnect.org",
-        infuraId: INFURA_ID,
         rpc: {
           1: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_KEY_MAINNET}`, // For more WalletConnect providers: https://docs.walletconnect.org/quick-start/dapps/web3-provider#required
           42: `https://kovan.infura.io/v3/${INFURA_ID}`,
@@ -201,12 +200,12 @@ function App(props) {
   const lastMintedEthBot = useContractReader(readContracts, "EthBot", "lastMinted") || ethers.BigNumber.from(0);
   const lastMintedMolochBot = useContractReader(readContracts, "MolochBot", "lastMinted") || ethers.BigNumber.from(0);
 
-  console.log({
-    "Last Minted": { lastMintedEthBot, lastMintedMolochBot },
-    events: { ethBotTransferEvents, molochBotBotTransferEvents },
-    readContracts,
-    writeContracts,
-  });
+  // console.log({
+  //   "Last Minted": { lastMintedEthBot, lastMintedMolochBot },
+  //   events: { ethBotTransferEvents, molochBotBotTransferEvents },
+  //   readContracts,
+  //   writeContracts,
+  // });
 
   /*
   const addressFromENS = useResolveName(mainnetProvider, "austingriffith.eth");
@@ -251,13 +250,13 @@ function App(props) {
     mainnetContracts,
   ]);
 
-  console.log("selected chain id ", selectedChainId);
+  // console.log("selected chain id ", selectedChainId);
   let networkDisplay = "";
   if (NETWORKCHECK && localChainId && selectedChainId && localChainId !== selectedChainId) {
     const networkSelected = NETWORK(selectedChainId);
     const networkLocal = NETWORK(localChainId);
-    console.log("network selected ", networkSelected);
-    console.log("network local ", networkLocal);
+    // console.log("network selected ", networkSelected);
+    // console.log("network local ", networkLocal);
     if (selectedChainId === 1337 && localChainId === 31337) {
       networkDisplay = (
         <div style={{ zIndex: 2, position: "absolute", right: 0, top: 60, padding: 16 }}>
@@ -417,12 +416,21 @@ function App(props) {
               networkDisplay={networkDisplay}
             />
           </Route>
+          <Route path="/get-started">
+            <GetStarted
+              tx={tx}
+              writeContracts={writeContracts}
+              readContracts={readContracts}
+              lastMinted={[lastMintedEthBot, lastMintedMolochBot]}
+              events={{ ethBotTransferEvents, molochBotBotTransferEvents }}
+            />
+          </Route>
           <Route path="/mint">
             <Mint
               tx={tx}
               writeContracts={writeContracts}
               readContracts={readContracts}
-              lastMinted={{ lastMintedEthBot, lastMintedMolochBot }}
+              lastMinted={[lastMintedEthBot, lastMintedMolochBot]}
               events={{ ethBotTransferEvents, molochBotBotTransferEvents }}
             />
           </Route>
