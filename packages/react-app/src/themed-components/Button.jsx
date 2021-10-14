@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 
-function ThemedButton({ children, className, transparent, padding = "6", ...props }) {
+function ThemedButton({ children, className, transparent, padding = "6", loading = false, ...props }) {
   return (
     <button
       {...props}
