@@ -79,6 +79,28 @@ contract GreatestLARP is Ownable {
         tokenAddress = tokenMap[level].tokenAddress;
     }
 
+    function tokenPrices() public view returns (uint256[] memory) {
+        uint256[] memory prices = new uint256[](totalTokens);
+
+        for (uint256 i = 1; i <= totalTokens; i++) {
+            prices[i - 1] = tokenMap[i].price;
+        }
+
+        return prices;
+    }
+
+    function tokenLeftover() public view returns (uint256[] memory) {
+        uint256[] memory leftOver = new uint256[](totalTokens);
+
+        for (uint256 i = 1; i <= totalTokens; i++) {
+            leftOver[i - 1] =
+                tokenMap[i].totalSupply -
+                BotToken(tokenMap[i].tokenAddress).lastMintedToken();
+        }
+
+        return leftOver;
+    }
+
     function changeLevelPrice(uint256 level, uint256 newPrice)
         public
         isValidLevel(level)
@@ -109,7 +131,7 @@ contract GreatestLARP is Ownable {
         require(msg.value >= tokenMap[level].price, "NOT ENOUGH");
 
         // update the price of the token
-        tokenMap[level].price = (tokenMap[level].price * 1047) / 1000;
+        tokenMap[level].price = (tokenMap[level].price * 1030) / 1000;
 
         // send ETH to gitcoin multisig
         (bool success, ) = gitcoin.call{value: msg.value}("");
