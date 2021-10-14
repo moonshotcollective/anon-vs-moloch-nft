@@ -14,7 +14,7 @@ import WalletLink from "walletlink";
 // import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Web3Modal from "web3modal";
 import "./App.css";
-import { Faucet, GasGauge, Ramp } from "./components";
+import { Contract, Faucet, GasGauge, Ramp } from "./components";
 import { ALCHEMY_KEY_MAINNET, INFURA_ID, NETWORK, NETWORKS } from "./constants";
 import externalContracts from "./contracts/external_contracts";
 // contracts
@@ -103,8 +103,7 @@ const web3Modal = new Web3Modal({
     },
     "custom-walletlink": {
       display: {
-        logo:
-          "https://play-lh.googleusercontent.com/PjoJoG27miSglVBXoXrxBSLveV6e3EeBPpNY55aiUUBM9Q1RCETKCOqdOkX2ZydqVf0",
+        logo: "https://play-lh.googleusercontent.com/PjoJoG27miSglVBXoXrxBSLveV6e3EeBPpNY55aiUUBM9Q1RCETKCOqdOkX2ZydqVf0",
         name: "Coinbase",
         description: "Connect to Coinbase Wallet (not Coinbase App)",
       },
@@ -432,6 +431,16 @@ function App(props) {
               readContracts={readContracts}
               lastMinted={[lastMintedEthBot, lastMintedMolochBot]}
               events={{ ethBotTransferEvents, molochBotBotTransferEvents }}
+            />
+          </Route>
+          <Route path="/debug">
+            <Contract
+              name="GreatestLARP"
+              signer={userSigner}
+              provider={localProvider}
+              address={address}
+              blockExplorer={blockExplorer}
+              contractConfig={contractConfig}
             />
           </Route>
         </Switch>
