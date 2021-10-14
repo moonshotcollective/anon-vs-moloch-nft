@@ -21,6 +21,7 @@ function Home({
 }) {
   return (
     <div className="Home">
+
       <div class="flex flex-row p-5 w-full">
         <a href="/" target="_blank" rel="noopener noreferrer" className="float-left">
           <Image preview={false} className="h-24" src={navbarheadlogo} />
