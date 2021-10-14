@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import EthBot from "../../assets/mint/frontEthBot.png";
 import MolochStatue from "../../assets/mint/molochStatue.png";
 import { Button } from "../../themed-components";
 
-function AuctionOne({ goToNextStep, mintingToken, mintToken, tokenPrices, tokenLeftover, ...props }) {
+function AuctionOne({ goToNextStep, mintingToken, mintTokenBot, mintTokenStatue, tokenPrices, tokenLeftover, statueLeftover, ...props }) {
+  const [levelCompleted, setLevelCompleted] = useState(false);
   const level = 1;
 
   return (
@@ -19,7 +20,9 @@ function AuctionOne({ goToNextStep, mintingToken, mintToken, tokenPrices, tokenL
           </div>
 
           <div>
-            <Button onClick={goToNextStep}>Continue</Button>
+            <Button disabled={levelCompleted} onClick={goToNextStep}>
+              Continue
+            </Button>
           </div>
         </div>
       </div>
@@ -56,7 +59,7 @@ function AuctionOne({ goToNextStep, mintingToken, mintToken, tokenPrices, tokenL
             <Button
               transparent
               loading={mintingToken}
-              onClick={() => mintToken(level)}
+              onClick={() => mintTokenBot(level)}
               className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
               padding={10}
             >

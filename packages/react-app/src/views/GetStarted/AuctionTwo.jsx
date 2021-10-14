@@ -1,9 +1,9 @@
 import React from "react";
-import { Button } from "../../themed-components";
-import PhysicalMoloch from "../../assets/mint/physicalMoloch.png";
 import DigitalMoloch from "../../assets/mint/digitalMoloch.png";
+import PhysicalMoloch from "../../assets/mint/physicalMoloch.png";
+import { Button } from "../../themed-components";
 
-function AuctionOne({ goToNextStep, mintingToken, mintToken, tokenPrices, tokenLeftover, ...props }) {
+function AuctionOne({ goToNextStep, mintingToken, mintTokenBot, mintTokenStatue, tokenPrices, tokenLeftover, statueLeftover, ...props }) {
   const level = 2;
 
   return (
@@ -41,7 +41,7 @@ function AuctionOne({ goToNextStep, mintingToken, mintToken, tokenPrices, tokenL
             <Button
               transparent
               loading={mintingToken}
-              onClick={() => mintToken(level)}
+              onClick={() => mintTokenBot(level)}
               className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
               padding={10}
             >

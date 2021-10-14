@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-/// @title GreatestLARP Factory Contract
+/// @title Eth Bot NFT Contract
 /// @author jaxcoder, ghostffcode
 /// @notice
 /// @dev
