@@ -52,6 +52,16 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     factory.address
   );
   await MolochBotStatueTransfer.wait(1);
+
+  // set the owner to austin or kevin for whomp whomp function
+  // const FactoryTransfer = await factory.transferOwnership()
+  // await FactoryTransfer.wait(1);
 };
 
-module.exports.tags = ["GreatestLARP", "EthBot", "MolochBot"];
+module.exports.tags = [
+  "GreatestLARP",
+  "EthBot",
+  "MolochBot",
+  "EthBotStatue",
+  "MolochBotStatue",
+];
