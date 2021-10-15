@@ -9,7 +9,7 @@ function Mint({ readContracts, tx, writeContracts, events, lastMinted = [], ...p
 
   const refreshLevel = async l => {
     console.log(`Refreshing for this level: `, l || level);
-    const { price, threshold, tokenAddress, totalSupply } = await readContracts.GreatestLARP.getDetailsForLevel(
+    const { price, threshold, tokenAddress, totalSupply } = await readContracts.GreatestLARP.getDetailsForLevelBots(
       l || level,
     );
 
