@@ -2,6 +2,8 @@ import React from "react";
 import EthBot from "../../assets/mint/frontEthBot.png";
 import MolochStatue from "../../assets/mint/molochStatue.png";
 import { Button } from "../../themed-components";
+import { Popover } from 'antd';
+
 
 function AuctionOne({
   goToNextStep,
@@ -25,6 +27,12 @@ function AuctionOne({
     return str;
   }
 
+  const popoverContent = (
+    <div>
+      <span></span>
+    </div>
+  );
+
   return (
     <>
       <div className="flex flex-1 flex-col">
@@ -38,9 +46,11 @@ function AuctionOne({
           </div>
 
           <div>
-            <Button disabled={false} onClick={goToNextStep}>
-              Continue
-            </Button>
+            <Popover content={popoverContent}>
+              <Button disabled={false} onClick={goToNextStep}>
+                Continue
+              </Button>
+            </Popover>
           </div>
         </div>
       </div>

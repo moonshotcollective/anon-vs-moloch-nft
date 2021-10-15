@@ -2,6 +2,7 @@ import React from "react";
 import DigitalMoloch from "../../assets/mint/digitalMoloch.png";
 import PhysicalMoloch from "../../assets/mint/physicalMoloch.png";
 import { Button } from "../../themed-components";
+import { Popover } from 'antd';
 
 function AuctionTwo({
   goToNextStep,
@@ -24,6 +25,12 @@ function AuctionTwo({
     }
     return str;
   }
+
+  const popoverContent = (
+    <div>
+      <span></span>
+    </div>
+  );
 
   return (
     <>
@@ -81,9 +88,11 @@ function AuctionTwo({
           </div>
 
           <div>
-            <Button disabled={false} onClick={goToNextStep}>
-              Continue
-            </Button>
+            <Popover content={popoverContent}>
+              <Button disabled={false} onClick={goToNextStep}>
+                Continue
+              </Button>
+            </Popover>
           </div>
         </div>
       </div>
