@@ -1,4 +1,4 @@
-import { Button, Image, PageHeader, Space } from "antd";
+import { Image, Space } from "antd";
 import React from "react";
 import navbarheadlogo from "../assets/navbarheadlogo.svg";
 import { Account, EthbotLearn, EthbotProgress, Faq, Footer, ReadComic } from "../components";
@@ -48,20 +48,17 @@ function Home({
           />
         </Space>
       </div>
-      <section>
-        <div className="container mx-auto flex py-24 items-center justify-center flex-col bg-green-dark-green min-w-full">
-          <div className="text-center lg:w-2/3 w-full">
-            <h1 className="title-font sm:text-6xl text-5xl mb-4 text-green-teal font-spacemono">The Greatest Larp has begun.</h1>
-            <p className="mb-8 leading-relaxed font-librefranklin text-white">Are You Ready?</p>
-            <div className="flex justify-center">
-              <button className="inline-flex text-white bg-green-teal border-0 py-2 px-6 rounded text-lg font-spacemono">Join us on this fight</button>
-            </div>
+      <div className="flex py-24 items-center justify-center bg-green-dark-green">
+        <div className="text-center lg:w-2/3 w-full">
+          <h1 className="title-font sm:text-6xl text-5xl mb-4 text-green-teal font-spacemono">The Greatest Larp has begun.</h1>
+          <p className="mb-8 leading-relaxed font-librefranklin text-white">Are You Ready?</p>
+          <div className="flex justify-center">
+            <button className="inline-flex text-white bg-green-teal border-0 py-2 px-6 rounded text-lg font-spacemono">Join us on this fight</button>
           </div>
         </div>
-      </section>
+      </div>
       {/* A progress attribute can be passed to show different stages of funding */}
       <EthbotProgress />
-
       <ReadComic />
       <EthbotLearn />
 
