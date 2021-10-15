@@ -23,6 +23,7 @@ interface StatueToken {
 /// @notice
 /// @dev
 contract GreatestLARP is Ownable {
+    using SafeMath for uint256;
     address payable gitcoin;
 
     struct Token {
@@ -97,12 +98,17 @@ contract GreatestLARP is Ownable {
         
     }
 
+    /// @dev A function that can be called from Etherscan to lower
+    ///      the price of the items by 10%.
     function whompwhomp()
         public
         onlyOwner
     {
         // lower the price 10% of item
-
+        tokenMap[1].price = tokenMap[1].price.sub(tokenMap[1].price.div(100).mul(10));
+        tokenMap[2].price = tokenMap[1].price.sub(tokenMap[1].price.div(100).mul(10));
+        statueMap[1].price = tokenMap[1].price.sub(tokenMap[1].price.div(100).mul(10));
+        statueMap[2].price = tokenMap[1].price.sub(tokenMap[1].price.div(100).mul(10));
     }
 
     /// @dev returns the details for a Bot level
