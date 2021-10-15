@@ -1,6 +1,7 @@
 import { useContractReader } from "eth-hooks";
 import { ethers } from "ethers";
 import React, { useState } from "react";
+import { EthbotProgress } from "../../components";
 import AuctionOne from "./AuctionOne";
 import AuctionTwo from "./AuctionTwo";
 import FinalBattle from "./FinalBattle";
@@ -99,7 +100,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
 
   return (
     <>
-      {/* <EthbotProgress progress={currentStep} /> */}
+      <EthbotProgress progress={currentStep} />
       <section className="container flex flex-1 mx-auto my-20">
         <CurrentStepComponent
           goToNextStep={goToNextStep}
