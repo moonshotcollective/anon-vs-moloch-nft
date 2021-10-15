@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import EthBot from "../../assets/mint/frontEthBot.png";
 import MolochStatue from "../../assets/mint/molochStatue.png";
 import { Button } from "../../themed-components";
@@ -17,6 +17,14 @@ function AuctionOne({
 }) {
   const level = 1;
 
+  function truncate(str, maxDecimalDigits) {
+    if (str.includes(".")) {
+      const parts = str.split(".");
+      return parts[0] + "." + parts[1].slice(0, maxDecimalDigits);
+    }
+    return str;
+  }
+
   return (
     <>
       <div className="flex flex-1 flex-col">
@@ -30,7 +38,7 @@ function AuctionOne({
           </div>
 
           <div>
-            <Button disabled={levelCompleted} onClick={goToNextStep}>
+            <Button disabled={false} onClick={goToNextStep}>
               Continue
             </Button>
           </div>
@@ -54,7 +62,7 @@ function AuctionOne({
               className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
               padding={10}
             >
-              {statuePrices[level - 1]} ETH
+              {truncate(statuePrices[level - 1], 4)} ETH
             </Button>
             <span className="text-red-500">(Only {statueLeftover[level - 1]} available)</span>
           </div>
@@ -75,7 +83,7 @@ function AuctionOne({
               className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
               padding={10}
             >
-              {tokenPrices[level - 1]} ETH
+              {truncate(tokenPrices[level - 1], 4)} ETH
             </Button>
             <span className="text-red-500">(Only {tokenLeftover[level - 1]} available)</span>
           </div>

@@ -37,7 +37,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
     if(tokenLeftover >= 297 && statueLeftover >= 2) {
         setLevelCompleted(true);
     }
-  }, [tokenLeftover, statueLeftover,]);
+  }, [tokenLeftover, statueLeftover]);
 
   const mintTokenBot = async level => {
     setMintingToken(true);
@@ -65,6 +65,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
     } catch (err) {
       setMintingToken(false);
     }
+    setMintingToken(false);
   };
 
   const mintTokenStatue = async level => {
@@ -93,6 +94,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
     } catch (err) {
       setBuyingStatue(false);
     }
+    setBuyingStatue(false);
   };
 
   // Proceed to the next UI step
