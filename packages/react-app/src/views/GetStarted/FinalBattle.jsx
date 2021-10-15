@@ -33,8 +33,18 @@ function FinalBattle({ goToNextStep }) {
             </Button>
             <div className="text-red-500">(Ultra rare piece)</div>
           </div>
+          <div>
+            <Button
+              onClick={() => {
+                window.location = "/";
+              }}
+            >
+              Go Back To Home Page{" "}
+            </Button>
+          </div>
         </div>
       </div>
+
       <div className="flex flex-1 justify-center items-center relative">
         <img src={FinBattle} alt="final battle" />
       </div>
