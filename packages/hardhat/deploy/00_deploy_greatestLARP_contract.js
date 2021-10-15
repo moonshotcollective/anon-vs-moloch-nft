@@ -25,7 +25,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
       [3, 3], // Digital threshold
       [2, 2], // Physical threshold
       ethers.utils.parseUnits("0.0033"), // Digital
-      ethers.utils.parseUnits("10"), // Pysical
+      ethers.utils.parseUnits("3"), // Pysical
     ],
     log: true,
   });
