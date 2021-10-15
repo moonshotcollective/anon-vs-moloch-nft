@@ -1,5 +1,5 @@
+import { Col, Row } from "antd";
 import React from "react";
-import { Row, Col } from "antd";
 import fundingbot1 from "../../assets/ProgressBar/fundingbot-1.png";
 import fundingbot2 from "../../assets/ProgressBar/fundingbot-2.png";
 import fundingbot3 from "../../assets/ProgressBar/fundingbot-3.png";
@@ -17,23 +17,23 @@ const fundingBot = [fundingbot1, fundingbot2, fundingbot3, fundingbot4, fundingb
 const fundingProgress = [fundingprogress1, fundingprogress2, fundingprogress3, fundingprogress4, fundingprogress5];
 
 const index = ({ progress }) => {
-  const currentFundingBot = fundingBot[progress] || fundingbot5;
+  const currentFundingBot = fundingBot[progress] || fundingbot1;
   const currentFundingProgress = fundingProgress[progress] || fundingprogress1;
 
   return (
-    <section class="bg-green-light-green h-auto w-full">
+    <section className="bg-green-light-green h-auto w-full">
       <Row className="container min-w-full">
         <Col flex={5}>
-            <div className="-mb-40 -mt-40 infront h-auto p-14">
-              <img src={currentFundingBot} alt="progress bot"  />
-            </div>
-            <img src={currentFundingProgress} alt="bot" className="p-2 w-full mt-20" />
+          <div className="-mb-40 -mt-40 infront h-auto p-14">
+            <img src={currentFundingBot} alt="progress bot" />
+          </div>
+          <img src={currentFundingProgress} alt="bot" className="p-2 w-full mt-20" />
         </Col>
         <Col flex={1}>
-          <h1 class="justify-self-center progress-title wrap mt-4 sm:ml-10">Get the latest Edition</h1>
+          <h1 className="justify-self-center progress-title wrap mt-4 sm:ml-10">Get the latest Edition</h1>
           <div className="flex">
-            <p class="inline-flex progress-subtext py-2 px-6">Lorem Ipsum</p>
-            <div class=" ml-2 flex ">
+            <p className="inline-flex progress-subtext py-2 px-6">Lorem Ipsum</p>
+            <div className=" ml-2 flex ">
               <button
                 onClick={() => {
                   window.location =
