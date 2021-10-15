@@ -5,7 +5,7 @@
       "chainId": "31337",
       "contracts": {
         "EthBot": {
-          "address": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+          "address": "0x0B306BF915C4d645ff596e518fAf3F9669b97016",
           "abi": [
             {
               "inputs": [],
@@ -460,310 +460,8 @@
             }
           ]
         },
-        "GreatestLARP": {
-          "address": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
-          "abi": [
-            {
-              "inputs": [
-                {
-                  "internalType": "contract BotToken[]",
-                  "name": "tokens",
-                  "type": "address[]"
-                },
-                {
-                  "internalType": "contract StatueToken[]",
-                  "name": "statueTokens",
-                  "type": "address[]"
-                },
-                {
-                  "internalType": "uint256[]",
-                  "name": "thresholdBots",
-                  "type": "uint256[]"
-                },
-                {
-                  "internalType": "uint256[]",
-                  "name": "thresholdStatues",
-                  "type": "uint256[]"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "startPriceBot",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "startPriceStatue",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "nonpayable",
-              "type": "constructor"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "previousOwner",
-                  "type": "address"
-                },
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "newOwner",
-                  "type": "address"
-                }
-              ],
-              "name": "OwnershipTransferred",
-              "type": "event"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "level",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "newPrice",
-                  "type": "uint256"
-                }
-              ],
-              "name": "changeLevelPrice",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "level",
-                  "type": "uint256"
-                }
-              ],
-              "name": "getDetailsForLevelBots",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "price",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "thresholdBots",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "totalSupply",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "tokenAddress",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "level",
-                  "type": "uint256"
-                }
-              ],
-              "name": "getDetailsForLevelStatue",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "price",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "thresholdStatues",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "totalSupply",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "tokenAddress",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "owner",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "renounceOwnership",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "level",
-                  "type": "uint256"
-                }
-              ],
-              "name": "requestMint",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "payable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "level",
-                  "type": "uint256"
-                }
-              ],
-              "name": "requestMintStatue",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "payable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "statueLeftover",
-              "outputs": [
-                {
-                  "internalType": "uint256[]",
-                  "name": "",
-                  "type": "uint256[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "statuePrices",
-              "outputs": [
-                {
-                  "internalType": "uint256[]",
-                  "name": "",
-                  "type": "uint256[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "tokenLeftover",
-              "outputs": [
-                {
-                  "internalType": "uint256[]",
-                  "name": "",
-                  "type": "uint256[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "tokenPrices",
-              "outputs": [
-                {
-                  "internalType": "uint256[]",
-                  "name": "",
-                  "type": "uint256[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "totalStatues",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "totalTokens",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "newOwner",
-                  "type": "address"
-                }
-              ],
-              "name": "transferOwnership",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "whompwhomp",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            }
-          ]
-        },
         "MolochBot": {
-          "address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+          "address": "0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1",
           "abi": [
             {
               "inputs": [],
@@ -1219,7 +917,7 @@
           ]
         },
         "EthBotStatue": {
-          "address": "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+          "address": "0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE",
           "abi": [
             {
               "inputs": [],
@@ -1675,7 +1373,7 @@
           ]
         },
         "MolochBotStatue": {
-          "address": "0x610178dA211FEF7D417bC0e6FeD39F05609AD788",
+          "address": "0x68B1D87F95878fE05B998F19b66F4baba5De1aed",
           "abi": [
             {
               "inputs": [],
@@ -2126,6 +1824,308 @@
                 }
               ],
               "stateMutability": "view",
+              "type": "function"
+            }
+          ]
+        },
+        "GreatestLARP": {
+          "address": "0x3Aa5ebB10DC797CAC828524e59A333d0A371443c",
+          "abi": [
+            {
+              "inputs": [
+                {
+                  "internalType": "contract BotToken[]",
+                  "name": "tokens",
+                  "type": "address[]"
+                },
+                {
+                  "internalType": "contract StatueToken[]",
+                  "name": "statueTokens",
+                  "type": "address[]"
+                },
+                {
+                  "internalType": "uint256[]",
+                  "name": "thresholdBots",
+                  "type": "uint256[]"
+                },
+                {
+                  "internalType": "uint256[]",
+                  "name": "thresholdStatues",
+                  "type": "uint256[]"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "startPriceBot",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "startPriceStatue",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "nonpayable",
+              "type": "constructor"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "previousOwner",
+                  "type": "address"
+                },
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "OwnershipTransferred",
+              "type": "event"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "level",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "newPrice",
+                  "type": "uint256"
+                }
+              ],
+              "name": "changeLevelPrice",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "level",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getDetailsForLevelBots",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "price",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "thresholdBots",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "totalSupply",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "tokenAddress",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "level",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getDetailsForLevelStatue",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "price",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "thresholdStatues",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "totalSupply",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "tokenAddress",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "owner",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "renounceOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "level",
+                  "type": "uint256"
+                }
+              ],
+              "name": "requestMint",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "payable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "level",
+                  "type": "uint256"
+                }
+              ],
+              "name": "requestMintStatue",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "payable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "statueLeftover",
+              "outputs": [
+                {
+                  "internalType": "uint256[]",
+                  "name": "",
+                  "type": "uint256[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "statuePrices",
+              "outputs": [
+                {
+                  "internalType": "uint256[]",
+                  "name": "",
+                  "type": "uint256[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "tokenLeftover",
+              "outputs": [
+                {
+                  "internalType": "uint256[]",
+                  "name": "",
+                  "type": "uint256[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "tokenPrices",
+              "outputs": [
+                {
+                  "internalType": "uint256[]",
+                  "name": "",
+                  "type": "uint256[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "totalStatues",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "totalTokens",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "transferOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "whompwhomp",
+              "outputs": [],
+              "stateMutability": "nonpayable",
               "type": "function"
             }
           ]

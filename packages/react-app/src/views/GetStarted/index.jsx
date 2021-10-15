@@ -19,6 +19,10 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
     ethers.utils.formatUnits(v),
   );
 
+  const statuePrices = (useContractReader(readContracts, "GreatestLARP", "statuePrices") || []).map(v =>
+    ethers.utils.formatUnits(v),
+  );
+
   const tokenLeftover = (useContractReader(readContracts, "GreatestLARP", "tokenLeftover") || []).map(v =>
     v.toString(),
   );
@@ -31,7 +35,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
     setMintingToken(true);
     try {
       // fetch price for selected level
-      const { price } = await readContracts.GreatestLARP.getDetailsForLevel(level);
+      const { price } = await readContracts.GreatestLARP.getDetailsForLevelBots(level);
       const result = tx(writeContracts.GreatestLARP.requestMint(level, { value: price }), async update => {
         console.log("📡 Transaction Update:", update);
         // reset minting
@@ -59,7 +63,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
     setMintingToken(true);
     try {
       // fetch price for selected level
-      const { price } = await readContracts.GreatestLARP.getDetailsForLevel(level);
+      const { price } = await readContracts.GreatestLARP.getDetailsForLevelStatue(level);
       const result = tx(writeContracts.GreatestLARP.requestMintStatue(level, { value: price }), async update => {
         console.log("📡 Transaction Update:", update);
         // reset minting
@@ -89,6 +93,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
   };
 
   console.log(tokenPrices);
+  console.log(statuePrices);
 
   const CurrentStepComponent = Steps[currentStep];
 
@@ -104,6 +109,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
           tokenLeftover={tokenLeftover}
           statueLeftover={statueLeftover}
           tokenPrices={tokenPrices}
+          statuePrices={statuePrices}
           mintingToken={mintingToken}
           buyingStatue={buyingStatue}
         />

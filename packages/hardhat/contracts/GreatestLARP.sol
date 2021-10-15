@@ -86,7 +86,7 @@ contract GreatestLARP is Ownable {
 
             // add token to tokenMap
             statueMap[totalStatues] = Token({
-                tokenAddress: address(tokens[i]),
+                tokenAddress: address(statueTokens[i]),
                 thresholdBots: 0,
                 thresholdStatues: thresholdStatues[i],
                 price: startPriceStatue,

@@ -3,7 +3,17 @@ import EthBot from "../../assets/mint/frontEthBot.png";
 import MolochStatue from "../../assets/mint/molochStatue.png";
 import { Button } from "../../themed-components";
 
-function AuctionOne({ goToNextStep, mintingToken, mintTokenBot, mintTokenStatue, tokenPrices, tokenLeftover, statueLeftover, ...props }) {
+function AuctionOne({
+  goToNextStep,
+  mintingToken,
+  mintTokenBot,
+  mintTokenStatue,
+  tokenPrices,
+  statuePrices,
+  tokenLeftover,
+  statueLeftover,
+  ...props
+}) {
   const [levelCompleted, setLevelCompleted] = useState(false);
   const level = 1;
 
@@ -39,12 +49,14 @@ function AuctionOne({ goToNextStep, mintingToken, mintTokenBot, mintTokenStatue,
             {/* Button */}
             <Button
               transparent
+              loading={mintingToken}
+              onClick={() => mintTokenStatue(level)}
               className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
               padding={10}
             >
-              0.01 ETH
+              {statuePrices[level - 1]} ETH
             </Button>
-            <span className="text-red-500">(Only 3 available)</span>
+            <span className="text-red-500">(Only {statueLeftover[level - 1]} available)</span>
           </div>
 
           {/*  Digital ETHBot */}

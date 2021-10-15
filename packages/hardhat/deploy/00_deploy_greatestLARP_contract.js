@@ -22,10 +22,10 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     args: [
       [eBot.address, mBot.address],
       [eStatue.address, mStatue.address],
-      [3, 3], // Digital
-      [2, 2], // Physical
+      [3, 3], // Digital threshold
+      [2, 2], // Physical threshold
       ethers.utils.parseUnits("0.0033"), // Digital
-      ethers.utils.parseUnits("0.1"), // Pysical
+      ethers.utils.parseUnits("10"), // Pysical
     ],
     log: true,
   });
