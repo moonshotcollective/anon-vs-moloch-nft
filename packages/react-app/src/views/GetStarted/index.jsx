@@ -1,6 +1,6 @@
 import { useContractReader } from "eth-hooks";
 import { ethers } from "ethers";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { EthbotProgress } from "../../components";
 import AuctionOne from "./AuctionOne";
 import AuctionTwo from "./AuctionTwo";
@@ -15,6 +15,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [mintingToken, setMintingToken] = useState(false);
   const [buyingStatue, setBuyingStatue] = useState(false);
+  const [levelCompleted, setLevelCompleted] = useState(false);
 
   const tokenPrices = (useContractReader(readContracts, "GreatestLARP", "tokenPrices") || []).map(v =>
     ethers.utils.formatUnits(v),
@@ -31,6 +32,12 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
   const statueLeftover = (useContractReader(readContracts, "GreatestLARP", "statueLeftover") || []).map(v =>
     v.toString(),
   );
+
+  useEffect(() => {
+    if(tokenLeftover >= 297 && statueLeftover >= 2) {
+        setLevelCompleted(true);
+    }
+  }, [tokenLeftover, statueLeftover,]);
 
   const mintTokenBot = async level => {
     setMintingToken(true);
@@ -61,7 +68,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
   };
 
   const mintTokenStatue = async level => {
-    setMintingToken(true);
+    setBuyingStatue(true);
     try {
       // fetch price for selected level
       const { price } = await readContracts.GreatestLARP.getDetailsForLevelStatue(level);
@@ -84,7 +91,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
       console.log("awaiting metamask/web3 confirm result...", result);
       console.log(await result);
     } catch (err) {
-      setMintingToken(false);
+      setBuyingStatue(false);
     }
   };
 
@@ -113,6 +120,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
           statuePrices={statuePrices}
           mintingToken={mintingToken}
           buyingStatue={buyingStatue}
+          levelCompleted={levelCompleted}
         />
       </section>
     </>

@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "../../themed-components";
 import FinalBattle from "../../assets/mint/finalBattle.png";
+import { Button } from "../../themed-components";
 
 function AuctionOne({ goToNextStep }) {
   return (
@@ -22,10 +22,10 @@ function AuctionOne({ goToNextStep }) {
               transparent
               className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
               padding={10}
-              onClick={goToNextStep}
-            >
-              0.01 ETH
-            </Button>
+              onClick={() => {
+                window.location = "https://opensea.io/ColtonArt";
+              }}
+            ></Button>
             <div className="text-red-500">(Ultra rare piece)</div>
           </div>
         </div>

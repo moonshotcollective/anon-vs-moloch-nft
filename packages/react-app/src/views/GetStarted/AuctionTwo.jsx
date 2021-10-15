@@ -12,6 +12,7 @@ function AuctionOne({
   statuePrices,
   tokenLeftover,
   statueLeftover,
+  levelCompleted,
   ...props
 }) {
   const level = 2;
@@ -72,7 +73,9 @@ function AuctionOne({
           </div>
 
           <div>
-            <Button onClick={goToNextStep}>Continue</Button>
+            <Button disabled={levelCompleted} onClick={goToNextStep}>
+              Continue
+            </Button>
           </div>
         </div>
       </div>

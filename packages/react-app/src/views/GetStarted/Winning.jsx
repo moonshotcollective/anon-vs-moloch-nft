@@ -1,8 +1,8 @@
 import React from "react";
-import { Button } from "../../themed-components";
 import FinalBattle from "../../assets/mint/finalBattle.png";
+import { Button } from "../../themed-components";
 
-function AuctionOne(props) {
+function Winning(props) {
   return (
     <>
       <div className="flex flex-1 flex-col justify-center">
@@ -41,4 +41,4 @@ function AuctionOne(props) {
   );
 }
 
-export default AuctionOne;
+export default Winning;

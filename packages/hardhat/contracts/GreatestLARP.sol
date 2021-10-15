@@ -101,7 +101,7 @@ contract GreatestLARP is Ownable {
         public
         onlyOwner
     {
-        // lower the price 10% of chosen item
+        // lower the price 10% of item
 
     }
 
@@ -260,7 +260,7 @@ contract GreatestLARP is Ownable {
         require(msg.value >= statueMap[level].price, "NOT ENOUGH");
 
         // update the price of the token
-        statueMap[level].price = (statueMap[level].price * 1030) / 1000;
+        statueMap[level].price = (statueMap[level].price * 1350) / 1000;
 
         // send ETH to gitcoin multisig
         (bool success, ) = gitcoin.call{value: msg.value}("");

@@ -12,9 +12,9 @@ function AuctionOne({
   statuePrices,
   tokenLeftover,
   statueLeftover,
+  levelCompleted,
   ...props
 }) {
-  const [levelCompleted, setLevelCompleted] = useState(false);
   const level = 1;
 
   return (
