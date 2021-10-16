@@ -44,6 +44,7 @@ contract GreatestLARP is Ownable {
         // level is between 1 and totalTokens Count
         require(level > 0, "Invalid level selected");
         require(level <= totalTokens, "Invalid level selected");
+        require(level <= totalStatues, "Invalid level selected");
         _;
     }
 
@@ -99,7 +100,7 @@ contract GreatestLARP is Ownable {
     }
 
     /// @dev A function that can be called from Etherscan to lower
-    ///      the price of the items by 10%.
+    ///      the price of the item by 10%.
     function whompwhomp(uint256 _level)
         isValidLevel(_level)
         public
@@ -196,13 +197,22 @@ contract GreatestLARP is Ownable {
         return leftOver;
     }
 
-
-    function changeLevelPrice(uint256 level, uint256 newPrice)
+    /// @dev update the level price
+    function changeLevelPriceForBots(uint256 level, uint256 newPrice)
         public
         isValidLevel(level)
         onlyOwner
     {
         tokenMap[level].price = newPrice;
+    }
+
+     /// @dev update the level price
+    function changeLevelPriceForStatues(uint256 level, uint256 newPrice)
+        public
+        isValidLevel(level)
+        onlyOwner
+    {
+        statueMap[level].price = newPrice;
     }
 
     /// @dev request to mint a Bot NFT
