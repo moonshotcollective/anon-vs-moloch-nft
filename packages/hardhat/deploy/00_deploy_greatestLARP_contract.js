@@ -2,6 +2,7 @@
 
 const { ethers } = require("hardhat");
 
+
 module.exports = async ({ getNamedAccounts, deployments }) => {
   const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
@@ -23,7 +24,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
       [eBot.address, mBot.address],
       [eStatue.address, mStatue.address],
       [3, 3], // Digital threshold 200/300
-      [3, 3], // Physical threshold 3/5
+      [1, 1], // Physical threshold 3/5
       ethers.utils.parseUnits("0.0033"), // Digital
       ethers.utils.parseUnits("3"), // Pysical
     ],
@@ -52,6 +53,16 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     factory.address
   );
   await MolochBotStatueTransfer.wait(1);
+
+  // set the owner to austin or kevin for whomp whomp function
+  // const FactoryTransfer = await factory.transferOwnership()
+  // await FactoryTransfer.wait(1);
 };
 
-module.exports.tags = ["GreatestLARP", "EthBot", "MolochBot"];
+module.exports.tags = [
+  "GreatestLARP",
+  "EthBot",
+  "MolochBot",
+  "EthBotStatue",
+  "MolochBotStatue",
+];

@@ -33,11 +33,12 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
     v.toString(),
   );
 
+  // working on this
   useEffect(() => {
     if(tokenLeftover >= 297 && statueLeftover >= 2) {
         setLevelCompleted(true);
     }
-  }, [tokenLeftover, statueLeftover]);
+  }, [tokenLeftover, statueLeftover, readContracts]);
 
   const mintTokenBot = async level => {
     setMintingToken(true);
