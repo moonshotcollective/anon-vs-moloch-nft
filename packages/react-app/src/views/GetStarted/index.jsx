@@ -7,6 +7,7 @@ import AuctionTwo from "./AuctionTwo";
 import FinalBattle from "./FinalBattle";
 import Read from "./Read";
 import Winning from "./Winning";
+import { Nav } from "../../themed-components";
 
 // Steps component array
 const Steps = [Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
@@ -35,8 +36,8 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
 
   // working on this
   useEffect(() => {
-    if(tokenLeftover >= 297 && statueLeftover >= 2) {
-        setLevelCompleted(true);
+    if (tokenLeftover >= 297 && statueLeftover >= 2) {
+      setLevelCompleted(true);
     }
   }, [tokenLeftover, statueLeftover, readContracts]);
 
@@ -110,6 +111,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
 
   return (
     <>
+      <Nav {...props} />
       <EthbotProgress progress={currentStep} />
       <section className="container flex flex-1 mx-auto my-20">
         <CurrentStepComponent
