@@ -60,30 +60,38 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   await FactoryTransfer.wait(1);
 
   // todo: finish
-  // await run("verify:verify", {
-  //   address: EthBot.address,
-  //   contract: "contracts/EthBot.sol:EthBot",
-  // });
+  await run("verify:verify", {
+    address: EthBot.address,
+    contract: "contracts/EthBot.sol:EthBot",
+  });
 
-  // await run("verify:verify", {
-  //   address: MolochBot.address,
-  //   contract: "contracts/MolochBot.sol:MolochBot",
-  // });
+  await run("verify:verify", {
+    address: MolochBot.address,
+    contract: "contracts/MolochBot.sol:MolochBot",
+  });
 
-  // await run("verify:verify", {
-  //   address: EthBot.address,
-  //   contract: "contracts/EthBot.sol:EthBot",
-  // });
+  await run("verify:verify", {
+    address: EthBotStatue.address,
+    contract: "contracts/EthBotStatue.sol:EthBotStatue",
+  });
 
-  // await run("verify:verify", {
-  //   address: EthBot.address,
-  //   contract: "contracts/EthBot.sol:EthBot",
-  // });
+  await run("verify:verify", {
+    address: MolochBotStatue.address,
+    contract: "contracts/MolochBotStatue.sol:MolochBotStatue",
+  });
 
-  // await run("verify:verify", {
-  //   address: EthBot.address,
-  //   contract: "contracts/EthBot.sol:EthBot",
-  // });
+  await run("verify:verify", {
+    address: factory.address,
+    contract: "contracts/GreatestLARP.sol:GreatestLARP",
+    contractArguments: [
+      [eBot.address, mBot.address],
+      [eStatue.address, mStatue.address],
+      [3, 3], // Digital threshold 200/300
+      [1, 1], // Physical threshold 3/5
+      ethers.utils.parseUnits("0.0033"), // Digital
+      ethers.utils.parseUnits("3"), // Pysical
+    ],
+  });
 };
 
 module.exports.tags = [
