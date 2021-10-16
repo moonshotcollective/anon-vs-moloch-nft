@@ -56,9 +56,7 @@ function Home({
           />
         </Space>
       </div>
-
-
-      <div className=" items-center justify-center bg-green-dark-green flex flex-col py-20">
+      <div className="text-center w-full bg-green-dark-green py-20">
           <h1 className="title-font sm:text-6xl text-5xl mb-4 text-green-teal font-spacemono">
             The Greatest Larp has begun.
           </h1>

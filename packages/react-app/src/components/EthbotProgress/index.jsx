@@ -24,25 +24,25 @@ const index = ({ progress }) => {
     <section className="bg-green-light-green h-auto w-full">
       <Row className="container min-w-full">
         <Col flex={5}>
-          <div className="-mb-40 -mt-40 infront h-auto p-14">
-            <img src={currentFundingBot} alt="progress bot" />
-          </div>
-          <img src={currentFundingProgress} alt="bot" className="p-2 w-full mt-20" />
+            <img src={currentFundingBot} alt="progress bot" className="h-32 -mb-16 p-2" />
+            <img src={currentFundingProgress} alt="bot" className="p-2 w-full" />
         </Col>
         <Col flex={1}>
-          <h1 className="justify-self-center progress-title wrap mt-4 sm:ml-10">Get the latest Edition</h1>
-          <div className="flex">
-            <p className="inline-flex progress-subtext py-2 px-6">Lorem Ipsum</p>
-            <div className=" ml-2 flex ">
-              <button
-                onClick={() => {
-                  window.location =
-                    "https://store.gitcoin.co/collections/comics/products/ethereum-vs-moloch-comic-book-2-digital-edition";
-                }}
-                class="inline-flex text-white bg-green-teal h-12 border-0 py-2 px-6 rounded text-lg font-spacemono"
-              >
-                Join now
-              </button>
+          <div className="items-center">
+            <h1 className="flex flex-wrap progress-title mt-4 sm:ml-10">Get the latest Edition</h1>
+            <div className="flex">
+              <p className="inline-flex progress-subtext py-2 px-6">Lorem Ipsum</p>
+              <div className=" ml-2 flex ">
+                <button
+                  onClick={() => {
+                    window.location =
+                      "https://store.gitcoin.co/collections/comics/products/ethereum-vs-moloch-comic-book-2-digital-edition";
+                  }}
+                  class="inline-flex text-white bg-green-teal h-12 border-0 py-2 px-6 rounded text-lg font-spacemono"
+                >
+                  Join now
+                </button>
+              </div>
             </div>
           </div>
         </Col>
