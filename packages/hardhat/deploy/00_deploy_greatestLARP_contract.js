@@ -2,7 +2,6 @@
 
 const { ethers } = require("hardhat");
 
-
 module.exports = async ({ getNamedAccounts, deployments }) => {
   const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
@@ -57,6 +56,32 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   // set the owner to austin or kevin for whomp whomp function
   // const FactoryTransfer = await factory.transferOwnership()
   // await FactoryTransfer.wait(1);
+
+  // todo: finish
+  // await run("verify:verify", {
+  //   address: EthBot.address,
+  //   contract: "contracts/EthBot.sol:EthBot",
+  // });
+
+  // await run("verify:verify", {
+  //   address: MolochBot.address,
+  //   contract: "contracts/MolochBot.sol:MolochBot",
+  // });
+
+  // await run("verify:verify", {
+  //   address: EthBot.address,
+  //   contract: "contracts/EthBot.sol:EthBot",
+  // });
+
+  // await run("verify:verify", {
+  //   address: EthBot.address,
+  //   contract: "contracts/EthBot.sol:EthBot",
+  // });
+
+  // await run("verify:verify", {
+  //   address: EthBot.address,
+  //   contract: "contracts/EthBot.sol:EthBot",
+  // });
 };
 
 module.exports.tags = [
