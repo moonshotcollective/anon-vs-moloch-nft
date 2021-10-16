@@ -34,9 +34,9 @@ export default function EthbotLearn() {
 		}
 	};
 
-	return (
-	<div className={`bg-bot${botNum+1} bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height`}>
-		    <Row className="px-10">
+	const interior = (
+		<>
+			<Row className="px-10">
 				<Col span={18}>
 					<h2 className="sm:text-5xl lg:text-7xl xl:text-7xl mb-2 font-medium text-green-teal font-spacemono">Learn More about EthBot</h2>
 					<p className="mb-2 leading-relaxed w-1/2 lg:mt-10 text-xl">Copper mug try-hard pitchfork pour-over freegan.</p>
@@ -61,6 +61,36 @@ export default function EthbotLearn() {
 					</button>
 				</div>
 			</div>
-	</div>
+		</>
+	)
+
+	return (
+		<>
+		{botNum === 0 ?
+			<div className="bg-bot1 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height">
+				{interior}
+			</div>
+		: botNum === 1 ?
+			<div className="bg-bot2 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height">
+				{interior}
+			</div>
+		: botNum === 2 ?
+			<div className="bg-bot3 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height">
+				{interior}
+			</div>
+		: botNum === 3 ?
+			<div className="bg-bot4 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height">
+				{interior}
+			</div>
+		: botNum === 4 ?
+			<div className="bg-bot5 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height">
+				{interior}
+			</div>
+		:
+			<div className="bg-bot1 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height">
+				{interior}
+			</div>
+		}
+		</>
 	)
 }

@@ -59,7 +59,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   );
   await FactoryTransfer.wait(1);
 
-  // todo: finish
+  // verify the contracts now
   await run("verify:verify", {
     address: EthBot.address,
     contract: "contracts/EthBot.sol:EthBot",
@@ -83,7 +83,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   await run("verify:verify", {
     address: factory.address,
     contract: "contracts/GreatestLARP.sol:GreatestLARP",
-    contractArguments: [
+    constructorArguments: [
       [eBot.address, mBot.address],
       [eStatue.address, mStatue.address],
       [3, 3], // Digital threshold 200/300
