@@ -44,6 +44,7 @@ contract GreatestLARP is Ownable {
         // level is between 1 and totalTokens Count
         require(level > 0, "Invalid level selected");
         require(level <= totalTokens, "Invalid level selected");
+        require(level <= totalStatues, "Invalid level selected");
         _;
     }
 
@@ -99,16 +100,19 @@ contract GreatestLARP is Ownable {
     }
 
     /// @dev A function that can be called from Etherscan to lower
-    ///      the price of the items by 10%.
-    function whompwhomp()
+    ///      the price of the item by 10%.
+    function whompwhomp(uint256 _level)
+        isValidLevel(_level)
         public
         onlyOwner
     {
-        // lower the price 10% of item
-        tokenMap[1].price = tokenMap[1].price.sub(tokenMap[1].price.div(100).mul(10));
-        tokenMap[2].price = tokenMap[1].price.sub(tokenMap[1].price.div(100).mul(10));
-        statueMap[1].price = tokenMap[1].price.sub(tokenMap[1].price.div(100).mul(10));
-        statueMap[2].price = tokenMap[1].price.sub(tokenMap[1].price.div(100).mul(10));
+        if(_level == 1) {
+            tokenMap[_level].price = tokenMap[_level].price.sub(tokenMap[_level].price.div(100).mul(10));
+            statueMap[_level].price = statueMap[_level].price.sub(statueMap[_level].price.div(100).mul(10));
+        } else if (_level == 2) {
+            tokenMap[_level].price = tokenMap[_level].price.sub(tokenMap[_level].price.div(100).mul(10));
+            statueMap[_level].price = statueMap[_level].price.sub(statueMap[_level].price.div(100).mul(10));
+        }
     }
 
     /// @dev returns the details for a Bot level
@@ -117,13 +121,13 @@ contract GreatestLARP is Ownable {
         view
         returns (
             uint256 price,
-            uint256 thresholdBots,
+            uint256 threshold,
             uint256 totalSupply,
             address tokenAddress
         )
     {
         price = tokenMap[level].price;
-        thresholdBots = tokenMap[level].thresholdBots;
+        threshold = tokenMap[level].thresholdBots;
         totalSupply = tokenMap[level].totalSupply;
         tokenAddress = tokenMap[level].tokenAddress;
     }
@@ -134,13 +138,13 @@ contract GreatestLARP is Ownable {
         view
         returns (
             uint256 price,
-            uint256 thresholdStatues,
+            uint256 threshold,
             uint256 totalSupply,
             address tokenAddress
         )
     {
         price = statueMap[level].price;
-        thresholdStatues = statueMap[level].thresholdStatues;
+        threshold = statueMap[level].thresholdStatues;
         totalSupply = statueMap[level].totalSupply;
         tokenAddress = statueMap[level].tokenAddress;
     }
@@ -193,13 +197,22 @@ contract GreatestLARP is Ownable {
         return leftOver;
     }
 
-
-    function changeLevelPrice(uint256 level, uint256 newPrice)
+    /// @dev update the level price
+    function changeLevelPriceForBots(uint256 level, uint256 newPrice)
         public
         isValidLevel(level)
         onlyOwner
     {
         tokenMap[level].price = newPrice;
+    }
+
+     /// @dev update the level price
+    function changeLevelPriceForStatues(uint256 level, uint256 newPrice)
+        public
+        isValidLevel(level)
+        onlyOwner
+    {
+        statueMap[level].price = newPrice;
     }
 
     /// @dev request to mint a Bot NFT

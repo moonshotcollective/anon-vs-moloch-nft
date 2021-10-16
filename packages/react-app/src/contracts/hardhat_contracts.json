@@ -5,7 +5,7 @@
       "chainId": "4",
       "contracts": {
         "EthBot": {
-          "address": "0xb1c3E7Ba38c952eEb1f531EFdC6750fF310D456F",
+          "address": "0xFFCf345DA8B42FC770B7A781C250274cDA45F63b",
           "abi": [
             {
               "inputs": [],
@@ -461,7 +461,7 @@
           ]
         },
         "MolochBot": {
-          "address": "0x8124E4A4934743439B0827C7cE670EAB2Fc903bD",
+          "address": "0xF5E4fFf10592f282Cc0C6566dDD4B3F2cbd4eAa5",
           "abi": [
             {
               "inputs": [],
@@ -917,7 +917,7 @@
           ]
         },
         "EthBotStatue": {
-          "address": "0x18269c39edDE3BbaC0F493E04E8B942BEBc58589",
+          "address": "0x9a0Bb3b0Da47Af7128ca2b253a2A2D628dB8d7E9",
           "abi": [
             {
               "inputs": [],
@@ -1373,7 +1373,7 @@
           ]
         },
         "MolochBotStatue": {
-          "address": "0x07f2884d49F1d27cf0457716Ae4696E1c3434073",
+          "address": "0x26e3dC7a4Ce2376BfDC4eB6eA2A0313505e89994",
           "abi": [
             {
               "inputs": [],
@@ -1829,7 +1829,7 @@
           ]
         },
         "GreatestLARP": {
-          "address": "0xEfD730d1c475dBAcb89ee24934a731B6AC6Dd4e9",
+          "address": "0x67405B8CdD75F5844D8e012c7e642109bE5c2268",
           "abi": [
             {
               "inputs": [
@@ -1899,7 +1899,25 @@
                   "type": "uint256"
                 }
               ],
-              "name": "changeLevelPrice",
+              "name": "changeLevelPriceForBots",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "level",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "newPrice",
+                  "type": "uint256"
+                }
+              ],
+              "name": "changeLevelPriceForStatues",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -1921,7 +1939,7 @@
                 },
                 {
                   "internalType": "uint256",
-                  "name": "thresholdBots",
+                  "name": "threshold",
                   "type": "uint256"
                 },
                 {
@@ -1955,7 +1973,7 @@
                 },
                 {
                   "internalType": "uint256",
-                  "name": "thresholdStatues",
+                  "name": "threshold",
                   "type": "uint256"
                 },
                 {
@@ -2122,7 +2140,13 @@
               "type": "function"
             },
             {
-              "inputs": [],
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_level",
+                  "type": "uint256"
+                }
+              ],
               "name": "whompwhomp",
               "outputs": [],
               "stateMutability": "nonpayable",
@@ -2139,7 +2163,7 @@
       "chainId": "31337",
       "contracts": {
         "EthBot": {
-          "address": "0x1429859428C0aBc9C2C47C8Ee9FBaf82cFA0F20f",
+          "address": "0x21dF544947ba3E8b3c32561399E88B52Dc8b2823",
           "abi": [
             {
               "inputs": [],
@@ -2595,7 +2619,7 @@
           ]
         },
         "EthBotStatue": {
-          "address": "0x162A433068F51e18b7d13932F27e66a3f99E6890",
+          "address": "0xD8a5a9b31c3C0232E196d518E89Fd8bF83AcAd43",
           "abi": [
             {
               "inputs": [],
@@ -3051,7 +3075,7 @@
           ]
         },
         "GreatestLARP": {
-          "address": "0x5081a39b8A5f0E35a8D959395a630b68B74Dd30f",
+          "address": "0x51A1ceB83B83F1985a81C295d1fF28Afef186E02",
           "abi": [
             {
               "inputs": [
@@ -3121,7 +3145,25 @@
                   "type": "uint256"
                 }
               ],
-              "name": "changeLevelPrice",
+              "name": "changeLevelPriceForBots",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "level",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "newPrice",
+                  "type": "uint256"
+                }
+              ],
+              "name": "changeLevelPriceForStatues",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -3143,7 +3185,7 @@
                 },
                 {
                   "internalType": "uint256",
-                  "name": "thresholdBots",
+                  "name": "threshold",
                   "type": "uint256"
                 },
                 {
@@ -3177,7 +3219,7 @@
                 },
                 {
                   "internalType": "uint256",
-                  "name": "thresholdStatues",
+                  "name": "threshold",
                   "type": "uint256"
                 },
                 {
@@ -3344,7 +3386,13 @@
               "type": "function"
             },
             {
-              "inputs": [],
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_level",
+                  "type": "uint256"
+                }
+              ],
               "name": "whompwhomp",
               "outputs": [],
               "stateMutability": "nonpayable",
@@ -3353,7 +3401,7 @@
           ]
         },
         "MolochBot": {
-          "address": "0xB0D4afd8879eD9F52b28595d31B441D079B2Ca07",
+          "address": "0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2",
           "abi": [
             {
               "inputs": [],
@@ -3809,7 +3857,7 @@
           ]
         },
         "MolochBotStatue": {
-          "address": "0x922D6956C99E12DFeB3224DEA977D0939758A1Fe",
+          "address": "0xDC11f7E700A4c898AE5CAddB1082cFfa76512aDD",
           "abi": [
             {
               "inputs": [],

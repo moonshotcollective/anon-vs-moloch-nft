@@ -18,12 +18,13 @@ const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 
 /*
   📡  Rinkeby Deploy
-    deploying "EthBot" (tx: 0xfadd1deef7d886b1a06ede6ea29bc7d865a4ced671f606c81025fd120ce91ad2)...: deployed at 0xb1c3E7Ba38c952eEb1f531EFdC6750fF310D456F with 1451094 gas
-    deploying "MolochBot" (tx: 0x5f1a7afca6eeedebee9a0477b71dfbd31eec0cce7c17e4c099f21c1305ac3094)...: deployed at 0x8124E4A4934743439B0827C7cE670EAB2Fc903bD with 1450975 gas
-    deploying "EthBotStatue" (tx: 0xb73e75b71c3e7f8cd0d2a25938096517e18658a96c519a791aca57b5496d703e)...: deployed at 0x18269c39edDE3BbaC0F493E04E8B942BEBc58589 with 1451119 gas
-    deploying "MolochBotStatue" (tx: 0xdcd7bff17416fa662c497cbc65c1c0a6762d6df870e924ff618abadadc8e8910)...: deployed at 0x07f2884d49F1d27cf0457716Ae4696E1c3434073 with 1451179 gas
-    deploying "GreatestLARP" (tx: 0x2266b2dd08f005f2ca0134be29b9bbec3639994f898b599cfc4faa168c358b2a)...: deployed at 0xEfD730d1c475dBAcb89ee24934a731B6AC6Dd4e9 with 1597519 gas
-
+    deploying "EthBot" (tx: 0x69f9dd0655313dfb27066b76bba8f85f11cf3dd610c15c744235830b537eaf60)...: deployed at 0xFFCf345DA8B42FC770B7A781C250274cDA45F63b with 1451094 gas
+    deploying "MolochBot" (tx: 0xfdfc60eadebedbc69774c5b5365a254ca18dc92de588d07d60ae5e354391b076)...: deployed at 0xF5E4fFf10592f282Cc0C6566dDD4B3F2cbd4eAa5 with 1450975 gas
+    deploying "EthBotStatue" (tx: 0x4952db5b02822c9e0466016ced9c9b032724e24def3f300dc88f9c88cfa6b351)...: deployed at 0x9a0Bb3b0Da47Af7128ca2b253a2A2D628dB8d7E9 with 1451119 gas
+    deploying "MolochBotStatue" (tx: 0xcbcf95dc6e2dce0cbefaa79ce1e7a5ac48dab3c0fdfd5e78199e61aa72fbbb36)...: deployed at 0x26e3dC7a4Ce2376BfDC4eB6eA2A0313505e89994 with 1451179 gas
+    deploying "GreatestLARP" (tx: 0xcc235e17ec3fb140cb46e4ab72f40c8822c5e5338baa9c77dd2e13babab6a7b0)...: deployed at 0x67405B8CdD75F5844D8e012c7e642109bE5c2268 with 1658520 gas
+  
+  
   📡  Mainnet Deploy
 
 */
