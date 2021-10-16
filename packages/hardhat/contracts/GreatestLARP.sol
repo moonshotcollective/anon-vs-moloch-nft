@@ -240,9 +240,20 @@ contract GreatestLARP is Ownable {
         // update the price of the token
         tokenMap[level].price = (tokenMap[level].price * 1030) / 1000;
 
-        // send ETH to gitcoin multisig
-        (bool success, ) = gitcoin.call{value: msg.value}("");
-        require(success, "could not send");
+        uint256 overpayment = msg.value.sub(tokenMap[level].price);
+        if (overpayment > 0) {
+            // send ETH to gitcoin multisig
+            uint256 price = msg.value.sub(overpayment);
+            (bool success, ) = gitcoin.call{value: price}("");
+            require(success, "could not send");
+
+            // send the refund
+            (bool refundSent, ) = msg.sender.call{value: overpayment}("");
+            require(refundSent, "Refund could not be sent");
+        } else {
+            (bool success, ) = gitcoin.call{value: msg.value}("");
+            require(success, "could not send");
+        }        
 
         // make sure there are available tokens for this level
         require(
@@ -280,6 +291,21 @@ contract GreatestLARP is Ownable {
 
         // update the price of the token
         statueMap[level].price = (statueMap[level].price * 1350) / 1000;
+
+        uint256 overpayment = msg.value.sub(statueMap[level].price);
+        if (overpayment > 0) {
+            // send ETH to gitcoin multisig
+            uint256 price = msg.value.sub(overpayment);
+            (bool success, ) = gitcoin.call{value: price}("");
+            require(success, "could not send");
+
+            // send the refund
+            (bool refundSent, ) = msg.sender.call{value: overpayment}("");
+            require(refundSent, "Refund could not be sent");
+        } else {
+            (bool success, ) = gitcoin.call{value: msg.value}("");
+            require(success, "could not send");
+        }
 
         // send ETH to gitcoin multisig
         (bool success, ) = gitcoin.call{value: msg.value}("");

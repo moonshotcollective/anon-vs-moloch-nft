@@ -75,7 +75,8 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
     try {
       // fetch price for selected level
       const { price } = await readContracts.GreatestLARP.getDetailsForLevelStatue(level);
-      const result = tx(writeContracts.GreatestLARP.requestMintStatue(level, { value: price }), async update => {
+      const boostedPrice = price + (price * .05);
+      const result = tx(writeContracts.GreatestLARP.requestMintStatue(level, { value: boostedPrice }), async update => {
         console.log("📡 Transaction Update:", update);
         // reset minting
         if (update && (update.status === "confirmed" || update.status === 1)) {
