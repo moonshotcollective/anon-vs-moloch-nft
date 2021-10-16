@@ -38,7 +38,7 @@ export default function EthbotLearn() {
 	<div className={`bg-bot${botNum+1} bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height`}>
 		    <Row className="px-10">
 				<Col span={18}>
-					<h2 className="sm:text-5xl lg:text-7xl xl:text-9xl mb-2 font-medium text-green-teal font-spacemono">Learn More about EthBot</h2>
+					<h2 className="sm:text-5xl lg:text-7xl xl:text-7xl mb-2 font-medium text-green-teal font-spacemono">Learn More about EthBot</h2>
 					<p className="mb-2 leading-relaxed w-1/2 lg:mt-10 text-xl">Copper mug try-hard pitchfork pour-over freegan.</p>
 					<div className="flex sm:mt-2 lg:mt-10">
 						<button className="inline-flex text-white bg-green-teal border-0 px-10 py-1 rounded text-lg font-spacemono">Read</button>
