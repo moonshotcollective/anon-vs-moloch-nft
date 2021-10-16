@@ -36,11 +36,27 @@ contract EthBotStatue is ERC721URIStorage, Ownable {
         id = _tokenIds.current();
     }
 
-    function mint(address user) external onlyOwner returns (uint256 id) {
+    function mintItem(address to, string memory tokenURI)
+      private
+      returns (uint256)
+    {
         _tokenIds.increment();
+
+        uint256 id = _tokenIds.current();
+        _mint(to, id);
+        _setTokenURI(id, tokenURI);
+
+        return id;
+    }
+
+    function mint(address user)
+        external
+        onlyOwner
+        returns (uint256 id) 
+    {
         id = _tokenIds.current();
 
-        _mint(user, id);
+        mintItem(user,  uris[id]);
 
         lastMinted = id;
 
