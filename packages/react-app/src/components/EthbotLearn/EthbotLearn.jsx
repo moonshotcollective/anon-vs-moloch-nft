@@ -67,27 +67,27 @@ export default function EthbotLearn() {
 	return (
 		<>
 		{botNum === 0 ?
-			<div className={`bg-bot1 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height`}>
+			<div className="bg-bot1 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height">
 				{interior}
 			</div>
 		: botNum === 1 ?
-			<div className={`bg-bot2 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height`}>
+			<div className="bg-bot2 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height">
 				{interior}
 			</div>
 		: botNum === 2 ?
-			<div className={`bg-bot3 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height`}>
+			<div className="bg-bot3 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height">
 				{interior}
 			</div>
 		: botNum === 3 ?
-			<div className={`bg-bot4 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height`}>
+			<div className="bg-bot4 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height">
 				{interior}
 			</div>
 		: botNum === 4 ?
-			<div className={`bg-bot5 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height`}>
+			<div className="bg-bot5 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height">
 				{interior}
 			</div>
 		:
-			<div className={`bg-bot1 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height`}>
+			<div className="bg-bot1 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height">
 				{interior}
 			</div>
 		}
