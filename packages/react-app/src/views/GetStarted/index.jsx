@@ -15,7 +15,7 @@ const Steps = [Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
 function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [mintingToken, setMintingToken] = useState(false);
-  const [buyingStatue, setBuyingStatue] = useState(false);
+  const [mintingStatue, setMintingStatue] = useState(false);
   const [levelCompleted, setLevelCompleted] = useState(false);
 
   const tokenPrices = (useContractReader(readContracts, "GreatestLARP", "tokenPrices") || []).map(v =>
@@ -71,11 +71,12 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
   };
 
   const mintTokenStatue = async level => {
-    setBuyingStatue(true);
+    setMintingStatue(true);
     try {
       // fetch price for selected level
       const { price } = await readContracts.GreatestLARP.getDetailsForLevelStatue(level);
-      const result = tx(writeContracts.GreatestLARP.requestMintStatue(level, { value: price }), async update => {
+      const boostedPrice = price + (price * .05);
+      const result = tx(writeContracts.GreatestLARP.requestMintStatue(level, { value: boostedPrice }), async update => {
         console.log("📡 Transaction Update:", update);
         // reset minting
         if (update && (update.status === "confirmed" || update.status === 1)) {
@@ -94,9 +95,9 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
       console.log("awaiting metamask/web3 confirm result...", result);
       console.log(await result);
     } catch (err) {
-      setBuyingStatue(false);
+      setMintingStatue(false);
     }
-    setBuyingStatue(false);
+    setMintingStatue(false);
   };
 
   // Proceed to the next UI step
@@ -124,7 +125,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
           tokenPrices={tokenPrices}
           statuePrices={statuePrices}
           mintingToken={mintingToken}
-          buyingStatue={buyingStatue}
+          mintingStatue={mintingStatue}
           levelCompleted={levelCompleted}
         />
       </section>

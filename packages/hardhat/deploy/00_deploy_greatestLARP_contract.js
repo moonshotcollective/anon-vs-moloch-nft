@@ -54,9 +54,12 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   await MolochBotStatueTransfer.wait(1);
 
   // set the owner to austin or kevin for whomp whomp function
-  // const FactoryTransfer = await factory.transferOwnership()
-  // await FactoryTransfer.wait(1);
+  const FactoryTransfer = await factory.transferOwnership(
+    0x00de4b13153673bcae2616b67bf822500d325fc3
+  );
+  await FactoryTransfer.wait(1);
 
+  // verify the contracts now
   await run("verify:verify", {
     address: EthBot.address,
     contract: "contracts/EthBot.sol:EthBot",

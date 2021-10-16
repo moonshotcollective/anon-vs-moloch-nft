@@ -8,6 +8,7 @@ import { Popover } from 'antd';
 function AuctionOne({
   goToNextStep,
   mintingToken,
+  mintingStatue,
   mintTokenBot,
   mintTokenStatue,
   tokenPrices,
