@@ -14,7 +14,7 @@ import WalletLink from "walletlink";
 // import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Web3Modal from "web3modal";
 import "./App.css";
-import { Faucet, GasGauge, Ramp } from "./components";
+import { Contract, Faucet, GasGauge, Ramp } from "./components";
 import { ALCHEMY_KEY_MAINNET, INFURA_ID, NETWORK, NETWORKS } from "./constants";
 import externalContracts from "./contracts/external_contracts";
 // contracts
@@ -27,7 +27,7 @@ import { GetStarted, Home, Mint } from "./views";
 const { ethers } = require("ethers");
 
 /// 📡 What chain are your contracts deployed to?
-const targetNetwork = process.env.REACT_APP_NETWORK ? NETWORKS[process.env.REACT_APP_NETWORK] : NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const targetNetwork = process.env.REACT_APP_NETWORK ? NETWORKS[process.env.REACT_APP_NETWORK] : NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // 😬 Sorry for all the console logging
 const DEBUG = true;
@@ -103,8 +103,7 @@ const web3Modal = new Web3Modal({
     },
     "custom-walletlink": {
       display: {
-        logo:
-          "https://play-lh.googleusercontent.com/PjoJoG27miSglVBXoXrxBSLveV6e3EeBPpNY55aiUUBM9Q1RCETKCOqdOkX2ZydqVf0",
+        logo: "https://play-lh.googleusercontent.com/PjoJoG27miSglVBXoXrxBSLveV6e3EeBPpNY55aiUUBM9Q1RCETKCOqdOkX2ZydqVf0",
         name: "Coinbase",
         description: "Connect to Coinbase Wallet (not Coinbase App)",
       },
@@ -423,6 +422,18 @@ function App(props) {
               readContracts={readContracts}
               lastMinted={[lastMintedEthBot, lastMintedMolochBot]}
               events={{ ethBotTransferEvents, molochBotBotTransferEvents }}
+              faucetHint={faucetHint}
+              address={address}
+              localProvider={localProvider}
+              userSigner={userSigner}
+              mainnetProvider={mainnetProvider}
+              price={price}
+              web3Modal={web3Modal}
+              loadWeb3Modal={loadWeb3Modal}
+              logoutOfWeb3Modal={logoutOfWeb3Modal}
+              blockExplorer={blockExplorer}
+              gasPrice={gasPrice}
+              networkDisplay={networkDisplay}
             />
           </Route>
           <Route path="/mint">
@@ -434,11 +445,21 @@ function App(props) {
               events={{ ethBotTransferEvents, molochBotBotTransferEvents }}
             />
           </Route>
+          <Route path="/debug">
+            <Contract
+              name="GreatestLARP"
+              signer={userSigner}
+              provider={localProvider}
+              address={address}
+              blockExplorer={blockExplorer}
+              contractConfig={contractConfig}
+            />
+          </Route>
         </Switch>
       </Router>
 
       {/* 🗺 Extra UI like gas price, eth price, faucet, and support: */}
-      <div style={{ position: "fixed", textAlign: "left", left: 0, bottom: 20, padding: 10 }}>
+      <div style={{ position: "fixed", textAlign: "left", right: 0, bottom: 20, padding: 10 }}>
         <Row align="middle" gutter={[4, 4]}>
           <Col span={12}>
             <Ramp price={price} address={address} networks={NETWORKS} />

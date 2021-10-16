@@ -6,11 +6,11 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-/// @title Eth Bot NFT Contract
+/// @title Moloch Bot Statue NFT Contract
 /// @author jaxcoder, ghostffcode
 /// @notice
 /// @dev
-contract EthBot is ERC721URIStorage, Ownable {
+contract MolochBotStatue is ERC721URIStorage, Ownable {
     using SafeMath for uint256;
     using Counters for Counters.Counter;
 
@@ -21,7 +21,7 @@ contract EthBot is ERC721URIStorage, Ownable {
     // this lets you look up a token by the uri (assuming there is only one of each uri for now)
     mapping(bytes32 => uint256) public uriToTokenId;
 
-    constructor() ERC721("EthBot", "ETHBOT") {}
+    constructor() ERC721("Moloch Bot Statue", "MOLBOTSTAT") {}
 
     function _baseURI() internal pure override returns (string memory) {
         return

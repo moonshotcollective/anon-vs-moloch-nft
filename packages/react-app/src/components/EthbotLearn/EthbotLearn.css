@@ -1,7 +1,4 @@
 .ethbotlearn-botName {
-	width: 204px;
-	height: 29.81px;
-
 	font-family: 'Space Mono';
 	font-style: normal;
 	font-weight: normal;
@@ -12,9 +9,6 @@
 }
 
 .ethbotlearn-botDescription {
-	width: 196.05px;
-	height: 46.36px;
-
 	font-family: 'Libre Franklin';
 	font-style: normal;
 	font-weight: normal;
@@ -24,8 +18,26 @@
 	color: #000000;
 }
 
-.ethbotlearn-buttons {
-	position: absolute;
-	left: 1100px;
-	top: 1900px;
+@media only screen and (min-width: 1600px) {
+	.ethbotlearn-height	{height: 1010px}
+	.ethbotlearn-buttons {
+		margin-right: 520px;
+		margin-top: 300px;
+	}
+}
+
+@media only screen and (min-width: 1000px) and (max-width: 1500px) {
+	.ethbotlearn-height	{height: 750px}
+	.ethbotlearn-buttons {
+		margin-right: 320px;
+		margin-top: 150px;
+	}
+}
+
+@media only screen and (min-width: 500px) and (max-width: 990px) {
+	.ethbotlearn-height	{height: 550px}
+	.ethbotlearn-buttons {
+		margin-right: 220px;
+		margin-top: 120px;
+	}
 }

@@ -1,14 +1,15 @@
+import { Col, Row } from "antd";
 import React from "react";
-import fundingbot1 from "../../assets/fundingbot-1.png";
-import fundingbot2 from "../../assets/fundingbot-2.png";
-import fundingbot3 from "../../assets/fundingbot-3.png";
-import fundingbot4 from "../../assets/fundingbot-4.png";
-import fundingbot5 from "../../assets/fundingbot-5.png";
-import fundingprogress1 from "../../assets/fundingprogress-1.png";
-import fundingprogress2 from "../../assets/fundingprogress-2.png";
-import fundingprogress3 from "../../assets/fundingprogress-3.png";
-import fundingprogress4 from "../../assets/fundingprogress-4.png";
-import fundingprogress5 from "../../assets/fundingprogress-5.png";
+import fundingbot1 from "../../assets/ProgressBar/fundingbot-1.png";
+import fundingbot2 from "../../assets/ProgressBar/fundingbot-2.png";
+import fundingbot3 from "../../assets/ProgressBar/fundingbot-3.png";
+import fundingbot4 from "../../assets/ProgressBar/fundingbot-4.png";
+import fundingbot5 from "../../assets/ProgressBar/fundingbot-5.png";
+import fundingprogress1 from "../../assets/ProgressBar/progressbar1.svg";
+import fundingprogress2 from "../../assets/ProgressBar/progressbar2.svg";
+import fundingprogress3 from "../../assets/ProgressBar/progressbar3.svg";
+import fundingprogress4 from "../../assets/ProgressBar/progressbar4.svg";
+import fundingprogress5 from "../../assets/ProgressBar/progressbar5.svg";
 import "./EthbotProgress.css";
 
 const fundingBot = [fundingbot1, fundingbot2, fundingbot3, fundingbot4, fundingbot5];
@@ -20,30 +21,32 @@ const index = ({ progress }) => {
   const currentFundingProgress = fundingProgress[progress] || fundingprogress1;
 
   return (
-    <section class="text-gray-600 body-font bg-green-light-green h-52">
-      <div class="flex flex-wrap w-full ">
-        <div class="w-2/3 float-left ">
-          <img src={currentFundingBot} className="absolute inset-1/3 left-0" alt="bot" />
-          <img src={currentFundingProgress} alt="bot" className="p-2 w-full" />
-        </div>
-        <div class="w-2/8 float-right ml-32">
-          <h1 class="justify-self-center progress-title wrap">Get the latest Edition</h1>
-          <div className="flex">
-            <p class="leading-relaxed progress-subtext">Lorem Ipsum</p>
-            <div class=" ml-10 flex ">
-              <button
-                onClick={() => {
-                  window.location =
-                    "https://store.gitcoin.co/collections/comics/products/ethereum-vs-moloch-comic-book-2-digital-edition";
-                }}
-                class="inline-flex text-white bg-green-teal h-12 border-0 py-2 px-6 rounded text-lg font-spacemono"
-              >
-                Join now
-              </button>
+    <section className="bg-green-light-green h-auto w-full">
+      <Row className="container min-w-full">
+        <Col flex={5}>
+            <img src={currentFundingBot} alt="progress bot" className="h-32 -mb-16 p-2" />
+            <img src={currentFundingProgress} alt="bot" className="p-2 w-full" />
+        </Col>
+        <Col flex={1}>
+          <div className="items-center">
+            <h1 className="flex flex-wrap progress-title mt-4 sm:ml-10">Get the latest Edition</h1>
+            <div className="flex">
+              <p className="inline-flex progress-subtext py-2 px-6">Lorem Ipsum</p>
+              <div className=" ml-2 flex ">
+                <button
+                  onClick={() => {
+                    window.location =
+                      "https://store.gitcoin.co/collections/comics/products/ethereum-vs-moloch-comic-book-2-digital-edition";
+                  }}
+                  class="inline-flex text-white bg-green-teal h-12 border-0 py-2 px-6 rounded text-lg font-spacemono"
+                >
+                  Join now
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </section>
   );
 };

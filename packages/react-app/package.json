@@ -1,7 +1,7 @@
 {
   "name": "@scaffold-eth/react-app",
   "version": "1.0.0",
-  "homepage": ".",
+  "homepage": "/",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -98,7 +98,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint --config ./.eslintrc.js --ignore-path ./.eslintignore ./src/**/*",
     "ipfs": "node ./scripts/ipfs.js",
-    "surge": "surge ./build",
+    "surge": "cp build/index.html build/200.html && surge ./build",
     "s3": "node ./scripts/s3.js",
     "ship": "yarn surge",
     "theme": "npx gulp less",

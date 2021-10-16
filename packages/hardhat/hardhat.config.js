@@ -11,21 +11,28 @@ require("hardhat-deploy");
 require("@eth-optimism/hardhat-ovm");
 require("@nomiclabs/hardhat-ethers");
 
+require("@tenderly/hardhat-tenderly");
+require("@nomiclabs/hardhat-etherscan");
+
 const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 
 /*
-      📡 This is where you configure your deploy configuration for 🏗 scaffold-eth
+  📡  Rinkeby Deploy
+    deploying "EthBot" (tx: 0x69f9dd0655313dfb27066b76bba8f85f11cf3dd610c15c744235830b537eaf60)...: deployed at 0xFFCf345DA8B42FC770B7A781C250274cDA45F63b with 1451094 gas
+    deploying "MolochBot" (tx: 0xfdfc60eadebedbc69774c5b5365a254ca18dc92de588d07d60ae5e354391b076)...: deployed at 0xF5E4fFf10592f282Cc0C6566dDD4B3F2cbd4eAa5 with 1450975 gas
+    deploying "EthBotStatue" (tx: 0x4952db5b02822c9e0466016ced9c9b032724e24def3f300dc88f9c88cfa6b351)...: deployed at 0x9a0Bb3b0Da47Af7128ca2b253a2A2D628dB8d7E9 with 1451119 gas
+    deploying "MolochBotStatue" (tx: 0xcbcf95dc6e2dce0cbefaa79ce1e7a5ac48dab3c0fdfd5e78199e61aa72fbbb36)...: deployed at 0x26e3dC7a4Ce2376BfDC4eB6eA2A0313505e89994 with 1451179 gas
+    deploying "GreatestLARP" (tx: 0xcc235e17ec3fb140cb46e4ab72f40c8822c5e5338baa9c77dd2e13babab6a7b0)...: deployed at 0x67405B8CdD75F5844D8e012c7e642109bE5c2268 with 1658520 gas
+  
+  
+  📡  Mainnet Deploy
 
-      check out `packages/scripts/deploy.js` to customize your deployment
-
-      out of the box it will auto deploy anything in the `contracts` folder and named *.sol
-      plus it will use *.args for constructor args
 */
 
 //
 // Select the network you want to deploy to here:
 //
-const defaultNetwork = "localhost";
+const defaultNetwork = "localhost"; // contracts are deployed to Rinkeby already
 
 const mainnetGwei = 21;
 
@@ -55,212 +62,16 @@ module.exports = {
   networks: {
     localhost: {
       url: "http://localhost:8545",
-      /*      
-        notice no mnemonic here? it will just use account 0 of the hardhat node to deploy
-        (you can put in a mnemonic here to set the deployer locally)
-      
-      */
     },
-
-    // rinkeby: {
-    //   url: `https://rinkeby.infura.io/v3/${process.env.RINKEBY_INFURA_KEY}`,
-    //   accounts: [`${process.env.RINKEBY_DEPLOYER_PRIV_KEY}`],
-    // },
-    // kovan: {
-    //   url: `https://rinkeby.infura.io/v3/${process.env.KOVAN_INFURA_KEY}`,
-    //   accounts: [`${process.env.KOVAN_DEPLOYER_PRIV_KEY}`],
-    // },
-    // mainnet: {
-    //   url: `https://mainnet.infura.io/v3/${process.env.MAINNET_INFURA_KEY}`,
-    //   accounts: [`${process.env.MAINNET_DEPLOYER_PRIV_KEY}`],
-    // },
-    // ropsten: {
-    //   url: `https://ropsten.infura.io/v3/${process.env.ROPSTEN_INFURA_KEY}`,
-    //   accounts: [`${process.env.ROPSTEN_DEPLOYER_PRIV_KEY}`],
-    // },
-    // goerli: {
-    //   url: `https://goerli.infura.io/v3/${process.env.GOERLI_INFURA_KEY}`,
-    //   accounts: [`${process.env.GOERLI_DEPLOYER_PRIV_KEY}`],
-    // },
-    // xdai: {
-    //   url: 'https://dai.poa.network',
-    //   gasPrice: 1000000000,
-    //   accounts: [`${process.env.XDAI_DEPLOYER_PRIV_KEY}`],
-    // },
-
     rinkeby: {
-      url: "https://rinkeby.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
-      
-       //    url: "https://speedy-nodes-nyc.moralis.io/XXXXXXXXXXXXXXXXXXXXXXX/eth/rinkeby", // <---- YOUR MORALIS ID! (not limited to infura)
-      
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-    },
-    kovan: {
-      url: "https://kovan.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
-    
-      //    url: "https://speedy-nodes-nyc.moralis.io/XXXXXXXXXXXXXXXXXXXXXXX/eth/kovan", // <---- YOUR MORALIS ID! (not limited to infura)
-      
+      url: "https://rinkeby.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad",
       accounts: {
         mnemonic: mnemonic(),
       },
     },
     mainnet: {
-      url: "https://mainnet.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
-      
-      //      url: "https://speedy-nodes-nyc.moralis.io/XXXXXXXXXXXXXXXXXXXXXXXXX/eth/mainnet", // <---- YOUR MORALIS ID! (not limited to infura)
-        
-      gasPrice: mainnetGwei*1000000000,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-    },
-    ropsten: {
-      url: "https://ropsten.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
-      
-      //      url: "https://speedy-nodes-nyc.moralis.io/XXXXXXXXXXXXXXXXXXXXXXXXX/eth/ropsten",// <---- YOUR MORALIS ID! (not limited to infura)
-      
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-    },
-    goerli: {
-      url: "https://goerli.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
-      
-      //      url: "https://speedy-nodes-nyc.moralis.io/XXXXXXXXXXXXXXXXXXXXXXXXX/eth/goerli", // <---- YOUR MORALIS ID! (not limited to infura)
-      
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-    },
-    xdai: {
-      url: "https://rpc.xdaichain.com/",
-      gasPrice: 1000000000,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-    },
-    polygon: {
-      url: "https://speedy-nodes-nyc.moralis.io/XXXXXXXXXXXXXXXXXXXx/polygon/mainnet",// <---- YOUR MORALIS ID! (not limited to infura)
-      gasPrice: 1000000000,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-    },     
-    polytest: {
-      url: "https://speedy-nodes-nyc.moralis.io/XXXXXXXXXXXXXXXXXXXXXXX/polygon/mumbai",// <---- YOUR MORALIS ID! (not limited to infura)
-      gasPrice: 1000000000,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-    },    
-
-    matic: {
-      url: "https://rpc-mainnet.maticvigil.com/",
-      gasPrice: 1000000000,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-    },
-    rinkebyArbitrum: {
-      url: "https://rinkeby.arbitrum.io/rpc",
-      gasPrice: 0,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-      companionNetworks: {
-        l1: "rinkeby",
-      },
-    },
-    localArbitrum: {
-      url: "http://localhost:8547",
-      gasPrice: 0,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-      companionNetworks: {
-        l1: "localArbitrumL1",
-      },
-    },
-    localArbitrumL1: {
-      url: "http://localhost:7545",
-      gasPrice: 0,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-      companionNetworks: {
-        l2: "localArbitrum",
-      },
-    },
-    kovanOptimism: {
-      url: "https://kovan.optimism.io",
-      gasPrice: 0,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-      ovm: true,
-      companionNetworks: {
-        l1: "kovan",
-      },
-    },
-    localOptimism: {
-      url: "http://localhost:8545",
-      gasPrice: 0,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-      ovm: true,
-      companionNetworks: {
-        l1: "localOptimismL1",
-      },
-    },
-    localOptimismL1: {
-      url: "http://localhost:9545",
-      gasPrice: 0,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-      companionNetworks: {
-        l2: "localOptimism",
-      },
-    },
-    localAvalanche: {
-      url: "http://localhost:9650/ext/bc/C/rpc",
-      gasPrice: 225000000000,
-      chainId: 43112,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-    },
-    fujiAvalanche: {
-      url: "https://api.avax-test.network/ext/bc/C/rpc",
-      gasPrice: 225000000000,
-      chainId: 43113,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-    },
-    mainnetAvalanche: {
-      url: "https://api.avax.network/ext/bc/C/rpc",
-      gasPrice: 225000000000,
-      chainId: 43114,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-    },
-    testnetHarmony: {
-      url: "https://api.s0.b.hmny.io",
-      gasPrice: 1000000000,
-      chainId: 1666700000,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
-    },
-    mainnetHarmony: {
-      url: "https://api.harmony.one",
-      gasPrice: 1000000000,
-      chainId: 1666600000,
+      url: "https://mainnet.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad",
+      gasPrice: mainnetGwei * 1000000000,
       accounts: {
         mnemonic: mnemonic(),
       },
@@ -286,6 +97,15 @@ module.exports = {
           },
         },
       },
+      {
+        version: "0.7.3",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
     ],
   },
   ovm: {
@@ -295,6 +115,9 @@ module.exports = {
     deployer: {
       default: 0, // here this will by default take the first account as deployer
     },
+  },
+  etherscan: {
+    apiKey: "DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW",
   },
 };
 
@@ -323,7 +146,7 @@ task("fundedwallet", "Create a wallet (pk) link and fund it with deployer?")
     const randomWallet = ethers.Wallet.createRandom();
     const privateKey = randomWallet._signingKey().privateKey;
     console.log("🔐 WALLET Generated as " + randomWallet.address + "");
-    let url = taskArgs.url ? taskArgs.url : "http://localhost:3000";
+    const url = taskArgs.url ? taskArgs.url : "http://localhost:3000";
 
     let localDeployerMnemonic;
     try {
@@ -333,13 +156,13 @@ task("fundedwallet", "Create a wallet (pk) link and fund it with deployer?")
       /* do nothing - this file isn't always there */
     }
 
-    let amount = taskArgs.amount ? taskArgs.amount : "0.01";
+    const amount = taskArgs.amount ? taskArgs.amount : "0.01";
     const tx = {
       to: randomWallet.address,
       value: ethers.utils.parseEther(amount),
     };
 
-    //SEND USING LOCAL DEPLOYER MNEMONIC IF THERE IS ONE
+    // SEND USING LOCAL DEPLOYER MNEMONIC IF THERE IS ONE
     // IF NOT SEND USING LOCAL HARDHAT NODE:
     if (localDeployerMnemonic) {
       let deployerWallet = new ethers.Wallet.fromMnemonic(
@@ -353,9 +176,8 @@ task("fundedwallet", "Create a wallet (pk) link and fund it with deployer?")
           randomWallet.address +
           " using deployer account"
       );
-      let sendresult = await deployerWallet.sendTransaction(tx);
+      const sendresult = await deployerWallet.sendTransaction(tx);
       console.log("\n" + url + "/pk#" + privateKey + "\n");
-      return;
     } else {
       console.log(
         "💵 Sending " +
@@ -382,12 +204,12 @@ task(
     const hdwallet = hdkey.fromMasterSeed(seed);
     const wallet_hdpath = "m/44'/60'/0'/0/";
     const account_index = 0;
-    let fullPath = wallet_hdpath + account_index;
+    const fullPath = wallet_hdpath + account_index;
     if (DEBUG) console.log("fullPath", fullPath);
     const wallet = hdwallet.derivePath(fullPath).getWallet();
     const privateKey = "0x" + wallet._privKey.toString("hex");
     if (DEBUG) console.log("privateKey", privateKey);
-    var EthUtil = require("ethereumjs-util");
+    const EthUtil = require("ethereumjs-util");
     const address =
       "0x" + EthUtil.privateToAddress(wallet._privKey).toString("hex");
     console.log(
@@ -425,29 +247,29 @@ task(
       const hdwallet = hdkey.fromMasterSeed(seed);
       const wallet_hdpath = "m/44'/60'/0'/0/";
       const account_index = 0;
-      let fullPath = wallet_hdpath + account_index;
+      const fullPath = wallet_hdpath + account_index;
       if (DEBUG) console.log("fullPath", fullPath);
       const wallet = hdwallet.derivePath(fullPath).getWallet();
       const privateKey = "0x" + wallet._privKey.toString("hex");
       if (DEBUG) console.log("privateKey", privateKey);
-      var EthUtil = require("ethereumjs-util");
+      const EthUtil = require("ethereumjs-util");
       address =
         "0x" + EthUtil.privateToAddress(wallet._privKey).toString("hex");
 
       const rlp = require("rlp");
       const keccak = require("keccak");
 
-      let nonce = 0x00; //The nonce must be a hex literal!
-      let sender = address;
+      const nonce = 0x00; // The nonce must be a hex literal!
+      const sender = address;
 
-      let input_arr = [sender, nonce];
-      let rlp_encoded = rlp.encode(input_arr);
+      const input_arr = [sender, nonce];
+      const rlp_encoded = rlp.encode(input_arr);
 
-      let contract_address_long = keccak("keccak256")
+      const contract_address_long = keccak("keccak256")
         .update(rlp_encoded)
         .digest("hex");
 
-      contract_address = contract_address_long.substring(24); //Trim the first 24 characters.
+      contract_address = contract_address_long.substring(24); // Trim the first 24 characters.
     }
 
     console.log(
@@ -476,32 +298,32 @@ task(
   async (_, { ethers }) => {
     const hdkey = require("ethereumjs-wallet/hdkey");
     const bip39 = require("bip39");
-    let mnemonic = fs.readFileSync("./mnemonic.txt").toString().trim();
+    const mnemonic = fs.readFileSync("./mnemonic.txt").toString().trim();
     if (DEBUG) console.log("mnemonic", mnemonic);
     const seed = await bip39.mnemonicToSeed(mnemonic);
     if (DEBUG) console.log("seed", seed);
     const hdwallet = hdkey.fromMasterSeed(seed);
     const wallet_hdpath = "m/44'/60'/0'/0/";
     const account_index = 0;
-    let fullPath = wallet_hdpath + account_index;
+    const fullPath = wallet_hdpath + account_index;
     if (DEBUG) console.log("fullPath", fullPath);
     const wallet = hdwallet.derivePath(fullPath).getWallet();
     const privateKey = "0x" + wallet._privKey.toString("hex");
     if (DEBUG) console.log("privateKey", privateKey);
-    var EthUtil = require("ethereumjs-util");
+    const EthUtil = require("ethereumjs-util");
     const address =
       "0x" + EthUtil.privateToAddress(wallet._privKey).toString("hex");
 
-    var qrcode = require("qrcode-terminal");
+    const qrcode = require("qrcode-terminal");
     qrcode.generate(address);
     console.log("‍📬 Deployer Account is " + address);
-    for (let n in config.networks) {
-      //console.log(config.networks[n],n)
+    for (const n in config.networks) {
+      // console.log(config.networks[n],n)
       try {
-        let provider = new ethers.providers.JsonRpcProvider(
+        const provider = new ethers.providers.JsonRpcProvider(
           config.networks[n].url
         );
-        let balance = await provider.getBalance(address);
+        const balance = await provider.getBalance(address);
         console.log(" -- " + n + " --  -- -- 📡 ");
         console.log("   balance: " + ethers.utils.formatEther(balance));
         console.log(
@@ -599,4 +421,4 @@ task("send", "Send ETH")
     debug(JSON.stringify(txRequest, null, 2));
 
     return send(fromSigner, txRequest);
-  }); 
+  });

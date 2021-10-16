@@ -54,7 +54,8 @@ module.exports = {
       'intro': '890px',
       'intro-mobile': '450px',
       'ethbotlearn': '1005px',
-     }
+      'ethbotlearn-mobile': '505px',
+     },
   },
   variants: {
     extend: {},
