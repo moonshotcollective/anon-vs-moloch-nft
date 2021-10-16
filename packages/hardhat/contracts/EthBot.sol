@@ -21,7 +21,11 @@ contract EthBot is ERC721URIStorage, Ownable {
     // this lets you look up a token by the uri (assuming there is only one of each uri for now)
     mapping(bytes32 => uint256) public uriToTokenId;
 
-    constructor() ERC721("EthBot", "ETHBOT") {}
+    string[] private uris;
+
+    constructor() ERC721("EthBot", "ETHBOT") {
+        uris = ["", ""];
+    }
 
     function _baseURI() internal pure override returns (string memory) {
         return
@@ -30,7 +34,7 @@ contract EthBot is ERC721URIStorage, Ownable {
 
     function lastMintedToken() external view returns (uint256 id) {
         id = _tokenIds.current();
-    }
+    }    
 
     function mint(address user) external onlyOwner returns (uint256 id) {
         _tokenIds.increment();

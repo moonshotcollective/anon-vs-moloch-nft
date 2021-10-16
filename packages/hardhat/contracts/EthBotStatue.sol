@@ -18,10 +18,14 @@ contract EthBotStatue is ERC721URIStorage, Ownable {
 
     uint256 public lastMinted = 0;
 
+    string[] private uris;
+
     // this lets you look up a token by the uri (assuming there is only one of each uri for now)
     mapping(bytes32 => uint256) public uriToTokenId;
 
-    constructor() ERC721("Eth Bot Statue", "ETHBOTSTAT") {}
+    constructor() ERC721("Eth Bot Statue", "ETHBOTSTAT") {
+        uris = ["", ""];
+    }
 
     function _baseURI() internal pure override returns (string memory) {
         return
