@@ -422,6 +422,18 @@ function App(props) {
               readContracts={readContracts}
               lastMinted={[lastMintedEthBot, lastMintedMolochBot]}
               events={{ ethBotTransferEvents, molochBotBotTransferEvents }}
+              faucetHint={faucetHint}
+              address={address}
+              localProvider={localProvider}
+              userSigner={userSigner}
+              mainnetProvider={mainnetProvider}
+              price={price}
+              web3Modal={web3Modal}
+              loadWeb3Modal={loadWeb3Modal}
+              logoutOfWeb3Modal={logoutOfWeb3Modal}
+              blockExplorer={blockExplorer}
+              gasPrice={gasPrice}
+              networkDisplay={networkDisplay}
             />
           </Route>
           <Route path="/mint">
