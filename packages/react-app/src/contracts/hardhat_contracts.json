@@ -5,7 +5,7 @@
       "chainId": "4",
       "contracts": {
         "EthBot": {
-          "address": "0xFFCf345DA8B42FC770B7A781C250274cDA45F63b",
+          "address": "0xC5F9f4d05d3c9afE9F8Fcb689Bc5325163B7b051",
           "abi": [
             {
               "inputs": [],
@@ -461,7 +461,7 @@
           ]
         },
         "MolochBot": {
-          "address": "0xF5E4fFf10592f282Cc0C6566dDD4B3F2cbd4eAa5",
+          "address": "0xCC322BF7f7bd2489bC79AE28D9B50fc7e2cf5097",
           "abi": [
             {
               "inputs": [],
@@ -917,7 +917,7 @@
           ]
         },
         "EthBotStatue": {
-          "address": "0x9a0Bb3b0Da47Af7128ca2b253a2A2D628dB8d7E9",
+          "address": "0x565BD8Fa27A56E0c50D1a9349B3703456D268370",
           "abi": [
             {
               "inputs": [],
@@ -1373,7 +1373,7 @@
           ]
         },
         "MolochBotStatue": {
-          "address": "0x26e3dC7a4Ce2376BfDC4eB6eA2A0313505e89994",
+          "address": "0x463150552f200eaAeC9bD19b58359dA7C491DE55",
           "abi": [
             {
               "inputs": [],
@@ -1829,7 +1829,7 @@
           ]
         },
         "GreatestLARP": {
-          "address": "0x67405B8CdD75F5844D8e012c7e642109bE5c2268",
+          "address": "0xa8926352e71C414E7dfdd166F05587338a009E6B",
           "abi": [
             {
               "inputs": [
@@ -1923,68 +1923,26 @@
               "type": "function"
             },
             {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "level",
-                  "type": "uint256"
-                }
-              ],
-              "name": "getDetailsForLevelBots",
+              "inputs": [],
+              "name": "getDetailForStatueLevels",
               "outputs": [
                 {
-                  "internalType": "uint256",
-                  "name": "price",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "threshold",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "totalSupply",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "tokenAddress",
-                  "type": "address"
+                  "internalType": "uint256[5][]",
+                  "name": "",
+                  "type": "uint256[5][]"
                 }
               ],
               "stateMutability": "view",
               "type": "function"
             },
             {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "level",
-                  "type": "uint256"
-                }
-              ],
-              "name": "getDetailsForLevelStatue",
+              "inputs": [],
+              "name": "getDetailForTokenLevels",
               "outputs": [
                 {
-                  "internalType": "uint256",
-                  "name": "price",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "threshold",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "totalSupply",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "tokenAddress",
-                  "type": "address"
+                  "internalType": "uint256[5][]",
+                  "name": "",
+                  "type": "uint256[5][]"
                 }
               ],
               "stateMutability": "view",
@@ -2046,58 +2004,6 @@
                 }
               ],
               "stateMutability": "payable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "statueLeftover",
-              "outputs": [
-                {
-                  "internalType": "uint256[]",
-                  "name": "",
-                  "type": "uint256[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "statuePrices",
-              "outputs": [
-                {
-                  "internalType": "uint256[]",
-                  "name": "",
-                  "type": "uint256[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "tokenLeftover",
-              "outputs": [
-                {
-                  "internalType": "uint256[]",
-                  "name": "",
-                  "type": "uint256[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "tokenPrices",
-              "outputs": [
-                {
-                  "internalType": "uint256[]",
-                  "name": "",
-                  "type": "uint256[]"
-                }
-              ],
-              "stateMutability": "view",
               "type": "function"
             },
             {

@@ -12,41 +12,33 @@ import { Nav } from "../../themed-components";
 // Steps component array
 const Steps = [Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
 
+const incrementPercent = "5";
+
 function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [mintingToken, setMintingToken] = useState(false);
-  const [buyingStatue, setBuyingStatue] = useState(false);
-  const [levelCompleted, setLevelCompleted] = useState(false);
+  const [mintingStatue, setMintingStatue] = useState(false);
+  // const [levelCompleted, setLevelCompleted] = useState(false);
 
-  const tokenPrices = (useContractReader(readContracts, "GreatestLARP", "tokenPrices") || []).map(v =>
-    ethers.utils.formatUnits(v),
-  );
+  const tokenLevelDetails = useContractReader(readContracts, "GreatestLARP", "getDetailForTokenLevels");
+  const statueLevelDetails = useContractReader(readContracts, "GreatestLARP", "getDetailForStatueLevels");
 
-  const statuePrices = (useContractReader(readContracts, "GreatestLARP", "statuePrices") || []).map(v =>
-    ethers.utils.formatUnits(v),
-  );
-
-  const tokenLeftover = (useContractReader(readContracts, "GreatestLARP", "tokenLeftover") || []).map(v =>
-    v.toString(),
-  );
-
-  const statueLeftover = (useContractReader(readContracts, "GreatestLARP", "statueLeftover") || []).map(v =>
-    v.toString(),
-  );
+  console.log(`tokenLevelDetails: `, tokenLevelDetails);
+  console.log(`statueLevelDetails: `, statueLevelDetails);
 
   // working on this
-  useEffect(() => {
-    if (tokenLeftover >= 297 && statueLeftover >= 2) {
-      setLevelCompleted(true);
-    }
-  }, [tokenLeftover, statueLeftover, readContracts]);
+  // useEffect(() => {
+  //   if (tokenLeftover >= 297 && statueLeftover >= 2) {
+  //     setLevelCompleted(true);
+  //   }
+  // }, [tokenLeftover, statueLeftover, readContracts]);
 
-  const mintTokenBot = async level => {
+  const mintTokenBot = async (level, price) => {
     setMintingToken(true);
     try {
       // fetch price for selected level
-      const { price } = await readContracts.GreatestLARP.getDetailsForLevelBots(level);
-      const result = tx(writeContracts.GreatestLARP.requestMint(level, { value: price }), async update => {
+      const value = ethers.utils.parseEther(price);
+      const result = tx(writeContracts.GreatestLARP.requestMint(level, { value }), async update => {
         console.log("📡 Transaction Update:", update);
         // reset minting
         if (update && (update.status === "confirmed" || update.status === 1)) {
@@ -70,12 +62,12 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
     setMintingToken(false);
   };
 
-  const mintTokenStatue = async level => {
-    setBuyingStatue(true);
+  const mintTokenStatue = async (level, price) => {
+    setMintingStatue(true);
     try {
       // fetch price for selected level
-      const { price } = await readContracts.GreatestLARP.getDetailsForLevelStatue(level);
-      const result = tx(writeContracts.GreatestLARP.requestMintStatue(level, { value: price }), async update => {
+      const value = ethers.utils.parseEther(price);
+      const result = tx(writeContracts.GreatestLARP.requestMintStatue(level, { value }), async update => {
         console.log("📡 Transaction Update:", update);
         // reset minting
         if (update && (update.status === "confirmed" || update.status === 1)) {
@@ -94,18 +86,15 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
       console.log("awaiting metamask/web3 confirm result...", result);
       console.log(await result);
     } catch (err) {
-      setBuyingStatue(false);
+      setMintingStatue(false);
     }
-    setBuyingStatue(false);
+    setMintingStatue(false);
   };
 
   // Proceed to the next UI step
   const goToNextStep = () => {
     setCurrentStep(currentStep + 1);
   };
-
-  console.log(tokenPrices);
-  console.log(statuePrices);
 
   const CurrentStepComponent = Steps[currentStep];
 
@@ -119,13 +108,11 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
           currentStep={currentStep}
           mintTokenBot={mintTokenBot}
           mintTokenStatue={mintTokenStatue}
-          tokenLeftover={tokenLeftover}
-          statueLeftover={statueLeftover}
-          tokenPrices={tokenPrices}
-          statuePrices={statuePrices}
+          incrementPercent={incrementPercent}
           mintingToken={mintingToken}
-          buyingStatue={buyingStatue}
-          levelCompleted={levelCompleted}
+          mintingStatue={mintingStatue}
+          tokenLevelDetails={tokenLevelDetails}
+          statueLevelDetails={statueLevelDetails}
         />
       </section>
     </>
