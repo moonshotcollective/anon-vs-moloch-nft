@@ -29,6 +29,8 @@ module.exports = async ({ getNamedAccounts, getChainId, deployments }) => {
       [3, 3], // Physical threshold 3/5
       ethers.utils.parseUnits("0.0033"), // Digital
       ethers.utils.parseUnits("3"), // Pysical
+        [1350, 1350], //inflationRatesStatues
+        [1030, 1030], // inflationRatesDigital
     ],
     log: true,
   });
