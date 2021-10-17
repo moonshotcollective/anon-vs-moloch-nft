@@ -100,21 +100,12 @@ contract GreatestLARP is Ownable {
     /// @dev A function that can be called from Etherscan to lower
     ///      the price of the item by 10%.
     function whompwhomp(uint256 _level) public isValidLevel(_level) onlyOwner {
-        if (_level == 1) {
-            tokenMap[_level].price = tokenMap[_level].price.sub(
-                tokenMap[_level].price.div(100).mul(10)
-            );
-            statueMap[_level].price = statueMap[_level].price.sub(
-                statueMap[_level].price.div(100).mul(10)
-            );
-        } else if (_level == 2) {
-            tokenMap[_level].price = tokenMap[_level].price.sub(
-                tokenMap[_level].price.div(100).mul(10)
-            );
-            statueMap[_level].price = statueMap[_level].price.sub(
-                statueMap[_level].price.div(100).mul(10)
-            );
-        }
+        tokenMap[_level].price = tokenMap[_level].price.sub(
+            tokenMap[_level].price.div(100).mul(10)
+        );
+        statueMap[_level].price = statueMap[_level].price.sub(
+            statueMap[_level].price.div(100).mul(10)
+        );
     }
 
     function getDetailForTokenLevels()
@@ -162,24 +153,6 @@ contract GreatestLARP is Ownable {
         return levels;
     }
 
-    /// @dev update the level price
-    function changeLevelPriceForBots(uint256 level, uint256 newPrice)
-        public
-        isValidLevel(level)
-        onlyOwner
-    {
-        tokenMap[level].price = newPrice;
-    }
-
-    /// @dev update the level price
-    function changeLevelPriceForStatues(uint256 level, uint256 newPrice)
-        public
-        isValidLevel(level)
-        onlyOwner
-    {
-        statueMap[level].price = newPrice;
-    }
-
     /// @dev request to mint a Bot NFT
     function requestMint(uint256 level)
         public
@@ -214,12 +187,12 @@ contract GreatestLARP is Ownable {
             "Minting completed for this level"
         );
 
+        // mint token
+        uint256 id = levelToken.mint(msg.sender);
+
         // send ETH to gitcoin multisig
         (bool success, ) = gitcoin.call{value: currentPrice}("");
         require(success, "could not send");
-
-        // mint token
-        uint256 id = levelToken.mint(msg.sender);
 
         // send the refund
         uint256 refund = msg.value.sub(currentPrice);
@@ -266,12 +239,12 @@ contract GreatestLARP is Ownable {
             "Minting completed for this level"
         );
 
+        // mint token
+        uint256 id = levelToken.mint(msg.sender);
+
         // send ETH to gitcoin multisig
         (bool success, ) = gitcoin.call{value: currentPrice}("");
         require(success, "could not send");
-
-        // mint token
-        uint256 id = levelToken.mint(msg.sender);
 
         // send the refund
         uint256 refund = msg.value.sub(currentPrice);
