@@ -16,7 +16,7 @@ function Home(props) {
           onClick={() => {
             window.location = "/get-started";
           }}
-          className="z-50 infront text-white bg-green-teal border-0 py-2 px-6 rounded text-lg font-spacemono"
+          className="text-white bg-green-teal border-0 py-2 px-6 rounded text-lg font-spacemono"
         >
           Join us on this fight
           {/* <a className="text-white hover:text-gray-900" href="/get-started">Join us on this fight</a> */}
