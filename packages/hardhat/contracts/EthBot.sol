@@ -24,7 +24,7 @@ contract EthBot is ERC721URIStorage, Ownable {
     string[] private uris;
 
     constructor() ERC721("EthBot", "ETHBOT") {
-        uris = ["", ""];
+        uris = ["", "", "", "", ""];
     }
 
     function _baseURI() internal pure override returns (string memory) {
@@ -37,8 +37,8 @@ contract EthBot is ERC721URIStorage, Ownable {
     }
 
     function mintItem(address to, string memory tokenURI)
-      private
-      returns (uint256)
+        private
+        returns (uint256)
     {
         _tokenIds.increment();
 
@@ -49,14 +49,10 @@ contract EthBot is ERC721URIStorage, Ownable {
         return id;
     }
 
-    function mint(address user)
-        external
-        onlyOwner
-        returns (uint256 id) 
-    {
+    function mint(address user) external onlyOwner returns (uint256 id) {
         id = _tokenIds.current();
 
-        mintItem(user,  uris[id]);
+        mintItem(user, uris[id]);
 
         lastMinted = id;
 

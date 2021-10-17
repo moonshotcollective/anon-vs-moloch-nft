@@ -2,7 +2,14 @@ import React from "react";
 import DigitalMoloch from "../../assets/mint/digitalMoloch.png";
 import PhysicalMoloch from "../../assets/mint/physicalMoloch.png";
 import { Button } from "../../themed-components";
-import { Popover } from 'antd';
+import { Popover } from "antd";
+import { ethers } from "ethers";
+
+const getNewPrice = (price, incrementPercent) => {
+  const addition = price.div("100").mul(incrementPercent);
+  const newPrice = price.add(addition);
+  return ethers.utils.formatUnits(newPrice).toString();
+};
 
 function AuctionTwo({
   goToNextStep,
@@ -10,14 +17,37 @@ function AuctionTwo({
   mintingStatue,
   mintTokenBot,
   mintTokenStatue,
-  tokenPrices,
-  statuePrices,
-  tokenLeftover,
-  statueLeftover,
-  levelCompleted,
-  ...props
+  tokenLevelDetails,
+  statueLevelDetails,
+  incrementPercent,
 }) {
   const level = 2;
+  const levelKey = level - 1;
+
+  const [_tokenPrice, _tokenThreshold, _tokenTotalSupply, _lastMintedToken, _tokenLeftover] =
+    tokenLevelDetails[levelKey];
+  const [_statuePrice, _statueThreshold, _statueTotalSupply, _lastMintedStatue, _statueLeftover] =
+    statueLevelDetails[levelKey];
+
+  // prices
+  const tokenPrice = getNewPrice(_tokenPrice, incrementPercent);
+  const statuePrice = getNewPrice(_statuePrice, incrementPercent);
+
+  // last Minted ID
+  const lastMintedToken = _lastMintedToken.toString();
+  const lastMintedStatue = _lastMintedStatue.toString();
+
+  // leftovers
+  const tokenLeftover = _tokenLeftover.toString();
+  const statueLeftover = _statueLeftover.toString();
+
+  // total Supply
+  const totalTokenSupply = _tokenTotalSupply.toString();
+  const totalStatueSupply = _statueTotalSupply.toString();
+
+  // threshold
+  const tokenThreshold = _tokenThreshold.toString();
+  const statueThreshold = _statueThreshold.toString();
 
   function truncate(str, maxDecimalDigits) {
     if (str.includes(".")) {
@@ -48,14 +78,15 @@ function AuctionTwo({
             {/* Button */}
             <Button
               transparent
-              loading={mintingToken}
-              onClick={() => mintTokenStatue(level)}
+              loading={mintingStatue}
+              disabled={lastMintedStatue === totalStatueSupply}
+              onClick={() => mintTokenStatue(level, statuePrice)}
               className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
               padding={10}
             >
-              {truncate(statuePrices[level - 1], 4)} ETH
+              {truncate(statuePrice, 4)} ETH
             </Button>
-            <span className="text-red-500">(Only {statueLeftover[level - 1]} available)</span>
+            <span className="text-red-500">(Only {statueLeftover} available)</span>
           </div>
 
           {/*  Digital Moloch */}
@@ -70,13 +101,14 @@ function AuctionTwo({
             <Button
               transparent
               loading={mintingToken}
-              onClick={() => mintTokenBot(level)}
+              disabled={lastMintedToken === totalTokenSupply}
+              onClick={() => mintTokenBot(level, tokenPrice)}
               className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
               padding={10}
             >
-              {truncate(tokenPrices[level - 1], 4)} ETH
+              {truncate(tokenPrice, 4)} ETH
             </Button>
-            <span className="text-red-500">(Only {tokenLeftover[level - 1]} available)</span>
+            <span className="text-red-500">(Only {tokenLeftover} available)</span>
           </div>
         </div>
       </div>
@@ -90,7 +122,13 @@ function AuctionTwo({
 
           <div>
             <Popover content={popoverContent}>
-              <Button disabled={false} onClick={goToNextStep}>
+              <Button
+                disabled={
+                  parseInt(tokenThreshold) > parseInt(lastMintedToken) ||
+                  parseInt(statueThreshold) > parseInt(lastMintedStatue)
+                }
+                onClick={goToNextStep}
+              >
                 Continue
               </Button>
             </Popover>
