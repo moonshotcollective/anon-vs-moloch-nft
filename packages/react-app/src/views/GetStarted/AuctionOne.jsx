@@ -2,8 +2,7 @@ import React from "react";
 import EthBot from "../../assets/mint/frontEthBot.png";
 import MolochStatue from "../../assets/mint/molochStatue.png";
 import { Button } from "../../themed-components";
-import { Popover } from 'antd';
-
+import { Popover } from "antd";
 
 function AuctionOne({
   goToNextStep,
@@ -19,6 +18,8 @@ function AuctionOne({
   ...props
 }) {
   const level = 1;
+  const levelTokenPrice = tokenPrices[level - 1];
+  const levelStatuePrice = statuePrices[level - 1];
 
   function truncate(str, maxDecimalDigits) {
     if (str.includes(".")) {
@@ -69,11 +70,11 @@ function AuctionOne({
             <Button
               transparent
               loading={mintingToken}
-              onClick={() => mintTokenStatue(level)}
+              onClick={() => mintTokenStatue(level, levelStatuePrice)}
               className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
               padding={10}
             >
-              {truncate(statuePrices[level - 1], 4)} ETH
+              {truncate(levelStatuePrice, 4)} ETH
             </Button>
             <span className="text-red-500">(Only {statueLeftover[level - 1]} available)</span>
           </div>
@@ -90,11 +91,11 @@ function AuctionOne({
             <Button
               transparent
               loading={mintingToken}
-              onClick={() => mintTokenBot(level)}
+              onClick={() => mintTokenBot(level, levelTokenPrice)}
               className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
               padding={10}
             >
-              {truncate(tokenPrices[level - 1], 4)} ETH
+              {truncate(levelTokenPrice, 4)} ETH
             </Button>
             <span className="text-red-500">(Only {tokenLeftover[level - 1]} available)</span>
           </div>

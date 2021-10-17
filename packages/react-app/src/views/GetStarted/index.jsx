@@ -12,19 +12,27 @@ import { Nav } from "../../themed-components";
 // Steps component array
 const Steps = [Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
 
+const incrementPercent = "5";
+
 function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [mintingToken, setMintingToken] = useState(false);
   const [mintingStatue, setMintingStatue] = useState(false);
   const [levelCompleted, setLevelCompleted] = useState(false);
 
-  const tokenPrices = (useContractReader(readContracts, "GreatestLARP", "tokenPrices") || []).map(v =>
-    ethers.utils.formatUnits(v),
-  );
+  const tokenPrices = (useContractReader(readContracts, "GreatestLARP", "tokenPrices") || []).map(v => {
+    const addition = v.div("100").mul(incrementPercent);
+    const newPrice = v.add(addition);
 
-  const statuePrices = (useContractReader(readContracts, "GreatestLARP", "statuePrices") || []).map(v =>
-    ethers.utils.formatUnits(v),
-  );
+    return ethers.utils.formatUnits(newPrice);
+  });
+
+  const statuePrices = (useContractReader(readContracts, "GreatestLARP", "statuePrices") || []).map(v => {
+    const addition = v.div("100").mul(incrementPercent);
+    const newPrice = v.add(addition);
+
+    return ethers.utils.formatUnits(newPrice);
+  });
 
   const tokenLeftover = (useContractReader(readContracts, "GreatestLARP", "tokenLeftover") || []).map(v =>
     v.toString(),
@@ -41,12 +49,12 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
     }
   }, [tokenLeftover, statueLeftover, readContracts]);
 
-  const mintTokenBot = async level => {
+  const mintTokenBot = async (level, price) => {
     setMintingToken(true);
     try {
       // fetch price for selected level
-      const { price } = await readContracts.GreatestLARP.getDetailsForLevelBots(level);
-      const result = tx(writeContracts.GreatestLARP.requestMint(level, { value: price }), async update => {
+      const value = ethers.utils.parseEther(price);
+      const result = tx(writeContracts.GreatestLARP.requestMint(level, { value }), async update => {
         console.log("📡 Transaction Update:", update);
         // reset minting
         if (update && (update.status === "confirmed" || update.status === 1)) {
@@ -70,13 +78,12 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
     setMintingToken(false);
   };
 
-  const mintTokenStatue = async level => {
+  const mintTokenStatue = async (level, price) => {
     setMintingStatue(true);
     try {
       // fetch price for selected level
-      const { price } = await readContracts.GreatestLARP.getDetailsForLevelStatue(level);
-      const boostedPrice = price + (price * .05);
-      const result = tx(writeContracts.GreatestLARP.requestMintStatue(level, { value: boostedPrice }), async update => {
+      const value = ethers.utils.parseEther(price);
+      const result = tx(writeContracts.GreatestLARP.requestMintStatue(level, { value }), async update => {
         console.log("📡 Transaction Update:", update);
         // reset minting
         if (update && (update.status === "confirmed" || update.status === 1)) {
