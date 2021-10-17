@@ -6,12 +6,13 @@ import btnRight from "../../assets/EthbotLearn/btnRight.png";
 import "./EthbotLearn.css";
 
 const botMap = [
-	{botName: 'EthBot', description: 'Lorem Ipsum 0 '},
-	{botName: 'Gitcoin Bot', description: 'Lorem Ipsum 1'},
-	{botName: 'Kraken Bot', description: 'Lorem Ipsum 2'},
-	{botName: 'Balancer Bot', description: 'Lorem Ipsum 3'},
-	{botName: 'Metamask Bot', description: 'Lorem Ipsum 4'},
-	{botName: 'Yearn Bot', description: 'Lorem Ipsum 5'},
+	{botName: 'Prime Bot', description: 'Lorem Ipsum'},
+	{botName: 'Gitcoin Bot', description: 'Lorem Ipsum'},
+	{botName: 'Kraken Bot', description: 'Lorem Ipsum'},
+	{botName: 'EthBot', description: 'Lorem Ipsum'},
+	{botName: 'Balancer Bot', description: 'Lorem Ipsum'},
+	{botName: 'Metamask Bot', description: 'Lorem Ipsum'},
+	{botName: 'Yearn Bot', description: 'Lorem Ipsum'},
 ];
 
 
@@ -28,7 +29,7 @@ export default function EthbotLearn() {
 
 	const increaseBot = () => {
 		console.log('botnum up ', botNum);
-		if (botNum < 5) {
+		if (botNum < 6) {
 			const temp = botNum + 1;
 			setBotNum(temp);
 		}
@@ -54,7 +55,7 @@ export default function EthbotLearn() {
 					</button>
 					<div class="text-center">
 						<p className="ethbotlearn-botName">{botMap[botNum].botName}</p>
-						<p className="ethbotlearn-botDescription">{botMap[botNum].description}</p>
+						<p className="ethbotlearn-botDescription">{botMap[botNum].description}{botNum}</p>
 					</div>
 					<button className="bg-green-teal rounded shadow lg:h-10 md:h-5 md:h-3 ml-2" onClick={increaseBot}>
 						<img className="z-50" alt="hero" src={btnRight}/>
@@ -84,6 +85,14 @@ export default function EthbotLearn() {
 			</div>
 		: botNum === 4 ?
 			<div className="bg-bot5 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height">
+				{interior}
+			</div>
+		: botNum === 5 ?
+			<div className="bg-bot6 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height">
+				{interior}
+			</div>
+		: botNum === 6 ?
+			<div className="bg-bot7 bg-auto bg-no-repeat bg-contain w-full ethbotlearn-height">
 				{interior}
 			</div>
 		:
