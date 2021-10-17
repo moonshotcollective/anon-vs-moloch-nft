@@ -117,86 +117,49 @@ contract GreatestLARP is Ownable {
         }
     }
 
-    /// @dev returns the details for a Bot level
-    function getDetailsForLevelBots(uint256 level)
+    function getDetailForTokenLevels()
         public
         view
-        returns (
-            uint256 price,
-            uint256 threshold,
-            uint256 totalSupply,
-            address tokenAddress
-        )
+        returns (uint256[5][] memory)
     {
-        price = tokenMap[level].price;
-        threshold = tokenMap[level].thresholdBots;
-        totalSupply = tokenMap[level].totalSupply;
-        tokenAddress = tokenMap[level].tokenAddress;
+        uint256[5][] memory levels = new uint256[5][](totalTokens);
+
+        for (uint256 i = 1; i <= totalTokens; i++) {
+            uint256[5] memory levelInfo;
+            levelInfo[0] = tokenMap[i].price;
+            levelInfo[1] = tokenMap[i].thresholdBots;
+            levelInfo[2] = tokenMap[i].totalSupply;
+            levelInfo[3] = BotToken(tokenMap[i].tokenAddress).lastMintedToken();
+            levelInfo[4] = tokenMap[i].totalSupply - levelInfo[3];
+
+            // push levelInfo into levels
+            levels[i - 1] = levelInfo;
+        }
+
+        return levels;
     }
 
-    /// @dev returns the details for a Statue level
-    function getDetailsForLevelStatue(uint256 level)
+    function getDetailForStatueLevels()
         public
         view
-        returns (
-            uint256 price,
-            uint256 threshold,
-            uint256 totalSupply,
-            address tokenAddress
-        )
+        returns (uint256[5][] memory)
     {
-        price = statueMap[level].price;
-        threshold = statueMap[level].thresholdStatues;
-        totalSupply = statueMap[level].totalSupply;
-        tokenAddress = statueMap[level].tokenAddress;
-    }
-
-    /// @dev returns the current prices for the items
-    function tokenPrices() public view returns (uint256[] memory) {
-        uint256[] memory prices = new uint256[](totalTokens);
-
-        for (uint256 i = 1; i <= totalTokens; i++) {
-            prices[i - 1] = tokenMap[i].price;
-        }
-
-        return prices;
-    }
-
-    /// @dev returns the current prices for the items
-    function statuePrices() public view returns (uint256[] memory) {
-        uint256[] memory prices = new uint256[](totalStatues);
+        uint256[5][] memory levels = new uint256[5][](totalTokens);
 
         for (uint256 i = 1; i <= totalStatues; i++) {
-            prices[i - 1] = statueMap[i].price;
+            uint256[5] memory levelInfo;
+            levelInfo[0] = statueMap[i].price;
+            levelInfo[1] = statueMap[i].thresholdStatues;
+            levelInfo[2] = statueMap[i].totalSupply;
+            levelInfo[3] = BotToken(statueMap[i].tokenAddress)
+                .lastMintedToken();
+            levelInfo[4] = statueMap[i].totalSupply - levelInfo[3];
+
+            // push levelInfo into levels
+            levels[i - 1] = levelInfo;
         }
 
-        return prices;
-    }
-
-    /// @dev returns the number Bot tokens left for sale
-    function tokenLeftover() public view returns (uint256[] memory) {
-        uint256[] memory leftOver = new uint256[](totalTokens);
-
-        for (uint256 i = 1; i <= totalTokens; i++) {
-            leftOver[i - 1] =
-                tokenMap[i].totalSupply -
-                BotToken(tokenMap[i].tokenAddress).lastMintedToken();
-        }
-
-        return leftOver;
-    }
-
-    /// @dev returns the number of Statue NFTs left for sale
-    function statueLeftover() public view returns (uint256[] memory) {
-        uint256[] memory leftOver = new uint256[](totalStatues);
-
-        for (uint256 i = 1; i <= totalStatues; i++) {
-            leftOver[i - 1] =
-                statueMap[i].totalSupply -
-                StatueToken(statueMap[i].tokenAddress).lastMintedToken();
-        }
-
-        return leftOver;
+        return levels;
     }
 
     /// @dev update the level price
@@ -239,8 +202,11 @@ contract GreatestLARP is Ownable {
         // compare value and price
         require(msg.value >= tokenMap[level].price, "NOT ENOUGH");
 
+        // store the old price
+        uint256 currentPrice = tokenMap[level].price;
+
         // update the price of the token
-        tokenMap[level].price = (tokenMap[level].price * 1030) / 1000;
+        tokenMap[level].price = (currentPrice * 1030) / 1000;
 
         // make sure there are available tokens for this level
         require(
@@ -249,14 +215,14 @@ contract GreatestLARP is Ownable {
         );
 
         // send ETH to gitcoin multisig
-        (bool success, ) = gitcoin.call{value: tokenMap[level].price}("");
+        (bool success, ) = gitcoin.call{value: currentPrice}("");
         require(success, "could not send");
 
         // mint token
         uint256 id = levelToken.mint(msg.sender);
 
         // send the refund
-        uint256 refund = msg.value.sub(tokenMap[level].price);
+        uint256 refund = msg.value.sub(currentPrice);
         if (refund > 0) {
             (bool refundSent, ) = msg.sender.call{value: refund}("");
             require(refundSent, "Refund could not be sent");
@@ -288,8 +254,11 @@ contract GreatestLARP is Ownable {
         // compare value and price
         require(msg.value >= statueMap[level].price, "NOT ENOUGH");
 
+        // store the old price
+        uint256 currentPrice = statueMap[level].price;
+
         // update the price of the token
-        statueMap[level].price = (statueMap[level].price * 1350) / 1000;
+        statueMap[level].price = (currentPrice * 1350) / 1000;
 
         // make sure there are available tokens for this level
         require(
@@ -298,14 +267,14 @@ contract GreatestLARP is Ownable {
         );
 
         // send ETH to gitcoin multisig
-        (bool success, ) = gitcoin.call{value: statueMap[level].price}("");
+        (bool success, ) = gitcoin.call{value: currentPrice}("");
         require(success, "could not send");
 
         // mint token
         uint256 id = levelToken.mint(msg.sender);
 
         // send the refund
-        uint256 refund = msg.value.sub(statueMap[level].price);
+        uint256 refund = msg.value.sub(currentPrice);
         if (refund > 0) {
             (bool refundSent, ) = msg.sender.call{value: refund}("");
             require(refundSent, "Refund could not be sent");
