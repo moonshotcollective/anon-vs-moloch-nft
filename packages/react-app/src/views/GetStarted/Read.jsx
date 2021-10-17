@@ -6,7 +6,12 @@ function Read({ goToNextStep, ...props }) {
   return (
     <>
       <div className="flex flex-1 flex-col mb-10  justify-center">
-        <h1 className="text-4xl mb-10 font-normal text-green-header font-spacemono">Level 1 - Moloch is winning</h1>
+          <h1 className="text-4xl mb-4 font-normal text-green-header font-spacemono">
+            Level 1
+          </h1>
+          <h1 className="text-2xl mb-8 font-normal text-green-header font-spacemono">
+            Moloch is winning ...
+          </h1>
 
         <div className="text-lg max-w-md mb-6">
           Moloch, the god of coordination failure, continues to set humanity back.  

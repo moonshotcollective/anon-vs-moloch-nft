@@ -25,10 +25,10 @@ module.exports = async ({ getNamedAccounts, getChainId, deployments }) => {
     args: [
       [eBot.address, mBot.address],
       [eStatue.address, mStatue.address],
-      [3, 3], // Digital threshold 200/300
-      [1, 1], // Physical threshold 3/5
+      [200, 200], // Digital threshold 200/300
+      [3, 3], // Physical threshold 3/5
       ethers.utils.parseUnits("0.0033"), // Digital
-      ethers.utils.parseUnits("0.0003"), // Pysical
+      ethers.utils.parseUnits("3"), // Pysical
     ],
     log: true,
   });
@@ -94,10 +94,12 @@ module.exports = async ({ getNamedAccounts, getChainId, deployments }) => {
       constructorArguments: [
         [eBot.address, mBot.address],
         [eStatue.address, mStatue.address],
-        [3, 3], // Digital threshold 200/300
-        [1, 1], // Physical threshold 3/5
+        [200, 200], // Digital threshold 200/300
+        [3, 3], // Physical threshold 3/5
         ethers.utils.parseUnits("0.0033"), // Digital
-        ethers.utils.parseUnits("0.0003"), // Pysical
+        ethers.utils.parseUnits("3"), // Pysical
+        [1350, 1350], //inflationRatesStatues
+        [1030, 1030], // inflationRatesDigital
       ],
     });
   }

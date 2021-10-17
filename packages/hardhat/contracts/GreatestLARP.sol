@@ -31,6 +31,7 @@ contract GreatestLARP is Ownable {
         uint256 thresholdBots;
         uint256 thresholdStatues;
         uint256 price;
+        uint256 inflationRate;
         uint256 totalSupply;
     }
 
@@ -54,7 +55,9 @@ contract GreatestLARP is Ownable {
         uint256[] memory thresholdBots,
         uint256[] memory thresholdStatues,
         uint256 startPriceBot,
-        uint256 startPriceStatue
+        uint256 startPriceStatue,
+        uint256[] memory inflationRatesStatues,
+        uint256[] memory inflationRatesBots
     ) {
         gitcoin = payable(address(0xde21F729137C5Af1b01d73aF1dC21eFfa2B8a0d6));
 
@@ -68,6 +71,7 @@ contract GreatestLARP is Ownable {
             "Mismatch length of tokens and threshold"
         );
 
+
         for (uint256 i = 0; i < tokens.length; i++) {
             // increment tokens count
             totalTokens += 1;
@@ -78,7 +82,8 @@ contract GreatestLARP is Ownable {
                 thresholdBots: thresholdBots[i],
                 thresholdStatues: 0,
                 price: startPriceBot,
-                totalSupply: 300
+                totalSupply: 300,
+                inflationRate: inflationRatesBots[i]
             });
         }
 
@@ -92,7 +97,8 @@ contract GreatestLARP is Ownable {
                 thresholdBots: 0,
                 thresholdStatues: thresholdStatues[i],
                 price: startPriceStatue,
-                totalSupply: 5
+                totalSupply: 5,
+                inflationRate: inflationRatesStatues[i]
             });
         }
     }
@@ -179,7 +185,7 @@ contract GreatestLARP is Ownable {
         uint256 currentPrice = tokenMap[level].price;
 
         // update the price of the token
-        tokenMap[level].price = (currentPrice * 1030) / 1000;
+        tokenMap[level].price = (currentPrice * tokenMap[level].inflationRate) / 1000;
 
         // make sure there are available tokens for this level
         require(

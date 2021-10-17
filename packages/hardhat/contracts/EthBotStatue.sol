@@ -24,12 +24,12 @@ contract EthBotStatue is ERC721URIStorage, Ownable {
     mapping(bytes32 => uint256) public uriToTokenId;
 
     constructor() ERC721("Eth Bot Statue", "ETHBOTSTAT") {
-        uris = ["", ""];
+        uris = ["", "", "", "", ""];
     }
 
     function _baseURI() internal pure override returns (string memory) {
         return
-            "https://gateway.pinata.cloud/ipfs/QmdRmZ1UPSALNVuXY2mYPb3T5exn9in1AL3tsema4rY2QF/json/";
+            "https://gateway.pinata.cloud/ipfs/QmfSo9qSGfjQLFtkYSjHX1L1ayrFS1SiHYXcMiEpNjgviS/ethbot.json";
     }
 
     function lastMintedToken() external view returns (uint256 id) {

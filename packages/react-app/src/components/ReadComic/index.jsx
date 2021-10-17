@@ -7,14 +7,17 @@ const ReadComic = () => {
 <section id="whatisit" class="text-gray-600 body-font">
   <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
     <div class="w-1/2">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">A Coordination Game
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-green-teal">An Alternate-Reality Coordination Game
       </h1>
       <p class="mb-2 leading-relaxed">
-      <strong>The Greatest LARP</strong> is a coordination game about coordination games.  Moloch, the god of Coordination Failiure, is winning.  And you, must stop him at all costs, Anon.  
-      </p>
-      <p class="mb-8 leading-relaxed">
-
-      The Greatest LARP is a multi-level coordination experience.  You'll laugh, you'll cry, maybe you'll share it with your frens.  Most importantly, you'll experience something more meaningful than just another decentralized casino.
+      <strong>The Greatest LARP</strong> is a coordination game about coordination games.    
+      <br/>
+      <br/>
+      Moloch, the god of Coordination Failiure, is winning.  And you, must stop him at all costs, Anon! On each level, you and your frens will complete a mission.  Only then can you pass to the next level.
+      Some levels may involve minting of NFTs.  All proceeds go to support public goods on Gitcoin Grants, of course.
+      <br/>
+      <br/>
+      You'll laugh, you'll cry, maybe you'll share it with your frens.  Most importantly, you'll experience something more meaningful than just another decentralized casino.
       </p>
       <div class="flex justify-center">
         <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"

@@ -38,8 +38,11 @@ const Faq = () => {
                   <a href="https://en.wikipedia.org/wiki/Live_action_role-playing_game" target="_blank"> LARPing</a> or Live-action-role-playing, is a common activity online for maby.  LARPing is the face we put on on social media.  LARPing is the avatar we wear in the metaverse.  LARPing is posting instagram photos of your life's highlight reel.  We're already LARPing for much of our days, so if we're all going to LARP- why not join the Greatest LARP?
                   <br/>
                   <br/>
-                  The Greatest LARP is a multi-level coordination experience.  You'll laugh, you'll cry, maybe you'll share it with your frens.  Most importantly, you'll experience something more meaningful than just another decentralized casino.
-                  </p>
+                 The Greatest LARP is a multi-level coordination experience.  On each level, you and your frens will mint a series of NFTs.  Only by coordinating can we beat the final boss, Moloch.  All proceeds go to public goods of course.
+                  <br/>
+                  <br/>
+                   You'll laugh, you'll cry, maybe you'll share it with your frens.  Most importantly, you'll experience something more meaningful than just another decentralized casino.
+                                    </p>
                 </Panel>
                 <br />
                 <Panel

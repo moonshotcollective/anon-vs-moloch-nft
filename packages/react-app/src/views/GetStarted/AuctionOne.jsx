@@ -67,12 +67,21 @@ function AuctionOne({
     <>
       <div className="flex flex-1 flex-col">
         <div className="max-w-md">
-          <h1 className="text-4xl mb-8 font-normal text-green-header font-spacemono">
-            Let The NFT Auction Begin {">>"}
+          <h1 className="text-4xl mb-4 font-normal text-green-header font-spacemono">
+            Level 2 
+          </h1>
+          <h1 className="text-2xl mb-8 font-normal text-green-header font-spacemono">
+            Summon the ETH Bots {">>"}
           </h1>
 
           <div className="text-lg mb-6">
-            We need to coordinate. Onoce all of these ETHBots have been minted, you can proceed to the next level.
+            Moloch is made of coordination failures, and the only way to beat a monster like that ... is more coordination.
+            <br/> 
+            <br/> 
+            ETHBots are built to coordinate.  They are configured by the community they serve to create coordination.  The are the vessels through which humanity coordinates to defeat Moloch.
+            <br/> 
+            <br/> 
+            Once {tokenThreshold} Digital ETHBots are minted ({lastMintedToken} minted so far), and {statueThreshold}({lastMintedStatue} minted so far) Statue ETHBots are minted, humanity can begin its fight against Moloch.
           </div>
 
           <div>
@@ -98,8 +107,8 @@ function AuctionOne({
             <img src={EthBot} alt="ETH Bot" className="mb-4" />
 
             {/* Image Title */}
-            <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">ETHBots Statue</h3>
-
+            <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">ETHBots Statue NFT(1/{totalStatueSupply})</h3>
+            <p>Redeemable for a beautiful 12" ETHBot statue. JOSH_TO_GIVE_TEXZT_HERE</p>
             {/* Button */}
             <Button
               transparent
@@ -120,7 +129,8 @@ function AuctionOne({
             <img src={MolochStatue} alt="Digital ETHBot" className="mb-4" />
 
             {/* Image Title */}
-            <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">Digital ETHBot</h3>
+            <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">Digital ETHBot NFT(1/{totalTokenSupply})</h3>
+            <p>The "Moloch Wins" comic is free, but for the ETHBot Wins version, we need at least {tokenThreshold} of these to be summoned. Once {tokenThreshold} are minted, this NFT is redeemable to read the final comic.</p>
 
             {/* Button */}
             <Button

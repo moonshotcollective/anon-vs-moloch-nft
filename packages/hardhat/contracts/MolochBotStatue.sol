@@ -23,13 +23,13 @@ contract MolochBotStatue is ERC721URIStorage, Ownable {
 
     string[] private uris;
 
-    constructor() ERC721("Moloch Bot Statue", "MOLBOTSTAT") {
-        uris = ["", ""];
+    constructor() ERC721("Moloch Statue", "MOLSTAT") {
+        uris = ["", "", "", "", ""];
     }
 
     function _baseURI() internal pure override returns (string memory) {
         return
-            "https://gateway.pinata.cloud/ipfs/QmdRmZ1UPSALNVuXY2mYPb3T5exn9in1AL3tsema4rY2QF/json/";
+            "https://gateway.pinata.cloud/ipfs/QmfSo9qSGfjQLFtkYSjHX1L1ayrFS1SiHYXcMiEpNjgviS/moloch.json";
     }
 
     function lastMintedToken() external view returns (uint256 id) {

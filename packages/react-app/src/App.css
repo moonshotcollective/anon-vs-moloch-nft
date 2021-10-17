@@ -50,3 +50,7 @@ h1 span{
  word-wrap: break-word;       /* Internet Explorer 5.5+ */
 
 }
+
+.absolute.top-0.flex{
+  max-height: 400px;
+}
