@@ -16,6 +16,7 @@
 	line-height: 175%;
 	text-align: center;
 	color: #000000;
+	max-width: 150px;
 }
 
 @media only screen and (min-width: 1600px) {

@@ -29,19 +29,10 @@ const index = ({ progress }) => {
         </Col>
         <Col flex={1}>
           <div className="items-center">
-            <h1 className="flex flex-wrap progress-title mt-4 sm:ml-10">Get the latest Edition</h1>
+            <h1 className="flex flex-wrap progress-title mt-4 sm:ml-10"></h1>
             <div className="flex">
-              <p className="inline-flex progress-subtext py-2 px-6">Lorem Ipsum</p>
+              <p className="inline-flex progress-subtext py-2 px-6"></p>
               <div className=" ml-2 flex ">
-                <button
-                  onClick={() => {
-                    window.location =
-                      "https://store.gitcoin.co/collections/comics/products/ethereum-vs-moloch-comic-book-2-digital-edition";
-                  }}
-                  class="inline-flex text-white bg-green-teal h-12 border-0 py-2 px-6 rounded text-lg font-spacemono"
-                >
-                  Join now
-                </button>
               </div>
             </div>
           </div>

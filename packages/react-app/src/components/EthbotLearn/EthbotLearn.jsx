@@ -6,13 +6,13 @@ import btnRight from "../../assets/EthbotLearn/btnRight.png";
 import "./EthbotLearn.css";
 
 const botMap = [
-  { botName: "Prime Bot", description: "Lorem Ipsum" },
-  { botName: "Gitcoin Bot", description: "Lorem Ipsum" },
-  { botName: "Kraken Bot", description: "Lorem Ipsum" },
-  { botName: "EthBot", description: "Lorem Ipsum" },
-  { botName: "Balancer Bot", description: "Lorem Ipsum" },
-  { botName: "Metamask Bot", description: "Lorem Ipsum" },
-  { botName: "Yearn Bot", description: "Lorem Ipsum" },
+  { botName: "Prime Bot", description: "The bot of all bots. \nThis mecha is what we get when all the communites combine their powers." },
+  { botName: "Gitcoin Bot", description: "This mecha's superpower is quadratic coordination." },
+  { botName: "Kraken Bot", description: "This mecha is powerful!  With 8 legs and the capacity to fund public goods, it is a powerful weapon against Moloch." },
+  { botName: "EthBot", description: "This mecha is the heart of all the other bots.  A transparent, immutable, programmable, global substrate for the fight against moloch" },
+  { botName: "Balancer Bot", description: "The Balancer mecha provides liquidity to all of the other bots, a strong force in the fight against Moloch." },
+  { botName: "Metamask Bot", description: "This friendly fox mecha makes it easy for Anon to communicate with the other bots." },
+  { botName: "Yearn Bot", description: "One of the most powerful mechas, the highly engaged Yearn mecha can provide new innovative ways to fight moloch on the regulatr." },
 ];
 
 export default function EthbotLearn() {
@@ -23,6 +23,8 @@ export default function EthbotLearn() {
     const temp = botNum - 1;
     if (botNum > 0) {
       setBotNum(temp);
+    } else {
+      setBotNum(5);
     }
   };
 
@@ -31,23 +33,23 @@ export default function EthbotLearn() {
     if (botNum < 6) {
       const temp = botNum + 1;
       setBotNum(temp);
+    } else {
+      setBotNum(0);
     }
   };
 
   const interior = (
     <>
-      <Row className="px-10">
+      <Row id="heroes" className="px-10">
         <Col span={18}>
           <h2 className="sm:text-5xl lg:text-7xl xl:text-7xl mb-2 font-medium text-green-teal font-spacemono">
-            Learn More about EthBot
+            Meet your Heroes.
           </h2>
           <p className="mb-2 leading-relaxed w-1/2 lg:mt-10 text-xl">
-            Copper mug try-hard pitchfork pour-over freegan.
+            These mechas have been created by the Ethereum community to fight Moloch - the malign God of Coordination Failure and the reason we can't have nice things.
           </p>
           <div className="flex sm:mt-2 lg:mt-10">
-            <button className="inline-flex text-white bg-green-teal border-0 px-10 py-1 rounded text-lg font-spacemono">
-              Read
-            </button>
+
           </div>
         </Col>
         <Col span={8} offset={8}></Col>

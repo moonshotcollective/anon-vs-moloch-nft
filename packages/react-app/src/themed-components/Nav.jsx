@@ -18,21 +18,24 @@ export default function Nav({
 }) {
   return (
     <div class="flex flex-row p-5 w-full">
-      <a href="/" target="_blank" rel="noopener noreferrer" className="float-left">
+      <a href="/" rel="noopener noreferrer" className="float-left">
         <Image preview={false} className="h-24" src={navbarheadlogo} />
       </a>
       <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-        <a href="/" class="mr-10 hover:text-gray-900 text-green-dark-green">
-          Explore Editions
+        <a href="/#whatisit" class="mr-10 hover:text-gray-900 text-green-dark-green">
+          What is it?
         </a>
-        <a href="/" class="mr-10 hover:text-gray-900 text-green-dark-green">
-          How it Works?
+        <a href="/#heroes" class="mr-10 hover:text-gray-900 text-green-dark-green">
+          Meet your Heroes
         </a>
-        <a href="/" class="mr-10 hover:text-gray-900 text-green-dark-green">
-          Community
+        <a href="/#faq" class="mr-10 hover:text-gray-900 text-green-dark-green">
+          FAQ
         </a>
-        <a href="/" class="mr-10 hover:text-gray-900 text-green-dark-green">
-          About
+        <a target="_blank" href="https://t.me/joinchat/ekBANXnlwcQ1NzRh" class="mr-10 hover:text-gray-900 text-green-dark-green border-1">
+          Join the Telegram
+        </a>
+        <a href="/get-started" class="mr-10 hover:text-gray-900 text-green-dark-green border-1">
+          Join the LARP
         </a>
       </nav>
       <Space>

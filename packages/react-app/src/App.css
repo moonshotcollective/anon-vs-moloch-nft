@@ -3,3 +3,31 @@
 .App {
   text-align: center;
 }
+.ant-row.ant-row-middle{
+  display: none;
+}
+.bbg{
+  max-width: 360px;
+  margin-right: 20px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+.seperator{
+  color: #11BC92;
+  margin: 5px;
+  padding-left: 20px;
+}
+h1 span{
+  font-weight: bold;
+  color: #77cba3;
+}
+.border-1{
+  border: 1px solid #57ab93;
+  background-color: #77cba3;
+  color: white;
+  padding: 3px;
+  border-radius: 10px;
+}
+.border-1:hover{
+  color: #eee;
+}

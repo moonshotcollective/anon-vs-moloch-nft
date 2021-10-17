@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-telegram</title>
+    <defs>
+        <linearGradient x1="66.7%" y1="16.7%" x2="41.7%" y2="75%" id="linearGradient-1">
+            <stop stop-color="#11BC92" offset="0%"></stop>
+            <stop stop-color="#11BC92" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="66%" y1="43.588178%" x2="85.1%" y2="80.7360354%" id="linearGradient-2">
+            <stop stop-color="#EFF7FC" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-telegram" fill-rule="nonzero">
+            <circle id="Oval" fill="url(#linearGradient-1)" cx="24" cy="24" r="24"></circle>
+            <path d="M19.2727273,35 C18.4774545,35 18.6126591,34.7064 18.3383636,33.966 L16,26.4414 L34,16" id="Path" fill="#C8DAEA"></path>
+            <path d="M20,35 C20.5454545,35 20.7863636,34.7309188 21.0909091,34.4116301 L24,31.3603439 L20.3712727,29" id="Path" fill="#A9C9DD"></path>
+            <path d="M20.1856629,28.5186178 L29.8211436,35.7003368 C30.9207759,36.312398 31.7141689,35.9954126 31.9881306,34.6705866 L35.9102654,16.0247303 C36.3117437,14.4006073 35.2965912,13.6637218 34.2445785,14.1455316 L11.2138668,23.1045396 C9.64182496,23.7407214 9.65118947,24.6255468 10.9273527,25.0197183 L16.8375525,26.8808265 L30.5202938,18.1722711 C31.1662456,17.7770947 31.7591983,17.9893563 31.2726423,18.4251358" id="Path" fill="url(#linearGradient-2)"></path>
+        </g>
+    </g>
+</svg>
