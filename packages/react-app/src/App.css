@@ -59,3 +59,17 @@ h1 span{
   width: 273px;
   height: 270px;
 }
+
+#h1{
+  background-color: rgba(1,1,1, 0.5);
+  padding: 10px;
+  border-radius:  0px 30px 0px 30px;
+}
+
+.surround{
+  background-color: rgba(1,1,1, 0.5);
+  padding: 30px 50px;
+  margin-top:  20px;
+  margin-bottom: 20px;
+  border-radius:  0px 50px 0px 50px;
+}
