@@ -5,7 +5,7 @@
       "chainId": "4",
       "contracts": {
         "EthBot": {
-          "address": "0xC5F9f4d05d3c9afE9F8Fcb689Bc5325163B7b051",
+          "address": "0x8D9E1E7Ed456A79942e1c872249a4f1adFc4Afb5",
           "abi": [
             {
               "inputs": [],
@@ -461,7 +461,7 @@
           ]
         },
         "MolochBot": {
-          "address": "0xCC322BF7f7bd2489bC79AE28D9B50fc7e2cf5097",
+          "address": "0x09F442553102882E3D79E61F2Ed940b4Aec23fDE",
           "abi": [
             {
               "inputs": [],
@@ -917,7 +917,7 @@
           ]
         },
         "EthBotStatue": {
-          "address": "0x565BD8Fa27A56E0c50D1a9349B3703456D268370",
+          "address": "0x23371f3c3743ac1249ebdc59Dc892334f001824d",
           "abi": [
             {
               "inputs": [],
@@ -1373,7 +1373,7 @@
           ]
         },
         "MolochBotStatue": {
-          "address": "0x463150552f200eaAeC9bD19b58359dA7C491DE55",
+          "address": "0xD2BDB41E85a765B5aB286F6C97EF1B6ca17FBf78",
           "abi": [
             {
               "inputs": [],
@@ -1829,7 +1829,7 @@
           ]
         },
         "GreatestLARP": {
-          "address": "0xa8926352e71C414E7dfdd166F05587338a009E6B",
+          "address": "0x1edd9950A69E01164FdCA617Cf05088690C53Ed0",
           "abi": [
             {
               "inputs": [
@@ -1885,42 +1885,6 @@
               ],
               "name": "OwnershipTransferred",
               "type": "event"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "level",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "newPrice",
-                  "type": "uint256"
-                }
-              ],
-              "name": "changeLevelPriceForBots",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "level",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "newPrice",
-                  "type": "uint256"
-                }
-              ],
-              "name": "changeLevelPriceForStatues",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
             },
             {
               "inputs": [],
