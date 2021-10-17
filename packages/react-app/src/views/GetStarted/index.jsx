@@ -18,36 +18,20 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [mintingToken, setMintingToken] = useState(false);
   const [mintingStatue, setMintingStatue] = useState(false);
-  const [levelCompleted, setLevelCompleted] = useState(false);
+  // const [levelCompleted, setLevelCompleted] = useState(false);
 
-  const tokenPrices = (useContractReader(readContracts, "GreatestLARP", "tokenPrices") || []).map(v => {
-    const addition = v.div("100").mul(incrementPercent);
-    const newPrice = v.add(addition);
+  const tokenLevelDetails = useContractReader(readContracts, "GreatestLARP", "getDetailForTokenLevels");
+  const statueLevelDetails = useContractReader(readContracts, "GreatestLARP", "getDetailForStatueLevels");
 
-    return ethers.utils.formatUnits(newPrice);
-  });
-
-  const statuePrices = (useContractReader(readContracts, "GreatestLARP", "statuePrices") || []).map(v => {
-    const addition = v.div("100").mul(incrementPercent);
-    const newPrice = v.add(addition);
-
-    return ethers.utils.formatUnits(newPrice);
-  });
-
-  const tokenLeftover = (useContractReader(readContracts, "GreatestLARP", "tokenLeftover") || []).map(v =>
-    v.toString(),
-  );
-
-  const statueLeftover = (useContractReader(readContracts, "GreatestLARP", "statueLeftover") || []).map(v =>
-    v.toString(),
-  );
+  console.log(`tokenLevelDetails: `, tokenLevelDetails);
+  console.log(`statueLevelDetails: `, statueLevelDetails);
 
   // working on this
-  useEffect(() => {
-    if (tokenLeftover >= 297 && statueLeftover >= 2) {
-      setLevelCompleted(true);
-    }
-  }, [tokenLeftover, statueLeftover, readContracts]);
+  // useEffect(() => {
+  //   if (tokenLeftover >= 297 && statueLeftover >= 2) {
+  //     setLevelCompleted(true);
+  //   }
+  // }, [tokenLeftover, statueLeftover, readContracts]);
 
   const mintTokenBot = async (level, price) => {
     setMintingToken(true);
@@ -112,9 +96,6 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
     setCurrentStep(currentStep + 1);
   };
 
-  console.log(tokenPrices);
-  console.log(statuePrices);
-
   const CurrentStepComponent = Steps[currentStep];
 
   return (
@@ -127,13 +108,11 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
           currentStep={currentStep}
           mintTokenBot={mintTokenBot}
           mintTokenStatue={mintTokenStatue}
-          tokenLeftover={tokenLeftover}
-          statueLeftover={statueLeftover}
-          tokenPrices={tokenPrices}
-          statuePrices={statuePrices}
+          incrementPercent={incrementPercent}
           mintingToken={mintingToken}
           mintingStatue={mintingStatue}
-          levelCompleted={levelCompleted}
+          tokenLevelDetails={tokenLevelDetails}
+          statueLevelDetails={statueLevelDetails}
         />
       </section>
     </>
