@@ -11,7 +11,8 @@ function Home(props) {
         <h1 className="title-font sm:text-6xl text-5xl mb-4 text-green-teal font-spacemono">
           The <span>Greatest Larp</span> Has Begun.
         </h1>
-        <p className="mb-8 leading-relaxed font-librefranklin text-white text-3xl">Are You Ready?</p>
+        <p className="mb-4 leading-relaxed font-librefranklin text-green-teal text-xl">A new Alternate Reality Game brought to you by <a href="https://twitter.com/owocki" target="_blank">Kevin Owocki</a>, <a href="https://twitter.com/austingriffith" target="_blank">Austin Griffith</a>, and <a href="http://gitcoindao.com/">GitcoinDAO</a>'s <a href="https://moonshotcollective.space/">Moonshot Collective</a>.</p>
+        <p className="mb-8 leading-relaxed font-librefranklin text-white text-3xl">Are You Ready, Anon?</p>
         <Button
           onClick={() => {
             window.location = "/get-started";

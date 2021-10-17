@@ -31,3 +31,7 @@ h1 span{
 .border-1:hover{
   color: #eee;
 }
+.text-green-teal a{
+  font-weight: bold;
+  color:rgba(44, 174, 146, var(--tw-text-opacity))
+}
