@@ -55,7 +55,7 @@ export default function EthbotLearn() {
 					</button>
 					<div class="text-center">
 						<p className="ethbotlearn-botName">{botMap[botNum].botName}</p>
-						<p className="ethbotlearn-botDescription">{botMap[botNum].description}{botNum}</p>
+						<p className="ethbotlearn-botDescription">{botMap[botNum].description}</p>
 					</div>
 					<button className="bg-green-teal rounded shadow lg:h-10 md:h-5 md:h-3 ml-2" onClick={increaseBot}>
 						<img className="z-50" alt="hero" src={btnRight}/>
