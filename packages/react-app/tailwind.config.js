@@ -1,18 +1,23 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  purge: {
+    content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+    options: {
+      safelist: ["bg-bot1", "bg-bot2", "bg-bot3", "bg-bot4", "bg-bot5", "bg-bot6", "bg-bot7"],
+    },
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       backgroundImage: {
-        'bot1': "url('/src/assets/EthbotLearn/bot1.png')",
-        'bot2': "url('/src/assets/EthbotLearn/bot2.png')",
-        'bot3': "url('/src/assets/EthbotLearn/bot3.png')",
-        'bot4': "url('/src/assets/EthbotLearn/bot4.png')",
-        'bot5': "url('/src/assets/EthbotLearn/bot5.png')",
-        'bot6': "url('/src/assets/EthbotLearn/bot6.png')",
-        'bot7': "url('/src/assets/EthbotLearn/bot7.png')",
+        bot1: "url('/src/assets/EthbotLearn/bot1.png')",
+        bot2: "url('/src/assets/EthbotLearn/bot2.png')",
+        bot3: "url('/src/assets/EthbotLearn/bot3.png')",
+        bot4: "url('/src/assets/EthbotLearn/bot4.png')",
+        bot5: "url('/src/assets/EthbotLearn/bot5.png')",
+        bot6: "url('/src/assets/EthbotLearn/bot6.png')",
+        bot7: "url('/src/assets/EthbotLearn/bot7.png')",
       },
       colors: {
         orange: colors.orange,
@@ -46,16 +51,16 @@ module.exports = {
       librefranklin: ["Libre Franklin"],
     },
     minHeight: {
-      '0': '0',
-      '1/4': '25%',
-      '1/2': '50%',
-      '3/4': '75%',
-      'full': '100%',
-      'intro': '890px',
-      'intro-mobile': '450px',
-      'ethbotlearn': '1005px',
-      'ethbotlearn-mobile': '505px',
-     },
+      0: "0",
+      "1/4": "25%",
+      "1/2": "50%",
+      "3/4": "75%",
+      full: "100%",
+      intro: "890px",
+      "intro-mobile": "450px",
+      ethbotlearn: "1005px",
+      "ethbotlearn-mobile": "505px",
+    },
   },
   variants: {
     extend: {},
