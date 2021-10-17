@@ -5,7 +5,7 @@
       "chainId": "4",
       "contracts": {
         "EthBot": {
-          "address": "0x8D9E1E7Ed456A79942e1c872249a4f1adFc4Afb5",
+          "address": "0x6365EbBC901d53A6D445E714a0e6b622dCD869b3",
           "abi": [
             {
               "inputs": [],
@@ -461,7 +461,7 @@
           ]
         },
         "MolochBot": {
-          "address": "0x09F442553102882E3D79E61F2Ed940b4Aec23fDE",
+          "address": "0x08B2cc4329591b3B6Fdc60eCe5b276abdFd0b16d",
           "abi": [
             {
               "inputs": [],
@@ -917,7 +917,7 @@
           ]
         },
         "EthBotStatue": {
-          "address": "0x23371f3c3743ac1249ebdc59Dc892334f001824d",
+          "address": "0x67413DF1B2F640e0f861B3C463E007d26815D56c",
           "abi": [
             {
               "inputs": [],
@@ -1373,7 +1373,7 @@
           ]
         },
         "MolochBotStatue": {
-          "address": "0xD2BDB41E85a765B5aB286F6C97EF1B6ca17FBf78",
+          "address": "0xfC24e8bC5fc79305622F991243e31DBE87bb286b",
           "abi": [
             {
               "inputs": [],
@@ -1829,7 +1829,7 @@
           ]
         },
         "GreatestLARP": {
-          "address": "0x1edd9950A69E01164FdCA617Cf05088690C53Ed0",
+          "address": "0x1790F6F077C2F6A21Ce550875A25cCea0f53e667",
           "abi": [
             {
               "inputs": [
@@ -1862,6 +1862,16 @@
                   "internalType": "uint256",
                   "name": "startPriceStatue",
                   "type": "uint256"
+                },
+                {
+                  "internalType": "uint256[]",
+                  "name": "inflationRatesStatues",
+                  "type": "uint256[]"
+                },
+                {
+                  "internalType": "uint256[]",
+                  "name": "inflationRatesBots",
+                  "type": "uint256[]"
                 }
               ],
               "stateMutability": "nonpayable",
