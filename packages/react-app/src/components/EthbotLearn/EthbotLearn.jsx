@@ -9,7 +9,7 @@ const botMap = [
   { botName: "Prime Bot", description: "The bot of all bots. \nThis mecha is what we get when all the communites combine their powers." },
   { botName: "Gitcoin Bot", description: "This mecha's superpower is quadratic coordination." },
   { botName: "Kraken Bot", description: "This mecha is powerful!  With 8 legs and the capacity to fund public goods, it is a powerful weapon against Moloch." },
-  { botName: "EthBot", description: "This mecha is the heart of all the other bots.  A transparent, immutable, programmable, global substrate for the fight against moloch" },
+  { botName: "EthBot", description: "This mecha's power is creating coordination between all mechas.  Superpower: A transparent, immutable, programmable, global substrate for any and all coordination - including the fight against moloch" },
   { botName: "Balancer Bot", description: "The Balancer mecha provides liquidity to all of the other bots, a strong force in the fight against Moloch." },
   { botName: "Metamask Bot", description: "This friendly fox mecha makes it easy for Anon to communicate with the other bots." },
   { botName: "Yearn Bot", description: "One of the most powerful mechas, the highly engaged Yearn mecha can provide new innovative ways to fight moloch on the regulatr." },

@@ -111,7 +111,7 @@ function AuctionOne({
             >
               {truncate(statuePrice, 4)} ETH
             </Button>
-            <span className="text-red-500">(Only {statueLeftover} available)</span>
+            <span className="text-red-500">(Only {statueLeftover} available of {totalStatueSupply} total supply)</span>
           </div>
 
           {/*  Digital ETHBot */}
@@ -133,7 +133,7 @@ function AuctionOne({
             >
               {truncate(tokenPrice, 4)} ETH
             </Button>
-            <span className="text-red-500">(Only {tokenLeftover} available)</span>
+            <span className="text-red-500">(Only {tokenLeftover} available of {totalTokenSupply} total supply)</span>
           </div>
         </div>
       </div>

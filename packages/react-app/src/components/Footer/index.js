@@ -16,15 +16,17 @@ const Footer = () => {
       <Image preview={false} key="Footer Bot Head" className="footerBotHead align-center" src={group3392712x} />
       </a>
       <div className="flex flex-row p-6">
-        <a href="https://gitcoin.co" key="gitcoin" className="">
-          <Image preview={false} key="gitcoin" className="bbg" src={gitcoin} />
+      <div>
+        <a href="https://t.me/joinchat/ekBANXnlwcQ1NzRh" key="discord" className="w-1/4 mx-6">
+          <Image preview={false} key="telegram" className="footer-icon" src={telegram} />
         </a>
         <span className="seperator">
         | 
         </span>
-        <a href="https://t.me/joinchat/ekBANXnlwcQ1NzRh" key="discord" className="w-1/4 mx-6">
-          <Image preview={false} key="telegram" className="footer-icon" src={telegram} />
+        <a href="https://gitcoin.co" key="gitcoin" className="">
+          <Image preview={false} key="gitcoin" className="bbg" src={gitcoin} />
         </a>
+        </div>
       </div>
       {/* <div className="container flex flex-wrap p-5 justify-center text-wrap">
         <span className="footer-font-v1">Powered by </span>

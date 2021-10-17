@@ -14,8 +14,10 @@
 }
 .seperator{
   color: #11BC92;
-  margin: 5px;
-  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 10px;
+  vertical-align: top;
+  font-size: x-large;
 }
 h1 span{
   font-weight: bold;
@@ -31,7 +33,20 @@ h1 span{
 .border-1:hover{
   color: #eee;
 }
+.footer-icon{
+  max-height: 24px;
+  max-width: 24px;
+}
 .text-green-teal a{
   font-weight: bold;
   color:rgba(44, 174, 146, var(--tw-text-opacity))
+}
+.quote{
+  max-width: 400px;
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
 }

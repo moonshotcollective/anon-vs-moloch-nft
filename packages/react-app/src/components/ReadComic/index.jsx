@@ -17,7 +17,12 @@ const ReadComic = () => {
       The Greatest LARP is a multi-level coordination experience.  You'll laugh, you'll cry, maybe you'll share it with your frens.  Most importantly, you'll experience something more meaningful than just another decentralized casino.
       </p>
       <div class="flex justify-center">
-        <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Join the LARP</button>
+        <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+      onClick={() => {
+        document.location = "/get-started/";
+      }}
+
+        >Join the LARP</button>
       </div>
     </div>
 	<div class="w-1/2">
