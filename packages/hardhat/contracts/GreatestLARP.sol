@@ -95,23 +95,25 @@ contract GreatestLARP is Ownable {
                 totalSupply: 5
             });
         }
-
-        
     }
 
     /// @dev A function that can be called from Etherscan to lower
     ///      the price of the item by 10%.
-    function whompwhomp(uint256 _level)
-        isValidLevel(_level)
-        public
-        onlyOwner
-    {
-        if(_level == 1) {
-            tokenMap[_level].price = tokenMap[_level].price.sub(tokenMap[_level].price.div(100).mul(10));
-            statueMap[_level].price = statueMap[_level].price.sub(statueMap[_level].price.div(100).mul(10));
+    function whompwhomp(uint256 _level) public isValidLevel(_level) onlyOwner {
+        if (_level == 1) {
+            tokenMap[_level].price = tokenMap[_level].price.sub(
+                tokenMap[_level].price.div(100).mul(10)
+            );
+            statueMap[_level].price = statueMap[_level].price.sub(
+                statueMap[_level].price.div(100).mul(10)
+            );
         } else if (_level == 2) {
-            tokenMap[_level].price = tokenMap[_level].price.sub(tokenMap[_level].price.div(100).mul(10));
-            statueMap[_level].price = statueMap[_level].price.sub(statueMap[_level].price.div(100).mul(10));
+            tokenMap[_level].price = tokenMap[_level].price.sub(
+                tokenMap[_level].price.div(100).mul(10)
+            );
+            statueMap[_level].price = statueMap[_level].price.sub(
+                statueMap[_level].price.div(100).mul(10)
+            );
         }
     }
 
@@ -206,7 +208,7 @@ contract GreatestLARP is Ownable {
         tokenMap[level].price = newPrice;
     }
 
-     /// @dev update the level price
+    /// @dev update the level price
     function changeLevelPriceForStatues(uint256 level, uint256 newPrice)
         public
         isValidLevel(level)
@@ -240,29 +242,25 @@ contract GreatestLARP is Ownable {
         // update the price of the token
         tokenMap[level].price = (tokenMap[level].price * 1030) / 1000;
 
-        uint256 overpayment = msg.value.sub(tokenMap[level].price);
-        if (overpayment > 0) {
-            // send ETH to gitcoin multisig
-            uint256 price = msg.value.sub(overpayment);
-            (bool success, ) = gitcoin.call{value: price}("");
-            require(success, "could not send");
-
-            // send the refund
-            (bool refundSent, ) = msg.sender.call{value: overpayment}("");
-            require(refundSent, "Refund could not be sent");
-        } else {
-            (bool success, ) = gitcoin.call{value: msg.value}("");
-            require(success, "could not send");
-        }        
-
         // make sure there are available tokens for this level
         require(
             levelToken.lastMintedToken() <= tokenMap[level].totalSupply,
             "Minting completed for this level"
         );
 
+        // send ETH to gitcoin multisig
+        (bool success, ) = gitcoin.call{value: tokenMap[level].price}("");
+        require(success, "could not send");
+
         // mint token
         uint256 id = levelToken.mint(msg.sender);
+
+        // send the refund
+        uint256 refund = msg.value.sub(tokenMap[level].price);
+        if (refund > 0) {
+            (bool refundSent, ) = msg.sender.call{value: refund}("");
+            require(refundSent, "Refund could not be sent");
+        }
 
         return id;
     }
@@ -281,7 +279,8 @@ contract GreatestLARP is Ownable {
             uint256 previousLevel = level - 1;
             require(
                 StatueToken(statueMap[previousLevel].tokenAddress)
-                    .lastMintedToken() >= statueMap[previousLevel].thresholdStatues,
+                    .lastMintedToken() >=
+                    statueMap[previousLevel].thresholdStatues,
                 "You can't continue until the previous level threshold is reached"
             );
         }
@@ -292,33 +291,25 @@ contract GreatestLARP is Ownable {
         // update the price of the token
         statueMap[level].price = (statueMap[level].price * 1350) / 1000;
 
-        uint256 overpayment = msg.value.sub(statueMap[level].price);
-        if (overpayment > 0) {
-            // send ETH to gitcoin multisig
-            uint256 price = msg.value.sub(overpayment);
-            (bool success, ) = gitcoin.call{value: price}("");
-            require(success, "could not send");
-
-            // send the refund
-            (bool refundSent, ) = msg.sender.call{value: overpayment}("");
-            require(refundSent, "Refund could not be sent");
-        } else {
-            (bool success, ) = gitcoin.call{value: msg.value}("");
-            require(success, "could not send");
-        }
-
-        // send ETH to gitcoin multisig
-        (bool success, ) = gitcoin.call{value: msg.value}("");
-        require(success, "could not send");
-
         // make sure there are available tokens for this level
         require(
             levelToken.lastMintedToken() <= statueMap[level].totalSupply,
             "Minting completed for this level"
         );
 
+        // send ETH to gitcoin multisig
+        (bool success, ) = gitcoin.call{value: statueMap[level].price}("");
+        require(success, "could not send");
+
         // mint token
         uint256 id = levelToken.mint(msg.sender);
+
+        // send the refund
+        uint256 refund = msg.value.sub(statueMap[level].price);
+        if (refund > 0) {
+            (bool refundSent, ) = msg.sender.call{value: refund}("");
+            require(refundSent, "Refund could not be sent");
+        }
 
         return id;
     }
