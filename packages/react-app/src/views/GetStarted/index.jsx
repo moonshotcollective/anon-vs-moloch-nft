@@ -96,6 +96,10 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
     setCurrentStep(currentStep + 1);
   };
 
+  const goToPrevStep = () => {
+    setCurrentStep(currentStep - 1);
+  };
+
   const CurrentStepComponent = Steps[currentStep];
 
   return (
@@ -104,6 +108,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
       <EthbotProgress progress={currentStep} />
       <section className="container flex flex-1 mx-auto my-20">
         <CurrentStepComponent
+          goToPrevStep={goToPrevStep}
           goToNextStep={goToNextStep}
           currentStep={currentStep}
           mintTokenBot={mintTokenBot}

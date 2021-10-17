@@ -54,3 +54,8 @@ h1 span{
 .absolute.top-0.flex{
   max-height: 400px;
 }
+
+#digitalbot, #molochdigital{
+  width: 273px;
+  height: 270px;
+}
