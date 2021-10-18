@@ -18,13 +18,7 @@ const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 
 /*
   📡  Rinkeby Deploy
-    deploying "EthBot" (tx: 0x69f9dd0655313dfb27066b76bba8f85f11cf3dd610c15c744235830b537eaf60)...: deployed at 0xFFCf345DA8B42FC770B7A781C250274cDA45F63b with 1451094 gas
-    deploying "MolochBot" (tx: 0xfdfc60eadebedbc69774c5b5365a254ca18dc92de588d07d60ae5e354391b076)...: deployed at 0xF5E4fFf10592f282Cc0C6566dDD4B3F2cbd4eAa5 with 1450975 gas
-    deploying "EthBotStatue" (tx: 0x4952db5b02822c9e0466016ced9c9b032724e24def3f300dc88f9c88cfa6b351)...: deployed at 0x9a0Bb3b0Da47Af7128ca2b253a2A2D628dB8d7E9 with 1451119 gas
-    deploying "MolochBotStatue" (tx: 0xcbcf95dc6e2dce0cbefaa79ce1e7a5ac48dab3c0fdfd5e78199e61aa72fbbb36)...: deployed at 0x26e3dC7a4Ce2376BfDC4eB6eA2A0313505e89994 with 1451179 gas
-    deploying "GreatestLARP" (tx: 0xcc235e17ec3fb140cb46e4ab72f40c8822c5e5338baa9c77dd2e13babab6a7b0)...: deployed at 0x67405B8CdD75F5844D8e012c7e642109bE5c2268 with 1658520 gas
-  
-  
+
   📡  Mainnet Deploy
 
 */
@@ -32,7 +26,7 @@ const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 //
 // Select the network you want to deploy to here:
 //
-const defaultNetwork = "localhost"; // contracts are deployed to Rinkeby already
+const defaultNetwork = "rinkeby"; // contracts are deployed to Rinkeby already
 
 const mainnetGwei = 21;
 

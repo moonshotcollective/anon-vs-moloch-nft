@@ -5,7 +5,7 @@
       "chainId": "4",
       "contracts": {
         "EthBot": {
-          "address": "0x6826D7F4bCC035C186ef27323f6A45A5A45F99Bf",
+          "address": "0xfdE6E79feb7f61C98e86a9c259cd493B167Dd9Be",
           "abi": [
             {
               "inputs": [],
@@ -474,7 +474,7 @@
           ]
         },
         "MolochBot": {
-          "address": "0x311C11F6442620f33800b000f172D112db9Cd35E",
+          "address": "0xF0ba7C6Bc6EB9F686a9fA34EF0BEcfb047694D90",
           "abi": [
             {
               "inputs": [],
@@ -943,7 +943,7 @@
           ]
         },
         "EthBotStatue": {
-          "address": "0x0f3afC279148eEf3cFE2350fcCC64d70F0669084",
+          "address": "0x1B2431Db644d6Ee7157bdD2281D0C262E1c82022",
           "abi": [
             {
               "inputs": [],
@@ -1412,7 +1412,7 @@
           ]
         },
         "MolochBotStatue": {
-          "address": "0x94DF364276854dD0Acd95fdA2949b7e513f1534A",
+          "address": "0xeAFf7BCb6AE20d3090E80aaf90f1e870D9287b5F",
           "abi": [
             {
               "inputs": [],
@@ -1881,7 +1881,7 @@
           ]
         },
         "GreatestLARP": {
-          "address": "0xebe687e5D042e267f2027AE1C217CD4859016645",
+          "address": "0xce81A30d907cC542D6B1027Bd0fCD078e2884202",
           "abi": [
             {
               "inputs": [
