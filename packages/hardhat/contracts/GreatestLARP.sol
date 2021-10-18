@@ -3,15 +3,16 @@ pragma solidity 0.8.4;
 
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-
 import "./TokenRecover.sol";
 
+/// @dev the BotToken interface
 interface BotToken {
     function lastMintedToken() external view returns (uint256);
 
     function mint(address user) external returns (uint256);
 }
 
+/// @dev the StatueToken interface
 interface StatueToken {
     function lastMintedToken() external view returns (uint256);
 
@@ -20,11 +21,12 @@ interface StatueToken {
 
 /// @title GreatestLARP Factory Contract
 /// @author jaxcoder, ghostffcode
-/// @notice
-/// @dev
+/// @notice Factory LARP NFT Contract
+/// @dev factory contract to handle the levels, thresholds and
+///     minting of the NFTs.
 contract GreatestLARP is Ownable {
     using SafeMath for uint256;
-    address payable gitcoin;
+    address payable immutable gitcoin;
 
     struct Token {
         address tokenAddress;
@@ -41,6 +43,7 @@ contract GreatestLARP is Ownable {
     uint256 public totalTokens;
     uint256 public totalStatues;
 
+    /// @dev checks to make sure the level passed in is valid
     modifier isValidLevel(uint256 level) {
         // level is between 1 and totalTokens Count
         require(level > 0, "Invalid level selected");
@@ -104,16 +107,18 @@ contract GreatestLARP is Ownable {
     }
 
     /// @dev A function that can be called from Etherscan to lower
-    ///      the price of the item by 10%.
+    ///      the price of all items for that level by 10%.
+    /// @param _level pass the level you want to lower the price for
     function whompwhomp(uint256 _level) public isValidLevel(_level) onlyOwner {
         tokenMap[_level].price = tokenMap[_level].price.sub(
-            tokenMap[_level].price.div(100).mul(10)
+            tokenMap[_level].price.mul(10).div(100)
         );
         statueMap[_level].price = statueMap[_level].price.sub(
-            statueMap[_level].price.div(100).mul(10)
+            statueMap[_level].price.mul(10).div(100)
         );
     }
 
+    /// @dev returns a details array of uints for the Bot levels
     function getDetailForTokenLevels()
         public
         view
@@ -136,6 +141,7 @@ contract GreatestLARP is Ownable {
         return levels;
     }
 
+    /// @dev returns a details array of uints for the Statue levels
     function getDetailForStatueLevels()
         public
         view
@@ -148,7 +154,7 @@ contract GreatestLARP is Ownable {
             levelInfo[0] = statueMap[i].price;
             levelInfo[1] = statueMap[i].thresholdStatues;
             levelInfo[2] = statueMap[i].totalSupply;
-            levelInfo[3] = BotToken(statueMap[i].tokenAddress)
+            levelInfo[3] = StatueToken(statueMap[i].tokenAddress)
                 .lastMintedToken();
             levelInfo[4] = statueMap[i].totalSupply - levelInfo[3];
 
@@ -160,6 +166,8 @@ contract GreatestLARP is Ownable {
     }
 
     /// @dev request to mint a Bot NFT
+    /// @param level pass the level to route the mint
+    /// @return the id of the NFT
     function requestMint(uint256 level)
         public
         payable
@@ -211,6 +219,8 @@ contract GreatestLARP is Ownable {
     }
 
     /// @dev request to mint a statue NFT
+    /// @param level pass the level to route the mint
+    /// @return the id of the NFT
     function requestMintStatue(uint256 level)
         public
         payable
