@@ -29,7 +29,7 @@ contract EthBot is ERC721URIStorage, Ownable {
 
     function _baseURI() internal pure override returns (string memory) {
         return
-            "https://gateway.pinata.cloud/ipfs/QmVVUny3kh5vVw35a7XrZLKDYGFiBZaZrvKug4chMVVRXV/";
+            "https://gateway.pinata.cloud/ipfs/QmNvDsEp35d31pT3WVUnQYN2pibMBLDH5hRs1oQHHsSsMa/";
     }
 
     function lastMintedToken() external view returns (uint256 id) {
