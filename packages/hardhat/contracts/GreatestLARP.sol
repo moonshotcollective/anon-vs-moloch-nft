@@ -107,10 +107,10 @@ contract GreatestLARP is Ownable {
     ///      the price of the item by 10%.
     function whompwhomp(uint256 _level) public isValidLevel(_level) onlyOwner {
         tokenMap[_level].price = tokenMap[_level].price.sub(
-            tokenMap[_level].price.div(100).mul(10)
+            tokenMap[_level].price.mul(10).div(100)
         );
         statueMap[_level].price = statueMap[_level].price.sub(
-            statueMap[_level].price.div(100).mul(10)
+            statueMap[_level].price.mul(10).div(100)
         );
     }
 

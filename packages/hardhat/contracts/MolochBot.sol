@@ -32,6 +32,10 @@ contract MolochBot is ERC721URIStorage, Ownable {
             "https://gateway.pinata.cloud/ipfs/QmZtE5UiiHtQMh17VJmuAT2vfqB7pyfuFBX5sqDSPWSn3F/";
     }
 
+    function contractURI() public view returns (string memory) {
+        return "";
+    }
+
     function lastMintedToken() external view returns (uint256 id) {
         id = _tokenIds.current();
     }
