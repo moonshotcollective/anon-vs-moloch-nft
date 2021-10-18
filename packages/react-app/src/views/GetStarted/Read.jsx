@@ -2,10 +2,11 @@ import React from "react";
 import { Button } from "../../themed-components";
 import PosterCover from "../../assets/mint/poster-cover.png";
 
-function Read({ goToNextStep, ...props }) {
+function Read({ goToPrevStep, goToNextStep, ...props }) {
   return (
     <>
       <div className="flex flex-1 flex-col mb-10  justify-center">
+        <a className="font-normal text-green-header" onClick={goToPrevStep} href="#">&lt;&lt; back to Prologue</a>
           <h1 className="text-4xl mb-4 font-normal text-green-header font-spacemono">
             Level 1
           </h1>

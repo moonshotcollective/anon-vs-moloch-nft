@@ -6,16 +6,17 @@ import AuctionOne from "./AuctionOne";
 import AuctionTwo from "./AuctionTwo";
 import FinalBattle from "./FinalBattle";
 import Read from "./Read";
+import Prologue from "./Prologue";
 import Winning from "./Winning";
 import { Nav } from "../../themed-components";
 
 // Steps component array
-const Steps = [Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
+const Steps = [Prologue, Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
 
 const incrementPercent = "5";
 
 function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
   const [mintingToken, setMintingToken] = useState(false);
   const [mintingStatue, setMintingStatue] = useState(false);
   // const [levelCompleted, setLevelCompleted] = useState(false);
