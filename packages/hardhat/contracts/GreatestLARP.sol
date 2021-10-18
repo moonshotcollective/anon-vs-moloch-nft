@@ -24,7 +24,7 @@ interface StatueToken {
 /// @dev
 contract GreatestLARP is Ownable {
     using SafeMath for uint256;
-    address payable gitcoin;
+    address payable immutable gitcoin;
 
     struct Token {
         address tokenAddress;
