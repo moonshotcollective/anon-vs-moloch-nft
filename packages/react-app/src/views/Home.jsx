@@ -23,9 +23,10 @@ function Home(props) {
           The <span>GREATEST LARP</span> Has Begun.
         </h1>
         <p className="mb-2 leading-relaxed font-librefranklin text-green-teal text-xl">- An <a href="https://en.wikipedia.org/wiki/Alternate_reality_game" target="_blank">Alternate Reality Game</a> .. </p>
-        <p className="mb-2 leading-relaxed font-librefranklin text-green-teal text-xl">- An experiment in networked storytelling..</p>
-        <p className="mb-2 leading-relaxed font-librefranklin text-green-teal text-xl">- An ambitious gambit for public goods funding..</p>
-        <p className="mb-2 leading-relaxed font-librefranklin text-green-teal text-xl">- A schelling point for the hopeful in a dystopic world...</p>
+        <p className="mb-2 leading-relaxed font-librefranklin text-green-teal text-xl">- An experiment in networked storytelling ..</p>
+        <p className="mb-2 leading-relaxed font-librefranklin text-green-teal text-xl">- An ambitious gambit for public goods funding ..</p>
+        <p className="mb-2 leading-relaxed font-librefranklin text-green-teal text-xl">- A schelling point for the hopeful in a dystopic world ...</p>
+        <p className="mb-2 leading-relaxed font-librefranklin text-green-teal text-xl">- A novel little slice of the metaverse ..</p>
         <p className="mb-2 leading-relaxed font-librefranklin text-green-teal text-xl">- fair launched at Liscon 2021 by <a href="https://twitter.com/owocki" target="_blank">Kevin Owocki</a>, <a href="https://twitter.com/austingriffith" target="_blank">Austin Griffith</a>, and <a href="http://gitcoindao.com/">GitcoinDAO</a>'s <a href="https://moonshotcollective.space/">Moonshot Collective</a>.</p>
         <div className="surround">
         <p className="mb-8 leading-relaxed font-librefranklin text-white text-5xl">r u rdy, anon?</p>
