@@ -392,7 +392,7 @@ function AuctionTwo({
 
   const popoverContent = (
     <div>
-      <span>Press continue to go next level</span>
+      <span>Press continue to go final boss</span>
     </div>
   );
 

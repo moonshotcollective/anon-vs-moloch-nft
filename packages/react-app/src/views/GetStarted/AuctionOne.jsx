@@ -376,7 +376,7 @@ function AuctionOne({
 
   const popoverContent = (
     <div>
-      <span>Press continue to go next level</span>
+      <span>Press continue to go to next level</span>
     </div>
   );
 
