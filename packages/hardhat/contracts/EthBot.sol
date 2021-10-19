@@ -340,6 +340,10 @@ contract EthBot is ERC721URIStorage, Ownable {
             "https://gateway.pinata.cloud/ipfs/QmVVUny3kh5vVw35a7XrZLKDYGFiBZaZrvKug4chMVVRXV/";
     }
 
+    function contractURI() public view returns (string memory) {
+        return "";
+    }
+
     /// @dev what was the last token minted
     function lastMintedToken() external view returns (uint256 id) {
         id = _tokenIds.current();
