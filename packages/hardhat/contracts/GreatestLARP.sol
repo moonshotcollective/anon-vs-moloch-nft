@@ -279,6 +279,7 @@ contract GreatestLARP is Ownable {
     /// @dev transfer ownership of ERC-721 token contracts
     /// @param to address of the new owner
     function transferTokenOwnership(address to) public onlyOwner {
+        require(to != 0x0000000000000000000000000000000000000000, "cannot make balck hole owner");
         for (uint256 i = 1; i <= totalTokens; i++) {
             BotToken(tokenMap[i].tokenAddress).transferOwnership(to);
         }
@@ -287,6 +288,7 @@ contract GreatestLARP is Ownable {
     /// @dev transfer ownership of ERC-721 token contracts
     /// @param to address of the new owner
     function transferStatueOwnership(address to) public onlyOwner {
+        require(to != 0x0000000000000000000000000000000000000000, "cannot make balck hole owner");
         for (uint256 i = 1; i <= totalStatues; i++) {
             StatueToken(statueMap[i].tokenAddress).transferOwnership(to);
         }
