@@ -9,6 +9,8 @@ module.exports = async ({ getNamedAccounts, getChainId, deployments }) => {
   const chainId = await getChainId();
   const { deployer } = await getNamedAccounts();
 
+  const confirmationsRequired = chainId === localChainId ? 1 : 2;
+
   // deploy ERC-721 Tokens
   const eBot = await deploy("EthBot", { from: deployer, log: true });
   const mBot = await deploy("MolochBot", { from: deployer, log: true });
@@ -36,10 +38,7 @@ module.exports = async ({ getNamedAccounts, getChainId, deployments }) => {
   });
 
   // load contracts
-  const GreatestLARPContract = await ethers.getContract(
-    "GreatestLARP",
-    deployer
-  );
+  const GreatestLARPContract = await ethers.getContract("GreatestLARP", deployer);
   const EthBot = await ethers.getContract("EthBot", deployer);
   const MolochBot = await ethers.getContract("MolochBot", deployer);
   const EthBotStatue = await ethers.getContract("EthBotStatue", deployer);
@@ -47,26 +46,20 @@ module.exports = async ({ getNamedAccounts, getChainId, deployments }) => {
 
   // transfer ownerships to the factory contract
   const EthBotTransfer = await EthBot.transferOwnership(factory.address);
-  await EthBotTransfer.wait(2);
+  await EthBotTransfer.wait(confirmationsRequired);
 
   const MolochBotTransfer = await MolochBot.transferOwnership(factory.address);
-  await MolochBotTransfer.wait(2);
+  await MolochBotTransfer.wait(confirmationsRequired);
 
-  const EthBotStatueTransfer = await EthBotStatue.transferOwnership(
-    factory.address
-  );
-  await EthBotStatueTransfer.wait(2);
+  const EthBotStatueTransfer = await EthBotStatue.transferOwnership(factory.address);
+  await EthBotStatueTransfer.wait(confirmationsRequired);
 
-  const MolochBotStatueTransfer = await MolochBotStatue.transferOwnership(
-    factory.address
-  );
-  await MolochBotStatueTransfer.wait(2);
+  const MolochBotStatueTransfer = await MolochBotStatue.transferOwnership(factory.address);
+  await MolochBotStatueTransfer.wait(confirmationsRequired);
 
   // set the owner to austin or kevin for whomp whomp function
-  const FactoryTransfer = await GreatestLARPContract.transferOwnership(
-    "0x00de4b13153673bcae2616b67bf822500d325fc3"
-  );
-  await FactoryTransfer.wait(2);
+  const FactoryTransfer = await GreatestLARPContract.transferOwnership("0x00de4b13153673bcae2616b67bf822500d325fc3");
+  await FactoryTransfer.wait(confirmationsRequired);
 
   if (chainId !== localChainId) {
     // verify the contracts now
@@ -107,10 +100,4 @@ module.exports = async ({ getNamedAccounts, getChainId, deployments }) => {
   }
 };
 
-module.exports.tags = [
-  "GreatestLARP",
-  "EthBot",
-  "MolochBot",
-  "EthBotStatue",
-  "MolochBotStatue",
-];
+module.exports.tags = ["GreatestLARP", "EthBot", "MolochBot", "EthBotStatue", "MolochBotStatue"];
