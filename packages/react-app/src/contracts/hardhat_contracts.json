@@ -5,7 +5,7 @@
       "chainId": "4",
       "contracts": {
         "EthBot": {
-          "address": "0xfdE6E79feb7f61C98e86a9c259cd493B167Dd9Be",
+          "address": "0xD067FaE3311A5DAEfE21B81EC17224C7B2652CA6",
           "abi": [
             {
               "inputs": [],
@@ -138,19 +138,6 @@
                   "internalType": "uint256",
                   "name": "",
                   "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "contractURI",
-              "outputs": [
-                {
-                  "internalType": "string",
-                  "name": "",
-                  "type": "string"
                 }
               ],
               "stateMutability": "view",
@@ -474,7 +461,7 @@
           ]
         },
         "MolochBot": {
-          "address": "0xF0ba7C6Bc6EB9F686a9fA34EF0BEcfb047694D90",
+          "address": "0xD1bF18fAae756AE014b57445E664D8865Ab3af59",
           "abi": [
             {
               "inputs": [],
@@ -607,19 +594,6 @@
                   "internalType": "uint256",
                   "name": "",
                   "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "contractURI",
-              "outputs": [
-                {
-                  "internalType": "string",
-                  "name": "",
-                  "type": "string"
                 }
               ],
               "stateMutability": "view",
@@ -943,7 +917,7 @@
           ]
         },
         "EthBotStatue": {
-          "address": "0x1B2431Db644d6Ee7157bdD2281D0C262E1c82022",
+          "address": "0x3603CB7A1377F11A0020C13a361562008b324482",
           "abi": [
             {
               "inputs": [],
@@ -1076,19 +1050,6 @@
                   "internalType": "uint256",
                   "name": "",
                   "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "contractURI",
-              "outputs": [
-                {
-                  "internalType": "string",
-                  "name": "",
-                  "type": "string"
                 }
               ],
               "stateMutability": "view",
@@ -1412,7 +1373,7 @@
           ]
         },
         "MolochBotStatue": {
-          "address": "0xeAFf7BCb6AE20d3090E80aaf90f1e870D9287b5F",
+          "address": "0xe1B20Fb27E75D121F98E46ecC21E33c3a7eB2dF4",
           "abi": [
             {
               "inputs": [],
@@ -1545,19 +1506,6 @@
                   "internalType": "uint256",
                   "name": "",
                   "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "contractURI",
-              "outputs": [
-                {
-                  "internalType": "string",
-                  "name": "",
-                  "type": "string"
                 }
               ],
               "stateMutability": "view",
@@ -1881,7 +1829,7 @@
           ]
         },
         "GreatestLARP": {
-          "address": "0xce81A30d907cC542D6B1027Bd0fCD078e2884202",
+          "address": "0x9Db1448E078d9a572a8C58F21d44190A363df2B1",
           "abi": [
             {
               "inputs": [
@@ -2067,6 +2015,32 @@
                 }
               ],
               "name": "transferOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "to",
+                  "type": "address"
+                }
+              ],
+              "name": "transferStatueOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "to",
+                  "type": "address"
+                }
+              ],
+              "name": "transferTokenOwnership",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"

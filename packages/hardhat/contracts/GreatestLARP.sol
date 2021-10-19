@@ -197,8 +197,7 @@ contract GreatestLARP is Ownable {
 
         // update the price of the token
         tokenMap[level].price =
-            (currentPrice * tokenMap[level].inflationRate) /
-            1000;
+            (currentPrice * tokenMap[level].inflationRate).div(1000);
 
         // make sure there are available tokens for this level
         require(
@@ -252,7 +251,7 @@ contract GreatestLARP is Ownable {
         uint256 currentPrice = statueMap[level].price;
 
         // update the price of the token
-        statueMap[level].price = (currentPrice * 1350) / 1000;
+        statueMap[level].price = (currentPrice * 1350).div(1000);
 
         // make sure there are available tokens for this level
         require(

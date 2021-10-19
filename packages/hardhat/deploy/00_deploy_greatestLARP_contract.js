@@ -12,7 +12,11 @@ module.exports = async ({ getNamedAccounts, getChainId, deployments }) => {
   const confirmationsRequired = chainId === localChainId ? 1 : 2;
 
   // deploy ERC-721 Tokens
-  const eBot = await deploy("EthBot", { from: deployer, log: true });
+  const eBot = await deploy("EthBot", {
+    from: deployer,
+    log: true,
+    gasPrice: 9000000000,
+  });
   const mBot = await deploy("MolochBot", { from: deployer, log: true });
   const eStatue = await deploy("EthBotStatue", { from: deployer, log: true });
   const mStatue = await deploy("MolochBotStatue", {
