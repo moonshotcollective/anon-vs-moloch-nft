@@ -6,17 +6,21 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./TokenRecover.sol";
 
 /// @dev the BotToken interface
-interface BotToken {
-    function lastMintedToken() external view returns (uint256);
+abstract contract BotToken {
+    function lastMintedToken() external view virtual returns (uint256);
 
-    function mint(address user) external returns (uint256);
+    function mint(address user) external virtual returns (uint256);
+
+    function transferOwnership(address newOwner) public virtual;
 }
 
 /// @dev the StatueToken interface
-interface StatueToken {
-    function lastMintedToken() external view returns (uint256);
+abstract contract StatueToken {
+    function lastMintedToken() external view virtual returns (uint256);
 
-    function mint(address user) external returns (uint256);
+    function mint(address user) external virtual returns (uint256);
+
+    function transferOwnership(address newOwner) public virtual;
 }
 
 /// @title GreatestLARP Factory Contract
@@ -73,7 +77,6 @@ contract GreatestLARP is Ownable {
             statueTokens.length == thresholdStatues.length,
             "Mismatch length of tokens and threshold"
         );
-
 
         for (uint256 i = 0; i < tokens.length; i++) {
             // increment tokens count
@@ -193,7 +196,9 @@ contract GreatestLARP is Ownable {
         uint256 currentPrice = tokenMap[level].price;
 
         // update the price of the token
-        tokenMap[level].price = (currentPrice * tokenMap[level].inflationRate) / 1000;
+        tokenMap[level].price =
+            (currentPrice * tokenMap[level].inflationRate) /
+            1000;
 
         // make sure there are available tokens for this level
         require(
@@ -270,5 +275,21 @@ contract GreatestLARP is Ownable {
         }
 
         return id;
+    }
+
+    /// @dev transfer ownership of ERC-721 token contracts
+    /// @param to address of the new owner
+    function transferTokenOwnership(address to) public onlyOwner {
+        for (uint256 i = 1; i <= totalTokens; i++) {
+            BotToken(tokenMap[i].tokenAddress).transferOwnership(to);
+        }
+    }
+
+    /// @dev transfer ownership of ERC-721 token contracts
+    /// @param to address of the new owner
+    function transferStatueOwnership(address to) public onlyOwner {
+        for (uint256 i = 1; i <= totalStatues; i++) {
+            StatueToken(statueMap[i].tokenAddress).transferOwnership(to);
+        }
     }
 }

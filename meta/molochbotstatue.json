@@ -1,0 +1,8 @@
+{
+  "name": "the Greatest LARP - ETHBot",
+  "description": "ETHBot is the Ethereum Bot fighting Moloch for coordination.",
+  "image": "https://rink-larp.surge.sh/static/media/fundingbot-1.c7c3e07c.png",
+  "external_link": "https://thegreatestlarp.com",
+  "seller_fee_basis_points": 100,
+  "fee_recipient": "0xde21F729137C5Af1b01d73aF1dC21eFfa2B8a0d6"
+}
