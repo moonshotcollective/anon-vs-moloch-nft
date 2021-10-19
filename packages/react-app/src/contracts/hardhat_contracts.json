@@ -5,7 +5,7 @@
       "chainId": "4",
       "contracts": {
         "EthBot": {
-          "address": "0xD067FaE3311A5DAEfE21B81EC17224C7B2652CA6",
+          "address": "0x2a4Be7658888D26055E4E217d9C48CDD259D7156",
           "abi": [
             {
               "inputs": [],
@@ -138,6 +138,19 @@
                   "internalType": "uint256",
                   "name": "",
                   "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "contractURI",
+              "outputs": [
+                {
+                  "internalType": "string",
+                  "name": "",
+                  "type": "string"
                 }
               ],
               "stateMutability": "view",
@@ -461,7 +474,7 @@
           ]
         },
         "MolochBot": {
-          "address": "0xD1bF18fAae756AE014b57445E664D8865Ab3af59",
+          "address": "0xA9Beb090d140B8678e3c28Ba402a945fD2eA9E99",
           "abi": [
             {
               "inputs": [],
@@ -594,6 +607,19 @@
                   "internalType": "uint256",
                   "name": "",
                   "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "contractURI",
+              "outputs": [
+                {
+                  "internalType": "string",
+                  "name": "",
+                  "type": "string"
                 }
               ],
               "stateMutability": "view",
@@ -917,7 +943,7 @@
           ]
         },
         "EthBotStatue": {
-          "address": "0x3603CB7A1377F11A0020C13a361562008b324482",
+          "address": "0x809aaA4BeA1C3D238062f1De81506179af1F6697",
           "abi": [
             {
               "inputs": [],
@@ -1050,6 +1076,19 @@
                   "internalType": "uint256",
                   "name": "",
                   "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "contractURI",
+              "outputs": [
+                {
+                  "internalType": "string",
+                  "name": "",
+                  "type": "string"
                 }
               ],
               "stateMutability": "view",
@@ -1373,7 +1412,7 @@
           ]
         },
         "MolochBotStatue": {
-          "address": "0xe1B20Fb27E75D121F98E46ecC21E33c3a7eB2dF4",
+          "address": "0x6a7C47C1229B0495197F4aAB8518C203EF569A44",
           "abi": [
             {
               "inputs": [],
@@ -1506,6 +1545,19 @@
                   "internalType": "uint256",
                   "name": "",
                   "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "contractURI",
+              "outputs": [
+                {
+                  "internalType": "string",
+                  "name": "",
+                  "type": "string"
                 }
               ],
               "stateMutability": "view",
@@ -1829,7 +1881,7 @@
           ]
         },
         "GreatestLARP": {
-          "address": "0x9Db1448E078d9a572a8C58F21d44190A363df2B1",
+          "address": "0x31FdAfA75BF20725F10C66be28136b2057A141F2",
           "abi": [
             {
               "inputs": [
