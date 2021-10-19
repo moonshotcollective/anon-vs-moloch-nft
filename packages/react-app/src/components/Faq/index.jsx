@@ -34,7 +34,7 @@ const Faq = () => {
                   showArrow={false}
                   extra={<img alt="panel arrown up" src={panelArrowUp} className={"w-6"} />}
                 >
-                  <p className="w-3/4">      
+                  <p className="w-3/4">
                   <a href="https://en.wikipedia.org/wiki/Live_action_role-playing_game" target="_blank"> LARPing</a> or Live-action-role-playing, is a common activity online for maby.  LARPing is the face we put on on social media.  LARPing is the avatar we wear in the metaverse.  LARPing is posting instagram photos of your life's highlight reel.  We're already LARPing for much of our days, so if we're all going to LARP- why not join the Greatest LARP?
                   <br/>
                   <br/>
@@ -72,7 +72,7 @@ const Faq = () => {
                   extra={<img alt="panel arrown up" src={panelArrowUp} className={"w-6"} />}
                 >
                   <p className="w-3/4">
-                    Meditations on Moloch is a blog post that was passed around in the Ethereum community during the 2018-2020 bear market.  There are many of us who believe that fighting Coordination Failures (Moloch) is the deep reason behind Ethereum.  We believe that Ethereum was made to make us free, not rich.  Sometimes its hard to remember which is which, and thats why we build the Greatest LARP.  
+                    Meditations on Moloch is a blog post that was passed around in the Ethereum community during the 2018-2020 bear market.  There are many of us who believe that fighting Coordination Failures (Moloch) is the deep reason behind Ethereum.  We believe that Ethereum was made to make us free, not rich.  Sometimes its hard to remember which is which, and thats why we build the Greatest LARP.
 
                     <br/>
                     <br/>
@@ -113,7 +113,7 @@ const Faq = () => {
                   extra={<img alt="panel arrown up" src={panelArrowUp} className={"w-6"} />}
                 >
                   <p className="w-3/4">
-                  YES - 
+                  YES -
                   All funds go directly to the <a href="https://gitcoin.co/grants/12/gitcoin-grants-official-matching-pool-fund">Gitcoin Grants Matching Pool</a>, to fund public goods on Gitcoin Grants.
                   <br/>
                   <br/>
@@ -165,7 +165,7 @@ const Faq = () => {
                 >
                   <p className="w-3/4">
                   <a href="http://gitcoindao.com/">GitcoinDAO</a>'s Rapid Prototyping Workstream <a href="https://moonshotcollective.space/"> The Moonshot Collective</a> was the primary instigator.
-                  Thank you especially to 
+                  Thank you especially to
 Josh Baylock,
 
 Colton Orr, Kitteh,
@@ -176,7 +176,9 @@ Bliss, Jason, Fahim, Austin Griffith, Kevin Owocki Ryan, Loie,
 
 GitcoinDAO, The Moonshot Collective,
 
-Hodlers of MoonshotBots, Holders of SACKs 
+@epheph for eyes on the contract, 
+
+Hodlers of MoonshotBots, Holders of SACKs
                   </p>
                 </Panel>
 
