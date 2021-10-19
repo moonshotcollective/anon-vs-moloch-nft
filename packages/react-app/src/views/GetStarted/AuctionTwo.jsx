@@ -415,12 +415,13 @@ function AuctionTwo({
             <Button
               transparent
               loading={mintingStatue}
+              loadingText="Minting"
               disabled={lastMintedStatue === totalStatueSupply}
               onClick={() => mintTokenStatue(level, statuePrice)}
               className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
               padding={10}
             >
-              {truncate(statuePrice, 4)} ETH
+              {lastMintedStatue === totalStatueSupply ? "Minting Completed" : `${truncate(statuePrice, 4)} ETH`}
             </Button>
             <span className="text-red-500">
               (Only {statueLeftover} available of {totalStatueSupply} total supply)
@@ -451,12 +452,13 @@ function AuctionTwo({
             <Button
               transparent
               loading={mintingToken}
+              loadingText="Minting"
               disabled={lastMintedToken === totalTokenSupply}
               onClick={() => mintTokenBot(level, tokenPrice)}
               className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
               padding={10}
             >
-              {truncate(tokenPrice, 4)} ETH
+              {lastMintedToken === totalTokenSupply ? "Minting Completed" : `${truncate(tokenPrice, 4)} ETH`}
             </Button>
             <span className="text-red-500">
               (Only {tokenLeftover} available of {totalTokenSupply} total supply)
