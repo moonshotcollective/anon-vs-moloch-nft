@@ -49,7 +49,7 @@ module.exports = {
   defaultNetwork,
 
   gasReporter: {
-    currency: "USD",
+    currency: "ETH",
     coinmarketcap: process.env.COINMARKETCAP || null,
   },
 
