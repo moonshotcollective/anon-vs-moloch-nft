@@ -1,6 +1,6 @@
 import { useContractReader } from "eth-hooks";
 import { ethers } from "ethers";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { EthbotProgress } from "../../components";
 import AuctionOne from "./AuctionOne";
 import AuctionTwo from "./AuctionTwo";
@@ -9,13 +9,14 @@ import Read from "./Read";
 import Prologue from "./Prologue";
 import Winning from "./Winning";
 import { Nav } from "../../themed-components";
+import { notification } from "antd";
 
 // Steps component array
 const Steps = [Prologue, Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
 
 const incrementPercent = "5";
 
-function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
+function GetStarted({ tx, readContracts, writeContracts, events, userSigner, loadWeb3Modal, ...props }) {
   const [currentStep, setCurrentStep] = useState(1);
   const [mintingToken, setMintingToken] = useState(false);
   const [mintingStatue, setMintingStatue] = useState(false);
@@ -24,17 +25,19 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
   const tokenLevelDetails = useContractReader(readContracts, "GreatestLARP", "getDetailForTokenLevels");
   const statueLevelDetails = useContractReader(readContracts, "GreatestLARP", "getDetailForStatueLevels");
 
-  console.log(`tokenLevelDetails: `, tokenLevelDetails);
-  console.log(`statueLevelDetails: `, statueLevelDetails);
-
-  // working on this
-  // useEffect(() => {
-  //   if (tokenLeftover >= 297 && statueLeftover >= 2) {
-  //     setLevelCompleted(true);
-  //   }
-  // }, [tokenLeftover, statueLeftover, readContracts]);
+  const showWalletConnectionError = async () => {
+    await loadWeb3Modal();
+    // notification.error({
+    //   message: "Please connect your wallet",
+    //   description: "Connect your wallet to start LARPing",
+    //   placement: "bottomRight",
+    // });
+  };
 
   const mintTokenBot = async (level, price) => {
+    if (!userSigner) {
+      return showWalletConnectionError();
+    }
     setMintingToken(true);
     try {
       // fetch price for selected level
@@ -64,6 +67,9 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
   };
 
   const mintTokenStatue = async (level, price) => {
+    if (!userSigner) {
+      return showWalletConnectionError();
+    }
     setMintingStatue(true);
     try {
       // fetch price for selected level
