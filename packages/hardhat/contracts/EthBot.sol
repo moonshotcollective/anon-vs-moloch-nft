@@ -340,18 +340,8 @@ contract EthBot is ERC721URIStorage, Ownable {
             "https://gateway.pinata.cloud/ipfs/QmVVUny3kh5vVw35a7XrZLKDYGFiBZaZrvKug4chMVVRXV/";
     }
 
-    /// @dev contract metadata per OpenSea 
-    function contractURI() public view returns (string memory) {
-        return
-            "https://gateway.pinata.cloud/ipfs/QmVQ6ntimfRiguCih2upWqRRk9nChLjoj9KgiJ6SX32ddd";
-    }
-
     /// @dev what was the last token minted
-    function lastMintedToken()
-        external
-        view
-        returns (uint256 id)
-    {
+    function lastMintedToken() external view returns (uint256 id) {
         id = _tokenIds.current();
     }
 
@@ -372,11 +362,7 @@ contract EthBot is ERC721URIStorage, Ownable {
 
     /// @dev public mint function
     /// @param user the users address who is minting
-    function mint(address user)
-        external
-        onlyOwner
-        returns (uint256 id)
-    {
+    function mint(address user) external onlyOwner returns (uint256 id) {
         id = _tokenIds.current();
         mintItem(user, uris[id]);
         lastMinted = id;
