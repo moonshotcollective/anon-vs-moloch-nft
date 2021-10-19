@@ -34,6 +34,14 @@ describe("My Dapp", function () {
         [1350, 1350], // inflationRatesStatues
         [1030, 1030], // inflationRatesDigital);
       );
+
+      await eBot.transferOwnership(GreatestLARP.address);
+      await mBot.transferOwnership(GreatestLARP.address);
+      await eStatue.transferOwnership(GreatestLARP.address);
+      await mStatue.transferOwnership(GreatestLARP.address);
+
+      // set the owner to austin or kevin for whomp whomp function
+      await GreatestLARP.transferOwnership("0xA4ca1b15fE81F57cb2d3f686c7B13309906cd37B"); //
     });
   });
 });
