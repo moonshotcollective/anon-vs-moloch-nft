@@ -107,7 +107,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, ...props }) {
     <>
       <Nav {...props} />
       <EthbotProgress progress={currentStep} />
-      <section className="container flex flex-1 mx-auto my-20">
+      <section className="container flex flex-1 mx-auto my-20 pb-8">
         <CurrentStepComponent
           goToPrevStep={goToPrevStep}
           goToNextStep={goToNextStep}
