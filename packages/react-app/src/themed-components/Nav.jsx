@@ -31,10 +31,10 @@ export default function Nav({
         <a href="/#faq" class="mr-10 hover:text-gray-900 text-green-dark-green">
           FAQ
         </a>
-        <a target="_blank" href="https://t.me/joinchat/ekBANXnlwcQ1NzRh" class="mr-10 hover:text-gray-900 text-green-dark-green border-1">
+        <a target="_blank" href="https://t.me/joinchat/ekBANXnlwcQ1NzRh" class="mr-10 hover:text-gray-900 text-green-dark-green border-1" style={{padding:8}}>
           Join the Telegram
         </a>
-        <a href="/get-started" class="mr-10 hover:text-gray-900 text-green-dark-green border-1">
+        <a href="/get-started" class="mr-10 hover:text-gray-900 text-green-dark-green border-1" style={{padding:8}}>
           Join the LARP
         </a>
       </nav>
