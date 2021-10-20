@@ -9,13 +9,12 @@ module.exports = async ({ getNamedAccounts, getChainId, deployments }) => {
   const chainId = await getChainId();
   const { deployer } = await getNamedAccounts();
 
-  const confirmationsRequired = chainId === localChainId ? 1 : 2;
+  const confirmationsRequired = chainId === localChainId ? 1 : 5;
 
   // deploy ERC-721 Tokens
   const eBot = await deploy("EthBot", {
     from: deployer,
     log: true,
-    gasPrice: 9000000000,
   });
   const mBot = await deploy("MolochBot", { from: deployer, log: true });
   const eStatue = await deploy("EthBotStatue", { from: deployer, log: true });
@@ -62,7 +61,7 @@ module.exports = async ({ getNamedAccounts, getChainId, deployments }) => {
   await MolochBotStatueTransfer.wait(confirmationsRequired);
 
   // set the owner to austin or kevin for whomp whomp function
-  const FactoryTransfer = await GreatestLARPContract.transferOwnership("0xA4ca1b15fE81F57cb2d3f686c7B13309906cd37B"); // ("0x00de4b13153673bcae2616b67bf822500d325fc3");
+  const FactoryTransfer = await GreatestLARPContract.transferOwnership("0x00de4b13153673bcae2616b67bf822500d325fc3");
   await FactoryTransfer.wait(confirmationsRequired);
 
   if (chainId !== localChainId) {
