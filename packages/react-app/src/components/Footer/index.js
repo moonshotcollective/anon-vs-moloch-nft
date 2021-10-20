@@ -22,7 +22,10 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <div className="text-green-teal">
+      <div className="text-green-teal text-center">
+        OpenSea <a href="https://opensea.io/collection/ethbot-v2">EthBots</a>
+      </div>
+      <div className="text-green-teal text-center">
         Mainnet Contracts
         <div>
           <a href="https://etherscan.io/address/0x82C7c02a52B75387DB14FA375938496cbb984388">EthBot</a>

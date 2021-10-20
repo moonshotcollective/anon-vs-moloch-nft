@@ -14,7 +14,7 @@ import Winning from "./Winning";
 // Steps component array
 const Steps = [Prologue, Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
 
-const incrementPercent = "28";
+const incrementPercent = "8";
 
 function GetStarted({ tx, readContracts, writeContracts, events, userSigner, loadWeb3Modal, ...props }) {
   const [currentStep, setCurrentStep] = useState(1);
