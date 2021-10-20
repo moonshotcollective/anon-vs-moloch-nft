@@ -9,11 +9,11 @@ required: [Node](https://nodejs.org/dist/latest-v12.x/) plus [Yarn](https://clas
 
 
 ```bash
-git clone https://github.com/moonshotcollective/anon-vs-moloch-nft.git app
+git clone https://github.com/moonshotcollective/anon-vs-moloch-nft.git anon-vs-moloch-nft
 
-cd app
+cd anon-vs-moloch-nft
 
-git checkout app
+git checkout develop
 ```
 
 ```bash

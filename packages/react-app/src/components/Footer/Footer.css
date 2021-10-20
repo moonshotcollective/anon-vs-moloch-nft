@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css?family=Space+Mono:400,700|Libre+Franklin:400,600|Miriam+Libre:400");
+
+.footer-icon {
+	width: 32px;
+	height: 32px;
+}
+
+.footer-font-v1 {
+	font-family: 'Libre Franklin';
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 175%;
+	color: #E2E0E7;
+}
+
+.footer-font-v2 {
+	font-family: 'Libre Franklin';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 175%;
+	text-decoration-line: underline;
+	color: #11BC92;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.footer-font-v3 {
+	font-family: 'Libre Franklin';
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 175%;
+	color: #B3FFED;
+}
+
+.footer-background {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	min-height: 371px;
+  }
+
+  .footerBotHead {
+	height: 116px;
+	width: 200px;
+  }

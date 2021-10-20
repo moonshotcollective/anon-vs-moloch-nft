@@ -1,0 +1,17 @@
+.progress-subtext {
+	font-family: 'Libre Franklin';
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: #0E0333;
+}
+
+.progress-title {
+	font-family: 'Space Mono';
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 150%;
+
+	color: #11BC92;
+}

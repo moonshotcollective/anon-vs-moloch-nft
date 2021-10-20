@@ -1,3 +1,98 @@
+@import url("https://fonts.googleapis.com/css?family=Space+Mono:400,700|Libre+Franklin:400,600|Miriam+Libre:400");
+
 .App {
   text-align: center;
+}
+.ant-row.ant-row-middle{
+  display: none;
+}
+.bbg{
+  max-width: 360px;
+  margin-right: 20px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+.seperator{
+  color: #11BC92;
+  padding-right: 20px;
+  margin-top: 10px;
+  vertical-align: top;
+  font-size: x-large;
+}
+h1 span{
+  font-weight: bold;
+  color: #77cba3;
+}
+.border-1{
+  border: 1px solid #57ab93;
+  background-color: #77cba3;
+  color: white;
+  padding: 3px;
+  border-radius: 10px;
+}
+.border-1:hover{
+  color: #eee;
+}
+.footer-icon{
+  max-height: 24px;
+  max-width: 24px;
+}
+.text-green-teal a{
+  font-weight: bold;
+  color:rgba(44, 174, 146, var(--tw-text-opacity))
+}
+.quote{
+  max-width: 400px;
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
+}
+
+.absolute.top-0.flex{
+  max-height: 400px;
+}
+
+#digitalbot, #molochdigital{
+  width: 273px;
+  height: 270px;
+}
+
+#h1{
+  background-color: rgba(1,1,1, 0.5);
+  padding: 10px;
+  border-radius:  0px 30px 0px 30px;
+}
+.surround Button{
+  background-color: #e79c8d;
+  float: right;
+}
+
+.surround{
+  border-top: 4px #e79c8d solid;
+  background-color: rgba(1,1,1, 0.5);
+  padding: 30px 50px;
+  margin-top:  20px;
+  margin-bottom: 20px;
+  border-radius:  0px 50px 0px 50px;
+}
+
+.nav_button{
+  padding: 5px;
+  border-radius: 10px;
+}
+
+#progress_bar_1{
+  width: 100%;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+
+#progress_bar_1 span{
+  width: 100px;
+  background-color: #eee;
+  display: inline-block;
+  border-radius: 10px;
 }

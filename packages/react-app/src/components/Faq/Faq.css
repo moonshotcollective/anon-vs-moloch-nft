@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css?family=Space+Mono:400,700|Libre+Franklin:400,600|Miriam+Libre:400");
+
+  .faq-title {
+	font-family: 'Space Mono';
+	font-style: normal;
+	font-weight: normal;
+	font-size: 50px;
+	color: #11BC92;
+	text-transform: uppercase;
+  }
+
+.faq-group-overlay {
+	align-items: flex-start;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+  }
+
+  .ant-collapse-item {
+	margin-top: 10px;
+	background-color: #337062;
+	border: 0.593148px solid #2CAE92;
+	box-sizing: border-box;
+	border-radius: 2.37259px;
+  }
+
+  .ant-collapse-content-box {
+	background-color: #DDF1E9;
+  }
+
+  .ant-collapse {
+	  background-color: white;
+	  border: 0;
+  }
+
+  .ant-collapse-content {
+	background-color: #6dc5a040;
+	font-family: 'Space Mono';
+	font-style: normal;
+	font-weight: normal;
+	border: 0;
+  }
+
+  .faq-panel {
+	font-family: 'Space Mono';
+	font-style: normal;
+	font-weight: normal;
+	font-size: 24px;
+	color: #6DC5A0;
+  }
+
+  .ant-collapse-header {
+	color: #6DC5A0;
+	background-color: white;
+  }
+
+  .ant-collapse-extra {
+	  margin-left: 20px;
+  }
+
+  .ant-collapse > .ant-collapse-item-active > .ant-collapse-header {
+	color: white !important;
+	background-color: #337062;
+  }
+
+  .ant-collapse > .ant-collapse-item-active > .ant-collapse-content > .ant-collapse-content-box > p > a {
+	font-style: normal;
+	font-weight: 600;
+	line-height: 175%;
+	color: #11BC92;
+  }
+
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+	color: #6DC5A0;
+  }
