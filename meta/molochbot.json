@@ -1,8 +1,8 @@
 {
   "name": "the Greatest LARP - Moloch Bot",
   "description": "Moloch whose mind is pure machinery! Moloch whose blood is running money! Moloch whose fingers are ten armies! Moloch whose breast is a cannibal dynamo! Moloch whose ear is a smoking tomb! Moloch, the god of coordination failure is here.",
-  "image": "https://rink-larp.surge.sh/static/media/fundingbot-1.c7c3e07c.png",
-  "external_link": "https://thegreatestlarp.com",
+  "image": "https://rink-larp.surge.sh/static/media/digitalMoloch.c507b6bc.png",
+  "external_link": "https://greatestlarp.com",
   "seller_fee_basis_points": 1000,
   "fee_recipient": "0xde21F729137C5Af1b01d73aF1dC21eFfa2B8a0d6"
 }

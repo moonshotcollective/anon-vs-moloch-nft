@@ -2,7 +2,7 @@
   "name": "the Greatest LARP - ETH Bot",
   "description": "ETH Bot is the Ethereum Bot fighting Moloch, the god of coordination failure - to save humanity from its greatest coordination failures.",
   "image": "https://rink-larp.surge.sh/static/media/fundingbot-1.c7c3e07c.png",
-  "external_link": "https://thegreatestlarp.com",
+  "external_link": "https://greatestlarp.com",
   "seller_fee_basis_points": 1000,
   "fee_recipient": "0xde21F729137C5Af1b01d73aF1dC21eFfa2B8a0d6"
 }

@@ -40,7 +40,8 @@ contract EthBotStatue is ERC721URIStorage, Ownable {
     }
 
     function contractURI() public view returns (string memory) {
-        return "";
+        return
+            "https://gateway.pinata.cloud/ipfs/QmRxiXjsRkfz86aBNAmLSCqSBmcWXYDGwW5M1VPELE1ZXT/ethbotstatue.json";
     }
 
     /// @dev what was the last token minted
