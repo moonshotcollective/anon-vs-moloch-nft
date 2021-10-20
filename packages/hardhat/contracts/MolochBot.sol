@@ -353,7 +353,7 @@ contract MolochBot is ERC721URIStorage, Ownable {
     /// @dev the base uri for the assets
     function _baseURI() internal pure override returns (string memory) {
         return
-            "https://gateway.pinata.cloud/ipfs/QmZtE5UiiHtQMh17VJmuAT2vfqB7pyfuFBX5sqDSPWSn3F/";
+            "https://gateway.pinata.cloud/ipfs/QmYZtBfk4xsge7dV1bQwytcQVzE7gde7J6FTuAx9ZwMkaA/";
     }
 
     function contractURI() public view returns (string memory) {

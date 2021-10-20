@@ -65,11 +65,21 @@ h1 span{
   padding: 10px;
   border-radius:  0px 30px 0px 30px;
 }
+.surround Button{
+  background-color: #e79c8d;
+  float: right;
+}
 
 .surround{
+  border-top: 4px #e79c8d solid;
   background-color: rgba(1,1,1, 0.5);
   padding: 30px 50px;
   margin-top:  20px;
   margin-bottom: 20px;
   border-radius:  0px 50px 0px 50px;
+}
+
+.nav_button{
+  padding: 5px;
+  border-radius: 10px;
 }

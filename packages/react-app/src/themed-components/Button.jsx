@@ -1,6 +1,5 @@
 import React from "react";
 import classnames from "classnames";
-import PulseLoader from "react-spinners/PulseLoader";
 
 function ThemedButton({
   children,
@@ -26,7 +25,6 @@ function ThemedButton({
         !disabled && className,
       )}
     >
-      <PulseLoader color={"#efefef"} loading={loading} size={5} />
       <span className={classnames({ "ml-2": loading })}>{loading && loadingText ? loadingText : children}</span>
     </button>
   );
