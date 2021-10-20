@@ -5,7 +5,7 @@
       "chainId": "4",
       "contracts": {
         "EthBot": {
-          "address": "0x2a4Be7658888D26055E4E217d9C48CDD259D7156",
+          "address": "0x015426f97e132711c63a65A9bb03ab23fAD3BfF5",
           "abi": [
             {
               "inputs": [],
@@ -474,7 +474,7 @@
           ]
         },
         "MolochBot": {
-          "address": "0xA9Beb090d140B8678e3c28Ba402a945fD2eA9E99",
+          "address": "0xbc63A54FaD075beB208E503E81Bc117278EE7c32",
           "abi": [
             {
               "inputs": [],
@@ -943,7 +943,7 @@
           ]
         },
         "EthBotStatue": {
-          "address": "0x809aaA4BeA1C3D238062f1De81506179af1F6697",
+          "address": "0xdF64813D3451c478ef8BB5c43Ec17dF859d10a61",
           "abi": [
             {
               "inputs": [],
@@ -1412,7 +1412,7 @@
           ]
         },
         "MolochBotStatue": {
-          "address": "0x6a7C47C1229B0495197F4aAB8518C203EF569A44",
+          "address": "0x084A70a2CED92D9664Bc6D23304DaD8f0f6C1C15",
           "abi": [
             {
               "inputs": [],
@@ -1881,7 +1881,7 @@
           ]
         },
         "GreatestLARP": {
-          "address": "0x31FdAfA75BF20725F10C66be28136b2057A141F2",
+          "address": "0xDC7A8460a825A395dD445712E554FA727Ef3552B",
           "abi": [
             {
               "inputs": [
@@ -1969,6 +1969,44 @@
                   "internalType": "uint256[5][]",
                   "name": "",
                   "type": "uint256[5][]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_level",
+                  "type": "uint256"
+                }
+              ],
+              "name": "lastestPriceForStatueLevel",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_level",
+                  "type": "uint256"
+                }
+              ],
+              "name": "lastestPriceForTokenLevel",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
                 }
               ],
               "stateMutability": "view",
