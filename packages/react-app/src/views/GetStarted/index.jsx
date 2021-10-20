@@ -1,5 +1,5 @@
 import { useContractReader } from "eth-hooks";
-import { ethers } from "ethers";
+// import { ethers } from "ethers";
 import React, { useState } from "react";
 import { EthbotProgress } from "../../components";
 import AuctionOne from "./AuctionOne";
@@ -9,7 +9,7 @@ import Read from "./Read";
 import Prologue from "./Prologue";
 import Winning from "./Winning";
 import { Nav } from "../../themed-components";
-import { notification } from "antd";
+// import { notification } from "antd";
 
 // Steps component array
 const Steps = [Prologue, Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
@@ -41,7 +41,9 @@ function GetStarted({ tx, readContracts, writeContracts, events, userSigner, loa
     setMintingToken(true);
     try {
       // fetch price for selected level
-      const value = ethers.utils.parseEther(price);
+      const price = await readContracts.GreatestLARP.lastestPriceForTokenLevel(level);
+      const value = price.add(price.mul(incrementPercent).div("100"));
+
       const result = tx(writeContracts.GreatestLARP.requestMint(level, { value }), async update => {
         console.log("📡 Transaction Update:", update);
         // reset minting
@@ -61,6 +63,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, userSigner, loa
       console.log("awaiting metamask/web3 confirm result...", result);
       console.log(await result);
     } catch (err) {
+      console.log(err);
       setMintingToken(false);
     }
     setMintingToken(false);
@@ -73,7 +76,9 @@ function GetStarted({ tx, readContracts, writeContracts, events, userSigner, loa
     setMintingStatue(true);
     try {
       // fetch price for selected level
-      const value = ethers.utils.parseEther(price);
+      const price = await readContracts.GreatestLARP.lastestPriceForStatueLevel(level);
+      const value = price.add(price.mul(incrementPercent).div("100"));
+
       const result = tx(writeContracts.GreatestLARP.requestMintStatue(level, { value }), async update => {
         console.log("📡 Transaction Update:", update);
         // reset minting
@@ -93,6 +98,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, userSigner, loa
       console.log("awaiting metamask/web3 confirm result...", result);
       console.log(await result);
     } catch (err) {
+      console.log(err);
       setMintingStatue(false);
     }
     setMintingStatue(false);
