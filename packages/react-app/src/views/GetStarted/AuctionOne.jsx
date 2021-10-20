@@ -401,7 +401,7 @@ function AuctionOne({
             coordination.
             <br />
             <br />
-            ETHBots are built to coordinate. They are configured by the community they serve to create coordination. The
+            ETHBots are built to coordinate. They are configured by the community they serve to create coordination. They
             are the vessels through which humanity coordinates to defeat Moloch.
             <br />
             <br />

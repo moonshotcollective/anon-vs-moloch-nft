@@ -2,22 +2,22 @@ import { useContractReader } from "eth-hooks";
 // import { ethers } from "ethers";
 import React, { useState } from "react";
 import { EthbotProgress } from "../../components";
+import { Nav } from "../../themed-components";
 import AuctionOne from "./AuctionOne";
 import AuctionTwo from "./AuctionTwo";
 import FinalBattle from "./FinalBattle";
-import Read from "./Read";
 import Prologue from "./Prologue";
+import Read from "./Read";
 import Winning from "./Winning";
-import { Nav } from "../../themed-components";
 // import { notification } from "antd";
 
 // Steps component array
 const Steps = [Prologue, Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
 
-const incrementPercent = "5";
+const incrementPercent = "8";
 
 function GetStarted({ tx, readContracts, writeContracts, events, userSigner, loadWeb3Modal, ...props }) {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
   const [mintingToken, setMintingToken] = useState(false);
   const [mintingStatue, setMintingStatue] = useState(false);
   // const [levelCompleted, setLevelCompleted] = useState(false);
@@ -118,7 +118,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, userSigner, loa
   return (
     <>
       <Nav {...props} />
-      <EthbotProgress progress={currentStep > 0 ? currentStep : 1} />
+      <EthbotProgress progress={currentStep} />
       <section className="container flex flex-1 mx-auto my-20 pb-8">
         <CurrentStepComponent
           goToPrevStep={goToPrevStep}
