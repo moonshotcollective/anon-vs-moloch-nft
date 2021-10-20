@@ -409,7 +409,7 @@ function AuctionTwo({
             <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">
               Moloch Statue NFT ({lastMintedStatue}/{totalStatueSupply})
             </h3>
-            <p>Redeemable for a beautiful 12" Moloch statue. The Moloch statue stands eye to eye with ETH-Bot at 9”, and a width of 8” of pure muscle. (23cm x 20.5cm)  <a href="https://www.dropbox.com/sh/037jpsu05ed1go4/AADIDAypS-zdeTTODzvsFnV4a?dl=0" target="_blank">Check out the build here</a>.</p>
+            <p>Want to slay Moloch?  This NFT is for you.  Redeemable for a menacingly tall physical Moloch figurine. The Moloch statue stands eye to eye with ETH-Bot at 12”, and a width of 10” of pure muscle. </p>
 
             {/* Button */}
             <Button
@@ -425,6 +425,8 @@ function AuctionTwo({
             </Button>
             <span className="text-red-500">
               (Only {statueLeftover} available of {totalStatueSupply} total supply)
+              <br/>
+              <a href="https://gitcoin.co/blog/the-ethbot-moloch-statue-auctions-are-live/" target="_blank">(Build by Blaylock Comics)</a>
             </span>
           </div>
 
@@ -464,11 +466,11 @@ function AuctionTwo({
               (Only {tokenLeftover} available of {totalTokenSupply} total supply)
             </span>
             <a
-              href="https://gateway.pinata.cloud/ipfs/QmTuc7VhLN9iYwfnrLiXZx3AXdu3uN8qbKAP5hacpVWny2"
+              href="https://gitcoin.co/l-kh"
               target="_blank"
               rel="noreferrer"
             >
-              (Illustrations by @-lkh)
+              (Illustrations by @l-kh)
             </a>
           </div>
         </div>

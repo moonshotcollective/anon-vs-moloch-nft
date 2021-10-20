@@ -431,7 +431,7 @@ function AuctionOne({
             <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">
               ETHBots Statue NFT({lastMintedStatue}/{totalStatueSupply})
             </h3>
-            <p>Redeemable for a beautiful 12" ETHBot statue. The ETH-Bot statue stands at a whopping 9” tall x 12” in width (23cm x 30.5cm).  <a href="https://www.dropbox.com/sh/037jpsu05ed1go4/AADIDAypS-zdeTTODzvsFnV4a?dl=0" target="_blank">Check out the build here</a>.</p>
+            <p>An essential addition to any Moloch-slayers collection..  This NFT is redeemable for a beautiful physical ETHBot figurine. The ETH-Bot statue stands at a whopping 12” tall x 15” in width.</p>
             {/* Button */}
             <Button
               transparent
@@ -446,6 +446,8 @@ function AuctionOne({
             </Button>
             <span className="text-red-500 mt-2">
               (Only {statueLeftover} available of {totalStatueSupply} total supply)
+              <br/>
+              <a href="https://gitcoin.co/blog/the-ethbot-moloch-statue-auctions-are-live/" target="_blank">(Build by Blaylock Comics)</a>
             </span>
           </div>
 
@@ -485,11 +487,11 @@ function AuctionOne({
               (Only {tokenLeftover} available of {totalTokenSupply} total supply)
             </span>
             <a
-              href="https://gateway.pinata.cloud/ipfs/QmbK1MrkzX1QMRBp9urqUMoKYSatQi5mkRTotxrjJnqm2x"
+              href="https://gitcoin.co/l-kh"
               target="_blank"
               rel="noreferrer"
             >
-              (Illustrations by @-lkh)
+              (Illustrations by @l-kh)
             </a>
           </div>
         </div>

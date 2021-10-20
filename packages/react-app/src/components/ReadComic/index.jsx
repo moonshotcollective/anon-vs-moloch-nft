@@ -13,7 +13,7 @@ const ReadComic = () => {
       <strong>The Greatest LARP</strong> is a coordination game about coordination games. 
       <br/>
       <br/>
-      Moloch, the god of Coordination Failiure, is winning.  And you, must stop him at all costs, Anon! On each level, you and your frens will complete a mission.  Only then can you pass to the next level.
+      Moloch, the god of Coordination Failiure, is winning.  And you, must stop him at all costs, Anon! This game has 4 levels.  On each level, you and your frens will complete a mission.  Only then can you pass to the next level.
       Some levels may involve minting of NFTs.  All proceeds go to support public goods on Gitcoin Grants, of course.
       <br/>
       <br/>
