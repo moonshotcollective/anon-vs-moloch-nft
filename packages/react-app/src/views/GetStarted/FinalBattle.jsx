@@ -39,7 +39,7 @@ function FinalBattle({ goToPrevStep, goToNextStep }) {
                 window.open("https://zora.co/collections/zora/5725");
               }}
             >
-              View Zora Auction
+              View Auction
             </Button>
             <div className="text-red-500">(1/1 Ultra rare piece)</div>
           </div>
@@ -48,7 +48,11 @@ function FinalBattle({ goToPrevStep, goToNextStep }) {
       </div>
 
       <div className="flex flex-1 justify-center items-center relative">
-        <a href="https://zora.co/collections/zora/5725" target="_blank" rel="noreferrer">
+        <a
+          href="https://www.partybid.app/party/0xA2db0A5687F7c1F685e2E62a917b40E3133B3D8E"
+          target="_blank"
+          rel="noreferrer"
+        >
           <img src={FinBattle} alt="final battle" />
         </a>
       </div>
