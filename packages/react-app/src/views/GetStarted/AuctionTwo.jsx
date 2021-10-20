@@ -409,7 +409,7 @@ function AuctionTwo({
             <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">
               Moloch Statue NFT ({lastMintedStatue}/{totalStatueSupply})
             </h3>
-            <p>Redeemable for a beautiful 12" Moloch statue. JOSH_TO_GIVE_TEXZT_HERE</p>
+            <p>Redeemable for a beautiful 12" Moloch statue. The Moloch statue stands eye to eye with ETH-Bot at 9”, and a width of 8” of pure muscle. (23cm x 20.5cm)  <a href="https://www.dropbox.com/sh/037jpsu05ed1go4/AADIDAypS-zdeTTODzvsFnV4a?dl=0" target="_blank">Check out the build here</a>.</p>
 
             {/* Button */}
             <Button

@@ -431,7 +431,7 @@ function AuctionOne({
             <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">
               ETHBots Statue NFT({lastMintedStatue}/{totalStatueSupply})
             </h3>
-            <p>Redeemable for a beautiful 12" ETHBot statue. JOSH_TO_GIVE_TEXZT_HERE</p>
+            <p>Redeemable for a beautiful 12" ETHBot statue. The ETH-Bot statue stands at a whopping 9” tall x 12” in width (23cm x 30.5cm).  <a href="https://www.dropbox.com/sh/037jpsu05ed1go4/AADIDAypS-zdeTTODzvsFnV4a?dl=0" target="_blank">Check out the build here</a>.</p>
             {/* Button */}
             <Button
               transparent
