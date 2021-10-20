@@ -103,7 +103,6 @@ export default function Account({
           id="navbutton"
           size="small"
           onClick={loadWeb3Modal}
-          key="second"
           shape="round"
           className="float-right"
         >

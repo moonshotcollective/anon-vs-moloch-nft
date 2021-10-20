@@ -366,10 +366,10 @@ function AuctionOne({
   const tokenThreshold = _tokenThreshold.toString();
   const statueThreshold = _statueThreshold.toString();
 
-  const pctcomplete = Math.floor(lastMintedToken/tokenThreshold * 100);
+  const pctcomplete = Math.floor((lastMintedToken / tokenThreshold) * 100);
   const progressbar = {
-    color: 'red',
-    width: pctcomplete + '%',
+    color: "red",
+    width: pctcomplete + "%",
   };
   function truncate(str, maxDecimalDigits) {
     if (str.includes(".")) {
@@ -401,8 +401,8 @@ function AuctionOne({
             coordination.
             <br />
             <br />
-            ETHBots are built to coordinate. They are configured by the community they serve to create coordination. They
-            are the vessels through which humanity coordinates to defeat Moloch.
+            ETHBots are built to coordinate. They are configured by the community they serve to create coordination.
+            They are the vessels through which humanity coordinates to defeat Moloch.
             <br />
             <br />
             <strong>To play this level, launch a new hero into the world by minting their NFT. </strong>
@@ -422,11 +422,11 @@ function AuctionOne({
                 Continue
               </Button>
             </Popover>
-            <br/>
-            <br/>
+            <br />
+            <br />
             {lastMintedToken}/{tokenThreshold} minted, level {pctcomplete}% complete.
             <div id="progress_bar_1">
-               <span style={progressbar}>&nbsp;</span>
+              <span style={progressbar}>&nbsp;</span>
             </div>
           </div>
         </div>
@@ -442,7 +442,10 @@ function AuctionOne({
             <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">
               ETHBots Statue NFT({lastMintedStatue}/{totalStatueSupply})
             </h3>
-            <p>An essential addition to any Moloch-slayers collection..  This NFT is redeemable for a beautiful physical ETHBot figurine. The ETH-Bot statue stands at a whopping 12” tall x 15” in width.</p>
+            <p>
+              An essential addition to any Moloch-slayers collection.. This NFT is redeemable for a beautiful physical
+              ETHBot figurine. The ETH-Bot statue stands at a whopping 12” tall x 15” in width.
+            </p>
             {/* Button */}
             <Button
               transparent
@@ -457,8 +460,14 @@ function AuctionOne({
             </Button>
             <span className="text-red-500 mt-2">
               (Only {statueLeftover} available of {totalStatueSupply} total supply)
-              <br/>
-              <a href="https://gitcoin.co/blog/the-ethbot-moloch-statue-auctions-are-live/" target="_blank">(Build by Blaylock Comics)</a>
+              <br />
+              <a
+                href="https://gitcoin.co/blog/the-ethbot-moloch-statue-auctions-are-live/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                (Build by Blaylock Comics)
+              </a>
             </span>
           </div>
 
@@ -497,11 +506,7 @@ function AuctionOne({
             <span className="text-red-500 mt-2">
               (Only {tokenLeftover} available of {totalTokenSupply} total supply)
             </span>
-            <a
-              href="https://gitcoin.co/l-kh"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="https://gitcoin.co/l-kh" target="_blank" rel="noreferrer">
               (Illustrations by @l-kh)
             </a>
           </div>
