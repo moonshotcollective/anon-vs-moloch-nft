@@ -34,7 +34,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, userSigner, loa
     // });
   };
 
-  const mintTokenBot = async (level, price) => {
+  const mintTokenBot = async level => {
     if (!userSigner) {
       return showWalletConnectionError();
     }
@@ -69,7 +69,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, userSigner, loa
     setMintingToken(false);
   };
 
-  const mintTokenStatue = async (level, price) => {
+  const mintTokenStatue = async level => {
     if (!userSigner) {
       return showWalletConnectionError();
     }
