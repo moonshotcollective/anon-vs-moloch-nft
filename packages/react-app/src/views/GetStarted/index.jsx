@@ -17,7 +17,7 @@ const Steps = [Prologue, Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
 const incrementPercent = "5";
 
 function GetStarted({ tx, readContracts, writeContracts, events, userSigner, loadWeb3Modal, ...props }) {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0);
   const [mintingToken, setMintingToken] = useState(false);
   const [mintingStatue, setMintingStatue] = useState(false);
   // const [levelCompleted, setLevelCompleted] = useState(false);
@@ -112,7 +112,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, userSigner, loa
   return (
     <>
       <Nav {...props} />
-      <EthbotProgress progress={currentStep} />
+      <EthbotProgress progress={currentStep > 0 ? currentStep : 1} />
       <section className="container flex flex-1 mx-auto my-20 pb-8">
         <CurrentStepComponent
           goToPrevStep={goToPrevStep}
