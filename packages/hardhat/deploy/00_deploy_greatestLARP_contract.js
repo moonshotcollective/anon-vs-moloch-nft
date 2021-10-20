@@ -36,7 +36,7 @@ module.exports = async ({ getNamedAccounts, getChainId, deployments }) => {
       ethers.utils.parseUnits("0.0033"), // Digital
       ethers.utils.parseUnits("3"), // Pysical
       [1350, 1350], // inflationRatesStatues
-      [1035, 1046], // inflationRatesDigital
+      [1039, 1047], // inflationRatesDigital
     ],
     log: true,
   });
@@ -98,7 +98,7 @@ module.exports = async ({ getNamedAccounts, getChainId, deployments }) => {
         ethers.utils.parseUnits("0.0033"), // Digital
         ethers.utils.parseUnits("3"), // Pysical
         [1350, 1350], // inflationRatesStatues
-        [1035, 1046], // inflationRatesDigital
+        [1039, 1047], // inflationRatesDigital
       ],
     });
   }
