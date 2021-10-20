@@ -366,6 +366,11 @@ function AuctionOne({
   const tokenThreshold = _tokenThreshold.toString();
   const statueThreshold = _statueThreshold.toString();
 
+  const pctcomplete = Math.floor(lastMintedToken/tokenThreshold * 100);
+  const progressbar = {
+    color: 'red',
+    width: pctcomplete + '%',
+  };
   function truncate(str, maxDecimalDigits) {
     if (str.includes(".")) {
       const parts = str.split(".");
@@ -417,6 +422,12 @@ function AuctionOne({
                 Continue
               </Button>
             </Popover>
+            <br/>
+            <br/>
+            {lastMintedToken}/{tokenThreshold} minted, level {pctcomplete}% complete.
+            <div id="progress_bar_1">
+               <span style={progressbar}>&nbsp;</span>
+            </div>
           </div>
         </div>
       </div>

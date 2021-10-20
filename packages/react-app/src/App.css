@@ -83,3 +83,16 @@ h1 span{
   padding: 5px;
   border-radius: 10px;
 }
+
+#progress_bar_1{
+  width: 100%;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+
+#progress_bar_1 span{
+  width: 100px;
+  background-color: #eee;
+  display: inline-block;
+  border-radius: 10px;
+}
