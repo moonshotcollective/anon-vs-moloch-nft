@@ -23,9 +23,6 @@ contract MolochBot is ERC721URIStorage, Ownable {
 
     string[] private uris;
 
-    string public contractURI =
-        "https://gateway.pinata.cloud/ipfs/QmRxiXjsRkfz86aBNAmLSCqSBmcWXYDGwW5M1VPELE1ZXT/molochbot.json";
-
     constructor() ERC721("Moloch", "MOLOCH") {
         uris = [
             "Baleful_Abaddon.json",
@@ -360,7 +357,8 @@ contract MolochBot is ERC721URIStorage, Ownable {
     }
 
     function contractURI() public view returns (string memory) {
-        return "";
+        return
+            "https://gateway.pinata.cloud/ipfs/QmRxiXjsRkfz86aBNAmLSCqSBmcWXYDGwW5M1VPELE1ZXT/molochbot.json";
     }
 
     /// @dev what was the last token minted

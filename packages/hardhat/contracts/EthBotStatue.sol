@@ -20,9 +20,6 @@ contract EthBotStatue is ERC721URIStorage, Ownable {
 
     string[] private uris;
 
-    string public contractURI =
-        "https://gateway.pinata.cloud/ipfs/QmRxiXjsRkfz86aBNAmLSCqSBmcWXYDGwW5M1VPELE1ZXT/ethbotstatue.json";
-
     // this lets you look up a token by the uri (assuming there is only one of each uri for now)
     mapping(bytes32 => uint256) public uriToTokenId;
 
@@ -43,7 +40,8 @@ contract EthBotStatue is ERC721URIStorage, Ownable {
     }
 
     function contractURI() public view returns (string memory) {
-        return "";
+        return
+            "https://gateway.pinata.cloud/ipfs/QmRxiXjsRkfz86aBNAmLSCqSBmcWXYDGwW5M1VPELE1ZXT/ethbotstatue.json";
     }
 
     /// @dev what was the last token minted

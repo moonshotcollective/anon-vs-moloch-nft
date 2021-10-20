@@ -23,9 +23,6 @@ contract EthBot is ERC721URIStorage, Ownable {
 
     string[] private uris;
 
-    string public contractURI =
-        "https://gateway.pinata.cloud/ipfs/QmRxiXjsRkfz86aBNAmLSCqSBmcWXYDGwW5M1VPELE1ZXT/ethbot.json";
-
     constructor() ERC721("EthBot", "ETHBOT") {
         uris = [
             "Beneficent_Adam.json",
@@ -344,7 +341,8 @@ contract EthBot is ERC721URIStorage, Ownable {
     }
 
     function contractURI() public view returns (string memory) {
-        return "";
+        return
+            "https://gateway.pinata.cloud/ipfs/QmRxiXjsRkfz86aBNAmLSCqSBmcWXYDGwW5M1VPELE1ZXT/ethbot.json";
     }
 
     /// @dev what was the last token minted
