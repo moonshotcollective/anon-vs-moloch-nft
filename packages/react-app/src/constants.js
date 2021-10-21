@@ -1,5 +1,5 @@
 // MY INFURA_ID, SWAP IN YOURS FROM https://infura.io/dashboard/ethereum
-export const INFURA_ID = "c954231486fa42ccb6d132b406483d14";
+export const INFURA_ID = "7eb80ae19f6747c6b5de3b12da3a2a7e";
 
 //MY ETHERSCAN_ID, SWAP IN YOURS FROM https://etherscan.io/myapikey
 export const ETHERSCAN_KEY = "PSW8C433Q667DVEX5BCRMGNAH9FSGFZ7Q8";
@@ -11,7 +11,8 @@ export const BLOCKNATIVE_DAPPID = "f03c8937-1fa4-484d-adbb-86a6e210ebfd";
 export const MORALIS_KEY = "";
 
 export const ALCHEMY_KEY_RINKEBY = "NqFAgbINsUZbbIIPg-Qt8ZTXGWQcZkpl";
-export const ALCHEMY_KEY_MAINNET = "p06r4Cth8Yahf88wBLh03VC3BfL2nTyv";
+// export const ALCHEMY_KEY_MAINNET = "p06r4Cth8Yahf88wBLh03VC3BfL2nTyv";
+export const ALCHEMY_KEY_MAINNET = "W0XfQJvBYrDk6wxM2F3VEDns10TBTLzs";
 
 export const DAI_ADDRESS = "0x6B175474E89094C44Da98b954EedeAC495271d0F";
 
