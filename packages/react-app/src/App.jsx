@@ -49,7 +49,7 @@ const mainnetAlchemy = new ethers.providers.StaticJsonRpcProvider(
 const localProviderUrl = targetNetwork.rpcUrl;
 
 // as you deploy to other networks you can set REACT_APP_PROVIDER=https://dai.poa.network in packages/react-app/.env
-const localProviderUrlFromEnv = process.env.REACT_APP_PROVIDER ? process.env.REACT_APP_PROVIDER : localProviderUrl;
+const localProviderUrlFromEnv = "https://mainnet.infura.io/v3/cd76261d9b26414e918750f85fb8e217" // process.env.REACT_APP_PROVIDER ? process.env.REACT_APP_PROVIDER : localProviderUrl;
 if (DEBUG) console.log("🏠 Connecting to provider:", localProviderUrlFromEnv);
 const localProvider = new ethers.providers.StaticJsonRpcProvider(localProviderUrlFromEnv);
 
