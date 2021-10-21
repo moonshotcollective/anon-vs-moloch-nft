@@ -27,9 +27,7 @@ import { GetStarted, Home, Mint } from "./views";
 const { ethers } = require("ethers");
 
 /// 📡 What chain are your contracts deployed to?
-const targetNetwork = process.env.REACT_APP_NETWORK 
-  ? NETWORKS[process.env.REACT_APP_NETWORK] 
-  : NETWORKS.mainnet; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const targetNetwork = process.env.REACT_APP_NETWORK ? NETWORKS[process.env.REACT_APP_NETWORK] : NETWORKS.mainnet; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // 😬 Sorry for all the console logging
 const DEBUG = false;
@@ -50,6 +48,7 @@ const localProviderUrl = targetNetwork.rpcUrl;
 
 // as you deploy to other networks you can set REACT_APP_PROVIDER=https://dai.poa.network in packages/react-app/.env
 const localProviderUrlFromEnv = process.env.REACT_APP_PROVIDER ? process.env.REACT_APP_PROVIDER : localProviderUrl;
+
 if (DEBUG) console.log("🏠 Connecting to provider:", localProviderUrlFromEnv);
 const localProvider = new ethers.providers.StaticJsonRpcProvider(localProviderUrlFromEnv);
 
