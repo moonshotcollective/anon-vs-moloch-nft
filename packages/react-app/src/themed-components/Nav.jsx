@@ -1,5 +1,5 @@
-import React from "react";
 import { Image, Space } from "antd";
+import React from "react";
 import navbarheadlogo from "../assets/navbarheadlogo.svg";
 import { Account } from "../components";
 
@@ -31,7 +31,12 @@ export default function Nav({
         <a href="/#faq" class="mr-10 hover:text-gray-900 text-green-dark-green">
           FAQ
         </a>
-        <a target="_blank" href="https://t.me/joinchat/ekBANXnlwcQ1NzRh" class="nav_button mr-10 text-gray-900 text-green-dark-green border-1">
+        <a
+          target="_blank"
+          href="https://t.me/joinchat/ekBANXnlwcQ1NzRh"
+          class="nav_button mr-10 text-gray-900 text-green-dark-green border-1"
+          rel="noreferrer"
+        >
           Join the Telegram
         </a>
         <a href="/get-started" class="nav_button mr-10 hover:text-gray-900 text-green-dark-green border-1">
