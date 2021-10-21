@@ -27,9 +27,7 @@ import { GetStarted, Home, Mint } from "./views";
 const { ethers } = require("ethers");
 
 /// 📡 What chain are your contracts deployed to?
-const targetNetwork = process.env.REACT_APP_NETWORK 
-  ? NETWORKS[process.env.REACT_APP_NETWORK] 
-  : NETWORKS.mainnet; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const targetNetwork = process.env.REACT_APP_NETWORK ? NETWORKS[process.env.REACT_APP_NETWORK] : NETWORKS.mainnet; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // 😬 Sorry for all the console logging
 const DEBUG = false;
@@ -81,7 +79,8 @@ const web3Modal = new Web3Modal({
       options: {
         bridge: "https://polygon.bridge.walletconnect.org",
         rpc: {
-          1: `https://speedy-nodes-nyc.moralis.io/43d22b430189c5a5c63506a7/eth/mainnet`, // For more WalletConnect providers: https://docs.walletconnect.org/quick-start/dapps/web3-provider#required
+          1: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_KEY_MAINNET}`,
+          // For more WalletConnect providers: https://docs.walletconnect.org/quick-start/dapps/web3-provider#required
           42: `https://kovan.infura.io/v3/${INFURA_ID}`,
           100: "https://dai.poa.network", // xDai
         },
