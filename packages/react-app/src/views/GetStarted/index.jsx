@@ -117,7 +117,7 @@ function GetStarted({ tx, readContracts, writeContracts, events, userSigner, loa
 
   return (
     <>
-      <Nav {...props} />
+      <Nav {...props} loadWeb3Modal={loadWeb3Modal} />
       <EthbotProgress progress={currentStep} />
       <section className="container flex flex-1 mx-auto my-20 pb-8">
         <CurrentStepComponent
