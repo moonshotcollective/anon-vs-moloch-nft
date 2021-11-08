@@ -1,6 +1,8 @@
 import { Popover } from "antd";
 import { ethers } from "ethers";
 import React from "react";
+import ReactPlayer from 'react-player'
+
 import DigitalMoloch from "../../assets/mint/digitalMoloch.png";
 import PhysicalMoloch from "../../assets/mint/physicalMoloch.png";
 import { Button } from "../../themed-components";
@@ -403,129 +405,156 @@ function AuctionTwo({
   );
 
   return (
-    <>
-      <div className="flex flex-1 justify-center items-center">
-        <div className="grid grid-cols-2 gap-4 w-full">
-          {/*  Physical Moloch */}
-          <div className="flex flex-col items-center">
-            {/* Image Wrapper */}
-            <img src={PhysicalMoloch} alt="Physical Moloch" className="mb-4" />
+    <div className="grid grid-cols-1">
+      <div className="flex flex-wrap">
+        <div className="flex flex-wrap w-1/2 justify-center items-center">
+          <div className="grid grid-cols-2 gap-4 w-full">
+            {/*  Physical Moloch */}
+            <div className="flex flex-col items-center">
+              {/* Image Wrapper */}
+              <img src={PhysicalMoloch} alt="Physical Moloch" className="mb-4" />
 
-            {/* Image Title */}
-            <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">
-              Moloch Statue NFT ({lastMintedStatue}/{totalStatueSupply})
-            </h3>
-            <p>Want to slay Moloch?  This NFT is for you.  Redeemable for a menacingly tall physical Moloch figurine. The Moloch statue stands eye to eye with ETH-Bot at 12”, and a width of 10” of pure muscle. </p>
+              {/* Image Title */}
+              <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">
+                Moloch Statue NFT ({lastMintedStatue}/{totalStatueSupply})
+              </h3>
+              <p>Want to slay Moloch?  This NFT is for you.  Redeemable for a menacingly tall physical Moloch figurine. The Moloch statue stands eye to eye with ETH-Bot at 12”, and a width of 10” of pure muscle. </p>
 
-            {/* Button */}
-            <Button
-              transparent
-              loading={mintingStatue}
-              loadingText="Minting"
-              disabled={lastMintedStatue === totalStatueSupply}
-              onClick={() => mintTokenStatue(level, statuePrice)}
-              className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
-              padding={10}
-            >
-              {lastMintedStatue === totalStatueSupply ? "Minting Completed" : `${truncate(statuePrice, 4)} ETH`}
-            </Button>
-            <span className="text-red-500">
-              (Only {statueLeftover} available of {totalStatueSupply} total supply)
-              <br/>
-              <a href="https://gitcoin.co/blog/the-ethbot-moloch-statue-auctions-are-live/" target="_blank">(Build by Blaylock Comics)</a>
-            </span>
-          </div>
+              {/* Button */}
+              <Button
+                transparent
+                loading={mintingStatue}
+                loadingText="Minting"
+                disabled={lastMintedStatue === totalStatueSupply}
+                onClick={() => mintTokenStatue(level, statuePrice)}
+                className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
+                padding={10}
+              >
+                {lastMintedStatue === totalStatueSupply ? "Minting Completed" : `${truncate(statuePrice, 4)} ETH`}
+              </Button>
+              <span className="text-red-500">
+                (Only {statueLeftover} available of {totalStatueSupply} total supply)
+                <br/>
+                <a href="https://gitcoin.co/blog/the-ethbot-moloch-statue-auctions-are-live/" target="_blank">(Build by Blaylock Comics)</a>
+              </span>
+            </div>
 
-          {/*  Digital Moloch */}
-          <div className="flex flex-col items-center">
-            {/* Image Wrapper */}
-            <a
-              href="https://gateway.pinata.cloud/ipfs/QmTuc7VhLN9iYwfnrLiXZx3AXdu3uN8qbKAP5hacpVWny2"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img id="molochdigital" src={DigitalMoloch} alt="Digital Moloch" className="mb-4" />
-            </a>
+            {/*  Digital Moloch */}
+            <div className="flex flex-col items-center">
+              {/* Image Wrapper */}
+              <a
+                href="https://gateway.pinata.cloud/ipfs/QmTuc7VhLN9iYwfnrLiXZx3AXdu3uN8qbKAP5hacpVWny2"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img id="molochdigital" src={DigitalMoloch} alt="Digital Moloch" className="mb-4" />
+              </a>
 
-            {/* Image Title */}
-            <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">
-              Digital Moloch NFT({lastMintedToken}/{totalTokenSupply})
-            </h3>
-            <p>
-              This Moloch must be defeated. To defeat 1 Moloch, mint 1 NFT. Once {tokenThreshold} are minted, this NFT
-              is redeemable to read the final comic.
-            </p>
+              {/* Image Title */}
+              <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">
+                Digital Moloch NFT({lastMintedToken}/{totalTokenSupply})
+              </h3>
+              <p>
+                This Moloch must be defeated. To defeat 1 Moloch, mint 1 NFT. Once {tokenThreshold} are minted, this NFT
+                is redeemable to read the final comic.
+              </p>
 
-            {/* Button */}
-            <Button
-              transparent
-              loading={mintingToken}
-              loadingText="Minting"
-              disabled={lastMintedToken === totalTokenSupply}
-              onClick={() => mintTokenBot(level, tokenPrice)}
-              className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
-              padding={10}
-            >
-              {lastMintedToken === totalTokenSupply ? "Minting Completed" : `${truncate(tokenPrice, 4)} ETH`}
-            </Button>
-            <span className="text-red-500">
-              (Only {tokenLeftover} available of {totalTokenSupply} total supply)
-            </span>
-            <a
-              href="https://gitcoin.co/l-kh"
-              target="_blank"
-              rel="noreferrer"
-            >
-              (Illustrations by @l-kh)
-            </a>
+              {/* Button */}
+              <Button
+                transparent
+                loading={mintingToken}
+                loadingText="Minting"
+                disabled={lastMintedToken === totalTokenSupply}
+                onClick={() => mintTokenBot(level, tokenPrice)}
+                className="border-2 border-green-header text-green-header hover:bg-green-dark-green mb-2"
+                padding={10}
+              >
+                {lastMintedToken === totalTokenSupply ? "Minting Completed" : `${truncate(tokenPrice, 4)} ETH`}
+              </Button>
+              <span className="text-red-500">
+                (Only {tokenLeftover} available of {totalTokenSupply} total supply)
+              </span>
+              <a
+                href="https://gitcoin.co/l-kh"
+                target="_blank"
+                rel="noreferrer"
+              >
+                (Illustrations by @l-kh)
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="flex flex-1 flex-col pl-16">
-        <div className="max-w-md">
-          <a className="font-normal text-green-header bold" onClick={goToPrevStep} href="#">
-            &lt;&lt; back to Level 2
-          </a>
-          <h1 className="text-4xl mb-4 font-normal text-green-header font-spacemono">Level 3</h1>
-          <h1 className="text-2xl mb-8 font-normal text-green-header font-spacemono">Fight the Many Molochs {">>"}</h1>
+        <div className="flex flex-wrap w-1/2 pl-16">
+          <div className="max-w-md">
+            <a className="font-normal text-green-header bold" onClick={goToPrevStep} href="#">
+              &lt;&lt; back to Level 2
+            </a>
+            <h1 className="text-4xl mb-4 font-normal text-green-header font-spacemono">Level 3</h1>
+            <h1 className="text-2xl mb-8 font-normal text-green-header font-spacemono">Fight the Many Molochs {">>"}</h1>
 
-          <div className="text-lg mb-6">
-            Moloch whose eyes are a thousand blind windows! Moloch whose skyscrapers stand in the long streets like
-            endless Jehovahs! Moloch whose factories dream and croak in the fog! Moloch whose smoke-stacks and antennae
-            crown the cities!
-            <br />
-            <br />
-            Moloch whose mind is pure machinery! Moloch whose blood is running money! Moloch whose fingers are ten
-            armies! Moloch whose breast is a cannibal dynamo! Moloch whose ear is a smoking tomb!
-            <br />
-            <br />
-            <strong>To play this level, capture a Moloch by minting their NFT. </strong>
-            Once {tokenThreshold} Digital Molochs are minted ({lastMintedToken} minted so far), and {statueThreshold}{" "}
-            Statue Molochs are minted({lastMintedStatue} minted so far), your party may advance to the final boss...
-          </div>
+            <div className="text-lg mb-6">
+              Moloch whose eyes are a thousand blind windows! Moloch whose skyscrapers stand in the long streets like
+              endless Jehovahs! Moloch whose factories dream and croak in the fog! Moloch whose smoke-stacks and antennae
+              crown the cities!
+              <br />
+              <br />
+              Moloch whose mind is pure machinery! Moloch whose blood is running money! Moloch whose fingers are ten
+              armies! Moloch whose breast is a cannibal dynamo! Moloch whose ear is a smoking tomb!
+              <br />
+              <br />
+              <strong>To play this level, capture a Moloch by minting their NFT. </strong>
+              Once {tokenThreshold} Digital Molochs are minted ({lastMintedToken} minted so far), and {statueThreshold}{" "}
+              Statue Molochs are minted({lastMintedStatue} minted so far), your party may advance to the final boss...
+            </div>
 
-          <div>
-            <Popover content={popoverContent}>
-              <Button
-                disabled={
-                  parseInt(tokenThreshold) > parseInt(lastMintedToken) ||
-                  parseInt(statueThreshold) > parseInt(lastMintedStatue)
-                }
-                onClick={goToNextStep}
-              >
-                Continue
-              </Button>
-            </Popover>
-            <br/>
-            <br/>
-            {lastMintedToken}/{tokenThreshold} minted, level {pctcomplete}% complete.
-            <div id="progress_bar_1">
-               <span style={progressbar}>&nbsp;</span>
+            <div>
+              <Popover content={popoverContent}>
+                <Button
+                  disabled={
+                    parseInt(tokenThreshold) > parseInt(lastMintedToken) ||
+                    parseInt(statueThreshold) > parseInt(lastMintedStatue)
+                  }
+                  onClick={goToNextStep}
+                >
+                  Continue
+                </Button>
+              </Popover>
+              <br/>
+              <br/>
+              {lastMintedToken}/{tokenThreshold} minted, level {pctcomplete}% complete.
+              <div id="progress_bar_1">
+                <span style={progressbar}>&nbsp;</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+      <div className="flex flex-wrap mt-10 bg-gradient-to-r from-red-300 to-gray-050 p-10">
+        <div className="flex flex-wrap w-1/2 justify-center items-center">
+          <div className="max-w-md">
+            <div className='player-wrapper'>
+                <ReactPlayer
+                url= 'videos/botVideoLevelThree.mp4'
+                width='100%'
+                height='100%'
+                controls = {true}
+                />
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-wrap w-1/2 pl-16">
+          <div className="max-w-md">
+            <div className="text-2xl mb-8 font-normal text-red-600 font-spacemono"
+              href="https://larpminter.com/">
+                Coming Soon {">>"}
+            </div>
+            <div className="text-lg mb-6 mt-6">
+              Free 3D Molochs for Digital Moloch NFT holders
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
