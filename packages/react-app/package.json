@@ -58,6 +58,7 @@
     "react-dom": "^16.14.0",
     "react-json-view": "^1.21.1",
     "react-media": "^1.10.0",
+    "react-player": "^2.9.0",
     "react-qr-reader": "^2.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",

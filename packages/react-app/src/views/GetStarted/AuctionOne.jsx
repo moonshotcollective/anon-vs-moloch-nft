@@ -1,6 +1,8 @@
 import { Popover } from "antd";
 import { ethers } from "ethers";
 import React from "react";
+import ReactPlayer from 'react-player'
+
 import EthBot from "../../assets/mint/frontEthBot.png";
 import MolochStatue from "../../assets/mint/molochStatue.png";
 import { Button } from "../../themed-components";
@@ -386,133 +388,175 @@ function AuctionOne({
   );
 
   return (
-    <>
-      <div className="flex flex-1 flex-col">
-        <div className="max-w-md">
-          <a className="font-normal text-green-header" onClick={goToPrevStep} href="#">
-            &lt;&lt; back to Level 1
-          </a>
+    <div className="grid grid-cols-1">
+      <div className="flex flex-wrap">
+        <div className="flex flex-wrap w-1/2">
+          <div className="max-w-md">
+            <a className="font-normal text-green-header" onClick={goToPrevStep} href="#">
+              &lt;&lt; back to Level 1
+            </a>
 
-          <h1 className="text-4xl mb-4 font-normal text-green-header font-spacemono">Level 2</h1>
-          <h1 className="text-2xl mb-8 font-normal text-green-header font-spacemono">Summon the ETH Bots {">>"}</h1>
+            <h1 className="text-4xl mb-4 font-normal text-green-header font-spacemono">Level 2</h1>
+            <h1 className="text-2xl mb-8 font-normal text-green-header font-spacemono">Summon the ETH Bots {">>"}</h1>
 
-          <div className="text-lg mb-6">
-            Moloch is made of coordination failures, and the only way to beat a monster like that ... is more
-            coordination.
-            <br />
-            <br />
-            ETHBots are built to coordinate. They are configured by the community they serve to create coordination.
-            They are the vessels through which humanity coordinates to defeat Moloch.
-            <br />
-            <br />
-            <strong>To play this level, launch a new hero into the world by minting their NFT. </strong>
-            Once {tokenThreshold} Digital ETHBots are minted ({lastMintedToken} minted so far), and {statueThreshold}{" "}
-            Statue ETHBots are minted({lastMintedStatue} minted so far), humanity can begin its fight against Moloch.
+            <div className="text-lg mb-6">
+              Moloch is made of coordination failures, and the only way to beat a monster like that ... is more
+              coordination.
+              <br />
+              <br />
+              ETHBots are built to coordinate. They are configured by the community they serve to create coordination.
+              They are the vessels through which humanity coordinates to defeat Moloch.
+              <br />
+              <br />
+              <strong>To play this level, launch a new hero into the world by minting their NFT. </strong>
+              Once {tokenThreshold} Digital ETHBots are minted ({lastMintedToken} minted so far), and {statueThreshold}{" "}
+              Statue ETHBots are minted({lastMintedStatue} minted so far), humanity can begin its fight against Moloch.
+            </div>
+
+            <div>
+              <Popover content={popoverContent}>
+                <Button
+                  disabled={
+                    parseInt(tokenThreshold) > parseInt(lastMintedToken) ||
+                    parseInt(statueThreshold) > parseInt(lastMintedStatue)
+                  }
+                  onClick={goToNextStep}
+                >
+                  Continue
+                </Button>
+              </Popover>
+              <br />
+              <br />
+              {lastMintedToken}/{tokenThreshold} minted, level {pctcomplete}% complete.
+              <div id="progress_bar_1">
+                <span style={progressbar}>&nbsp;</span>
+              </div>
+            </div>
           </div>
+        </div>
+        <div className="flex flex-wrap w-1/2 justify-center items-center">
+          <div className="grid grid-cols-2 gap-4 w-full">
+            {/*  ETH Bot */}
+            <div className="flex flex-col items-center">
+              {/* Image Wrapper */}
+              <img src={EthBot} alt="ETH Bot" className="mb-4" />
 
-          <div>
-            <Popover content={popoverContent}>
+              {/* Image Title */}
+              <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">
+                ETHBots Statue NFT({lastMintedStatue}/{totalStatueSupply})
+              </h3>
+              <p>
+                An essential addition to any Moloch-slayers collection.. This NFT is redeemable for a beautiful physical
+                ETHBot figurine. The ETH-Bot statue stands at a whopping 12” tall x 15” in width.
+              </p>
+              {/* Button */}
               <Button
-                disabled={
-                  parseInt(tokenThreshold) > parseInt(lastMintedToken) ||
-                  parseInt(statueThreshold) > parseInt(lastMintedStatue)
-                }
-                onClick={goToNextStep}
+                transparent
+                loading={mintingStatue}
+                loadingText="Minting"
+                disabled={lastMintedStatue === totalStatueSupply}
+                onClick={() => mintTokenStatue(level, statuePrice)}
+                className="border-2 border-green-header text-green-header hover:bg-green-dark-green"
+                padding={10}
               >
-                Continue
+                {lastMintedStatue === totalStatueSupply ? "Minting Completed" : `${truncate(statuePrice, 4)} ETH`}
               </Button>
-            </Popover>
-            <br />
-            <br />
-            {lastMintedToken}/{tokenThreshold} minted, level {pctcomplete}% complete.
-            <div id="progress_bar_1">
-              <span style={progressbar}>&nbsp;</span>
+              <span className="text-red-500 mt-2">
+                (Only {statueLeftover} available of {totalStatueSupply} total supply)
+                <br />
+                <a
+                  href="https://gitcoin.co/blog/the-ethbot-moloch-statue-auctions-are-live/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  (Build by Blaylock Comics)
+                </a>
+              </span>
+            </div>
+
+            {/*  Digital ETHBot */}
+            <div className="flex flex-col items-center">
+              {/* Image Wrapper */}
+              <a
+                href="https://gateway.pinata.cloud/ipfs/QmbK1MrkzX1QMRBp9urqUMoKYSatQi5mkRTotxrjJnqm2x"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img id="digitalbot" src={MolochStatue} alt="Digital ETHBot" className="mb-4" />
+              </a>
+
+              {/* Image Title */}
+              <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">
+                Digital ETHBot NFT({lastMintedToken}/{totalTokenSupply})
+              </h3>
+              <p>
+                The "Moloch Wins" comic is free, but for the ETHBot Wins version, we need at least {tokenThreshold} of
+                these to be summoned. Once {tokenThreshold} are minted, this NFT is redeemable to read the final comic.
+              </p>
+
+              {/* Button */}
+              <Button
+                transparent
+                loading={mintingToken}
+                loadingText="Minting"
+                disabled={lastMintedToken === totalTokenSupply}
+                onClick={() => mintTokenBot(level, tokenPrice)}
+                className="border-2 border-green-header text-green-header hover:bg-green-dark-green"
+                padding={10}
+              >
+                {lastMintedToken === totalTokenSupply ? "Minting Completed" : `${truncate(tokenPrice, 4)} ETH`}
+              </Button>
+              <span className="text-red-500 mt-2">
+                (Only {tokenLeftover} available of {totalTokenSupply} total supply)
+              </span>
+              <a href="https://gitcoin.co/l-kh" target="_blank" rel="noreferrer">
+                (Illustrations by @l-kh)
+              </a>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex flex-1 justify-center items-center">
-        <div className="grid grid-cols-2 gap-4 w-full">
-          {/*  ETH Bot */}
-          <div className="flex flex-col items-center">
-            {/* Image Wrapper */}
-            <img src={EthBot} alt="ETH Bot" className="mb-4" />
-
-            {/* Image Title */}
-            <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">
-              ETHBots Statue NFT({lastMintedStatue}/{totalStatueSupply})
-            </h3>
-            <p>
-              An essential addition to any Moloch-slayers collection.. This NFT is redeemable for a beautiful physical
-              ETHBot figurine. The ETH-Bot statue stands at a whopping 12” tall x 15” in width.
-            </p>
-            {/* Button */}
-            <Button
-              transparent
-              loading={mintingStatue}
-              loadingText="Minting"
-              disabled={lastMintedStatue === totalStatueSupply}
-              onClick={() => mintTokenStatue(level, statuePrice)}
-              className="border-2 border-green-header text-green-header hover:bg-green-dark-green"
-              padding={10}
-            >
-              {lastMintedStatue === totalStatueSupply ? "Minting Completed" : `${truncate(statuePrice, 4)} ETH`}
-            </Button>
-            <span className="text-red-500 mt-2">
-              (Only {statueLeftover} available of {totalStatueSupply} total supply)
+      <div className="flex flex-wrap mt-10 bg-gradient-to-r from-gray-050 to-green-light-green p-10">
+        <div className="flex flex-wrap w-1/2">
+          <div className="max-w-md">
+            <a className="text-2xl mb-8 font-normal text-green-header font-spacemono" href="https://larpminter.com/">Free 3D ETHBOT {">>"}</a>
+            <div className="text-lg mb-6 mt-6">
+              3D bots are now available to anyone holding a Digital ETHBot NFT #1-200.
               <br />
-              <a
-                href="https://gitcoin.co/blog/the-ethbot-moloch-statue-auctions-are-live/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                (Build by Blaylock Comics)
-              </a>
-            </span>
+              <br />
+              <strong>Here’s how you can get a 3D bot:</strong>
+              <br />
+              <br />
+              1. Purchase a Digital ETHBot NFT (seen above). Only #1-200 will get a 3D bot.
+              <br />
+              2. Go to opensea.com and find the NFT in your collection
+              <br />
+              3. Open the Details dropdown and copy the Token ID
+              <br />
+              4. Go to LARPminter.com
+              <br />
+              5. Scroll down and input the Digital ETHBot token ID
+              <br />
+              <br />
+              ETHBot holders can mint immediately and will receive a "blank bot". All bots are random and their art will be revealed when we unlock level 3! (this makes it harder
+              to game the system and encourages us to work together to fund public goods!)
+            </div>
           </div>
-
-          {/*  Digital ETHBot */}
-          <div className="flex flex-col items-center">
-            {/* Image Wrapper */}
-            <a
-              href="https://gateway.pinata.cloud/ipfs/QmbK1MrkzX1QMRBp9urqUMoKYSatQi5mkRTotxrjJnqm2x"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img id="digitalbot" src={MolochStatue} alt="Digital ETHBot" className="mb-4" />
-            </a>
-
-            {/* Image Title */}
-            <h3 className="font-spacemono text-purple-imgText font-semibold text-lg">
-              Digital ETHBot NFT({lastMintedToken}/{totalTokenSupply})
-            </h3>
-            <p>
-              The "Moloch Wins" comic is free, but for the ETHBot Wins version, we need at least {tokenThreshold} of
-              these to be summoned. Once {tokenThreshold} are minted, this NFT is redeemable to read the final comic.
-            </p>
-
-            {/* Button */}
-            <Button
-              transparent
-              loading={mintingToken}
-              loadingText="Minting"
-              disabled={lastMintedToken === totalTokenSupply}
-              onClick={() => mintTokenBot(level, tokenPrice)}
-              className="border-2 border-green-header text-green-header hover:bg-green-dark-green"
-              padding={10}
-            >
-              {lastMintedToken === totalTokenSupply ? "Minting Completed" : `${truncate(tokenPrice, 4)} ETH`}
-            </Button>
-            <span className="text-red-500 mt-2">
-              (Only {tokenLeftover} available of {totalTokenSupply} total supply)
-            </span>
-            <a href="https://gitcoin.co/l-kh" target="_blank" rel="noreferrer">
-              (Illustrations by @l-kh)
-            </a>
+        </div>
+        <div className="flex flex-wrap w-1/2 justify-center items-center pl-16">
+          <div className="max-w-md">
+            <div className='player-wrapper'>
+                <ReactPlayer
+                url= 'videos/botVideoLevelTwo.mp4'
+                width='100%'
+                height='100%'
+                controls = {true}
+                />
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
