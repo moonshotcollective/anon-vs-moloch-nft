@@ -15,7 +15,7 @@ import ComingSoon from "./ComingSoon";
 
 // Steps component array
 // const Steps = [Prologue, Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
-const Steps = [Prologue, Read, AuctionOne, AuctionTwo, ComingSoon];
+const Steps = [Prologue, Read, AuctionOne, AuctionTwo, ComingSoon, FinalBattle];
 
 const incrementPercent = "8";
 
@@ -121,7 +121,8 @@ function GetStarted({ tx, readContracts, writeContracts, events, userSigner, loa
   return (
     <>
       <Nav {...props} />
-      <EthbotProgress progress={currentStep} />
+      {/* Hack to not move between coming soon and final boss */}
+      <EthbotProgress progress={currentStep === 4 || currentStep === 5 ? 4 : currentStep} />
       <section className="container flex flex-1 mx-auto my-20 pb-8">
         <CurrentStepComponent
           goToPrevStep={goToPrevStep}
