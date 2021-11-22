@@ -9,10 +9,13 @@ import FinalBattle from "./FinalBattle";
 import Prologue from "./Prologue";
 import Read from "./Read";
 import Winning from "./Winning";
+
+import ComingSoon from "./ComingSoon";
 // import { notification } from "antd";
 
 // Steps component array
-const Steps = [Prologue, Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
+// const Steps = [Prologue, Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
+const Steps = [Prologue, Read, AuctionOne, AuctionTwo, ComingSoon];
 
 const incrementPercent = "8";
 
