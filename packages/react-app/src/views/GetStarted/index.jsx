@@ -19,8 +19,17 @@ const Steps = [Prologue, Read, AuctionOne, AuctionTwo, ComingSoon, FinalBattle];
 
 const incrementPercent = "8";
 
-function GetStarted({ tx, readContracts, writeContracts, events, userSigner, loadWeb3Modal, ...props }) {
-  const [currentStep, setCurrentStep] = useState(1);
+function GetStarted({
+  tx,
+  readContracts,
+  writeContracts,
+  events,
+  userSigner,
+  loadWeb3Modal,
+  initialStep = 1,
+  ...props
+}) {
+  const [currentStep, setCurrentStep] = useState(initialStep);
   const [mintingToken, setMintingToken] = useState(false);
   const [mintingStatue, setMintingStatue] = useState(false);
   // const [levelCompleted, setLevelCompleted] = useState(false);
