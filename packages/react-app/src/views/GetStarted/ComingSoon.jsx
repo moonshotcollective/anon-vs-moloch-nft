@@ -3,59 +3,99 @@ import Countdown from "react-countdown";
 import classnames from "classnames";
 import { Button } from "../../themed-components";
 
+import CominggSoonGif from "../../assets/turnin.gif";
+
 function ComingSoon({ goToNextStep }) {
   const countdownRenderer = ({ days, hours, minutes, seconds, completed }) => {
-    const largeTextClass = "text-7xl";
+    const largeTextClass = "text-5xl";
 
     return (
       <>
-        <div className="flex flex-row items-end mt-14">
-          {/* days */}
-          <div className="flex flex-col items-center">
-            <span className="text-gray-400">Days</span>
-            <h2 className={classnames("mt-4 m-0 p-0", largeTextClass)}>{days}</h2>
-          </div>
-          <span className={classnames(largeTextClass, "mx-5")}>:</span>
-          {/* hours */}
-          <div className="flex flex-col items-center">
-            <span className="text-gray-400">Hours</span>
-            <h2 className={classnames("mt-4 m-0 p-0", largeTextClass)}>{hours}</h2>
-          </div>
-          <span className={classnames(largeTextClass, "mx-5")}>:</span>
-          {/* minutes */}
-          <div className="flex flex-col items-center">
-            <span className="text-gray-400">Minutes</span>
-            <h2 className={classnames("mt-4 m-0 p-0", largeTextClass)}>{minutes}</h2>
-          </div>
-          <span className={classnames(largeTextClass, "mx-5")}>:</span>
-          {/* seconds */}
-          <div className="flex flex-col items-center">
-            <span className="text-gray-400">Seconds</span>
-            <h2 className={classnames("mt-4 m-0 p-0", largeTextClass)}>{seconds}</h2>
+        <div class="text-center">
+          <h1 className="text-2xl text-green-header font-spacemono underline font-bold">
+            Countdown to the final showdown auction
+          </h1>
+          <div className="flex flex-row items-end lg:ml-20">
+            {/* days */}
+            <div className="flex flex-col items-center">
+              <span className="text-gray-400 font-spacemono">days</span>
+              <h2 className={classnames("mt-4 m-0 p-0 font-spacemono", largeTextClass)}>{days}</h2>
+            </div>
+            <span className={classnames(largeTextClass, "mx-5")}>:</span>
+            {/* hours */}
+            <div className="flex flex-col items-center">
+              <span className="text-gray-400 font-spacemono">hours</span>
+              <h2 className={classnames("mt-4 m-0 p-0 font-spacemono", largeTextClass)}>{hours}</h2>
+            </div>
+            <span className={classnames(largeTextClass, "mx-5")}>:</span>
+            {/* minutes */}
+            <div className="flex flex-col items-center">
+              <span className="text-gray-400 font-spacemono">minutes</span>
+              <h2 className={classnames("mt-4 m-0 p-0 font-spacemono", largeTextClass)}>{minutes}</h2>
+            </div>
+            <span className={classnames(largeTextClass, "mx-5")}>:</span>
+            {/* seconds */}
+            <div className="flex flex-col items-center">
+              <span className="text-gray-400 font-spacemono">seconds</span>
+              <h2 className={classnames("mt-4 m-0 p-0 font-spacemono", largeTextClass)}>{seconds}</h2>
+            </div>
           </div>
         </div>
-        <div className="mt-16 flex items-center justify-center">
+        <img src={CominggSoonGif} alt="Coming Soon Gif" className="mt-14 min-w-full px-6" />
+        <div class="w-3/4 mx-auto text-center">
+          <p class="leading-relaxed text-lg mt-20 text-3xl font-bold text-green-header font-spacemono">
+            Join us for the kickoff party Dec 6!
+          </p>
           <Button disabled={!completed} onClick={goToNextStep}>
-            Continue
+            Join here
           </Button>
+          <p>(You want to do it!)</p>
         </div>
+       
       </>
     );
   };
 
   return (
-    <>
-      <div className="mb-8 flex flex-1 flex-col justify-center">
-        <div className="max-full flex items-center justify-center flex-col">
-          <h1 className="text-5xl mb-4 mt-20 font-normal text-green-header font-spacemono">Final fight coming soon</h1>
+    <div className="grid grid-cols-1">
+      <div className="flex flex-wrap">
 
-          <div>
-            <Countdown date={1638820800000} renderer={countdownRenderer} />
+        <div className="flex flex-wrap w-1/2">
+          <div className="max-w-full flex flex-col ml-6">
+            <h1 className="text-2xl font-normal text-green-header font-spacemono underline font-bold">
+              We've come a long way together
+            </h1>
+            <ul className="list-disc ml-6 text-base font-normal font-spacemono">
+              <li className="text-orange-final">We learned the Anon/Moloch lore - Level 1</li>
+              <li className="text-green-header">We've summoned 200 hero EthBots - Level 2</li>
+              <li className="text-purple-final">We've captured 200 mini-Molochs - Level 3</li>
+            </ul>
+            <p className="ml-6">[raising $330,000 for public goods so far]</p>
+            <br/>
+            <p className="text-5xl font-normal text-purple-final font-spacemono font-bold">
+              Now we must beat the final Moloch boss together.
+            </p>
+            <h1 className="mt-6 text-2xl font-normal text-green-header font-spacemono underline font-bold">
+              It's all coordination
+            </h1>
+            <p className="text-lg font-normal text-green-header font-spacemono">
+              On December 6th, the <span className="text-purple-final font-bold" >ETHBot vs. Moloch</span> <span className="text-orange-final font-bold" >GitcoinParty Crowdfund </span> will open. By crowdfunding 50 ETH as a community, we will hit the reserve,
+              guaranteeing a chance for ETHBot to take out Moloch once and for all.
+            </p>
+            <p className="text-lg font-normal text-green-header font-spacemono">
+              By participating in the winning <span className="font-bold" >GitcoinParty Crowdfund</span> you will own a percentage of the <span className="font-bold" >1 of 1</span> <span className="text-orange-final font-bold" >Final Battle NFT</span>.
+            </p>
+            <p className="text-lg font-normal text-green-header font-spacemono">
+              All proceeds fund public goods (Always has been).
+            </p>
           </div>
-          <div></div>
         </div>
+
+         <div className="flex flex-wrap w-1/2">
+            <Countdown date={1638820800000} renderer={countdownRenderer} />
+         </div>
       </div>
-    </>
+    </div>
   );
 }
 

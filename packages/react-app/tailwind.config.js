@@ -20,7 +20,9 @@ module.exports = {
         bot7: "url('/src/assets/EthbotLearn/bot7.png')",
       },
       colors: {
-        orange: colors.orange,
+        orange: {
+          "final": "#de8250",
+        },
         green: {
           "050": "#6dc5a0",
           "dark-green": "#337062",
@@ -32,6 +34,7 @@ module.exports = {
         purple: {
           overlay: "#240871",
           imgText: "#8C65F7",
+          "final": "#896af9",
         },
         brown: {
           "dark-brown": "#262626",
