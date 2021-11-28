@@ -81,10 +81,10 @@ function ComingSoon({ goToNextStep }) {
             <p className="text-5xl font-normal text-purple-final font-spacemono font-bold">
               Now we must beat the final Moloch boss together.
             </p>
-            <h1 className="mt-6 text-2xl font-normal text-green-header font-spacemono underline font-bold">
+            <h1 className="mt-6 mb-6 text-2xl font-normal text-green-header font-spacemono underline font-bold">
               It's all coordination
             </h1>
-            <p className="text-lg font-normal text-green-header font-spacemono mt-2">
+            <p className="text-lg font-normal text-green-header font-spacemono mt-4">
               On December 6th, the <span className="text-purple-final font-bold" >ETHBot vs. Moloch</span> <span className="text-orange-final font-bold" >GitcoinParty Crowdfund </span> will open. By crowdfunding 50 ETH as a community, we will hit the reserve,
               guaranteeing a chance for ETHBot to take out Moloch once and for all.
             </p>
