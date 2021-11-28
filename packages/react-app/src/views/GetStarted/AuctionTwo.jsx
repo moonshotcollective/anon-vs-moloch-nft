@@ -534,7 +534,7 @@ function AuctionTwo({
           <div className="max-w-md">
             <div className='player-wrapper'>
                 <ReactPlayer
-                url= 'videos/botVideoLevelThree.mp4'
+                url= 'videos/molochVideoLevelFour.mp4'
                 width='100%'
                 height='100%'
                 controls = {true}
@@ -546,10 +546,27 @@ function AuctionTwo({
           <div className="max-w-md">
             <div className="text-2xl mb-8 font-normal text-red-600 font-spacemono"
               href="https://larpminter.com/">
-                Coming Soon {">>"}
+                Free 3D Moloch {">>"}
             </div>
             <div className="text-lg mb-6 mt-6">
-              Free 3D Molochs for Digital Moloch NFT holders
+              3D Molochs are now available to anyone holding a Digital Moloch NFT.
+              <br />
+              <br />
+              <strong>Here’s how you can get a 3D Moloch:</strong>
+              <br />
+              <br />
+              1. Purchase a Digital Moloch NFT (seen above)
+              <br />
+              2. Go to <a href="https://opensea.io/collection/moloch-v3">opensea.com</a> and find the NFT in your collection
+              <br />
+              3. Open the Details dropdown and copy the Token ID
+              <br />
+              4. Go to <a href="http://larpminter.com/moloch">LARPminter.com</a>
+              <br />
+              5. Locate the Moloch minter and input the Digital Moloch token ID
+              <br />
+              <br />
+              Video walking through the same steps on <a href="https://youtu.be/p6Mbm39ycdc">Youtube</a>
             </div>
           </div>
         </div>
