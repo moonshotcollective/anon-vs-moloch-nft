@@ -2,8 +2,7 @@ import React from "react";
 import Countdown from "react-countdown";
 import classnames from "classnames";
 import { Button } from "../../themed-components";
-
-import CominggSoonGif from "../../assets/turnin.gif";
+import ReactPlayer from 'react-player'
 
 function ComingSoon({ goToNextStep }) {
   const countdownRenderer = ({ days, hours, minutes, seconds, completed }) => {
@@ -41,7 +40,14 @@ function ComingSoon({ goToNextStep }) {
             </div>
           </div>
         </div>
-        <img src={CominggSoonGif} alt="Coming Soon Gif" className="mt-14 min-w-full px-6" />
+        <div className='player-wrapper mt-20'>
+          <ReactPlayer
+          url= 'videos/botVideoComingSoon.mp4'
+          width='100%'
+          height='100%'
+          controls = {true}
+          />
+        </div>
         <div class="w-3/4 mx-auto text-center">
           <p class="leading-relaxed text-lg mt-20 text-3xl font-bold text-green-header font-spacemono">
             Join us for the kickoff party Dec 6!
@@ -60,7 +66,7 @@ function ComingSoon({ goToNextStep }) {
     <div className="grid grid-cols-1">
       <div className="flex flex-wrap">
 
-        <div className="flex flex-wrap w-1/2">
+        <div className="flex flex-wrap w-1/2 p-20 sm:p-6">
           <div className="max-w-full flex flex-col ml-6">
             <h1 className="text-2xl font-normal text-green-header font-spacemono underline font-bold">
               We've come a long way together
@@ -78,20 +84,20 @@ function ComingSoon({ goToNextStep }) {
             <h1 className="mt-6 text-2xl font-normal text-green-header font-spacemono underline font-bold">
               It's all coordination
             </h1>
-            <p className="text-lg font-normal text-green-header font-spacemono">
+            <p className="text-lg font-normal text-green-header font-spacemono mt-2">
               On December 6th, the <span className="text-purple-final font-bold" >ETHBot vs. Moloch</span> <span className="text-orange-final font-bold" >GitcoinParty Crowdfund </span> will open. By crowdfunding 50 ETH as a community, we will hit the reserve,
               guaranteeing a chance for ETHBot to take out Moloch once and for all.
             </p>
-            <p className="text-lg font-normal text-green-header font-spacemono">
+            <p className="text-lg font-normal text-green-header font-spacemono mt-2">
               By participating in the winning <span className="font-bold" >GitcoinParty Crowdfund</span> you will own a percentage of the <span className="font-bold" >1 of 1</span> <span className="text-orange-final font-bold" >Final Battle NFT</span>.
             </p>
-            <p className="text-lg font-normal text-green-header font-spacemono">
+            <p className="text-lg font-normal text-green-header font-spacemono mt-2">
               All proceeds fund public goods (Always has been).
             </p>
           </div>
         </div>
 
-         <div className="flex flex-wrap w-1/2">
+         <div className="flex flex-wrap w-1/2 p-20 sm:p-6">
             <Countdown date={1638820800000} renderer={countdownRenderer} />
          </div>
       </div>
