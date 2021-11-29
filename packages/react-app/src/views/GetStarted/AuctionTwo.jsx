@@ -557,11 +557,11 @@ function AuctionTwo({
               <br />
               1. Purchase a Digital Moloch NFT (seen above)
               <br />
-              2. Go to <a href="https://opensea.io/collection/moloch-v3">opensea.com</a> and find the NFT in your collection
+              2. Go to <a href="https://opensea.io/collection/moloch-v3" className="underline">opensea.com</a> and find the NFT in your collection
               <br />
               3. Open the Details dropdown and copy the Token ID
               <br />
-              4. Go to <a href="http://larpminter.com/moloch">LARPminter.com</a>
+              4. Go to <a href="http://larpminter.com/moloch" className="underline">LARPminter.com</a>
               <br />
               5. Locate the Moloch minter and input the Digital Moloch token ID
               <br />
