@@ -15,7 +15,7 @@ function ComingSoon({ goToNextStep }) {
             Countdown to the final showdown auction
           </h1>
           <div className="container p-4 sm:w-1/2 lg:w-1/4 w-1/2">
-            <div className="flex flex-row items-end">
+            <div className="flex flex-row items-end lg:ml-32 md:ml-20 sm:ml-10">
               {/* days */}
               <div className="flex flex-col items-center">
                 <span className="text-gray-400 font-spacemono">days</span>
