@@ -1,7 +1,7 @@
 import { Popover } from "antd";
 import { ethers } from "ethers";
 import React from "react";
-import ReactPlayer from 'react-player'
+import ReactPlayer from "react-player";
 
 import EthBot from "../../assets/mint/frontEthBot.png";
 import MolochStatue from "../../assets/mint/molochStatue.png";
@@ -519,7 +519,9 @@ function AuctionOne({
       <div className="flex flex-wrap mt-10 bg-gradient-to-r from-gray-050 to-green-light-green p-10">
         <div className="flex flex-wrap w-1/2">
           <div className="max-w-md">
-            <a className="text-2xl mb-8 font-normal text-green-header font-spacemono" href="https://larpminter.com/">Free 3D ETHBOT {">>"}</a>
+            <a className="text-2xl mb-8 font-normal text-green-header font-spacemono" href="https://larpminter.com/">
+              Free 3D ETHBOT {">>"}
+            </a>
             <div className="text-lg mb-6 mt-6">
               3D bots are now available to anyone holding a Digital ETHBot NFT #1-200.
               <br />
@@ -538,20 +540,16 @@ function AuctionOne({
               5. Scroll down and input the Digital ETHBot token ID
               <br />
               <br />
-              ETHBot holders can mint immediately and will receive a "blank bot". All bots are random and their art will be revealed when we unlock level 3! (this makes it harder
-              to game the system and encourages us to work together to fund public goods!)
+              ETHBot holders can mint immediately and will receive a "blank bot". All bots are random and their art will
+              be revealed when we unlock level 3! (this makes it harder to game the system and encourages us to work
+              together to fund public goods!)
             </div>
           </div>
         </div>
         <div className="flex flex-wrap w-1/2 justify-center items-center pl-16">
           <div className="max-w-md">
-            <div className='player-wrapper'>
-                <ReactPlayer
-                url= 'videos/botVideoLevelTwo.mp4'
-                width='100%'
-                height='100%'
-                controls = {true}
-                />
+            <div className="player-wrapper">
+              <ReactPlayer url="videos/botVideoLevelTwo.mp4" width="100%" height="100%" controls={true} />
             </div>
           </div>
         </div>
