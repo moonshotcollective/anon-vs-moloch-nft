@@ -68,6 +68,9 @@ function ComingSoon({ goToPrevStep, goToNextStep }) {
       <div className="flex flex-wrap font-spacemono">
         <div className="flex flex-wrap w-1/2 p-20 sm:p-6">
           <div className="max-w-full flex flex-col">
+            <a className="font-normal text-green-header" onClick={goToPrevStep} href="#">
+              &lt;&lt; back to Level 3
+            </a>
             <h1 className="text-2xl font-normal text-green-header font-spacemono underline font-bold">
               We've come a long way together
             </h1>
@@ -106,10 +109,6 @@ function ComingSoon({ goToPrevStep, goToNextStep }) {
                 All proceeds fund public goods (Always has been).
               </p>
             </div>
-            <br />
-            <a className="font-normal text-green-header" onClick={goToPrevStep} href="#">
-              &lt;&lt; back to Level 3
-            </a>
           </div>
         </div>
 

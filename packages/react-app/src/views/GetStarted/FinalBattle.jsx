@@ -8,7 +8,7 @@ function FinalBattle({ goToPrevStep, goToNextStep }) {
       <div className="mb-8 flex flex-1 flex-col justify-center">
         <div className="max-w-md">
           <a className="font-normal text-green-header" onClick={goToPrevStep} href="#">
-            &lt;&lt; back to Level 3
+            &lt;&lt; back
           </a>
           <h1 className="text-4xl mb-4 font-normal text-green-header font-spacemono">Level 4</h1>
           <h1 className="text-2xl mb-8 font-normal text-green-header font-spacemono">The Final Battle {">>"}</h1>
