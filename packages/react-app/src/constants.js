@@ -11,7 +11,7 @@ export const BLOCKNATIVE_DAPPID = "f03c8937-1fa4-484d-adbb-86a6e210ebfd";
 export const MORALIS_KEY = "";
 
 export const ALCHEMY_KEY_RINKEBY = "NqFAgbINsUZbbIIPg-Qt8ZTXGWQcZkpl";
-export const ALCHEMY_KEY_MAINNET = "HdSOpMrNv8x0Pt8cROU3cq5d9Um7Ztmc";
+export const ALCHEMY_KEY_MAINNET = "W0XfQJvBYrDk6wxM2F3VEDns10TBTLzs";
 
 export const DAI_ADDRESS = "0x6B175474E89094C44Da98b954EedeAC495271d0F";
 
