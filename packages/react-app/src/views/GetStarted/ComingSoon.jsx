@@ -47,11 +47,15 @@ function ComingSoon({ goToPrevStep, goToNextStep }) {
             <div className="leading-relaxed text-lg mt-20 text-3xl font-bold text-green-header font-spacemono">
               Join us for the kickoff party Dec 6!
             </div>
-            <div className="mt-10">
-              <Button disabled={!completed} onClick={goToNextStep}>
-                Join here
-              </Button>
-            </div>
+            {/* <div className="mt-10">
+              <Button onClick={goToNextStep}>Join here</Button>
+            </div> */}
+            <a
+              href="https://www.addevent.com/event/Qu10410679"
+              className="font-spacemono bg-green-teal px-8 py-4 text-lg text-white rounded hover:text-white text-base"
+            >
+              Join here
+            </a>
             <p>(You want to do it!)</p>
           </div>
         </Col>
