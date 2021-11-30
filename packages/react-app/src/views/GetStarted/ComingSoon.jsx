@@ -44,7 +44,7 @@ function ComingSoon({ goToPrevStep, goToNextStep }) {
             <ReactPlayer url="videos/botVideoComingSoon.mp4" width="100%" height="100%" controls={true} />
           </div>
           <div class="w-3/4 mx-auto text-center mt-20">
-            <div className="leading-relaxed text-lg mt-20 text-3xl font-bold text-green-header font-spacemono">
+            <div className="mb-10 leading-relaxed text-lg mt-20 text-3xl font-bold text-green-header font-spacemono">
               Join us for the kickoff party Dec 6!
             </div>
             {/* <div className="mt-10">
@@ -56,7 +56,7 @@ function ComingSoon({ goToPrevStep, goToNextStep }) {
             >
               Join here
             </a>
-            <p>(You want to do it!)</p>
+            <p className="mt-10">(You want to do it!)</p>
           </div>
         </Col>
       </Row>
