@@ -44,7 +44,7 @@ function ComingSoon({ goToPrevStep, goToNextStep }) {
             <ReactPlayer url="videos/botVideoComingSoon.mp4" width="100%" height="100%" controls={true} />
           </div>
           <div class="w-3/4 mx-auto text-center mt-20">
-            <div className="leading-relaxed text-lg mt-20 text-3xl font-bold text-green-header font-spacemono">
+            <div className="mb-10 leading-relaxed text-lg mt-20 text-3xl font-bold text-green-header font-spacemono">
               Join us for the kickoff party Dec 6!
             </div>
             {/* <div className="mt-10">
@@ -52,7 +52,7 @@ function ComingSoon({ goToPrevStep, goToNextStep }) {
             </div> */}
             <a
               href="https://www.addevent.com/event/Qu10410679"
-              className="mt-10 font-spacemono bg-green-teal px-8 py-4 text-lg text-white rounded hover:text-white text-base"
+              className="font-spacemono bg-green-teal px-8 py-4 text-lg text-white rounded hover:text-white text-base"
             >
               Join here
             </a>
