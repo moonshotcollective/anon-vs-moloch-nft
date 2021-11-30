@@ -52,11 +52,11 @@ function ComingSoon({ goToPrevStep, goToNextStep }) {
             </div> */}
             <a
               href="https://www.addevent.com/event/Qu10410679"
-              className="font-spacemono bg-green-teal px-8 py-4 text-lg text-white rounded hover:text-white text-base"
+              className="mt-10 font-spacemono bg-green-teal px-8 py-4 text-lg text-white rounded hover:text-white text-base"
             >
               Join here
             </a>
-            <p>(You want to do it!)</p>
+            <p className="mt-10">(You want to do it!)</p>
           </div>
         </Col>
       </Row>
