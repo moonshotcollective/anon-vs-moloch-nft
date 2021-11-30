@@ -48,7 +48,9 @@ function ComingSoon({ goToPrevStep, goToNextStep }) {
               Join us for the kickoff party Dec 6!
             </div>
             <div className="mt-10">
-              <Button onClick={goToNextStep}>Join here</Button>
+              <Button disabled={!completed} onClick={goToNextStep}>
+                Join here
+              </Button>
             </div>
             <p>(You want to do it!)</p>
           </div>
