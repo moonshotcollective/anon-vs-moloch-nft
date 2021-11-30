@@ -102,6 +102,7 @@ function ComingSoon({ goToPrevStep, goToNextStep }) {
                 All proceeds fund public goods (Always has been).
               </p>
             </div>
+            <br />
             <a className="font-normal text-green-header" onClick={goToPrevStep} href="#">
               &lt;&lt; back to Level 3
             </a>
