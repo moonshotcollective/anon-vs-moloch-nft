@@ -90,8 +90,8 @@ function ComingSoon({ goToPrevStep, goToNextStep }) {
               <p className="text-lg font-normal text-green-header font-spacemono">
                 On December 6th, the <span className="text-purple-final font-bold">ETHBot vs. Moloch</span>{" "}
                 <span className="text-orange-final font-bold">GitcoinParty Crowdfund </span> will open. By crowdfunding
-                50 ETH as a community, we will hit the reserve, guaranteeing a chance for ETHBot to take out Moloch once
-                and for all.
+                100 ETH as a community, we will hit the reserve, guaranteeing a chance for ETHBot to take out Moloch
+                once and for all.
               </p>
             </div>
             <div className="mt-4">
