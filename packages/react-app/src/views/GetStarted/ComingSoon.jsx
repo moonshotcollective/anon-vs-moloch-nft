@@ -31,11 +31,19 @@ function ComingSoonTwo({ goToPrevStep, goToNextStep }) {
 
             <div className="text-2xl mb-6 font-spacemono font-bold">
               Let's mint the Final Boss Moloch NFT as a community, by crowdfunding the 100 ETH reserve on{" "}
-              <span className="underline">Gitcoin Party</span>.
+              <a
+                href="https://www.partybid.app/party/0xA2db0A5687F7c1F685e2E62a917b40E3133B3D8E"
+                target="_blank"
+                rel="noreferrer"
+                className="underline"
+              >
+                Gitcoin Party
+              </a>
+              .
               <br />
               <br />
               Once the reserve is met, a 24 hour auction will start where anyone can win the NFT. If the Gitcoin Party
-              wins, each participant will own a part of the NFT, porportional to how much they contributed.
+              wins, each participant will own a part of the NFT, proportional to how much they contributed.
               <br />
             </div>
 
@@ -72,9 +80,8 @@ function ComingSoonTwo({ goToPrevStep, goToNextStep }) {
               <h1 class="sm:text-xl text-xl mb-4 font-spacemono text-orange-final font-semibold">
                 When the crowdfund hits 100 ETH, the reserve is met, and a 24 hour auction begins.
               </h1>
-              <p class="mx-auto leading-relaxed font-spacemono text-6xl">25/100 ETH Reserve</p>
             </div>
-            <div className="player-wrapper">
+            <div className="player-wrapper mt-10">
               <ReactPlayer url="videos/botVideoComingSoon.mp4" width="100%" height="100%" controls={true} />
             </div>
             <div class="w-3/4 mx-auto text-center mt-4">
