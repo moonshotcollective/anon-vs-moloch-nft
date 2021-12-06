@@ -30,7 +30,7 @@ function ComingSoonTwo({ goToPrevStep, goToNextStep }) {
             </div>
 
             <div className="text-2xl mb-6 font-spacemono font-bold">
-              Let's mint the Final Boss Moloch NFT as a community, by crowdfunding the 50 ETH reserve on{" "}
+              Let's mint the Final Boss Moloch NFT as a community, by crowdfunding the 100 ETH reserve on{" "}
               <span className="underline">Gitcoin Party</span>.
               <br />
               <br />
@@ -70,9 +70,9 @@ function ComingSoonTwo({ goToPrevStep, goToNextStep }) {
                 Final Boss Moloch Reserve Progress
               </h2>
               <h1 class="sm:text-xl text-xl mb-4 font-spacemono text-orange-final font-semibold">
-                When the crowdfund hits 50 ETH, the reserve is met, and a 24 hour auction begins.
+                When the crowdfund hits 100 ETH, the reserve is met, and a 24 hour auction begins.
               </h1>
-              <p class="mx-auto leading-relaxed font-spacemono text-6xl">25/50 ETH Reserve</p>
+              <p class="mx-auto leading-relaxed font-spacemono text-6xl">25/100 ETH Reserve</p>
             </div>
             <div className="player-wrapper">
               <ReactPlayer url="videos/botVideoComingSoon.mp4" width="100%" height="100%" controls={true} />
