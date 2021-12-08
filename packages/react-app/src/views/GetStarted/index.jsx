@@ -15,7 +15,7 @@ import ComingSoon from "./ComingSoon";
 
 // Steps component array
 // const Steps = [Prologue, Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
-const Steps = [Prologue, Read, AuctionOne, AuctionTwo, ComingSoon, FinalBattle];
+const Steps = [Prologue, Read, AuctionOne, AuctionTwo, ComingSoon, Winning];
 
 const incrementPercent = "8";
 
