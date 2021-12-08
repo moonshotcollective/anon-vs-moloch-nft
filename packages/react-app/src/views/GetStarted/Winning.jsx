@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import FinalBattle from "../../assets/mint/finalBattle.png";
 import { Button } from "../../themed-components";
 
 function Winning(props) {
+  const [youCanView, setYouCanView] = useState(false);
+  const nftCheck = props.events?.nftCheck;
+  useEffect(() => {
+    if (nftCheck) {
+      const ownerArray = Object.keys(nftCheck).map(function (key, index) {
+        return nftCheck[key].owner;
+      });
+      if (props.address && ownerArray?.includes(props.address.toString())) {
+        setYouCanView(true);
+      }
+    }
+  }, [nftCheck, props.address]);
   return (
     <>
       <div className="flex flex-1 flex-col justify-center">
@@ -30,7 +42,19 @@ function Winning(props) {
 
           <div className="mt-8 flex items-center justify-center">
             {/* Button */}
-            <Button padding={10}>Read the comic book ending</Button>
+            <Button
+              disabled={!youCanView}
+              padding={10}
+              onClick={() => {
+                if (youCanView) {
+                  window.open(
+                    "https://www.dropbox.com/sh/u4868yl4r7t9jrn/AABoG-TH9X6PEu_5uI-U3goYa?dl=0&preview=GC-02-091121-PRINT.pdf",
+                  );
+                }
+              }}
+            >
+              Read the comic book ending
+            </Button>
           </div>
         </div>
       </div>

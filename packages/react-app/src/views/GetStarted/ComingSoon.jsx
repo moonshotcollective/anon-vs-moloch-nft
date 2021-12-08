@@ -98,6 +98,11 @@ function ComingSoonTwo({ goToPrevStep, goToNextStep }) {
                   Join here
                 </a>
               </div> */}
+              <div>
+                <a className="font-normal text-green-header text-base" onClick={goToNextStep} href="#">
+                  Final Statistics {" >>"}
+                </a>
+              </div>
               <div className="mt-10">
                 <a
                   href="https://www.partybid.app/party/0xA2db0A5687F7c1F685e2E62a917b40E3133B3D8E"

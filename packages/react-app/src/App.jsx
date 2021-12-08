@@ -196,6 +196,7 @@ function App(props) {
 
   const ethBotTransferEvents = useEventListener(readContracts, "EthBot", "Transfer", injectedProvider, 1);
   const molochBotBotTransferEvents = useEventListener(readContracts, "MolochBot", "Transfer", injectedProvider, 1);
+  const nftCheck = useEventListener(readContracts, "nftCheck", "nftOwnership", injectedProvider, 1);
 
   // last minted variables
   const lastMintedEthBot = useContractReader(readContracts, "EthBot", "lastMinted") || ethers.BigNumber.from(0);
@@ -423,7 +424,7 @@ function App(props) {
               writeContracts={writeContracts}
               readContracts={readContracts}
               lastMinted={[lastMintedEthBot, lastMintedMolochBot]}
-              events={{ ethBotTransferEvents, molochBotBotTransferEvents }}
+              events={{ ethBotTransferEvents, molochBotBotTransferEvents, nftCheck }}
               faucetHint={faucetHint}
               address={address}
               localProvider={localProvider}
@@ -445,7 +446,7 @@ function App(props) {
               writeContracts={writeContracts}
               readContracts={readContracts}
               lastMinted={[lastMintedEthBot, lastMintedMolochBot]}
-              events={{ ethBotTransferEvents, molochBotBotTransferEvents }}
+              events={{ ethBotTransferEvents, molochBotBotTransferEvents, nftCheck }}
               faucetHint={faucetHint}
               address={address}
               localProvider={localProvider}
