@@ -197,11 +197,6 @@ function App(props) {
   const ethBotTransferEvents = useEventListener(readContracts, "EthBot", "Transfer", injectedProvider, 1);
   const molochBotBotTransferEvents = useEventListener(readContracts, "MolochBot", "Transfer", injectedProvider, 1);
 
-  const ethBotBalanceOf = useEventListener(readContracts, "EthBot", "balanceOf", injectedProvider, 1);
-  const molochBotBalanceOf = useEventListener(readContracts, "MolochBot", "balanceOf", injectedProvider, 1);
-  const ethBotStatueBalanceOf = useEventListener(readContracts, "EthBotStatue", "balanceOf", injectedProvider, 1);
-  const molochBotStatueBalanceOf = useEventListener(readContracts, "MolochBotStatue", "balanceOf", injectedProvider, 1);
-
   // last minted variables
   const lastMintedEthBot = useContractReader(readContracts, "EthBot", "lastMinted") || ethers.BigNumber.from(0);
   const lastMintedMolochBot = useContractReader(readContracts, "MolochBot", "lastMinted") || ethers.BigNumber.from(0);
@@ -431,10 +426,6 @@ function App(props) {
               events={{
                 ethBotTransferEvents,
                 molochBotBotTransferEvents,
-                ethBotBalanceOf,
-                molochBotBalanceOf,
-                ethBotStatueBalanceOf,
-                molochBotStatueBalanceOf,
               }}
               faucetHint={faucetHint}
               address={address}
@@ -460,10 +451,6 @@ function App(props) {
               events={{
                 ethBotTransferEvents,
                 molochBotBotTransferEvents,
-                ethBotBalanceOf,
-                molochBotBalanceOf,
-                ethBotStatueBalanceOf,
-                molochBotStatueBalanceOf,
               }}
               faucetHint={faucetHint}
               address={address}
