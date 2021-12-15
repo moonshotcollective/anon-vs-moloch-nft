@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import FinalBattle from "../../assets/mint/finalBattle.png";
 import { ethers, BigNumber } from "ethers";
 
@@ -12,6 +12,7 @@ function Winning({ goToPrevStep, readContracts, userSigner, address }) {
       if (result > 0) {
         document.getElementById("FINAL_COMIC_LINK")?.classList.remove("hidden");
         document.getElementById("NFT_HOLDER_TG")?.classList.remove("hidden");
+        document.getElementById("CONNECT_WALLET_REMINDER")?.classList.add("hidden");
       }
     } else if (readContracts?.EthBotStatue) {
       const EthBotStatue = (await readContracts.EthBotStatue.balanceOf(address)) || 0;
@@ -19,6 +20,7 @@ function Winning({ goToPrevStep, readContracts, userSigner, address }) {
       if (result > 0) {
         document.getElementById("FINAL_COMIC_LINK")?.classList.remove("hidden");
         document.getElementById("NFT_HOLDER_TG")?.classList.remove("hidden");
+        document.getElementById("CONNECT_WALLET_REMINDER")?.classList.add("hidden");
       }
     } else if (readContracts?.MolochBot) {
       const MolochBot = (await readContracts.MolochBot.balanceOf(address)) || 0;
@@ -26,6 +28,7 @@ function Winning({ goToPrevStep, readContracts, userSigner, address }) {
       if (result > 0) {
         document.getElementById("FINAL_COMIC_LINK")?.classList.remove("hidden");
         document.getElementById("NFT_HOLDER_TG")?.classList.remove("hidden");
+        document.getElementById("CONNECT_WALLET_REMINDER")?.classList.add("hidden");
       }
     } else if (readContracts?.MolochBotStatue) {
       const MolochBotStatue = (await readContracts.MolochBotStatue.balanceOf(address)) || 0;
@@ -33,10 +36,12 @@ function Winning({ goToPrevStep, readContracts, userSigner, address }) {
       if (result > 0) {
         document.getElementById("FINAL_COMIC_LINK")?.classList.remove("hidden");
         document.getElementById("NFT_HOLDER_TG")?.classList.remove("hidden");
+        document.getElementById("CONNECT_WALLET_REMINDER")?.classList.add("hidden");
       }
     } else {
       document.getElementById("FINAL_COMIC_LINK")?.classList.add("hidden");
       document.getElementById("NFT_HOLDER_TG")?.classList.add("hidden");
+      document.getElementById("CONNECT_WALLET_REMINDER")?.classList.remove("hidden");
       return;
     }
   };
@@ -69,6 +74,16 @@ function Winning({ goToPrevStep, readContracts, userSigner, address }) {
                   <div className="text-green-teal">raised</div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div
+            id="CONNECT_WALLET_REMINDER"
+            className="mt-8 flex items-center justify-center border-4 border-green-teal rounded-lg"
+          >
+            <div className="text-green-teal  py-3 px-6 rounded text-2xl text-center font-spacemono font-bold">
+              <p className="text-3xl">NFT Holder?</p>
+              <p>Connect your wallet to see special rewards just for you</p>
             </div>
           </div>
 
