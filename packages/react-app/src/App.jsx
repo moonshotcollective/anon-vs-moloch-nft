@@ -126,7 +126,6 @@ function App(props) {
 
   const [injectedProvider, setInjectedProvider] = useState();
   const [address, setAddress] = useState();
-  const [isWalletConnected, setIsWalletConnected] = useState(false);
 
   const logoutOfWeb3Modal = async () => {
     await web3Modal.clearCachedProvider();
@@ -239,10 +238,6 @@ function App(props) {
       console.log("📝 readContracts", readContracts);
       console.log("🌍 DAI contract on mainnet:", mainnetContracts);
       console.log("🔐 writeContracts", writeContracts);
-    }
-
-    if (readContracts) {
-      setIsWalletConnected(AddressHelper.isValidAddress(address));
     }
   }, [
     mainnetProvider,
@@ -444,7 +439,6 @@ function App(props) {
               blockExplorer={blockExplorer}
               gasPrice={gasPrice}
               networkDisplay={networkDisplay}
-              isWalletConnected={isWalletConnected}
             />
           </Route>
           <Route path="/final-battle">
@@ -470,7 +464,6 @@ function App(props) {
               blockExplorer={blockExplorer}
               gasPrice={gasPrice}
               networkDisplay={networkDisplay}
-              isWalletConnected={isWalletConnected}
             />
           </Route>
           <Route path="/mint">
