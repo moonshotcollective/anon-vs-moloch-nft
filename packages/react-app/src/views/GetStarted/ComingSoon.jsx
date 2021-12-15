@@ -85,8 +85,8 @@ function ComingSoonTwo({ goToPrevStep, goToNextStep }) {
               <ReactPlayer url="videos/botVideoComingSoon.mp4" width="100%" height="100%" controls={true} />
             </div>
             <div class="w-3/4 mx-auto text-center mt-4">
-              <p class="leading-relaxed text-lg mt-20 text-3xl font-bold text-green-header font-spacemono">
-                Join The Final Moloch Crowdfund. WAGMI!
+              <p class="leading-relaxed text-lg mt-10 text-3xl font-bold text-green-header font-spacemono">
+                The Final Moloch Crowdfund
               </p>
               {/* <div className="mt-10">
                 <a
@@ -105,10 +105,17 @@ function ComingSoonTwo({ goToPrevStep, goToNextStep }) {
                   rel="noreferrer"
                   className="mt-10 font-spacemono bg-orange-final px-8 py-4 text-lg text-white rounded hover:text-white text-base"
                 >
-                  Join Here
+                  View Here
                 </a>
               </div>
-              <p className="mt-4">(You want to do it!)</p>
+              <br />
+              <br />
+              <div>
+                <p class="mt-10 text-5xl font-normal text-purple-final font-spacemono font-bold">We Won the Battle!</p>
+                <a className="text-3xl font-normal text-green-final font-spacemono font-bold" onClick={goToNextStep}>
+                  Final Statistics {" >>"}
+                </a>
+              </div>
             </div>
           </div>
         </div>

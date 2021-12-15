@@ -15,7 +15,7 @@ import ComingSoon from "./ComingSoon";
 
 // Steps component array
 // const Steps = [Prologue, Read, AuctionOne, AuctionTwo, FinalBattle, Winning];
-const Steps = [Prologue, Read, AuctionOne, AuctionTwo, ComingSoon, FinalBattle];
+const Steps = [Prologue, Read, AuctionOne, AuctionTwo, ComingSoon, Winning];
 
 const incrementPercent = "8";
 
@@ -27,6 +27,7 @@ function GetStarted({
   userSigner,
   loadWeb3Modal,
   initialStep = 1,
+  address,
   ...props
 }) {
   const [currentStep, setCurrentStep] = useState(initialStep);
@@ -134,6 +135,8 @@ function GetStarted({
       <EthbotProgress progress={currentStep === 4 || currentStep === 5 ? 4 : currentStep} />
       <section className="container flex flex-1 mx-auto my-20 pb-8">
         <CurrentStepComponent
+          address={address}
+          readContracts={readContracts}
           goToPrevStep={goToPrevStep}
           goToNextStep={goToNextStep}
           currentStep={currentStep}

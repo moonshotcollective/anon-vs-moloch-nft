@@ -423,7 +423,10 @@ function App(props) {
               writeContracts={writeContracts}
               readContracts={readContracts}
               lastMinted={[lastMintedEthBot, lastMintedMolochBot]}
-              events={{ ethBotTransferEvents, molochBotBotTransferEvents }}
+              events={{
+                ethBotTransferEvents,
+                molochBotBotTransferEvents,
+              }}
               faucetHint={faucetHint}
               address={address}
               localProvider={localProvider}
@@ -445,7 +448,10 @@ function App(props) {
               writeContracts={writeContracts}
               readContracts={readContracts}
               lastMinted={[lastMintedEthBot, lastMintedMolochBot]}
-              events={{ ethBotTransferEvents, molochBotBotTransferEvents }}
+              events={{
+                ethBotTransferEvents,
+                molochBotBotTransferEvents,
+              }}
               faucetHint={faucetHint}
               address={address}
               localProvider={localProvider}
