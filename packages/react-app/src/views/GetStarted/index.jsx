@@ -28,7 +28,14 @@ function GetStarted({
   loadWeb3Modal,
   initialStep = 1,
   address,
-  ...props
+  faucetHint,
+  localProvider,
+  mainnetProvider,
+  price,
+  web3Modal,
+  logoutOfWeb3Modal,
+  blockExplorer,
+  networkDisplay,
 }) {
   const [currentStep, setCurrentStep] = useState(initialStep);
   const [mintingToken, setMintingToken] = useState(false);
@@ -130,7 +137,19 @@ function GetStarted({
 
   return (
     <>
-      <Nav {...props} />
+      <Nav
+        faucetHint={faucetHint}
+        address={address}
+        localProvider={localProvider}
+        userSigner={userSigner}
+        mainnetProvider={mainnetProvider}
+        price={price}
+        web3Modal={web3Modal}
+        loadWeb3Modal={loadWeb3Modal}
+        logoutOfWeb3Modal={logoutOfWeb3Modal}
+        blockExplorer={blockExplorer}
+        networkDisplay={networkDisplay}
+      />
       {/* Hack to not move between coming soon and final boss */}
       <EthbotProgress progress={currentStep} />
       <section className="container flex flex-1 mx-auto my-20 pb-8">
