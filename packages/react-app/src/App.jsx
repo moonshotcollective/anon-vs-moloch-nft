@@ -19,7 +19,7 @@ import { ALCHEMY_KEY_MAINNET, INFURA_ID, NETWORK, NETWORKS } from "./constants";
 import externalContracts from "./contracts/external_contracts";
 // contracts
 import deployedContracts from "./contracts/hardhat_contracts.json";
-import { Transactor } from "./helpers";
+import { Transactor, Address as AddressHelper } from "./helpers";
 import { useUserSigner } from "./hooks";
 // views
 import { GetStarted, Home, Mint } from "./views";
@@ -126,6 +126,7 @@ function App(props) {
 
   const [injectedProvider, setInjectedProvider] = useState();
   const [address, setAddress] = useState();
+  const [isWalletConnected, setIsWalletConnected] = useState(false);
 
   const logoutOfWeb3Modal = async () => {
     await web3Modal.clearCachedProvider();
@@ -238,6 +239,10 @@ function App(props) {
       console.log("📝 readContracts", readContracts);
       console.log("🌍 DAI contract on mainnet:", mainnetContracts);
       console.log("🔐 writeContracts", writeContracts);
+    }
+
+    if (readContracts) {
+      setIsWalletConnected(AddressHelper.isValidAddress(address));
     }
   }, [
     mainnetProvider,
@@ -439,6 +444,7 @@ function App(props) {
               blockExplorer={blockExplorer}
               gasPrice={gasPrice}
               networkDisplay={networkDisplay}
+              isWalletConnected={isWalletConnected}
             />
           </Route>
           <Route path="/final-battle">
@@ -464,6 +470,7 @@ function App(props) {
               blockExplorer={blockExplorer}
               gasPrice={gasPrice}
               networkDisplay={networkDisplay}
+              isWalletConnected={isWalletConnected}
             />
           </Route>
           <Route path="/mint">

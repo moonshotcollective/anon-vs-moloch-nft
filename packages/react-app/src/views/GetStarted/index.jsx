@@ -28,6 +28,7 @@ function GetStarted({
   loadWeb3Modal,
   initialStep = 1,
   address,
+  isWallectConnected,
   ...props
 }) {
   const [currentStep, setCurrentStep] = useState(initialStep);
