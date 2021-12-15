@@ -108,12 +108,12 @@ function ComingSoonTwo({ goToPrevStep, goToNextStep }) {
                   View Here
                 </a>
               </div>
-              <br />
-              <br />
-              <div>
+              <div className="mt-20 mb-10">
                 <p class="mt-10 text-5xl font-normal text-purple-final font-spacemono font-bold">We Won the Battle!</p>
+              </div>
+              <div className="mt-10">
                 <a
-                  className="mt-10 font-spacemono bg-green-teal px-8 py-4 text-xl text-white rounded hover:bg-purple-final hover:text-white text-base font-bold"
+                  className="font-spacemono bg-green-teal px-8 py-4 text-xl text-white rounded hover:bg-purple-final hover:text-white text-base font-bold"
                   onClick={goToNextStep}
                 >
                   View Final Statistics
