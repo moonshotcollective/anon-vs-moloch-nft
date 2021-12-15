@@ -112,8 +112,11 @@ function ComingSoonTwo({ goToPrevStep, goToNextStep }) {
               <br />
               <div>
                 <p class="mt-10 text-5xl font-normal text-purple-final font-spacemono font-bold">We Won the Battle!</p>
-                <a className="text-3xl font-normal text-green-final font-spacemono font-bold" onClick={goToNextStep}>
-                  Final Statistics {" >>"}
+                <a
+                  className="mt-10 font-spacemono bg-green-teal px-8 py-4 text-xl text-white rounded hover:bg-purple-final hover:text-white text-base font-bold"
+                  onClick={goToNextStep}
+                >
+                  View Final Statistics
                 </a>
               </div>
             </div>
