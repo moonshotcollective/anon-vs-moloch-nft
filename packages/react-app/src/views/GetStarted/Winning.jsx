@@ -77,30 +77,34 @@ function Winning({ goToPrevStep, readContracts, userSigner, address }) {
             </div>
           </div>
 
-          <div className="mt-8 flex items-center justify-center">
-            <a
-              className="hidden bg-green-teal text-white py-3 px-6 rounded text-xl"
-              id="NFT_HOLDER_TG"
-              padding={10}
-              href={process.env.REACT_APP_NFT_HOLDER_TG}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Join the GreatestLARP NFT Holder Group
-            </a>
-          </div>
-          <div className="mt-8 flex items-center justify-center">
-            <a
-              className="hidden bg-green-teal text-white py-3 px-6 rounded text-xl"
-              id="FINAL_COMIC_LINK"
-              padding={10}
-              href={process.env.REACT_APP_FINAL_COMIC_LINK}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Read the comic book ending
-            </a>
-          </div>
+          {process.env.REACT_APP_NFT_HOLDER_TG && (
+            <div className="mt-8 flex items-center justify-center">
+              <a
+                className="hidden bg-green-teal text-white py-3 px-6 rounded text-xl"
+                id="NFT_HOLDER_TG"
+                padding={10}
+                href={process.env.REACT_APP_NFT_HOLDER_TG}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Join the GreatestLARP NFT Holder Group
+              </a>
+            </div>
+          )}
+          {process.env.REACT_APP_FINAL_COMIC_LINK && (
+            <div className="mt-8 flex items-center justify-center">
+              <a
+                className="hidden bg-green-teal text-white py-3 px-6 rounded text-xl"
+                id="FINAL_COMIC_LINK"
+                padding={10}
+                href={process.env.REACT_APP_FINAL_COMIC_LINK}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Read the comic book ending
+              </a>
+            </div>
+          )}
           <div className="mt-10 flex">
             <a className="font-normal text-green-header text-lg" onClick={goToPrevStep} href="#">
               &lt;&lt; back
