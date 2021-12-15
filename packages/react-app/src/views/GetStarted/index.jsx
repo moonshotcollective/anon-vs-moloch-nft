@@ -132,7 +132,7 @@ function GetStarted({
     <>
       <Nav {...props} />
       {/* Hack to not move between coming soon and final boss */}
-      <EthbotProgress progress={currentStep === 4 || currentStep === 5 ? 4 : currentStep} />
+      <EthbotProgress progress={currentStep} />
       <section className="container flex flex-1 mx-auto my-20 pb-8">
         <CurrentStepComponent
           address={address}
